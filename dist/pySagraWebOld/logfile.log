@@ -1,0 +1,22 @@
+2022-10-12 19:17:43 INFO pySagraWeb: Starting pySagraweb Flask Application on Cherrypy server
+2022-10-12 19:17:43 INFO connect: Starting database connection with parameters:
+2022-10-12 19:17:43 INFO connect: host = localhost
+2022-10-12 19:17:43 INFO connect: port = 5432
+2022-10-12 19:17:43 INFO connect: database = bidasio
+2022-10-12 19:17:43 INFO connect: dbuser = pa_login_role
+2022-10-12 19:17:43 INFO connect: dbuser password = ********
+2022-10-12 19:17:43 INFO connect: application_name = pySagra
+2022-10-12 19:17:43 INFO connect: connection_factory = None
+2022-10-12 19:17:43 INFO connect: Database connection established
+2022-10-12 19:17:43 INFO connect: DB is verified as an application database
+2022-10-12 19:17:43 INFO connect: Calling application connection function with parameters:
+2022-10-12 19:17:43 INFO connect: pgminver = 10
+2022-10-12 19:17:43 INFO connect: appname = pySagra
+2022-10-12 19:17:43 INFO connect: appversion = 02.00.00
+2022-10-12 19:17:43 INFO connect: user = pySagraWeb
+2022-10-12 19:17:43 INFO connect: password = ********
+2022-10-12 19:17:43 INFO connect: hostname = pySagraWebServer
+2022-10-12 19:17:43 ERROR connect: pyApp connection error
+('PA003', "ERROR:  Wrong application database version: required '02.00.00' detected '02.01.00'\nHINT:  You need to use a different application database version\nCONTEXT:  PL/pgSQL function system.pa_connect(numeric,text,text,text,text,text) line 30 at RAISE\n")
+2022-10-12 19:17:48 INFO connect: Colosing application and db connection
+2022-10-12 19:17:48 INFO connect: Connection closed

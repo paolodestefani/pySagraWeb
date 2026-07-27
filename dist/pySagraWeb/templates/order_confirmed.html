@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="jumbotron text-center">
+  <h1>Ordine confermato</h1>
+  <p>Procedi alla cassa per il pagamento esibendo il seguente QR Code</p>
+</div>
+
+<div class="container">
+<div class="row align-items-center justify-content-center">
+<div class="col-md-4">
+<form action="" method="post">
+  <center>
+	<div id="qrcode"></div>
+	<br>
+	<button type="submit" class="btn btn-success" name="new">Inserisci un nuovo ordine</button>
+  </center>
+</form>
+
+<script type="text/javascript">
+  function showQr() {
+	new QRCode(document.getElementById("qrcode"), {
+	  text: "{{ order_id }}", // Content
+	  
+	  // === Title
+	  title: "{{ order_id }}", // Title
+	  titleFont: "bold 18px Arial", // Title font
+	  titleColor: "#004284", // Title Color
+	  titleBgColor: "#fff", // Title Background
+	  titleHeight: 70, // Title height, include subTitle
+	  titleTop: 0, // Title draw position(Y coordinate), default is 30
+	  
+	  width: 220, // Widht
+	  height: 220, // Height
+	  colorDark: "#000000", // Dark color
+	  colorLight: "#ffffff", // Light color					
+	  correctLevel: QRCode.CorrectLevel.H // L, M, Q, H
+	  });
+  }
+  showQr();
+</script>
+
+</div>
+</div>
+</div>
+{% endblock %}

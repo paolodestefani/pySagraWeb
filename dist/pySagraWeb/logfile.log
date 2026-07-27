@@ -1,0 +1,232 @@
+2023-09-03 22:50:17 INFO pySagraWeb: Starting pySagraweb Flask Application on Cherrypy server
+2023-09-03 22:50:17 INFO connect: Starting database connection with parameters:
+2023-09-03 22:50:17 INFO connect: host = localhost
+2023-09-03 22:50:17 INFO connect: port = 5432
+2023-09-03 22:50:17 INFO connect: database = bidasio
+2023-09-03 22:50:17 INFO connect: dbuser = pa_login_role
+2023-09-03 22:50:17 INFO connect: dbuser password = ********
+2023-09-03 22:50:17 INFO connect: application_name = pySagra
+2023-09-03 22:50:17 INFO connect: connection_factory = None
+2023-09-03 22:50:17 INFO connect: Database connection established
+2023-09-03 22:50:17 INFO connect: DB is verified as an application database
+2023-09-03 22:50:17 INFO connect: Calling application connection function with parameters:
+2023-09-03 22:50:17 INFO connect: pgminver = 10
+2023-09-03 22:50:17 INFO connect: appname = pySagra
+2023-09-03 22:50:17 INFO connect: appversion = 02.01.00
+2023-09-03 22:50:17 INFO connect: user = pySagraWeb
+2023-09-03 22:50:17 INFO connect: password = ********
+2023-09-03 22:50:17 INFO connect: hostname = pySagraWebServer
+2023-09-03 22:50:17 INFO connect: DB Application connection established
+2023-09-03 22:50:17 INFO connect: Database connection established
+2023-09-03 22:50:17 INFO connect: Using company 30
+2023-09-03 22:50:17 INFO connect: Current event is None
+2023-09-03 22:50:22 INFO connect: Colosing application and db connection
+2023-09-03 22:50:22 INFO connect: Connection closed
+2023-09-03 22:53:49 INFO pySagraWeb: Starting pySagraweb Flask Application on Cherrypy server
+2023-09-03 22:53:49 INFO connect: Starting database connection with parameters:
+2023-09-03 22:53:49 INFO connect: host = localhost
+2023-09-03 22:53:49 INFO connect: port = 5432
+2023-09-03 22:53:49 INFO connect: database = bidasio
+2023-09-03 22:53:49 INFO connect: dbuser = pa_login_role
+2023-09-03 22:53:49 INFO connect: dbuser password = ********
+2023-09-03 22:53:49 INFO connect: application_name = pySagra
+2023-09-03 22:53:49 INFO connect: connection_factory = None
+2023-09-03 22:53:49 INFO connect: Database connection established
+2023-09-03 22:53:49 INFO connect: DB is verified as an application database
+2023-09-03 22:53:49 INFO connect: Calling application connection function with parameters:
+2023-09-03 22:53:49 INFO connect: pgminver = 10
+2023-09-03 22:53:49 INFO connect: appname = pySagra
+2023-09-03 22:53:49 INFO connect: appversion = 02.01.00
+2023-09-03 22:53:49 INFO connect: user = pySagraWeb
+2023-09-03 22:53:49 INFO connect: password = ********
+2023-09-03 22:53:49 INFO connect: hostname = pySagraWebServer
+2023-09-03 22:53:49 INFO connect: DB Application connection established
+2023-09-03 22:53:49 INFO connect: Database connection established
+2023-09-03 22:53:49 INFO connect: Using company 30
+2023-09-03 22:53:49 INFO connect: Current event is Test 2023
+2023-09-03 22:53:59 INFO pySagraFlask: Web order request from 127.0.0.1
+2023-09-03 22:54:13 INFO connect: Colosing application and db connection
+2023-09-03 22:54:13 INFO connect: Connection closed
+2024-03-06 11:33:18 INFO pySagraWeb: Starting pySagraweb Flask Application on Cherrypy server
+2024-03-06 11:33:18 INFO connect: Starting database connection with parameters:
+2024-03-06 11:33:18 INFO connect: host = localhost
+2024-03-06 11:33:18 INFO connect: port = 5432
+2024-03-06 11:33:18 INFO connect: database = bidasio
+2024-03-06 11:33:18 INFO connect: dbuser = pa_login_role
+2024-03-06 11:33:18 INFO connect: dbuser password = ********
+2024-03-06 11:33:18 INFO connect: application_name = pySagra
+2024-03-06 11:33:18 INFO connect: connection_factory = None
+2024-03-06 11:33:18 ERROR connect: Database connection error
+connection to server at "localhost" (::1), port 5432 failed: FATALE:  il database "bidasio" non esiste
+
+2024-03-06 11:33:28 INFO connect: Colosing application and db connection
+2024-03-06 11:33:47 INFO pySagraWeb: Starting pySagraweb Flask Application on Cherrypy server
+2024-03-06 11:33:47 INFO connect: Starting database connection with parameters:
+2024-03-06 11:33:47 INFO connect: host = localhost
+2024-03-06 11:33:47 INFO connect: port = 5433
+2024-03-06 11:33:47 INFO connect: database = bidasio
+2024-03-06 11:33:47 INFO connect: dbuser = pa_login_role
+2024-03-06 11:33:47 INFO connect: dbuser password = ********
+2024-03-06 11:33:47 INFO connect: application_name = pySagra
+2024-03-06 11:33:47 INFO connect: connection_factory = None
+2024-03-06 11:33:48 INFO connect: Database connection established
+2024-03-06 11:33:48 INFO connect: DB is verified as an application database
+2024-03-06 11:33:48 INFO connect: Calling application connection function with parameters:
+2024-03-06 11:33:48 INFO connect: pgminver = 10
+2024-03-06 11:33:48 INFO connect: appname = pySagra
+2024-03-06 11:33:48 INFO connect: appversion = 02.01.00
+2024-03-06 11:33:48 INFO connect: user = pySagraWeb
+2024-03-06 11:33:48 INFO connect: password = ********
+2024-03-06 11:33:48 INFO connect: hostname = pySagraWebServer
+2024-03-06 11:33:48 INFO connect: DB Application connection established
+2024-03-06 11:33:48 INFO connect: Database connection established
+2024-03-06 11:33:48 INFO connect: Using company 30
+2024-03-06 11:33:48 INFO connect: Current event is SAGRA DELLA MADONNA DELL'INCORONATA
+2024-03-06 11:33:59 INFO pySagraFlask: Web order request from 127.0.0.1
+2024-03-06 11:34:23 INFO pySagraFlask: Web order request from 127.0.0.1
+2024-03-06 11:34:36 INFO pySagraFlask: Web order request from 127.0.0.1
+2024-03-06 11:34:39 INFO pySagraFlask: Web order request from 127.0.0.1
+2024-03-06 11:58:08 INFO pySagraFlask: Web order request from 127.0.0.1
+2024-03-06 11:58:25 INFO connect: Colosing application and db connection
+2024-03-06 11:58:25 INFO connect: Connection closed
+2024-03-06 18:02:15 INFO pySagraWeb: Starting pySagraweb Flask Application on Cherrypy server
+2024-03-06 18:02:15 INFO connect: Starting database connection with parameters:
+2024-03-06 18:02:15 INFO connect: host = localhost
+2024-03-06 18:02:15 INFO connect: port = 5433
+2024-03-06 18:02:15 INFO connect: database = bidasio
+2024-03-06 18:02:15 INFO connect: dbuser = pa_login_role
+2024-03-06 18:02:15 INFO connect: dbuser password = ********
+2024-03-06 18:02:15 INFO connect: application_name = pySagra
+2024-03-06 18:02:15 INFO connect: connection_factory = None
+2024-03-06 18:02:15 INFO connect: Database connection established
+2024-03-06 18:02:15 INFO connect: DB is verified as an application database
+2024-03-06 18:02:15 INFO connect: Calling application connection function with parameters:
+2024-03-06 18:02:15 INFO connect: pgminver = 10
+2024-03-06 18:02:15 INFO connect: appname = pySagra
+2024-03-06 18:02:15 INFO connect: appversion = 02.01.00
+2024-03-06 18:02:15 INFO connect: user = pySagraWeb
+2024-03-06 18:02:15 INFO connect: password = ********
+2024-03-06 18:02:15 INFO connect: hostname = pySagraWebServer
+2024-03-06 18:02:15 INFO connect: DB Application connection established
+2024-03-06 18:02:15 INFO connect: Database connection established
+2024-03-06 18:02:15 INFO connect: Using company 30
+2024-03-06 18:02:15 INFO connect: Current event is SAGRA DELLA MADONNA DELL'INCORONATA
+2024-03-06 18:04:01 INFO pySagraFlask: Web order request from 192.168.0.126
+2024-03-06 18:04:52 INFO pySagraFlask: Web order request from 192.168.0.126
+2024-06-07 15:49:54 INFO pySagraWeb: Starting pySagraweb Flask Application on Cherrypy server
+2024-06-07 15:49:54 INFO connect: Starting database connection with parameters:
+2024-06-07 15:49:54 INFO connect: host = localhost
+2024-06-07 15:49:54 INFO connect: port = 5433
+2024-06-07 15:49:54 INFO connect: database = bidasio
+2024-06-07 15:49:54 INFO connect: dbuser = pa_login_role
+2024-06-07 15:49:54 INFO connect: dbuser password = ********
+2024-06-07 15:49:54 INFO connect: application_name = pySagra
+2024-06-07 15:49:54 INFO connect: connection_factory = None
+2024-06-07 15:49:54 INFO connect: Database connection established
+2024-06-07 15:49:55 INFO connect: DB is verified as an application database
+2024-06-07 15:49:55 INFO connect: Calling application connection function with parameters:
+2024-06-07 15:49:55 INFO connect: pgminver = 10
+2024-06-07 15:49:55 INFO connect: appname = pySagra
+2024-06-07 15:49:55 INFO connect: appversion = 02.01.00
+2024-06-07 15:49:55 INFO connect: user = pySagraWeb
+2024-06-07 15:49:55 INFO connect: password = ********
+2024-06-07 15:49:55 INFO connect: hostname = pySagraWebServer
+2024-06-07 15:49:55 INFO connect: DB Application connection established
+2024-06-07 15:49:55 INFO connect: Database connection established
+2024-06-07 15:49:55 INFO connect: Using company 30
+2024-06-07 15:49:55 INFO connect: Current event is SAGRA DELLA MADONNA DELL'INCORONATA
+2024-06-07 15:50:45 INFO pySagraFlask: Web order request from 192.168.0.87
+2024-06-07 15:51:26 INFO pySagraFlask: Web order request from 192.168.0.87
+2024-06-07 15:51:27 INFO pySagraFlask: Web order request from 192.168.0.87
+2024-06-07 15:51:52 INFO pySagraFlask: Web order request from 192.168.0.87
+2024-06-07 15:52:07 INFO pySagraFlask: Web order request from 192.168.0.87
+2024-06-07 15:53:19 INFO connect: Colosing application and db connection
+2024-06-07 15:53:19 INFO connect: Connection closed
+2026-07-22 17:27:14 INFO pySagraWeb: Starting pySagraweb Flask Application on Cherrypy server
+2026-07-22 17:27:14 INFO connect: Starting database connection with parameters:
+2026-07-22 17:27:14 INFO connect: host = localhost
+2026-07-22 17:27:14 INFO connect: port = 5433
+2026-07-22 17:27:14 INFO connect: database = bidasio
+2026-07-22 17:27:14 INFO connect: dbuser = pa_login_role
+2026-07-22 17:27:14 INFO connect: dbuser password = ********
+2026-07-22 17:27:14 INFO connect: application_name = pySagra
+2026-07-22 17:27:14 INFO connect: connection_factory = None
+2026-07-22 17:27:14 INFO connect: Database connection established
+2026-07-22 17:27:14 INFO connect: DB is verified as an application database
+2026-07-22 17:27:14 INFO connect: Calling application connection function with parameters:
+2026-07-22 17:27:14 INFO connect: pgminver = 10
+2026-07-22 17:27:14 INFO connect: appname = pySagra
+2026-07-22 17:27:14 INFO connect: appversion = 02.01.00
+2026-07-22 17:27:14 INFO connect: user = pySagraWeb
+2026-07-22 17:27:14 INFO connect: password = ********
+2026-07-22 17:27:14 INFO connect: hostname = pySagraWebServer
+2026-07-22 17:27:14 INFO connect: DB Application connection established
+2026-07-22 17:27:14 INFO connect: Database connection established
+2026-07-22 17:27:14 INFO connect: Using company 30
+2026-07-22 17:27:14 INFO connect: Current event is None
+2026-07-22 17:31:22 INFO pySagraWeb: Starting pySagraweb Flask Application on Cherrypy server
+2026-07-22 17:31:22 INFO connect: Starting database connection with parameters:
+2026-07-22 17:31:22 INFO connect: host = localhost
+2026-07-22 17:31:22 INFO connect: port = 5433
+2026-07-22 17:31:22 INFO connect: database = bidasio
+2026-07-22 17:31:22 INFO connect: dbuser = pa_login_role
+2026-07-22 17:31:22 INFO connect: dbuser password = ********
+2026-07-22 17:31:22 INFO connect: application_name = pySagra
+2026-07-22 17:31:22 INFO connect: connection_factory = None
+2026-07-22 17:31:22 INFO connect: Database connection established
+2026-07-22 17:31:22 INFO connect: DB is verified as an application database
+2026-07-22 17:31:22 INFO connect: Calling application connection function with parameters:
+2026-07-22 17:31:22 INFO connect: pgminver = 10
+2026-07-22 17:31:22 INFO connect: appname = pySagra
+2026-07-22 17:31:22 INFO connect: appversion = 02.01.00
+2026-07-22 17:31:22 INFO connect: user = pySagraWeb
+2026-07-22 17:31:22 INFO connect: password = ********
+2026-07-22 17:31:22 INFO connect: hostname = pySagraWebServer
+2026-07-22 17:31:22 INFO connect: DB Application connection established
+2026-07-22 17:31:22 INFO connect: Database connection established
+2026-07-22 17:31:22 INFO connect: Using company 30
+2026-07-22 17:31:22 INFO connect: Current event is None
+2026-07-22 17:34:51 INFO pySagraWeb: Starting pySagraweb Flask Application on Cherrypy server
+2026-07-22 17:34:51 INFO connect: Starting database connection with parameters:
+2026-07-22 17:34:51 INFO connect: host = localhost
+2026-07-22 17:34:51 INFO connect: port = 5433
+2026-07-22 17:34:51 INFO connect: database = bidasio
+2026-07-22 17:34:51 INFO connect: dbuser = pa_login_role
+2026-07-22 17:34:51 INFO connect: dbuser password = ********
+2026-07-22 17:34:51 INFO connect: application_name = pySagra
+2026-07-22 17:34:51 INFO connect: connection_factory = None
+2026-07-22 17:34:51 INFO connect: Database connection established
+2026-07-22 17:34:51 INFO connect: DB is verified as an application database
+2026-07-22 17:34:51 INFO connect: Calling application connection function with parameters:
+2026-07-22 17:34:51 INFO connect: pgminver = 10
+2026-07-22 17:34:51 INFO connect: appname = pySagra
+2026-07-22 17:34:51 INFO connect: appversion = 02.01.00
+2026-07-22 17:34:51 INFO connect: user = pySagraWeb
+2026-07-22 17:34:51 INFO connect: password = ********
+2026-07-22 17:34:51 INFO connect: hostname = pySagraWebServer
+2026-07-22 17:34:51 INFO connect: DB Application connection established
+2026-07-22 17:34:51 INFO connect: Database connection established
+2026-07-22 17:34:51 INFO connect: Using company 30
+2026-07-22 17:34:51 INFO connect: Current event is TEST WEB
+2026-07-22 17:35:27 INFO pySagraWeb: Starting pySagraweb Flask Application on Cherrypy server
+2026-07-22 17:35:27 INFO connect: Starting database connection with parameters:
+2026-07-22 17:35:27 INFO connect: host = localhost
+2026-07-22 17:35:27 INFO connect: port = 5433
+2026-07-22 17:35:27 INFO connect: database = bidasio
+2026-07-22 17:35:27 INFO connect: dbuser = pa_login_role
+2026-07-22 17:35:27 INFO connect: dbuser password = ********
+2026-07-22 17:35:27 INFO connect: application_name = pySagra
+2026-07-22 17:35:27 INFO connect: connection_factory = None
+2026-07-22 17:35:27 INFO connect: Database connection established
+2026-07-22 17:35:27 INFO connect: DB is verified as an application database
+2026-07-22 17:35:27 INFO connect: Calling application connection function with parameters:
+2026-07-22 17:35:27 INFO connect: pgminver = 10
+2026-07-22 17:35:27 INFO connect: appname = pySagra
+2026-07-22 17:35:27 INFO connect: appversion = 02.01.00
+2026-07-22 17:35:27 INFO connect: user = pySagraWeb
+2026-07-22 17:35:27 INFO connect: password = ********
+2026-07-22 17:35:27 INFO connect: hostname = pySagraWebServer
+2026-07-22 17:35:27 INFO connect: DB Application connection established
+2026-07-22 17:35:27 INFO connect: Database connection established
+2026-07-22 17:35:27 INFO connect: Using company 30
+2026-07-22 17:35:27 INFO connect: Current event is TEST WEB
