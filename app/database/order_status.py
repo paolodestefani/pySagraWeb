@@ -35,7 +35,7 @@ from app.database import db_exception_context
 logger = logging.getLogger(__name__)
 
 
-def get_order_status(event_id: int) -> list[tuple]:
+def get_order_status(event_id: int, rows: int = 15) -> list[tuple]:
     "Return top 100 order status for monitoring"
     # actually we don't need to filter company_id as event_id and department_id are unique across companies
     script = t"""
@@ -55,7 +55,7 @@ SELECT
 FROM company.vw_order_status
 WHERE event_id = {event_id}
 ORDER BY order_date DESC, order_time DESC
-LIMIT 50;"""
+LIMIT {rows};"""
     # Unified context managers ensuring proper evaluation order
     with db_exception_context(logger), appconn.transaction(), appconn.cursor() as cur:
         cur.execute(script)

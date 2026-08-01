@@ -2176,3 +2176,335 @@ app.database.PyAppDBError: [22P02] invalid input syntax for type bigint: "(2,"SA
 2026-08-01 10:32:40 INFO wasyncore: Serving on http://0.0.0.0:80
 2026-08-01 10:34:56 INFO pysagra_web: Stopping wsgi server
 2026-08-01 10:34:56 INFO pysagra_web: Database connection closed successfully
+2026-08-01 20:00:56 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-01 20:00:56 INFO connect: Starting database connection with parameters:
+2026-08-01 20:00:56 INFO connect: host = localhost
+2026-08-01 20:00:56 INFO connect: port = 5432
+2026-08-01 20:00:56 INFO connect: database = pysagra_demo
+2026-08-01 20:00:56 INFO connect: dbuser = pa_login_role
+2026-08-01 20:00:56 INFO connect: dbuser password = ********
+2026-08-01 20:00:56 INFO connect: application_name = pySagra
+2026-08-01 20:00:56 INFO connect: Database connection established
+2026-08-01 20:00:56 INFO connect: DB is verified as an application database
+2026-08-01 20:00:56 INFO connect: Calling application connection function with parameters:
+2026-08-01 20:00:56 INFO connect: pgminver = 13
+2026-08-01 20:00:56 INFO connect: appname = pySagra
+2026-08-01 20:00:56 INFO connect: appversion = 1.0
+2026-08-01 20:00:56 INFO connect: user = ********
+2026-08-01 20:00:56 INFO connect: password = ********
+2026-08-01 20:00:56 INFO connect: hostname = pysagra_web_server
+2026-08-01 20:00:56 INFO connect: DB Application connection established
+2026-08-01 20:00:56 INFO pysagra_web: Database connection established
+2026-08-01 20:00:56 INFO pysagra_web: Company set to 20
+2026-08-01 20:00:56 INFO wasyncore: Serving on http://0.0.0.0:80
+2026-08-01 20:07:46 INFO pysagra_web: Stopping wsgi server
+2026-08-01 20:07:46 INFO pysagra_web: Database connection closed successfully
+2026-08-01 20:07:55 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-01 20:07:55 INFO connect: Starting database connection with parameters:
+2026-08-01 20:07:55 INFO connect: host = localhost
+2026-08-01 20:07:55 INFO connect: port = 5432
+2026-08-01 20:07:55 INFO connect: database = pysagra_demo
+2026-08-01 20:07:55 INFO connect: dbuser = pa_login_role
+2026-08-01 20:07:55 INFO connect: dbuser password = ********
+2026-08-01 20:07:55 INFO connect: application_name = pySagra
+2026-08-01 20:07:55 INFO connect: Database connection established
+2026-08-01 20:07:55 INFO connect: DB is verified as an application database
+2026-08-01 20:07:55 INFO connect: Calling application connection function with parameters:
+2026-08-01 20:07:55 INFO connect: pgminver = 13
+2026-08-01 20:07:55 INFO connect: appname = pySagra
+2026-08-01 20:07:55 INFO connect: appversion = 1.0
+2026-08-01 20:07:55 INFO connect: user = ********
+2026-08-01 20:07:55 INFO connect: password = ********
+2026-08-01 20:07:55 INFO connect: hostname = pysagra_web_server
+2026-08-01 20:07:55 INFO connect: DB Application connection established
+2026-08-01 20:07:55 INFO pysagra_web: Database connection established
+2026-08-01 20:07:55 INFO pysagra_web: Company set to 20
+2026-08-01 20:07:55 INFO wasyncore: Serving on http://0.0.0.0:80
+2026-08-01 20:08:32 INFO pysagra_web: Stopping wsgi server
+2026-08-01 20:08:32 INFO pysagra_web: Database connection closed successfully
+2026-08-01 20:09:49 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-01 20:09:49 INFO connect: Starting database connection with parameters:
+2026-08-01 20:09:49 INFO connect: host = localhost
+2026-08-01 20:09:49 INFO connect: port = 5432
+2026-08-01 20:09:49 INFO connect: database = pysagra_demo
+2026-08-01 20:09:49 INFO connect: dbuser = pa_login_role
+2026-08-01 20:09:49 INFO connect: dbuser password = ********
+2026-08-01 20:09:49 INFO connect: application_name = pySagra
+2026-08-01 20:09:49 INFO connect: Database connection established
+2026-08-01 20:09:49 INFO connect: DB is verified as an application database
+2026-08-01 20:09:49 INFO connect: Calling application connection function with parameters:
+2026-08-01 20:09:49 INFO connect: pgminver = 13
+2026-08-01 20:09:49 INFO connect: appname = pySagra
+2026-08-01 20:09:49 INFO connect: appversion = 1.0
+2026-08-01 20:09:49 INFO connect: user = ********
+2026-08-01 20:09:49 INFO connect: password = ********
+2026-08-01 20:09:49 INFO connect: hostname = pysagra_web_server
+2026-08-01 20:09:49 INFO connect: DB Application connection established
+2026-08-01 20:09:49 INFO pysagra_web: Database connection established
+2026-08-01 20:09:49 INFO pysagra_web: Company set to 20
+2026-08-01 20:09:49 INFO wasyncore: Serving on http://0.0.0.0:80
+2026-08-02 00:23:36 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-02 00:23:36 INFO connect: Starting database connection with parameters:
+2026-08-02 00:23:36 INFO connect: host = localhost
+2026-08-02 00:23:36 INFO connect: port = 5432
+2026-08-02 00:23:36 INFO connect: database = pysagra_demo
+2026-08-02 00:23:36 INFO connect: dbuser = pa_login_role
+2026-08-02 00:23:36 INFO connect: dbuser password = ********
+2026-08-02 00:23:36 INFO connect: application_name = pySagra
+2026-08-02 00:23:36 INFO connect: Database connection established
+2026-08-02 00:23:36 INFO connect: DB is verified as an application database
+2026-08-02 00:23:36 INFO connect: Calling application connection function with parameters:
+2026-08-02 00:23:36 INFO connect: pgminver = 13
+2026-08-02 00:23:36 INFO connect: appname = pySagra
+2026-08-02 00:23:36 INFO connect: appversion = 1.0
+2026-08-02 00:23:36 INFO connect: user = ********
+2026-08-02 00:23:36 INFO connect: password = ********
+2026-08-02 00:23:36 INFO connect: hostname = pysagra_web_server
+2026-08-02 00:23:36 INFO connect: DB Application connection established
+2026-08-02 00:23:36 INFO pysagra_web: Database connection established
+2026-08-02 00:23:36 INFO pysagra_web: Company set to 20
+2026-08-02 00:23:36 INFO wasyncore: Serving on http://0.0.0.0:80
+2026-08-02 00:24:30 INFO pysagra_web: Stopping wsgi server
+2026-08-02 00:24:30 INFO pysagra_web: Database connection closed successfully
+2026-08-02 00:24:42 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-02 00:24:42 INFO connect: Starting database connection with parameters:
+2026-08-02 00:24:42 INFO connect: host = localhost
+2026-08-02 00:24:42 INFO connect: port = 5432
+2026-08-02 00:24:42 INFO connect: database = pysagra_demo
+2026-08-02 00:24:42 INFO connect: dbuser = pa_login_role
+2026-08-02 00:24:42 INFO connect: dbuser password = ********
+2026-08-02 00:24:42 INFO connect: application_name = pySagra
+2026-08-02 00:24:42 INFO connect: Database connection established
+2026-08-02 00:24:42 INFO connect: DB is verified as an application database
+2026-08-02 00:24:42 INFO connect: Calling application connection function with parameters:
+2026-08-02 00:24:42 INFO connect: pgminver = 13
+2026-08-02 00:24:42 INFO connect: appname = pySagra
+2026-08-02 00:24:42 INFO connect: appversion = 1.0
+2026-08-02 00:24:42 INFO connect: user = ********
+2026-08-02 00:24:42 INFO connect: password = ********
+2026-08-02 00:24:42 INFO connect: hostname = pysagra_web_server
+2026-08-02 00:24:42 INFO connect: DB Application connection established
+2026-08-02 00:24:42 INFO pysagra_web: Database connection established
+2026-08-02 00:24:42 INFO pysagra_web: Company set to 20
+2026-08-02 00:24:42 INFO wasyncore: Serving on http://0.0.0.0:80
+2026-08-02 00:37:41 INFO pysagra_web: Stopping wsgi server
+2026-08-02 00:37:41 INFO pysagra_web: Database connection closed successfully
+2026-08-02 00:37:52 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-02 00:37:52 INFO connect: Starting database connection with parameters:
+2026-08-02 00:37:52 INFO connect: host = localhost
+2026-08-02 00:37:52 INFO connect: port = 5432
+2026-08-02 00:37:52 INFO connect: database = pysagra_demo
+2026-08-02 00:37:52 INFO connect: dbuser = pa_login_role
+2026-08-02 00:37:52 INFO connect: dbuser password = ********
+2026-08-02 00:37:52 INFO connect: application_name = pySagra
+2026-08-02 00:37:52 INFO connect: Database connection established
+2026-08-02 00:37:52 INFO connect: DB is verified as an application database
+2026-08-02 00:37:52 INFO connect: Calling application connection function with parameters:
+2026-08-02 00:37:52 INFO connect: pgminver = 13
+2026-08-02 00:37:52 INFO connect: appname = pySagra
+2026-08-02 00:37:52 INFO connect: appversion = 1.0
+2026-08-02 00:37:52 INFO connect: user = ********
+2026-08-02 00:37:52 INFO connect: password = ********
+2026-08-02 00:37:52 INFO connect: hostname = pysagra_web_server
+2026-08-02 00:37:52 INFO connect: DB Application connection established
+2026-08-02 00:37:52 INFO pysagra_web: Database connection established
+2026-08-02 00:37:52 INFO pysagra_web: Company set to 20
+2026-08-02 00:37:52 INFO wasyncore: Serving on http://0.0.0.0:80
+2026-08-02 00:37:56 ERROR app: Exception on /monitor/update-table [GET]
+Traceback (most recent call last):
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/paolo/Development/pySagraWeb/app/order_status.py", line 56, in update_table
+    return render_template("table_rows.html", lines=lines)
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/templating.py", line 151, in render_template
+    return _render(app, template, context)
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/templating.py", line 132, in _render
+    rv = template.render(context)
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/paolo/Development/pySagraWeb/templates/table_rows.html", line 11, in top-level template code
+    {% for col in line %}
+TypeError: 'int' object is not iterable
+2026-08-02 00:38:01 ERROR app: Exception on /monitor/ [GET]
+Traceback (most recent call last):
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/paolo/Development/pySagraWeb/app/order_status.py", line 47, in visualizza_ordini
+    return render_template('order_status.html',
+                           lines=lines)
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/templating.py", line 151, in render_template
+    return _render(app, template, context)
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/templating.py", line 132, in _render
+    rv = template.render(context)
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/paolo/Development/pySagraWeb/templates/order_status.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/paolo/Development/pySagraWeb/templates/base.html", line 49, in top-level template code
+    {% block content %}
+  File "/Users/paolo/Development/pySagraWeb/templates/order_status.html", line 35, in block 'content'
+    {% include "table_rows.html" %}
+    ^^^^^^^^^^^^^
+  File "/Users/paolo/Development/pySagraWeb/templates/table_rows.html", line 11, in top-level template code
+    {% for col in line %}
+TypeError: 'int' object is not iterable
+2026-08-02 00:39:54 INFO pysagra_web: Stopping wsgi server
+2026-08-02 00:39:54 INFO pysagra_web: Database connection closed successfully
+2026-08-02 00:40:11 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-02 00:40:11 INFO connect: Starting database connection with parameters:
+2026-08-02 00:40:11 INFO connect: host = localhost
+2026-08-02 00:40:11 INFO connect: port = 5432
+2026-08-02 00:40:11 INFO connect: database = pysagra_demo
+2026-08-02 00:40:11 INFO connect: dbuser = pa_login_role
+2026-08-02 00:40:11 INFO connect: dbuser password = ********
+2026-08-02 00:40:11 INFO connect: application_name = pySagra
+2026-08-02 00:40:11 INFO connect: Database connection established
+2026-08-02 00:40:11 INFO connect: DB is verified as an application database
+2026-08-02 00:40:11 INFO connect: Calling application connection function with parameters:
+2026-08-02 00:40:11 INFO connect: pgminver = 13
+2026-08-02 00:40:11 INFO connect: appname = pySagra
+2026-08-02 00:40:11 INFO connect: appversion = 1.0
+2026-08-02 00:40:11 INFO connect: user = ********
+2026-08-02 00:40:11 INFO connect: password = ********
+2026-08-02 00:40:11 INFO connect: hostname = pysagra_web_server
+2026-08-02 00:40:11 INFO connect: DB Application connection established
+2026-08-02 00:40:11 INFO pysagra_web: Database connection established
+2026-08-02 00:40:11 INFO pysagra_web: Company set to 20
+2026-08-02 00:40:11 INFO wasyncore: Serving on http://0.0.0.0:80
+2026-08-02 00:41:39 INFO pysagra_web: Stopping wsgi server
+2026-08-02 00:41:39 INFO pysagra_web: Database connection closed successfully
+2026-08-02 00:57:37 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-02 00:57:37 INFO connect: Starting database connection with parameters:
+2026-08-02 00:57:37 INFO connect: host = localhost
+2026-08-02 00:57:37 INFO connect: port = 5432
+2026-08-02 00:57:37 INFO connect: database = pysagra_demo
+2026-08-02 00:57:37 INFO connect: dbuser = pa_login_role
+2026-08-02 00:57:37 INFO connect: dbuser password = ********
+2026-08-02 00:57:37 INFO connect: application_name = pySagra
+2026-08-02 00:57:37 INFO connect: Database connection established
+2026-08-02 00:57:37 INFO connect: DB is verified as an application database
+2026-08-02 00:57:37 INFO connect: Calling application connection function with parameters:
+2026-08-02 00:57:37 INFO connect: pgminver = 10
+2026-08-02 00:57:37 INFO connect: appname = pySagra
+2026-08-02 00:57:37 INFO connect: appversion = 1.0
+2026-08-02 00:57:37 INFO connect: user = ********
+2026-08-02 00:57:37 INFO connect: password = ********
+2026-08-02 00:57:37 INFO connect: hostname = pysagra_web_server
+2026-08-02 00:57:37 INFO connect: DB Application connection established
+2026-08-02 00:57:37 INFO pysagra_web: Database connection established
+2026-08-02 00:57:37 INFO pysagra_web: Company set to 20
+2026-08-02 00:57:37 INFO wasyncore: Serving on http://0.0.0.0:80
+2026-08-02 00:58:10 INFO pysagra_web: Stopping wsgi server
+2026-08-02 00:58:10 INFO pysagra_web: Database connection closed successfully
+2026-08-02 00:58:20 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-02 00:58:20 INFO connect: Starting database connection with parameters:
+2026-08-02 00:58:20 INFO connect: host = localhost
+2026-08-02 00:58:20 INFO connect: port = 5432
+2026-08-02 00:58:20 INFO connect: database = pysagra_demo
+2026-08-02 00:58:20 INFO connect: dbuser = pa_login_role
+2026-08-02 00:58:20 INFO connect: dbuser password = ********
+2026-08-02 00:58:20 INFO connect: application_name = pySagra
+2026-08-02 00:58:20 INFO connect: Database connection established
+2026-08-02 00:58:20 INFO connect: DB is verified as an application database
+2026-08-02 00:58:20 INFO connect: Calling application connection function with parameters:
+2026-08-02 00:58:20 INFO connect: pgminver = 10
+2026-08-02 00:58:20 INFO connect: appname = pySagra
+2026-08-02 00:58:20 INFO connect: appversion = 1.0
+2026-08-02 00:58:20 INFO connect: user = ********
+2026-08-02 00:58:20 INFO connect: password = ********
+2026-08-02 00:58:20 INFO connect: hostname = pysagra_web_server
+2026-08-02 00:58:20 INFO connect: DB Application connection established
+2026-08-02 00:58:20 INFO pysagra_web: Database connection established
+2026-08-02 00:58:20 INFO pysagra_web: Company set to 20
+2026-08-02 00:58:20 INFO wasyncore: Serving on http://0.0.0.0:80
+2026-08-02 01:05:27 INFO pysagra_web: Stopping wsgi server
+2026-08-02 01:05:27 INFO pysagra_web: Database connection closed successfully
+2026-08-02 01:11:19 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-02 01:11:19 INFO connect: Starting database connection with parameters:
+2026-08-02 01:11:19 INFO connect: host = localhost
+2026-08-02 01:11:19 INFO connect: port = 5432
+2026-08-02 01:11:19 INFO connect: database = pysagra_demo
+2026-08-02 01:11:19 INFO connect: dbuser = pa_login_role
+2026-08-02 01:11:19 INFO connect: dbuser password = ********
+2026-08-02 01:11:19 INFO connect: application_name = pySagra
+2026-08-02 01:11:19 INFO connect: Database connection established
+2026-08-02 01:11:19 INFO connect: DB is verified as an application database
+2026-08-02 01:11:19 INFO connect: Calling application connection function with parameters:
+2026-08-02 01:11:19 INFO connect: pgminver = 10
+2026-08-02 01:11:19 INFO connect: appname = pySagra
+2026-08-02 01:11:19 INFO connect: appversion = 1.0
+2026-08-02 01:11:19 INFO connect: user = ********
+2026-08-02 01:11:19 INFO connect: password = ********
+2026-08-02 01:11:19 INFO connect: hostname = pysagra_web_server
+2026-08-02 01:11:19 INFO connect: DB Application connection established
+2026-08-02 01:11:19 INFO pysagra_web: Database connection established
+2026-08-02 01:11:19 INFO pysagra_web: Company set to 20
+2026-08-02 01:11:19 INFO wasyncore: Serving on http://0.0.0.0:80
+2026-08-02 01:13:14 INFO pysagra_web: Stopping wsgi server
+2026-08-02 01:13:14 INFO pysagra_web: Database connection closed successfully
+2026-08-02 01:14:27 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-02 01:14:27 INFO connect: Starting database connection with parameters:
+2026-08-02 01:14:27 INFO connect: host = localhost
+2026-08-02 01:14:27 INFO connect: port = 5432
+2026-08-02 01:14:27 INFO connect: database = pysagra_demo
+2026-08-02 01:14:27 INFO connect: dbuser = pa_login_role
+2026-08-02 01:14:27 INFO connect: dbuser password = ********
+2026-08-02 01:14:27 INFO connect: application_name = pySagra
+2026-08-02 01:14:27 INFO connect: Database connection established
+2026-08-02 01:14:27 INFO connect: DB is verified as an application database
+2026-08-02 01:14:27 INFO connect: Calling application connection function with parameters:
+2026-08-02 01:14:27 INFO connect: pgminver = 10
+2026-08-02 01:14:27 INFO connect: appname = pySagra
+2026-08-02 01:14:27 INFO connect: appversion = 1.0
+2026-08-02 01:14:27 INFO connect: user = ********
+2026-08-02 01:14:27 INFO connect: password = ********
+2026-08-02 01:14:27 INFO connect: hostname = pysagra_web_server
+2026-08-02 01:14:27 INFO connect: DB Application connection established
+2026-08-02 01:14:27 INFO pysagra_web: Database connection established
+2026-08-02 01:14:27 INFO pysagra_web: Company set to 20
+2026-08-02 01:14:27 INFO wasyncore: Serving on http://0.0.0.0:80
+2026-08-02 01:15:43 INFO pysagra_web: Stopping wsgi server
+2026-08-02 01:15:43 INFO pysagra_web: Database connection closed successfully
+2026-08-02 01:26:47 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-02 01:26:47 INFO connect: Starting database connection with parameters:
+2026-08-02 01:26:47 INFO connect: host = localhost
+2026-08-02 01:26:47 INFO connect: port = 5432
+2026-08-02 01:26:47 INFO connect: database = pysagra_demo
+2026-08-02 01:26:47 INFO connect: dbuser = pa_login_role
+2026-08-02 01:26:47 INFO connect: dbuser password = ********
+2026-08-02 01:26:47 INFO connect: application_name = pySagra
+2026-08-02 01:26:47 INFO connect: Database connection established
+2026-08-02 01:26:47 INFO connect: DB is verified as an application database
+2026-08-02 01:26:47 INFO connect: Calling application connection function with parameters:
+2026-08-02 01:26:47 INFO connect: pgminver = 10
+2026-08-02 01:26:47 INFO connect: appname = pySagra
+2026-08-02 01:26:47 INFO connect: appversion = 1.0
+2026-08-02 01:26:47 INFO connect: user = ********
+2026-08-02 01:26:47 INFO connect: password = ********
+2026-08-02 01:26:47 INFO connect: hostname = pysagra_web_server
+2026-08-02 01:26:47 INFO connect: DB Application connection established
+2026-08-02 01:26:47 INFO pysagra_web: Database connection established
+2026-08-02 01:26:47 INFO pysagra_web: Company set to 20
+2026-08-02 01:26:47 INFO wasyncore: Serving on http://0.0.0.0:80
+2026-08-02 01:39:22 INFO pysagra_web: Stopping wsgi server
+2026-08-02 01:39:22 INFO pysagra_web: Database connection closed successfully

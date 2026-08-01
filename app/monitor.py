@@ -32,25 +32,27 @@ import datetime
 from flask import Blueprint, render_template, redirect, url_for
 
 # application modules
+from app import session
 from app.database.event import get_event_from_date
 from app.database.order_status import get_order_status
 
 
-status_bp = Blueprint('order_status', __name__)
+monitor_bp = Blueprint('order_status', __name__)
 
-@status_bp.route('/')
+@monitor_bp.route('/orders')
 def visualizza_ordini():
     event_id, _ = get_event_from_date(datetime.date.today())
-    lines = get_order_status(event_id)
+    rows = int(session['config']['Monitor']['rows'])
+    lines = get_order_status(event_id, rows)
     return render_template('order_status.html',
                            lines=lines)
 
 
-@status_bp.route('/update-table')
+@monitor_bp.route('/update-table')
 def update_table():
     event_id, _ = get_event_from_date(datetime.date.today())
-    lines = get_order_status(event_id)
-    # 2. Renderizza SOLO le righe della tabella, non tutta la pagina
+    rows = int(session['config']['Monitor']['rows'])
+    lines = get_order_status(event_id, rows)
     return render_template("table_rows.html", lines=lines)
 
 

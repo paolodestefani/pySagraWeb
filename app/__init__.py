@@ -27,7 +27,11 @@ This module provides classes and function
 for the core functionality of the pysagra_web application.
 """
 
-APPNAME = 'pySagraWeb'
-APPVERSIONMAJOR = 1
-APPVERSIONMINOR = 0
-PGMINVER = 10
+session: dict = {}  # global session dictionary to store session data
+
+session['app_name'] = 'pySagraWeb'
+session['app_version_major'] = 1
+session['app_version_minor'] = 0
+session['app_version_patch'] = 0
+session['pg_min_ver'] = 10
+session['flask_secret_key'] = 'SjdnUends821Jsdlkvxh391ksdODnejdDw'

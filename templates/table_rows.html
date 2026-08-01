@@ -9,7 +9,7 @@
         table-success text-dark
     {% endif %}">
   {% for col in line %}
-  <td class="text-center">{{ col | ita }}</td>
+  <td class="text-center">{{ col | fmt }}</td>
   {% endfor %}
 </tr>
 {% endfor %}

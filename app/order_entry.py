@@ -90,7 +90,7 @@ def order_header():
             session['departments'].append(dd)
             session['lines'][dd] = []
             for i, d, p, a, v in item_web_list(session['event_id'], di):
-                print(f"item_web_list: i={i}, d={d}, p={p}, a={a}, v={v}")
+                #print(f"item_web_list: i={i}, d={d}, p={p}, a={a}, v={v}")
                 session['lines'][dd].append([str(i),                 # 0 item id as string (session dict are stored as string anyway)
                                             d,                       # 1 item description
                                             0,                       # 2 quantity 
@@ -103,7 +103,7 @@ def order_header():
                 if v:
                     session['variants'][i] = [[vd, float(vp), '(+' + locale.currency(vp) + ')' if vp != 0.0 else '']
                                             for vd, vp in get_variants(i)]   
-                    print(f"variants: i={i}, variants={session['variants'][i]}")
+                    #print(f"variants: i={i}, variants={session['variants'][i]}")
 
     return render_template('order_header.html',
                            delivery = session.get('delivery', 'T'),
@@ -177,7 +177,7 @@ def order_variants(index):
             #    flash('Selezionare almeno una variante')
             #    return redirect(url_for('order_variants', index=index))
             l = session['lines'][session['departments'][session['dep_index']]][index].copy()
-            print(f"line: l={l}, var={var}, prd={prd}, qty={qty}")
+            #print(f"line: l={l}, var={var}, prd={prd}, qty={qty}")
             l[6] = False            # has variants
             l[2] = qty              # quantity
             l[3] = l[3] + prd       # price as number

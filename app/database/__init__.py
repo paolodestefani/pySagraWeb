@@ -21,11 +21,6 @@
 # You should have received a copy of the GNU General Public License
 # along with pysagra_web.  If not, see <http://www.gnu.org/licenses/>.
 
-# Supported Server Version
-
-PGSQL_MINVER = 13
-
-
 # standard library
 from contextlib import contextmanager
 from logging import Logger
