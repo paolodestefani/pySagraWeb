@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container-fluid text-sm-center p-3 bg-primary text-white mb-4 bg-gradient">
+  <h2>Ordine generato</h2>
+  <p>Procedi alla cassa per il pagamento esibendo il seguente QR Code</p>
+  <p>La disponibilit&agrave; degli articoli non &egrave; garantita fino alla conferma dell'ordine in cassa</p>
+  <p>{{ test }}</p>
+</div>
+
+<div class="container pb-5 bg-white">
+<div class="row align-items-center justify-content-center">
+<div class="col-md-auto">
+<form action="" method="post">
+  <div class="text-center">
+    <br>
+	<div id="qrcode"></div>
+	<br>
+<!-- Button trigger modal -->
+<div class="col-md-auto">
+<button type="submit" class="btn btn-primary" name="previous">Precedente</button>
+<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modal_new">
+  Inserisci un nuovo ordine
+</button>
+</div>
+
+<!-- Modal new order-->
+<div class="modal fade" id="modal_new" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title mx-auto" id="exampleModalLabel">Attenzione</h5>
+        </div>
+          <div class="modal-body">
+            Eliminare il QR Code corrente ed inserire un nuovo ordine?
+          </div>
+        <div class="modal-footer">
+        <div class="mx-auto">
+          <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Annulla</button>
+          <button type="submit" class="btn btn-success" name="new">Nuovo ordine</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+</form>
+
+<script src={{ url_for("static", filename="js/easy.qrcode.min.js") }}></script>
+<script type="text/javascript">
+  // Options
+	var options = {
+		text: "{{ order_str }}",
+		width: 320,
+        height: 320,
+        colorDark : "#000000",
+        colorLight : "#ffffff",
+        correctLevel : QRCode.CorrectLevel.L // L, M, Q, H
+	};
+	
+	// Create QRCode Object
+	new QRCode(document.getElementById("qrcode"), options);
+</script>
+</div>
+</div>
+</div>
+{% endblock %}

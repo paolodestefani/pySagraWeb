@@ -1,14 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="jumbotron text-center">
-  <h1>Riepilogo dei dati inseriti</h1>
-  <p>Controlla i dati, confermali oppure modificali cliccando sul tasto "Precedente"</p>
+<div class="container-fluid text-sm-center p-3 bg-primary text-white mb-4 bg-gradient">
+  <h2>Riepilogo dei dati inseriti</h2>
+  <p>Controlla i dati, confermali cliccando su <strong>Crea ordine</strong> oppure modificali cliccando sul tasto <strong>Precedente</strong>.
+  Clicca su <strong>Inizio</strong> per tornare alla prima pagina dell'ordine.</p>
+  <p>{{ test }}</p>
 </div>
 
-<div class=container">
+<div class="container pb-5">
 <div class="row align-items-center justify-content-center">
-<div class="col-md-4">
-
+<div class="col-md-auto">
 <!-- main table form -->
   <form action="" method="post">
   <ul class="list-group">
@@ -35,32 +36,44 @@
   </ul>
   <br>
     <table class="table table-sm table-bordered">
-    <thead class="thead-dark">
+    <thead class="table-dark">
       <tr>
 	    <th class="text-center" style="width: 20%">Quantit&agrave;</th>
 		<th class="text-center" style="width: 20%">Prezzo</th>
-        <th class="text-center" style="width: 60%">Articolo</th>
+        <th class="text-left" style="width: 60%">Articolo</th>
       </tr>
     <thead>
     <tbody>
       {% for line in lines %}
+      {% if line[0] == 0: %}
+      <tr class="table-active">
+        <td colspan="3" class="fw-bold ps-3 text-dark">{{ line[1] }}</td>
+      </tr>
+      {% else %}
       <tr>
         <td class="text-center">{{ line[2] }}</td>
         <td class="text-center">{{ line[4] }}</td>
 		<td>{{ line[1] }}</td>
       </tr>
+      {% endif %}
       {% endfor %}
     </tbody>
     </table>
-    <br>													   
-    <center>
-      <button type="submit" class="btn btn-warning" name="goback">Precedente</button>
+    <div class="row mb-3">
+      <div class="input-group-text col-sm-auto">
+      <img src="static/Mail.72.png" type="image/png" alt="email icon" class="p-1"
+    width="40" height="40"/>
+      <input type="text" name="email" id="email" class="form-control form-control-sm" size="60" value="{{ email }}" placeholder="Inserisci la tua email per rimanere aggiornato sui nostri eventi" maxlength="60">
+      </div>
+    </div>
+    <div class="form-group text-center">
+      <button type="submit" class="btn btn-primary" name="previous">Precedente</button>
+      <button type="submit" class="btn btn-warning" name="fromstart">Inizio</button>
       <button type="submit" class="btn btn-success" name="confirm">Crea ordine</button>
-    </center>
+    </div>
   </form>
-  <br>
+
 </div>
-<br>
 </div>
 </div>
 {% endblock %}

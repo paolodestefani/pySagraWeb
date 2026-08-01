@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container-fluid text-sm-center p-3 bg-primary text-white mb-4 bg-gradient">
+  <h2>{{ department }}</h2>
+  <p>Sono selezionati gli articoli/varianti che hanno quantit&agrave; maggiore di zero</p>
+  <p>{{ test }}</p>
+</div>
+
+<div class="container-fluid px-3 pb-0">
+<div class="row align-items-center justify-content-center">
+<div class="col-12 col-lg-8 col-xl-6 mx-auto">
+
+<!-- main form -->
+  <form action="" method="post">
+    
+    <!-- 1. AGGIUNTO: Div contenitore con bordi arrotondati, bordo esterno e margine inferiore -->
+    <div class="table-responsive rounded border mb-3">
+      
+      <!-- 2. MODIFICATO: Rimossi i bordi esterni con border-0 e i margini con m-0 -->
+      <table class="table table-striped table-sm table-hover m-0">
+      <thead class="table-dark">
+        <tr>
+          <th class="text-center" style="width: 160px">Quantit&agrave;</th>
+          <th class="text-center" style="width: 100px">Prezzo</th>
+          <th class="text-left" style="max-width: 500px">Articolo</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for line in lines %}
+        <tr>
+          {% if not line[6] %}
+          <td>
+             <input class="form-control-sm" type="number" min="0" max="99" step="1" name="{{ loop.index0 }}" id="{{ loop.index0 }}" value="{{ line[2] }}" required>
+          </td>
+          {% else %}
+            <td class="text-center">
+                <button type= "submit" class="btn btn-sm bg-warning" name="variants" value="{{ loop.index0 }}">Sel. varianti</button>
+            </td>
+          {% endif %}
+          <td class="text-center">{{ line[4] }}</td>
+          <td>{{ line[1] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+      </table>
+      
+    </div> <!-- / fine table-responsive -->
+
+    <div class="form-group text-center">
+		<button type="submit" class="btn btn-primary" name="previous">Indietro</button>
+		<button type="submit" class="btn btn-primary" name="next">Avanti</button>
+	</div>
+  </form>
+  <br>
+</div>
+</div>
+</div>
+<script type="module">
+    import {InputSpinner} from "{{ url_for("static", filename="js/InputSpinner.js") }}"
+
+    const inputSpinnerElements = document.querySelectorAll("input[type='number']")
+    for (const inputSpinnerElement of inputSpinnerElements) {
+        new InputSpinner(inputSpinnerElement)
+    }
+</script>
+{% endblock %}

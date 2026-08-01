@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container-fluid text-sm-center p-3 bg-primary text-white mb-4 bg-gradient">
+  <h2>Ordini in corso</h2>
+</div>
+
+<div class="container-fluid px-3 pb-0">
+  <div class="row">
+    <div class="col-12">
+    
+      <!-- 1. Spostata la classe rounded qui e aggiunto overflow-hidden -->
+      <div class="table-responsive rounded border">
+        
+        <!-- 2. Rimosso .rounded da qui e modificato in border-0 per non sovrascrivere il contenitore -->
+        <table class="table table-sm table-bordered w-100 align-middle border-0 m-0">
+            <caption>Stato: I = inserito, L = in lavorazione, C = completato</caption>
+          <thead class="table-dark">
+            <tr>
+              <th class="text-center" style="width: 10%">Numero</th>
+              <th class="text-center" style="width: 15%">Data</th>
+              <th class="text-center" style="width: 10%">Ora</th>
+              <th class="text-center" style="width: 5%">Consegna</th>
+              <th class="text-center" style="width: 15%">Tavolo</th>
+              <th class="text-center" style="width: 20%">Nome</th>
+              <th class="text-center" style="width: 5%">Stato</th>
+              <th class="text-center" style="width: 20%">Completato</th>
+            </tr>
+          </thead>
+          
+          <tbody id="table-body" 
+                 hx-get="{{ url_for('order_status.update_table') }}" 
+                 hx-trigger="every 10s" 
+                 hx-swap="innerHTML">
+            {% include "table_rows.html" %}
+          </tbody>
+          
+        </table>
+        
+      </div> <!-- End table-responsive -->
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

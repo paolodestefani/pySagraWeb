@@ -1,0 +1,15 @@
+<!-- table_rows.html -->
+{% for line in lines %}
+<tr class="
+    {% if line[6] == 'I' %} 
+        table-light 
+    {% elif line[6] == 'L' %} 
+        table-warning text-dark
+    {% elif line[6] == 'C' %} 
+        table-success text-dark
+    {% endif %}">
+  {% for col in line %}
+  <td class="text-center">{{ col | ita }}</td>
+  {% endfor %}
+</tr>
+{% endfor %}
