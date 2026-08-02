@@ -3504,3 +3504,494 @@ jinja2.exceptions.TemplateNotFound: rows_normal.html
 2026-08-02 19:00:16 INFO wasyncore: Serving on http://0.0.0.0:80
 2026-08-02 19:03:56 INFO pysagra_web: Stopping wsgi server
 2026-08-02 19:03:56 INFO pysagra_web: Database connection closed successfully
+2026-08-02 22:31:56 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-02 22:31:56 INFO connect: Starting database connection with parameters:
+2026-08-02 22:31:56 INFO connect: host = localhost
+2026-08-02 22:31:56 INFO connect: port = 5432
+2026-08-02 22:31:56 INFO connect: database = pysagra_demo
+2026-08-02 22:31:56 INFO connect: dbuser = pa_login_role
+2026-08-02 22:31:56 INFO connect: dbuser password = ********
+2026-08-02 22:31:56 INFO connect: application_name = pySagra
+2026-08-02 22:31:56 INFO connect: Database connection established
+2026-08-02 22:31:56 INFO connect: DB is verified as an application database
+2026-08-02 22:31:56 INFO connect: Calling application connection function with parameters:
+2026-08-02 22:31:56 INFO connect: pgminver = 10
+2026-08-02 22:31:56 INFO connect: appname = pySagra
+2026-08-02 22:31:56 INFO connect: appversion = 1.0
+2026-08-02 22:31:56 INFO connect: user = ********
+2026-08-02 22:31:56 INFO connect: password = ********
+2026-08-02 22:31:56 INFO connect: hostname = pysagra_web_server
+2026-08-02 22:31:56 INFO connect: DB Application connection established
+2026-08-02 22:31:56 INFO pysagra_web: Database connection established
+2026-08-02 22:31:56 INFO pysagra_web: Company set to 20
+2026-08-02 22:31:56 INFO wasyncore: Serving on http://0.0.0.0:80
+2026-08-02 23:05:19 INFO pysagra_web: Stopping wsgi server
+2026-08-02 23:05:19 INFO pysagra_web: Database connection closed successfully
+2026-08-02 23:05:27 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-02 23:05:27 INFO connect: Starting database connection with parameters:
+2026-08-02 23:05:27 INFO connect: host = localhost
+2026-08-02 23:05:27 INFO connect: port = 5432
+2026-08-02 23:05:27 INFO connect: database = pysagra_demo
+2026-08-02 23:05:27 INFO connect: dbuser = pa_login_role
+2026-08-02 23:05:27 INFO connect: dbuser password = ********
+2026-08-02 23:05:27 INFO connect: application_name = pySagra
+2026-08-02 23:05:27 INFO connect: Database connection established
+2026-08-02 23:05:27 INFO connect: DB is verified as an application database
+2026-08-02 23:05:27 INFO connect: Calling application connection function with parameters:
+2026-08-02 23:05:27 INFO connect: pgminver = 10
+2026-08-02 23:05:27 INFO connect: appname = pySagra
+2026-08-02 23:05:27 INFO connect: appversion = 1.0
+2026-08-02 23:05:27 INFO connect: user = ********
+2026-08-02 23:05:27 INFO connect: password = ********
+2026-08-02 23:05:27 INFO connect: hostname = pysagra_web_server
+2026-08-02 23:05:27 INFO connect: DB Application connection established
+2026-08-02 23:05:27 INFO pysagra_web: Database connection established
+2026-08-02 23:05:27 INFO pysagra_web: Company set to 20
+2026-08-02 23:05:27 INFO wasyncore: Serving on http://0.0.0.0:80
+2026-08-02 23:05:34 ERROR app: Exception on /monitor/update_inventory_rows [GET]
+Traceback (most recent call last):
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/paolo/Development/pySagraWeb/app/monitor.py", line 49, in decorated_function
+    return redirect(url_for('login', next=request.url))
+                    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/helpers.py", line 239, in url_for
+    return current_app.url_for(
+           ~~~~~~~~~~~~~~~~~~~^
+        endpoint,
+        ^^^^^^^^^
+    ...<4 lines>...
+        **values,
+        ^^^^^^^^^
+    )
+    ^
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 1121, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 1110, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+        endpoint,
+    ...<3 lines>...
+        force_external=_external,
+    )
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/werkzeug/routing/map.py", line 901, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'login' with values ['next']. Did you mean 'monitor.login' instead?
+2026-08-02 23:05:40 ERROR app: Exception on /monitor/ [GET]
+Traceback (most recent call last):
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/paolo/Development/pySagraWeb/app/monitor.py", line 49, in decorated_function
+    return redirect(url_for('login', next=request.url))
+                    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/helpers.py", line 239, in url_for
+    return current_app.url_for(
+           ~~~~~~~~~~~~~~~~~~~^
+        endpoint,
+        ^^^^^^^^^
+    ...<4 lines>...
+        **values,
+        ^^^^^^^^^
+    )
+    ^
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 1121, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 1110, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+        endpoint,
+    ...<3 lines>...
+        force_external=_external,
+    )
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/werkzeug/routing/map.py", line 901, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'login' with values ['next']. Did you mean 'monitor.login' instead?
+2026-08-02 23:05:40 ERROR app: Exception on /monitor/ [GET]
+Traceback (most recent call last):
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/paolo/Development/pySagraWeb/app/monitor.py", line 49, in decorated_function
+    return redirect(url_for('login', next=request.url))
+                    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/helpers.py", line 239, in url_for
+    return current_app.url_for(
+           ~~~~~~~~~~~~~~~~~~~^
+        endpoint,
+        ^^^^^^^^^
+    ...<4 lines>...
+        **values,
+        ^^^^^^^^^
+    )
+    ^
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 1121, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 1110, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+        endpoint,
+    ...<3 lines>...
+        force_external=_external,
+    )
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/werkzeug/routing/map.py", line 901, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'login' with values ['next']. Did you mean 'monitor.login' instead?
+2026-08-02 23:08:03 ERROR app: Exception on /monitor/ [GET]
+Traceback (most recent call last):
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/paolo/Development/pySagraWeb/app/monitor.py", line 49, in decorated_function
+    return redirect(url_for('monitor.login', next=request.url))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/helpers.py", line 239, in url_for
+    return current_app.url_for(
+           ~~~~~~~~~~~~~~~~~~~^
+        endpoint,
+        ^^^^^^^^^
+    ...<4 lines>...
+        **values,
+        ^^^^^^^^^
+    )
+    ^
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 1121, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 1110, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+        endpoint,
+    ...<3 lines>...
+        force_external=_external,
+    )
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/werkzeug/routing/map.py", line 901, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'login' with values ['next']. Did you mean 'monitor.login' instead?
+2026-08-02 23:08:12 INFO pysagra_web: Stopping wsgi server
+2026-08-02 23:08:12 INFO pysagra_web: Database connection closed successfully
+2026-08-02 23:08:20 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-02 23:08:20 INFO connect: Starting database connection with parameters:
+2026-08-02 23:08:20 INFO connect: host = localhost
+2026-08-02 23:08:20 INFO connect: port = 5432
+2026-08-02 23:08:20 INFO connect: database = pysagra_demo
+2026-08-02 23:08:20 INFO connect: dbuser = pa_login_role
+2026-08-02 23:08:20 INFO connect: dbuser password = ********
+2026-08-02 23:08:20 INFO connect: application_name = pySagra
+2026-08-02 23:08:20 INFO connect: Database connection established
+2026-08-02 23:08:20 INFO connect: DB is verified as an application database
+2026-08-02 23:08:20 INFO connect: Calling application connection function with parameters:
+2026-08-02 23:08:20 INFO connect: pgminver = 10
+2026-08-02 23:08:20 INFO connect: appname = pySagra
+2026-08-02 23:08:20 INFO connect: appversion = 1.0
+2026-08-02 23:08:20 INFO connect: user = ********
+2026-08-02 23:08:20 INFO connect: password = ********
+2026-08-02 23:08:20 INFO connect: hostname = pysagra_web_server
+2026-08-02 23:08:20 INFO connect: DB Application connection established
+2026-08-02 23:08:20 INFO pysagra_web: Database connection established
+2026-08-02 23:08:20 INFO pysagra_web: Company set to 20
+2026-08-02 23:08:20 INFO wasyncore: Serving on http://0.0.0.0:80
+2026-08-02 23:08:56 ERROR app: Exception on /monitor/login [POST]
+Traceback (most recent call last):
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/paolo/Development/pySagraWeb/app/monitor.py", line 65, in login
+    session.permanent = True # session expires at browser close
+    ^^^^^^^^^^^^^^^^^
+AttributeError: 'dict' object has no attribute 'permanent' and no __dict__ for setting new attributes
+2026-08-02 23:21:05 INFO pysagra_web: Stopping wsgi server
+2026-08-02 23:21:05 INFO pysagra_web: Database connection closed successfully
+2026-08-02 23:31:25 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-02 23:31:25 INFO connect: Starting database connection with parameters:
+2026-08-02 23:31:25 INFO connect: host = localhost
+2026-08-02 23:31:25 INFO connect: port = 5432
+2026-08-02 23:31:25 INFO connect: database = pysagra_demo
+2026-08-02 23:31:25 INFO connect: dbuser = pa_login_role
+2026-08-02 23:31:25 INFO connect: dbuser password = ********
+2026-08-02 23:31:25 INFO connect: application_name = pySagra
+2026-08-02 23:31:25 INFO connect: Database connection established
+2026-08-02 23:31:25 INFO connect: DB is verified as an application database
+2026-08-02 23:31:25 INFO connect: Calling application connection function with parameters:
+2026-08-02 23:31:25 INFO connect: pgminver = 10
+2026-08-02 23:31:25 INFO connect: appname = pySagra
+2026-08-02 23:31:25 INFO connect: appversion = 1.0
+2026-08-02 23:31:25 INFO connect: user = ********
+2026-08-02 23:31:25 INFO connect: password = ********
+2026-08-02 23:31:25 INFO connect: hostname = pysagra_web_server
+2026-08-02 23:31:25 INFO connect: DB Application connection established
+2026-08-02 23:31:25 INFO pysagra_web: Database connection established
+2026-08-02 23:31:25 INFO pysagra_web: Company set to 20
+2026-08-02 23:31:25 INFO wasyncore: Serving on http://0.0.0.0:80
+2026-08-02 23:32:01 ERROR app: Exception on /monitor/ [GET]
+Traceback (most recent call last):
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/paolo/Development/pySagraWeb/app/monitor.py", line 50, in decorated_function
+    return f(*args, **kwargs)
+  File "/Users/paolo/Development/pySagraWeb/app/monitor.py", line 83, in monitor_index
+    return render_template('monitor.html')
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/templating.py", line 151, in render_template
+    return _render(app, template, context)
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/templating.py", line 132, in _render
+    rv = template.render(context)
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/paolo/Development/pySagraWeb/templates/monitor.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/paolo/Development/pySagraWeb/templates/base.html", line 49, in top-level template code
+    {% block content %}
+  File "/Users/paolo/Development/pySagraWeb/templates/monitor.html", line 14, in block 'content'
+    <li><a href="{{ url_for('monitor_inventory') }}">Monitor Inventario</a></li>
+    ^^^^^^^^^^^^^^^^^
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 1121, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 1110, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+        endpoint,
+    ...<3 lines>...
+        force_external=_external,
+    )
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/werkzeug/routing/map.py", line 901, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'monitor_inventory'. Did you mean 'monitor.monitor_inventory' instead?
+2026-08-02 23:33:06 INFO pysagra_web: Stopping wsgi server
+2026-08-02 23:33:06 INFO pysagra_web: Database connection closed successfully
+2026-08-02 23:33:16 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-02 23:33:16 INFO connect: Starting database connection with parameters:
+2026-08-02 23:33:16 INFO connect: host = localhost
+2026-08-02 23:33:16 INFO connect: port = 5432
+2026-08-02 23:33:16 INFO connect: database = pysagra_demo
+2026-08-02 23:33:16 INFO connect: dbuser = pa_login_role
+2026-08-02 23:33:16 INFO connect: dbuser password = ********
+2026-08-02 23:33:16 INFO connect: application_name = pySagra
+2026-08-02 23:33:16 INFO connect: Database connection established
+2026-08-02 23:33:16 INFO connect: DB is verified as an application database
+2026-08-02 23:33:16 INFO connect: Calling application connection function with parameters:
+2026-08-02 23:33:16 INFO connect: pgminver = 10
+2026-08-02 23:33:16 INFO connect: appname = pySagra
+2026-08-02 23:33:16 INFO connect: appversion = 1.0
+2026-08-02 23:33:16 INFO connect: user = ********
+2026-08-02 23:33:16 INFO connect: password = ********
+2026-08-02 23:33:16 INFO connect: hostname = pysagra_web_server
+2026-08-02 23:33:16 INFO connect: DB Application connection established
+2026-08-02 23:33:16 INFO pysagra_web: Database connection established
+2026-08-02 23:33:16 INFO pysagra_web: Company set to 20
+2026-08-02 23:33:16 INFO wasyncore: Serving on http://0.0.0.0:80
+2026-08-02 23:33:28 ERROR app: Exception on /monitor/login [GET]
+Traceback (most recent call last):
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/paolo/Development/pySagraWeb/app/monitor.py", line 59, in login
+    next_page = request.args.get('next') or url_for('monitor')
+                                            ~~~~~~~^^^^^^^^^^^
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/helpers.py", line 239, in url_for
+    return current_app.url_for(
+           ~~~~~~~~~~~~~~~~~~~^
+        endpoint,
+        ^^^^^^^^^
+    ...<4 lines>...
+        **values,
+        ^^^^^^^^^
+    )
+    ^
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 1121, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 1110, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+        endpoint,
+    ...<3 lines>...
+        force_external=_external,
+    )
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/werkzeug/routing/map.py", line 901, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'monitor'. Did you mean 'monitor.login' instead?
+2026-08-02 23:35:50 INFO pysagra_web: Stopping wsgi server
+2026-08-02 23:35:50 INFO pysagra_web: Database connection closed successfully
+2026-08-02 23:35:58 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-02 23:35:58 INFO connect: Starting database connection with parameters:
+2026-08-02 23:35:58 INFO connect: host = localhost
+2026-08-02 23:35:58 INFO connect: port = 5432
+2026-08-02 23:35:58 INFO connect: database = pysagra_demo
+2026-08-02 23:35:58 INFO connect: dbuser = pa_login_role
+2026-08-02 23:35:58 INFO connect: dbuser password = ********
+2026-08-02 23:35:58 INFO connect: application_name = pySagra
+2026-08-02 23:35:58 INFO connect: Database connection established
+2026-08-02 23:35:58 INFO connect: DB is verified as an application database
+2026-08-02 23:35:58 INFO connect: Calling application connection function with parameters:
+2026-08-02 23:35:58 INFO connect: pgminver = 10
+2026-08-02 23:35:58 INFO connect: appname = pySagra
+2026-08-02 23:35:58 INFO connect: appversion = 1.0
+2026-08-02 23:35:58 INFO connect: user = ********
+2026-08-02 23:35:58 INFO connect: password = ********
+2026-08-02 23:35:58 INFO connect: hostname = pysagra_web_server
+2026-08-02 23:35:58 INFO connect: DB Application connection established
+2026-08-02 23:35:58 INFO pysagra_web: Database connection established
+2026-08-02 23:35:58 INFO pysagra_web: Company set to 20
+2026-08-02 23:35:58 INFO wasyncore: Serving on http://0.0.0.0:80
+2026-08-02 23:42:15 INFO pysagra_web: Stopping wsgi server
+2026-08-02 23:42:15 INFO pysagra_web: Database connection closed successfully
+2026-08-02 23:42:22 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-02 23:42:22 INFO connect: Starting database connection with parameters:
+2026-08-02 23:42:22 INFO connect: host = localhost
+2026-08-02 23:42:22 INFO connect: port = 5432
+2026-08-02 23:42:22 INFO connect: database = pysagra_demo
+2026-08-02 23:42:22 INFO connect: dbuser = pa_login_role
+2026-08-02 23:42:22 INFO connect: dbuser password = ********
+2026-08-02 23:42:22 INFO connect: application_name = pySagra
+2026-08-02 23:42:22 INFO connect: Database connection established
+2026-08-02 23:42:22 INFO connect: DB is verified as an application database
+2026-08-02 23:42:22 INFO connect: Calling application connection function with parameters:
+2026-08-02 23:42:22 INFO connect: pgminver = 10
+2026-08-02 23:42:22 INFO connect: appname = pySagra
+2026-08-02 23:42:22 INFO connect: appversion = 1.0
+2026-08-02 23:42:22 INFO connect: user = ********
+2026-08-02 23:42:22 INFO connect: password = ********
+2026-08-02 23:42:22 INFO connect: hostname = pysagra_web_server
+2026-08-02 23:42:22 INFO connect: DB Application connection established
+2026-08-02 23:42:22 INFO pysagra_web: Database connection established
+2026-08-02 23:42:22 INFO pysagra_web: Company set to 20
+2026-08-02 23:42:22 INFO wasyncore: Serving on http://0.0.0.0:80
+2026-08-02 23:44:49 INFO pysagra_web: Stopping wsgi server
+2026-08-02 23:44:49 INFO pysagra_web: Database connection closed successfully
+2026-08-02 23:44:57 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-02 23:44:57 INFO connect: Starting database connection with parameters:
+2026-08-02 23:44:57 INFO connect: host = localhost
+2026-08-02 23:44:57 INFO connect: port = 5432
+2026-08-02 23:44:57 INFO connect: database = pysagra_demo
+2026-08-02 23:44:57 INFO connect: dbuser = pa_login_role
+2026-08-02 23:44:57 INFO connect: dbuser password = ********
+2026-08-02 23:44:57 INFO connect: application_name = pySagra
+2026-08-02 23:44:57 INFO connect: Database connection established
+2026-08-02 23:44:57 INFO connect: DB is verified as an application database
+2026-08-02 23:44:57 INFO connect: Calling application connection function with parameters:
+2026-08-02 23:44:57 INFO connect: pgminver = 10
+2026-08-02 23:44:57 INFO connect: appname = pySagra
+2026-08-02 23:44:57 INFO connect: appversion = 1.0
+2026-08-02 23:44:57 INFO connect: user = ********
+2026-08-02 23:44:57 INFO connect: password = ********
+2026-08-02 23:44:57 INFO connect: hostname = pysagra_web_server
+2026-08-02 23:44:57 INFO connect: DB Application connection established
+2026-08-02 23:44:57 INFO pysagra_web: Database connection established
+2026-08-02 23:44:57 INFO pysagra_web: Company set to 20
+2026-08-02 23:44:57 INFO wasyncore: Serving on http://0.0.0.0:80
+2026-08-02 23:46:50 INFO pysagra_web: Stopping wsgi server
+2026-08-02 23:46:50 INFO pysagra_web: Database connection closed successfully
+2026-08-02 23:49:01 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-02 23:49:01 INFO connect: Starting database connection with parameters:
+2026-08-02 23:49:01 INFO connect: host = localhost
+2026-08-02 23:49:01 INFO connect: port = 5432
+2026-08-02 23:49:01 INFO connect: database = pysagra_demo
+2026-08-02 23:49:01 INFO connect: dbuser = pa_login_role
+2026-08-02 23:49:01 INFO connect: dbuser password = ********
+2026-08-02 23:49:01 INFO connect: application_name = pySagra
+2026-08-02 23:49:01 INFO connect: Database connection established
+2026-08-02 23:49:01 INFO connect: DB is verified as an application database
+2026-08-02 23:49:01 INFO connect: Calling application connection function with parameters:
+2026-08-02 23:49:01 INFO connect: pgminver = 10
+2026-08-02 23:49:01 INFO connect: appname = pySagra
+2026-08-02 23:49:01 INFO connect: appversion = 1.0
+2026-08-02 23:49:01 INFO connect: user = ********
+2026-08-02 23:49:01 INFO connect: password = ********
+2026-08-02 23:49:01 INFO connect: hostname = pysagra_web_server
+2026-08-02 23:49:01 INFO connect: DB Application connection established
+2026-08-02 23:49:01 INFO pysagra_web: Database connection established
+2026-08-02 23:49:01 INFO pysagra_web: Company set to 20
+2026-08-02 23:49:01 INFO wasyncore: Serving on http://0.0.0.0:80
+2026-08-02 23:52:07 INFO pysagra_web: Stopping wsgi server
+2026-08-02 23:52:07 INFO pysagra_web: Database connection closed successfully
+2026-08-02 23:52:14 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-02 23:52:14 INFO connect: Starting database connection with parameters:
+2026-08-02 23:52:14 INFO connect: host = localhost
+2026-08-02 23:52:14 INFO connect: port = 5432
+2026-08-02 23:52:14 INFO connect: database = pysagra_demo
+2026-08-02 23:52:14 INFO connect: dbuser = pa_login_role
+2026-08-02 23:52:14 INFO connect: dbuser password = ********
+2026-08-02 23:52:14 INFO connect: application_name = pySagra
+2026-08-02 23:52:14 INFO connect: Database connection established
+2026-08-02 23:52:14 INFO connect: DB is verified as an application database
+2026-08-02 23:52:14 INFO connect: Calling application connection function with parameters:
+2026-08-02 23:52:14 INFO connect: pgminver = 10
+2026-08-02 23:52:14 INFO connect: appname = pySagra
+2026-08-02 23:52:14 INFO connect: appversion = 1.0
+2026-08-02 23:52:14 INFO connect: user = ********
+2026-08-02 23:52:14 INFO connect: password = ********
+2026-08-02 23:52:14 INFO connect: hostname = pysagra_web_server
+2026-08-02 23:52:14 INFO connect: DB Application connection established
+2026-08-02 23:52:14 INFO pysagra_web: Database connection established
+2026-08-02 23:52:14 INFO pysagra_web: Company set to 20
+2026-08-02 23:52:14 INFO wasyncore: Serving on http://0.0.0.0:80
+2026-08-02 23:56:49 INFO pysagra_web: Stopping wsgi server
+2026-08-02 23:56:49 INFO pysagra_web: Database connection closed successfully
+2026-08-02 23:57:42 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-02 23:57:42 INFO connect: Starting database connection with parameters:
+2026-08-02 23:57:42 INFO connect: host = localhost
+2026-08-02 23:57:42 INFO connect: port = 5432
+2026-08-02 23:57:42 INFO connect: database = pysagra_demo
+2026-08-02 23:57:42 INFO connect: dbuser = pa_login_role
+2026-08-02 23:57:42 INFO connect: dbuser password = ********
+2026-08-02 23:57:42 INFO connect: application_name = pySagra
+2026-08-02 23:57:42 INFO connect: Database connection established
+2026-08-02 23:57:42 INFO connect: DB is verified as an application database
+2026-08-02 23:57:42 INFO connect: Calling application connection function with parameters:
+2026-08-02 23:57:42 INFO connect: pgminver = 10
+2026-08-02 23:57:42 INFO connect: appname = pySagra
+2026-08-02 23:57:42 INFO connect: appversion = 1.0
+2026-08-02 23:57:42 INFO connect: user = ********
+2026-08-02 23:57:42 INFO connect: password = ********
+2026-08-02 23:57:42 INFO connect: hostname = pysagra_web_server
+2026-08-02 23:57:42 INFO connect: DB Application connection established
+2026-08-02 23:57:42 INFO pysagra_web: Database connection established
+2026-08-02 23:57:42 INFO pysagra_web: Company set to 20
+2026-08-02 23:57:42 INFO wasyncore: Serving on http://0.0.0.0:80
+2026-08-03 00:04:18 INFO pysagra_web: Stopping wsgi server
+2026-08-03 00:04:18 INFO pysagra_web: Database connection closed successfully

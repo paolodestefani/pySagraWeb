@@ -34,7 +34,14 @@ from typing import Any, Optional, ContextManager
 import psycopg
 
 # application modules
-from app import session
+
+from app import APP_NAME
+from app import APP_VERSION_MAJOR
+from app import APP_VERSION_MINOR
+from app import APP_VERSION_PATCH
+from app import PG_MIN_VER
+from app import FLASK_SECRET_KEY
+
 # exceptions
 from app.database import PyAppDBConnectionError
 from app.database import PyAppDBError
@@ -109,9 +116,9 @@ SELECT EXISTS(SELECT 1
             raise PyAppDBError(er.diag.sqlstate, er.diag.message_primary, str(er))
         # connect to the applicationdb
         logging.info("Calling application connection function with parameters:")
-        logging.info("pgminver = %s", session['pg_min_ver'])
+        logging.info("pgminver = %s", PG_MIN_VER)
         logging.info("appname = %s", par['app_name'])
-        logging.info("appversion = %s.%s", session['app_version_major'], session['app_version_minor'])
+        logging.info("appversion = %s.%s", APP_VERSION_MAJOR, APP_VERSION_MINOR)
         logging.info("user = ********")
         logging.info("password = ********")
         logging.info("hostname = %(hostname)s", par)
@@ -119,10 +126,10 @@ SELECT EXISTS(SELECT 1
             with self._conn.cursor(row_factory=psycopg.rows.dict_row) as cur:
                 script = t"""
                 SELECT * FROM system.pa_connect(
-                    {session['pg_min_ver']},
+                    {PG_MIN_VER},
                     {par['app_name']},
-                    {session['app_version_major']},
-                    {session['app_version_minor']},
+                    {APP_VERSION_MAJOR},
+                    {APP_VERSION_MINOR},
                     {par['user']},
                     {par['password']},
                     {par['hostname']});"""

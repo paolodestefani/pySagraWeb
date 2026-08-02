@@ -32,7 +32,6 @@ for users to interact with the system.
 
 # standard library
 import os
-import configparser
 import logging
 from logging.handlers import RotatingFileHandler
 import datetime
@@ -46,7 +45,15 @@ from flask import Flask
 from waitress import serve
 
 # application modules
-from app import session
+from app import appconfig
+from app import APP_NAME
+from app import APP_VERSION_MAJOR
+from app import APP_VERSION_MINOR
+from app import APP_VERSION_PATCH
+from app import PG_MIN_VER
+from app import FLASK_SECRET_KEY
+
+from app import appconfig
 from app.database.connect import appconn
 from app.order_entry import order_bp 
 from app.monitor import monitor_bp 
@@ -62,10 +69,6 @@ logging.basicConfig(level=logging.INFO,
                     handlers=[RotatingFileHandler(logfile, maxBytes=max_file_size, backupCount=5),
                               logging.StreamHandler()])
 
-
-# load configuration file and link to session dictionary for global access
-session['config'] = configparser.ConfigParser()
-session['config'].read('config.cfg')
     
     
 def format_values(value: Any) -> str:
@@ -84,28 +87,28 @@ def format_values(value: Any) -> str:
 
 def create_app() -> Flask:
     """Initialize the Flask application, load configurations, and save Blueprints."""
-    flask_app = Flask(session['app_name'])
-    flask_app.config['SECRET_KEY'] = session['flask_secret_key']
+    flask_app = Flask(APP_NAME)
+    flask_app.config['SECRET_KEY'] = FLASK_SECRET_KEY
     # register the filter in Flask's Jinja environment with the name 'fmt'
     flask_app.jinja_env.filters['fmt'] = format_values
     # DB connection parameters
     par = {
-        'app_name': session['config']['SERVERDB']['app_name'],
-        'user': session['config']['SERVERDB']['user'],
-        'password': session['config']['SERVERDB']['password'],
-        'server': session['config']['SERVERDB']['server'],
-        'port': session['config']['SERVERDB']['port'],
-        'database': session['config']['SERVERDB']['database'],
-        'db_user': session['config']['SERVERDB']['db_user'],
-        'db_password': session['config']['SERVERDB']['db_password'],
-        'hostname': session['config']['SERVERDB']['hostname']
+        'app_name': appconfig['SERVERDB']['app_name'],
+        'user': appconfig['SERVERDB']['user'],
+        'password': appconfig['SERVERDB']['password'],
+        'server': appconfig['SERVERDB']['server'],
+        'port': appconfig['SERVERDB']['port'],
+        'database': appconfig['SERVERDB']['database'],
+        'db_user': appconfig['SERVERDB']['db_user'],
+        'db_password': appconfig['SERVERDB']['db_password'],
+        'hostname': appconfig['SERVERDB']['hostname']
     }
     # Connect to database
     try:
         appconn.connect(par)
         logging.info("Database connection established")
-        appconn.change_company(int(session['config']['SERVERDB']['company']))
-        logging.info("Company set to %s", session['config']['SERVERDB']['company'])
+        appconn.change_company(int(appconfig['SERVERDB']['company']))
+        logging.info("Company set to %s", appconfig['SERVERDB']['company'])
     except Exception as e:
         logging.error(f"Error connecting to database: {e}")
     # application modules registration (Blueprint)
@@ -141,7 +144,7 @@ if __name__ == '__main__':
     
     # start WSGI server using Waitress
     serve(app, 
-          host=session['config']['SERVERWSGI']['host'], 
-          port=int(session['config']['SERVERWSGI']['port']),
-          threads=int(session['config']['SERVERWSGI']['threads']),
-          connection_limit=int(session['config']['SERVERWSGI']['connections']))
+          host=appconfig['SERVERWSGI']['host'], 
+          port=int(appconfig['SERVERWSGI']['port']),
+          threads=int(appconfig['SERVERWSGI']['threads']),
+          connection_limit=int(appconfig['SERVERWSGI']['connections']))

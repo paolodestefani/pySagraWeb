@@ -28,37 +28,81 @@ Order status monitor
 
 # standard library
 import datetime
+from functools import wraps
 
-from flask import Blueprint, render_template, redirect, url_for
+from flask import Blueprint, render_template, redirect, request, url_for, session
 
 # application modules
-from app import session
+from app import appconfig
 from app.database.event import get_event_from_date
 from app.database.order_status import get_order_status
 from app.database.inventory import get_inventory
 from app.database.inventory import get_inventory_kit_menu
 
 
+# decorator for checking if the user is logged in before accessing certain routes
+def login_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if not session.get('authenticated'):
+            # save the requested page for redirecting after login
+            return redirect(url_for('monitor.login', next=request.url))
+        return f(*args, **kwargs)
+    return decorated_function
+
+
 monitor_bp = Blueprint('monitor', __name__)
 
+@monitor_bp.route('/login', methods=['GET', 'POST'])
+def login():
+    error = None
+    next_page = request.args.get('next') or url_for('monitor.monitor_index')
+    
+    if request.method == 'POST':
+        password_inserted = request.form.get('password')
+        if password_inserted == appconfig['Monitor']['password']:
+            session['authenticated'] = True
+            session.permanent = True # session expires at browser close
+            return redirect(next_page)
+        else:
+            error = "Password errata. Riprova."
+            
+    return render_template('monitor_login.html', error=error)
+
+@monitor_bp.route('/logout')
+def logout():
+    session.pop('authenticated', None)
+    return redirect(url_for('monitor.login'))
+
+
+
+@monitor_bp.route('/')
+@login_required
+def monitor_index():
+    pwd = appconfig['Monitor']['password']
+    return render_template('monitor.html')
+
 @monitor_bp.route('/orders')
+@login_required
 def monitor_orders():
     event_id, _ = get_event_from_date(datetime.date.today())
-    rows = int(session['config']['Monitor']['rows'])
+    rows = int(appconfig['Monitor']['rows'])
     lines = get_order_status(event_id, rows)
     return render_template('monitor_orders.html',
                            lines=lines)
 
 
 @monitor_bp.route('/update_orders_rows')
+@login_required
 def monitor_orders_update_rows():
     event_id, _ = get_event_from_date(datetime.date.today())
-    rows = int(session['config']['Monitor']['rows'])
+    rows = int(appconfig['Monitor']['rows'])
     lines = get_order_status(event_id, rows)
     return render_template("monitor_orders_rows.html", lines=lines)
 
 
 @monitor_bp.route('/inventory')
+@login_required
 def monitor_inventory():
     event_id, _ = get_event_from_date(datetime.date.today())
     lines_normal = get_inventory(event_id)
@@ -71,6 +115,7 @@ def monitor_inventory():
 
 
 @monitor_bp.route('/update_inventory_rows')
+@login_required
 def monitor_inventory_update_rows():
     event_id, _ = get_event_from_date(datetime.date.today())
     lines_normal = get_inventory(event_id)

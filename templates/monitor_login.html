@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- Il contenitore esterno ora ha d-flex, min-vh-100 per l'altezza, e py-5 per non attaccarsi ai bordi -->
+<div class="d-flex align-items-center justify-content-center min-vh-100 py-5">
+    
+    <!-- Rimosse le classi di allineamento dalla card (che deve allineare solo il testo) -->
+    <div class="card shadow p-4 text-center" style="width: 330px;">
+        <h2 class="h4 mb-3 fw-normal">Accesso Richiesto</h2>
+        
+        {% if error %}
+            <div class="alert alert-danger py-2 small mb-3" role="alert">
+                {{ error }}
+            </div>
+        {% endif %}
+
+        <form method="POST">
+            <div class="mb-3">
+                <input type="password" name="password" class="form-control" placeholder="Inserisci la password" required autofocus>
+            </div>
+            <button type="submit" class="w-100 btn btn-primary">Accedi</button>
+        </form>
+    </div>
+
+</div>
+
+{% endblock %}

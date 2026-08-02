@@ -30,7 +30,6 @@ import os
 import locale
 
 from flask import Flask, Blueprint, render_template, flash, request, redirect, url_for, session
-
 from app.database.event import get_event_from_date
 from app.database.item import item_web_list
 from app.database.item import get_variants

@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- Intestazione della pagina -->
+<div class="container-fluid text-center p-4 bg-primary text-white mb-5 bg-gradient rounded-3 shadow-sm">
+  <h2 class="fw-bold">Pannello di Monitoraggio Generale</h2>
+  <p class="lead mb-0">Visualizzazione in tempo reale dello stato degli ordini e dell'inventario</p>
+</div>
+
+<!-- Contenitore principale delle sezioni -->
+<div class="container my-4">
+    <p class="text-muted mb-4 fs-5">Seleziona una sezione per iniziare:</p>
+    
+    <!-- Griglia responsive: 1 colonna sui telefoni, 2 colonne sui monitor più grandi -->
+    <div class="row g-4">
+        
+        <!-- Scheda Inventario -->
+        <div class="col-md-6">
+            <div class="card h-100 shadow-sm border-0 bg-white">
+                <div class="card-body p-4 d-flex flex-column justify-content-between">
+                    <div>
+                        <h3 class="card-title h5 text-primary mb-3">
+                            Monitor Inventario
+                        </h3>
+                        <p class="card-text text-secondary">
+                            Controlla le scorte di magazzino, monitora i prodotti in esaurimento e gestisci i carichi di merce in tempo reale.
+                        </p>
+                    </div>
+                    <!-- Bottone di azione -->
+                    <a href="{{ url_for('monitor.monitor_inventory') }}" class="btn btn-outline-primary w-100 stretched-link mt-4">
+                        Apri Inventario
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scheda Ordini -->
+        <div class="col-md-6">
+            <div class="card h-100 shadow-sm border-0 bg-white">
+                <div class="card-body p-4 d-flex flex-column justify-content-between">
+                    <div>
+                        <h3 class="card-title h5 text-primary mb-3">
+                            Monitor Ordini
+                        </h3>
+                        <p class="card-text text-secondary">
+                            Visualizza lo stato degli ordini in entrata, traccia le spedizioni e gestisci le code di lavorazione.
+                        </p>
+                    </div>
+                    <!-- Bottone di azione -->
+                    <a href="{{ url_for('monitor.monitor_orders') }}" class="btn btn-outline-primary w-100 stretched-link mt-4">
+                        Apri Ordini
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Sezione di Logout inferiore distanziata -->
+    <div class="row mt-5 pt-3 border-top">
+        <div class="col text-end">
+            <a href="{{ url_for('monitor.logout') }}" class="btn btn-sm btn-outline-danger">
+                Esci (Logout)
+            </a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
