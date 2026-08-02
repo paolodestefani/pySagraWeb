@@ -29,10 +29,10 @@
           </thead>
           
           <tbody id="table-body" 
-                 hx-get="{{ url_for('order_status.update_table') }}" 
+                 hx-get="{{ url_for('monitor.monitor_orders_update_rows') }}" 
                  hx-trigger="every 10s" 
                  hx-swap="innerHTML">
-            {% include "table_rows.html" %}
+            {% include "monitor_orders_rows.html" %}
           </tbody>
           
         </table>

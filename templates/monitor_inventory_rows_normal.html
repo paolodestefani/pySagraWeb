@@ -1,0 +1,7 @@
+{% for line in lines_normal %}
+<tr class="{% if line[5] <= 0 %}table-secondary text-dark{% elif line[5] > 0 and line[5] < 5 %}table-danger text-dark{% elif line[5] >= 5 and line[5] < 10 %}table-warning text-dark{% else %}table-default text-dark{% endif %}">
+  {% for col in line %}
+  <td class="{{ 'text-start' if loop.first else 'text-center' }}">{{ col | fmt }}</td>
+  {% endfor %}
+</tr>
+{% endfor %}

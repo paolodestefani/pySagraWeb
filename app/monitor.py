@@ -35,25 +35,49 @@ from flask import Blueprint, render_template, redirect, url_for
 from app import session
 from app.database.event import get_event_from_date
 from app.database.order_status import get_order_status
+from app.database.inventory import get_inventory
+from app.database.inventory import get_inventory_kit_menu
 
 
-monitor_bp = Blueprint('order_status', __name__)
+monitor_bp = Blueprint('monitor', __name__)
 
 @monitor_bp.route('/orders')
-def visualizza_ordini():
+def monitor_orders():
     event_id, _ = get_event_from_date(datetime.date.today())
     rows = int(session['config']['Monitor']['rows'])
     lines = get_order_status(event_id, rows)
-    return render_template('order_status.html',
+    return render_template('monitor_orders.html',
                            lines=lines)
 
 
-@monitor_bp.route('/update-table')
-def update_table():
+@monitor_bp.route('/update_orders_rows')
+def monitor_orders_update_rows():
     event_id, _ = get_event_from_date(datetime.date.today())
     rows = int(session['config']['Monitor']['rows'])
     lines = get_order_status(event_id, rows)
-    return render_template("table_rows.html", lines=lines)
+    return render_template("monitor_orders_rows.html", lines=lines)
 
 
+@monitor_bp.route('/inventory')
+def monitor_inventory():
+    event_id, _ = get_event_from_date(datetime.date.today())
+    lines_normal = get_inventory(event_id)
+    lines_kit = get_inventory_kit_menu(event_id, 'K')
+    lines_menu = get_inventory_kit_menu(event_id, 'M')
+    return render_template('monitor_inventory.html',
+                           lines_normal=lines_normal,
+                           lines_kit=lines_kit,
+                           lines_menu=lines_menu)
+
+
+@monitor_bp.route('/update_inventory_rows')
+def monitor_inventory_update_rows():
+    event_id, _ = get_event_from_date(datetime.date.today())
+    lines_normal = get_inventory(event_id)
+    lines_kit = get_inventory_kit_menu(event_id, 'K')
+    lines_menu = get_inventory_kit_menu(event_id, 'M')
+    return render_template('monitor_inventory_rows_all.html',
+                           lines_normal=lines_normal,
+                           lines_kit=lines_kit,
+                           lines_menu=lines_menu)
 
