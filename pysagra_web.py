@@ -40,8 +40,7 @@ import signal
 import sys
 from typing import Any
 
-# slask
-from flask import Flask
+from flask import Flask, request
 from waitress import serve
 
 # application modules
@@ -141,6 +140,13 @@ if __name__ == '__main__':
     
     # create flask app from factory function
     app = create_app()
+    
+    @app.before_request
+    def log_client_connection():
+        # esclude some log messages for static files to avoid cluttering the log
+        if request.path.startswith('/static/'):
+            return
+        logging.info(f"Connected client - IP: {request.remote_addr} - Request: {request.method} {request.path}")
     
     # start WSGI server using Waitress
     serve(app, 
