@@ -22,7 +22,7 @@
 # along with pysagra_web.  If not, see <http://www.gnu.org/licenses/>.
 
 """
-Order status monitor
+Order monitor
 
 """
 
@@ -53,6 +53,7 @@ def login_required(f):
 
 monitor_bp = Blueprint('monitor', __name__)
 
+
 @monitor_bp.route('/login', methods=['GET', 'POST'])
 def login():
     error = None
@@ -75,30 +76,10 @@ def logout():
     return redirect(url_for('monitor.login'))
 
 
-
 @monitor_bp.route('/')
 @login_required
 def monitor_index():
-    pwd = appconfig['Monitor']['password']
     return render_template('monitor.html')
-
-@monitor_bp.route('/orders')
-@login_required
-def monitor_orders():
-    event_id, _ = get_event_from_date(datetime.date.today())
-    rows = int(appconfig['Monitor']['rows'])
-    lines = get_order_status(event_id, rows)
-    return render_template('monitor_orders.html',
-                           lines=lines)
-
-
-@monitor_bp.route('/update_orders_rows')
-@login_required
-def monitor_orders_update_rows():
-    event_id, _ = get_event_from_date(datetime.date.today())
-    rows = int(appconfig['Monitor']['rows'])
-    lines = get_order_status(event_id, rows)
-    return render_template("monitor_orders_rows.html", lines=lines)
 
 
 @monitor_bp.route('/inventory')

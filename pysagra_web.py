@@ -55,7 +55,9 @@ from app import FLASK_SECRET_KEY
 from app import appconfig
 from app.database.connect import appconn
 from app.order_entry import order_bp 
+from app.order_status import status_bp
 from app.monitor import monitor_bp 
+from app.queue_management import qms_bp
 
 
 # start logging system with automatic size limit
@@ -78,6 +80,8 @@ def format_values(value: Any) -> str:
     # for a Time object (for the Ora column), it takes only hours and minutes
     if isinstance(value, datetime.time):
         return value.strftime('%H:%M')
+    if isinstance(value, int):
+        return f"{value:,.0f}".replace(',', '.')  # format integer with thousands separator
     # for an empty cell (None), return an empty string instead of the text "None"
     if value is None:
         return ""
@@ -112,7 +116,9 @@ def create_app() -> Flask:
         logging.error(f"Error connecting to database: {e}")
     # application modules registration (Blueprint)
     flask_app.register_blueprint(order_bp)
+    flask_app.register_blueprint(status_bp, url_prefix='/status')
     flask_app.register_blueprint(monitor_bp, url_prefix='/monitor')
+    flask_app.register_blueprint(qms_bp, url_prefix='/qms')
     # return app instance
     return flask_app
 

@@ -51,7 +51,8 @@ SELECT
 		WHEN 'P' THEN 'C'
 		WHEN 'I' THEN 'L'
 	END									AS status,
-	to_char(fulfillment_date, 'HH24:MI') AS fulfillment
+	to_char(fulfillment_date, 'HH24:MI') AS fulfillment,
+    cast(EXTRACT(EPOCH FROM (fulfillment_date - order_date_time)) / 60 AS int) AS minutes
 FROM company.vw_order_status
 WHERE event_id = {event_id}
 ORDER BY order_date DESC, order_time DESC

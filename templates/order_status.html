@@ -18,21 +18,22 @@
           <thead class="table-dark">
             <tr>
               <th class="text-center" style="width: 10%">Numero</th>
-              <th class="text-center" style="width: 15%">Data</th>
-              <th class="text-center" style="width: 10%">Ora</th>
+              <th class="text-center" style="width: 10%">Data</th>
+              <th class="text-center" style="width: 5%">Ora</th>
               <th class="text-center" style="width: 5%">Consegna</th>
-              <th class="text-center" style="width: 15%">Tavolo</th>
-              <th class="text-center" style="width: 20%">Nome</th>
+              <th class="text-center" style="width: 10%">Tavolo</th>
+              <th class="text-center" style="width: 30%">Nome</th>
               <th class="text-center" style="width: 5%">Stato</th>
-              <th class="text-center" style="width: 20%">Completato</th>
+              <th class="text-center" style="width: 10%">Completato</th>
+              <th class="text-center" style="width: 15%">Attesa (min)</th>
             </tr>
           </thead>
           
           <tbody id="table-body" 
-                 hx-get="{{ url_for('monitor.monitor_orders_update_rows') }}" 
+                 hx-get="{{ url_for('status.order_status_update_rows') }}" 
                  hx-trigger="every 10s" 
                  hx-swap="innerHTML">
-            {% include "monitor_orders_rows.html" %}
+            {% include "order_status_rows.html" %}
           </tbody>
           
         </table>
