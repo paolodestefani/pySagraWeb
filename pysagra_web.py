@@ -150,7 +150,7 @@ if __name__ == '__main__':
     @app.before_request
     def log_client_connection():
         # esclude some log messages for static files to avoid cluttering the log
-        if request.path.startswith('/static/'):
+        if request.path.startswith('/static/') or request.path.startswith('/qms/'):
             return
         logging.info(f"Connected client - IP: {request.remote_addr} - Request: {request.method} {request.path}")
     

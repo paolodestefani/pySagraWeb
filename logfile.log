@@ -2128,3 +2128,188 @@ NameError: name 'progressione_coda' is not defined
 2026-08-05 00:19:39 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
 2026-08-05 00:19:47 INFO pysagra_web: Stopping wsgi server
 2026-08-05 00:19:47 INFO pysagra_web: Database connection closed successfully
+2026-08-05 06:35:38 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-05 06:35:38 INFO connect: Starting database connection with parameters:
+2026-08-05 06:35:38 INFO connect: host = localhost
+2026-08-05 06:35:38 INFO connect: port = 5432
+2026-08-05 06:35:38 INFO connect: database = pysagra_demo
+2026-08-05 06:35:38 INFO connect: dbuser = pa_login_role
+2026-08-05 06:35:38 INFO connect: dbuser password = ********
+2026-08-05 06:35:38 INFO connect: application_name = pySagra
+2026-08-05 06:35:38 INFO connect: Database connection established
+2026-08-05 06:35:38 INFO connect: DB is verified as an application database
+2026-08-05 06:35:38 INFO connect: Calling application connection function with parameters:
+2026-08-05 06:35:38 INFO connect: pgminver = 10
+2026-08-05 06:35:38 INFO connect: appname = pySagra
+2026-08-05 06:35:38 INFO connect: appversion = 1.0
+2026-08-05 06:35:38 INFO connect: user = ********
+2026-08-05 06:35:38 INFO connect: password = ********
+2026-08-05 06:35:38 INFO connect: hostname = pysagra_web_server
+2026-08-05 06:35:38 INFO connect: DB Application connection established
+2026-08-05 06:35:38 INFO pysagra_web: Database connection established
+2026-08-05 06:35:38 INFO pysagra_web: Company set to 20
+2026-08-05 06:35:38 INFO wasyncore: Serving on http://0.0.0.0:8080
+2026-08-05 06:36:25 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms
+2026-08-05 06:36:25 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/
+2026-08-05 06:36:27 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:36:29 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:36:32 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:36:35 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:36:38 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:36:41 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:36:44 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:36:47 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:36:48 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms
+2026-08-05 06:36:48 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/
+2026-08-05 06:36:50 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:36:50 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:36:53 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:36:53 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:36:53 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/pulsantiera
+2026-08-05 06:36:56 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:36:59 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:37:02 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:37:05 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:37:08 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:37:11 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qms/avanza-coda
+2026-08-05 06:37:11 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:37:13 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:37:15 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qms/avanza-coda
+2026-08-05 06:37:16 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:37:18 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:37:19 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qms/avanza-coda
+2026-08-05 06:37:21 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:37:23 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:37:25 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:37:27 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:37:29 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:37:29 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qms/avanza-coda
+2026-08-05 06:37:31 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:37:33 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:37:35 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:37:37 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:37:39 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:37:41 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:37:43 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:37:45 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:37:47 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:37:49 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:37:51 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:37:53 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qms/avanza-coda
+2026-08-05 06:37:54 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:37:56 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:37:58 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:38:00 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:38:02 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:38:04 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qms/avanza-coda
+2026-08-05 06:38:05 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:38:07 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:38:09 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:38:11 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:38:13 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:38:15 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:38:17 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:38:20 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:38:23 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:38:26 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:38:28 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qms/reset-coda
+2026-08-05 06:38:29 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:38:31 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:38:33 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:38:35 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:38:37 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:38:39 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:38:41 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:38:43 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:38:46 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:38:49 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:38:49 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qms/reset-coda
+2026-08-05 06:38:51 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:38:54 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:38:57 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:38:59 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qms/reset-coda
+2026-08-05 06:39:00 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:39:02 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:39:05 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:39:08 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:39:11 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:39:14 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:39:17 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:39:20 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:39:23 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:39:26 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:39:29 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:39:32 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:39:35 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:39:38 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:39:41 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:39:44 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:39:47 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:39:50 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:39:53 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:39:56 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:39:59 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:40:02 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:40:37 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:41:37 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms/ottieni-card
+2026-08-05 06:42:28 INFO pysagra_web: Stopping wsgi server
+2026-08-05 06:42:28 INFO pysagra_web: Database connection closed successfully
+2026-08-05 06:42:36 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-05 06:42:36 INFO connect: Starting database connection with parameters:
+2026-08-05 06:42:36 INFO connect: host = localhost
+2026-08-05 06:42:36 INFO connect: port = 5432
+2026-08-05 06:42:36 INFO connect: database = pysagra_demo
+2026-08-05 06:42:36 INFO connect: dbuser = pa_login_role
+2026-08-05 06:42:36 INFO connect: dbuser password = ********
+2026-08-05 06:42:36 INFO connect: application_name = pySagra
+2026-08-05 06:42:36 INFO connect: Database connection established
+2026-08-05 06:42:36 INFO connect: DB is verified as an application database
+2026-08-05 06:42:36 INFO connect: Calling application connection function with parameters:
+2026-08-05 06:42:36 INFO connect: pgminver = 10
+2026-08-05 06:42:36 INFO connect: appname = pySagra
+2026-08-05 06:42:36 INFO connect: appversion = 1.0
+2026-08-05 06:42:36 INFO connect: user = ********
+2026-08-05 06:42:36 INFO connect: password = ********
+2026-08-05 06:42:36 INFO connect: hostname = pysagra_web_server
+2026-08-05 06:42:36 INFO connect: DB Application connection established
+2026-08-05 06:42:36 INFO pysagra_web: Database connection established
+2026-08-05 06:42:36 INFO pysagra_web: Company set to 20
+2026-08-05 06:42:36 INFO wasyncore: Serving on http://0.0.0.0:8080
+2026-08-05 06:42:42 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qms/avanza-coda
+2026-08-05 06:42:58 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qms/avanza-coda
+2026-08-05 06:42:59 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qms/avanza-coda
+2026-08-05 06:42:59 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qms/avanza-coda
+2026-08-05 06:42:59 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qms/avanza-coda
+2026-08-05 06:43:00 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qms/avanza-coda
+2026-08-05 06:43:00 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qms/avanza-coda
+2026-08-05 06:43:00 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qms/avanza-coda
+2026-08-05 06:43:00 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qms/avanza-coda
+2026-08-05 06:43:00 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qms/avanza-coda
+2026-08-05 06:45:08 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qms/avanza-coda
+2026-08-05 06:47:05 INFO pysagra_web: Stopping wsgi server
+2026-08-05 06:47:05 INFO pysagra_web: Database connection closed successfully
+2026-08-05 06:47:17 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-05 06:47:17 INFO connect: Starting database connection with parameters:
+2026-08-05 06:47:17 INFO connect: host = localhost
+2026-08-05 06:47:17 INFO connect: port = 5432
+2026-08-05 06:47:17 INFO connect: database = pysagra_demo
+2026-08-05 06:47:17 INFO connect: dbuser = pa_login_role
+2026-08-05 06:47:17 INFO connect: dbuser password = ********
+2026-08-05 06:47:17 INFO connect: application_name = pySagra
+2026-08-05 06:47:17 INFO connect: Database connection established
+2026-08-05 06:47:17 INFO connect: DB is verified as an application database
+2026-08-05 06:47:17 INFO connect: Calling application connection function with parameters:
+2026-08-05 06:47:17 INFO connect: pgminver = 10
+2026-08-05 06:47:17 INFO connect: appname = pySagra
+2026-08-05 06:47:17 INFO connect: appversion = 1.0
+2026-08-05 06:47:17 INFO connect: user = ********
+2026-08-05 06:47:17 INFO connect: password = ********
+2026-08-05 06:47:17 INFO connect: hostname = pysagra_web_server
+2026-08-05 06:47:17 INFO connect: DB Application connection established
+2026-08-05 06:47:17 INFO pysagra_web: Database connection established
+2026-08-05 06:47:17 INFO pysagra_web: Company set to 20
+2026-08-05 06:47:17 INFO wasyncore: Serving on http://0.0.0.0:8080
+2026-08-05 06:48:08 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /
+2026-08-05 06:48:08 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /order
+2026-08-05 06:48:30 INFO pysagra_web: Stopping wsgi server
+2026-08-05 06:48:30 INFO pysagra_web: Database connection closed successfully
