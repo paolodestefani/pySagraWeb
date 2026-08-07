@@ -1,7 +1,0 @@
-{% for line in lines_kit %}
-<tr>
-  {% for col in line %}
-  <td class="{{ 'text-start fw-semibold' if loop.first else 'text-center text-success fw-bold' }}">{{ col | fmt }}</td>
-  {% endfor %}
-</tr>
-{% endfor %}

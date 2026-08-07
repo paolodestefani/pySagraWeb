@@ -37,7 +37,7 @@ from app import appconfig
 from app.database.event import get_event_from_date
 from app.database.order_status import get_order_status
 from app.database.inventory import get_inventory
-from app.database.inventory import get_inventory_kit_menu
+#from app.database.inventory import get_inventory_kit_menu
 
 
 # decorator for checking if the user is logged in before accessing certain routes
@@ -86,24 +86,15 @@ def monitor_index():
 @login_required
 def monitor_inventory():
     event_id, _ = get_event_from_date(datetime.date.today())
-    lines_normal = get_inventory(event_id)
-    lines_kit = get_inventory_kit_menu(event_id, 'K')
-    lines_menu = get_inventory_kit_menu(event_id, 'M')
+    lines = get_inventory(event_id)
     return render_template('monitor_inventory.html',
-                           lines_normal=lines_normal,
-                           lines_kit=lines_kit,
-                           lines_menu=lines_menu)
+                           lines=lines)
 
 
 @monitor_bp.route('/update_inventory_rows')
 @login_required
 def monitor_inventory_update_rows():
     event_id, _ = get_event_from_date(datetime.date.today())
-    lines_normal = get_inventory(event_id)
-    lines_kit = get_inventory_kit_menu(event_id, 'K')
-    lines_menu = get_inventory_kit_menu(event_id, 'M')
-    return render_template('monitor_inventory_rows_all.html',
-                           lines_normal=lines_normal,
-                           lines_kit=lines_kit,
-                           lines_menu=lines_menu)
-
+    lines = get_inventory(event_id)
+    return render_template('monitor_inventory_rows.html',
+                           lines=lines) 
