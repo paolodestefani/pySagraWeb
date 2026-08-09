@@ -22,6 +22,16 @@
         </form>
     </div>
 
+    
+    <!-- Sezione di Logout inferiore distanziata -->
+    <div class="row mt-5 pt-3 border-top">
+        <div class="col text-end">
+            <a href="{{ url_for('login.logout') }}" class="btn btn-sm btn-outline-danger">
+                Esci (Logout)
+            </a>
+        </div>
+    </div>
+
 </div>
 
 {% endblock %}

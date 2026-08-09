@@ -50,7 +50,7 @@ def index():
     return redirect(url_for('order.order_header'))
 
 
-@order_bp.route("/order", methods=['GET', 'POST'])
+@order_bp.route("/header", methods=['GET', 'POST'])
 def order_header():
     "Create the web order form main page"
     
@@ -187,7 +187,6 @@ def order_variants(index):
             session['lines'][session['departments'][session['dep_index']]].insert(index + 1, l)
             session.modified = True
             return redirect(url_for('order.order_menu'))
-            
                 
     return render_template(
         'order_variants.html',
@@ -300,6 +299,3 @@ def order_barcode():
                             test        = order
                             )
                             
-
-
-

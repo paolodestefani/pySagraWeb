@@ -40,7 +40,7 @@ import signal
 import sys
 from typing import Any
 
-from flask import Flask, request
+from flask import Flask, request, redirect, url_for
 from waitress import serve
 
 # application modules
@@ -54,6 +54,7 @@ from app import FLASK_SECRET_KEY
 
 from app import appconfig
 from app.database.connect import appconn
+from app.login import login_bp
 from app.order_entry import order_bp 
 from app.order_status import status_bp
 from app.monitor import monitor_bp 
@@ -115,12 +116,18 @@ def create_app() -> Flask:
     except Exception as e:
         logging.error(f"Error connecting to database: {e}")
     # application modules registration (Blueprint)
-    flask_app.register_blueprint(order_bp)
+    flask_app.register_blueprint(order_bp, url_prefix='/order')
     flask_app.register_blueprint(status_bp, url_prefix='/status')
     flask_app.register_blueprint(monitor_bp, url_prefix='/monitor')
     flask_app.register_blueprint(qms_bp, url_prefix='/qms')
+    flask_app.register_blueprint(login_bp, url_prefix='/login')
+    # default route
+    @flask_app.route('/')
+    def index():
+        return redirect(url_for('order.order_header'))
     # return app instance
     return flask_app
+
 
 def close_server(signum: int, frame: Any) -> None:
     "Handler for graceful shutdown of the server on Ctrl+C (SIGINT)."

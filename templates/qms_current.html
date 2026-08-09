@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+
+<style>
+    html, body {
+    cursor: none !important; /* hide the cursor on the entire page */
+}
+    .font-qms-title {
+    font-family: Arial, sans-serif;
+    font-size: 10vmin;
+    line-height: 0.9;
+    max-width: 100%;
+}
+    .font-qms-number {
+    font-family: Arial, sans-serif;
+    font-size: 80vmin;
+    line-height: 0.9;
+    max-width: 100%;
+}
+    /* special rule for  Smartphone (inverted width-heigh) */
+    @media (orientation: portrait) {
+    .font-qms-number {
+        font-size: 50vw; 
+        line-height: 1.0;
+    }
+}
+
+</style>
+
+<div class="bg-dark bg-gradient text-white d-flex justify-content-center align-items-center vh-100 p-2">
+    <!-- main container, full screen -->
+    <div class="border border-warning border-4 rounded-4 p-2 text-center w-100 h-100 d-flex flex-column justify-content-between align-items-center overflow-hidden position-relative">
+        <!-- title -->
+        <div class="text-warning text-uppercase fw-bold font-qms-title">
+            STIAMO SERVENDO IL NUMERO
+        </div>
+        <!-- number at 85 vmin -->
+        <div id="qms-monitor" 
+             hx-get="{{ url_for('qms.get_current') }}" 
+             hx-trigger="every 2s" 
+             hx-swap="innerHTML"
+             class="fw-bold text-white d-flex align-items-center justify-content-center flex-grow-1 m-0 p-0 font-qms-number">
+             {{ current_number }}
+        </div>
+        <!-- a small bottom space -->
+        <div class="pb-1"></div>
+    </div>
+</div>
+{% endblock %}

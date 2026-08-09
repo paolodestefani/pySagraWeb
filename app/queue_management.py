@@ -26,90 +26,106 @@ Queue management system for pySagraWeb
 
 """
 
-from flask import Blueprint, render_template, url_for, render_template_string, request
+from flask import Blueprint, render_template, request
+
 
 qms_bp = Blueprint('qms', __name__)
 
-queue_number = 0
 
-def calculate_number(value):
-    letter_index = 65 + (value // 100)
-    letter = chr(letter_index)
-    number = value % 100
-    return f"{letter}{number:02d}"
+class QueueNumber:
+    """A queue number is a one alphabetical character ['A'..'Z'] + 2 digit number [0..99]
+    
+    This class provides methods to manage the queue number, including advancing, regressing, resetting,
+    and retrieving the current value.
+    The queue number defaults to 'A00' and can be reset to any valid value in the format 'A00' to 'Z99'.
+    """
+    
+    def __init__(self, init_value: str = 'A00') -> None:
+        "Sets the initial queue number to 'A00' or a provided valid value."
+        self._letter: int
+        self._number: int
+        self._from_string(init_value)
+        
+    def _from_string(self, value: str) -> None:
+        "Converts a string representation of the queue number into its internal representation."
+        if not value or len(value) != 3:
+            value = 'A00'
+        l = value[0]
+        n = value[1:]
+        # bounds checking for letter and number, defaulting to 'A' and '0' if invalid
+        if not 65 <= ord(l) <= 90:
+            l = 'A'
+        self._letter = ord(l) 
+        if not n.isnumeric():
+            n = '0'
+        self._number = int(n)
 
-def convert_in_number(queue_string):
-    """
-    Prende una stringa come 'B05' o 'b5' e restituisce il numero intero (105).
-    Se l'input è vuoto o non valido, restituisce 0 (A00).
-    """
-    if not queue_string:
-        return 0
+    def advance(self) -> None:
+        "Advances the queue number by one, rolling over to the next letter after 'Z99' back to 'A00'."
+        self._number += 1
+        if self._number == 100:
+            self._number = 0
+            self._letter += 1
+            if self._letter == 91:
+                self._letter = 65 
+
+    def regress(self) -> None:
+        "Regresses the queue number by one, never going below 'A00'."
+        self._number -= 1
+        if self._number < 0:
+            self._number = 99
+            self._letter -= 1
+            if self._letter == 64:
+                self._letter = 65
+                self._number = 0
+                
+    def reset(self, new_value: str) -> None:
+        "Resets the queue number to a new valid value."
+        self._from_string(new_value)
         
-    # Puliamo la stringa rimuovendo spazi e rendendola maiuscola (es. " b05 " -> "B05")
-    clean_string = queue_string.strip().upper()
+    def current(self) -> str:
+        "Returns the current queue number as a string in the format 'A00'."
+        return f"{chr(self._letter)}{self._number:02d}"
     
-    # separare la Lettera dai Numeri (es. A e 99)
-    if not (clean_string[0].isalpha() and clean_string[1:].isdigit()):
-        return 0 # Ritorna ad A00 se l'operatore scrive testo non valido
-        
-    letter, number_str = clean_string[0], clean_string[1:]
     
-    # Calcoliamo la base numerica della lettera (A=0, B=100, C=200, ecc.)
-    base_letter = (ord(letter) - 65) * 100
-    number = int(number_str)
-    
-    # Evitiamo che numeri sopra il 99 sballino la lettera successiva erroneamente
-    if number > 99:
-        number = 99
-        
-    return base_letter + number
+# set the initial queue number to 'A00' when the application starts
+queue_number = QueueNumber()
+
 
 @qms_bp.route('/')
 def index():
-    global queue_number
-    return render_template('qms_index.html', numero=calculate_number(queue_number))
+    "Renders the main queue management page, displaying the current queue number."
+    return render_template('qms_current.html', current_number=queue_number.current())
 
-@qms_bp.route('/pulsantiera')
-def pulsantiera():
-    return render_template('qms_pulsantiera.html')
+@qms_bp.route('/manager')
+def manager():
+    "Renders the queue management interface for advancing, regressing, and resetting the queue number."
+    return render_template('qms_manager.html')
 
-@qms_bp.route('/ottieni-card')
-def ottieni_card():
-    global queue_number
-    return render_template_string('''
-        <div class="card text-center bg-dark text-white border-primary shadow-lg col-11 col-md-8">
-            <div class="card-header bg-primary text-uppercase fw-bold fs-3">STIAMO SERVENDO IL NUMERO</div>
-            <div class="card-body d-flex justify-content-center align-items-center" style="min-height: 70vh;">
-                <h1 class="display-numero m-0">{{ turno }}</h1>
-            </div>
-        </div>
-    ''', turno=calculate_number(queue_number))
+@qms_bp.route('/get-current')
+def get_current():
+    "Returns the current queue number as a string, used for HTMX requests to update the display."
+    return queue_number.current()
 
-@qms_bp.route('/avanza-coda', methods=['POST'])
-def avanza_coda():
-    global queue_number
-    queue_number += 1
+@qms_bp.route('/queue-advance', methods=['POST'])
+def queue_advance():
+    "Advances the queue number by one and returns a 204 No Content response, used for HTMX requests."
+    queue_number.advance()
     return "", 204
 
-@qms_bp.route('/regredisci-coda', methods=['POST'])
-def regredisci_coda():
-    global queue_number
-    if queue_number > 0:
-        queue_number -= 1
+@qms_bp.route('/queue-regress', methods=['POST'])
+def queue_regress():
+    "Regresses the queue number by one and returns a 204 No Content response, used for HTMX requests."
+    queue_number.regress()
     return "", 204
 
-# La rotta di reset ora accetta il valore digitato nel prompt javascript
-@qms_bp.route('/reset-coda', methods=['POST'])
-def reset_coda():
-    global queue_number
-    # Recuperiamo il valore inviato da htmx
-    valore_inserito = request.form.get('valore')
-    
-    # Se l'utente clicca su "Annulla" nel prompt del browser, non modifichiamo nulla
-    if valore_inserito is None:
+@qms_bp.route('/queue-reset', methods=['POST'])
+def reset_queue():
+    "Resets the queue number to a new value provided by the user via a form submission."
+    new_value = request.form.get('new_value')
+    # user canceled the prompt or did not enter a value, so we do not reset the queue number
+    if new_value is None:
         return "", 204
-        
-    # Convertiamo la stringa scritta a mano nel nostro intero progressivo
-    queue_number = convert_in_number(valore_inserito)
+    # set the queue number to the new value entered by the user
+    queue_number.reset(new_value)
     return "", 204
