@@ -11,8 +11,9 @@
             </div>
         {% endif %}
 
-        <form action="{{ url_for('login.login') }}" method="POST">
+        <form action="{{ request.full_path }}" method="POST">
             <div class="mb-3">
+                <input type="text" name="user" class="form-control mb-3" placeholder="Inserisci il nome utente" required autofocus>
                 <input type="password" name="password" class="form-control" placeholder="Inserisci la password" required autofocus>
             </div>
             <button type="submit" class="w-100 btn btn-primary">Accedi</button>

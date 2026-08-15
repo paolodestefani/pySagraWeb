@@ -1,50 +1,65 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="container-fluid text-sm-center p-3 bg-primary text-white mb-4 bg-gradient">
-  <h2>Ordine generato</h2>
-  <p>Procedi alla cassa per il pagamento esibendo il seguente QR Code</p>
-  <p>La disponibilit&agrave; degli articoli non &egrave; garantita fino alla conferma dell'ordine in cassa</p>
-  <p>{{ test }}</p>
-</div>
+<!-- Il wrapper principale occupa l'altezza dello schermo (vh-100) per gestire i tasti in fondo -->
+<div class="d-flex flex-column vh-100 overflow-hidden">
 
-<div class="container pb-5 bg-white">
-<div class="row align-items-center justify-content-center">
-<div class="col-md-auto">
-<form action="" method="post">
-  <div class="text-center">
-    <br>
-	<div id="qrcode"></div>
-	<br>
-<!-- Button trigger modal -->
-<div class="col-md-auto">
-<button type="submit" class="btn btn-primary" name="previous">Precedente</button>
-<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modal_new">
-  Inserisci un nuovo ordine
-</button>
-</div>
+  <!-- Header Blu (Fisso in alto) -->
+  <div class="container-fluid text-sm-center p-3 bg-primary text-white mb-4 bg-gradient flex-shrink-0">
+    <h2>Ordine generato</h2>
+    <p class="mb-1">Procedi alla cassa per il pagamento esibendo il seguente QR Code</p>
+    <p class="mb-0">La disponibilit&agrave; degli articoli non &egrave; garantita fino alla conferma dell'ordine in cassa</p>
+    <p class="mb-0">{{ test }}</p>
+  </div>
 
-<!-- Modal new order-->
-<div class="modal fade" id="modal_new" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title mx-auto" id="exampleModalLabel">Attenzione</h5>
-        </div>
-          <div class="modal-body">
-            Eliminare il QR Code corrente ed inserire un nuovo ordine?
+  <!-- Contenitore Principale -->
+  <div class="container-fluid px-3 flex-grow-1 overflow-hidden d-flex flex-column">
+    <div class="row justify-content-center flex-grow-1 overflow-hidden">
+      <!-- col-auto permette al blocco di rimanere centrato in finestra adattandosi al contenuto -->
+      <div class="col-auto d-flex flex-column h-100 overflow-hidden">
+        
+        <!-- Il Form occupa l'altezza disponibile e distribuisce lo spazio internamente -->
+        <form action="" method="post" class="d-flex flex-column flex-grow-1 h-100 overflow-hidden justify-content-between">
+          
+          <!-- CONTENITORE CENTRALE: Mantiene il QR Code in alto e centrato -->
+          <div class="overflow-auto text-center py-2">
+            <div id="qrcode" class="d-inline-block p-3 bg-white rounded border shadow-sm"></div>
           </div>
-        <div class="modal-footer">
-        <div class="mx-auto">
-          <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Annulla</button>
-          <button type="submit" class="btn btn-success" name="new">Nuovo ordine</button>
-        </div>
+
+          <!-- Pulsanti di Navigazione: Isolati e bloccati fissi in fondo allo schermo -->
+          <div class="form-group text-center pt-2 pb-4 mt-auto flex-shrink-0">
+            <button type="submit" class="btn btn-primary px-4 py-2 fw-bold text-uppercase mx-1 shadow-sm" name="previous">Precedente</button>
+            <button type="button" class="btn btn-success px-4 py-2 fw-bold text-uppercase mx-1 shadow-sm" data-bs-toggle="modal" data-bs-target="#modal_new">
+              Inserisci un nuovo ordine
+            </button>
+          </div>
+
+          <!-- Modal new order (Codice racchiuso all'interno del form, non influisce sul layout dei tasti) -->
+          <div class="modal fade" id="modal_new" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title mx-auto" id="exampleModalLabel">Attenzione</h5>
+                </div>
+                <div class="modal-body text-center text-dark fw-normal">
+                  Eliminare il QR Code corrente ed inserire un nuovo ordine?
+                </div>
+                <div class="modal-footer">
+                  <div class="mx-auto">
+                    <button type="button" class="btn btn-warning fw-bold text-uppercase" data-bs-dismiss="modal">Annulla</button>
+                    <button type="submit" class="btn btn-success fw-bold text-uppercase" name="new">Nuovo ordine</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        </form>
+
       </div>
     </div>
   </div>
-</div>
 
 </div>
-</form>
 
 <script src={{ url_for("static", filename="js/easy.qrcode.min.js") }}></script>
 <script type="text/javascript">
@@ -61,7 +76,4 @@
 	// Create QRCode Object
 	new QRCode(document.getElementById("qrcode"), options);
 </script>
-</div>
-</div>
-</div>
 {% endblock %}

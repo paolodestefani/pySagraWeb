@@ -1,60 +1,69 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="container-fluid text-sm-center p-3 bg-primary text-white mb-4 bg-gradient">
-  <h2>{{ department }}</h2>
-  <p>Sono selezionati gli articoli/varianti che hanno quantit&agrave; maggiore di zero</p>
-  <p>{{ test }}</p>
+<!-- Il wrapper principale occupa l'altezza dello schermo (vh-100) per gestire i tasti in fondo -->
+<div class="d-flex flex-column vh-100 overflow-hidden">
+
+  <!-- Header Blu -->
+  <div class="container-fluid text-sm-center p-3 bg-primary text-white mb-3 bg-gradient flex-shrink-0">
+    <h2>{{ department }}</h2>
+    <p class="mb-1">Sono selezionati gli articoli/varianti che hanno quantit&agrave; maggiore di zero</p>
+    <p class="mb-0">{{ test }}</p>
+  </div>
+
+  <!-- Contenitore Principale -->
+  <div class="container-fluid px-3 flex-grow-1 overflow-hidden d-flex flex-column">
+    <div class="row justify-content-center flex-grow-1 overflow-hidden">
+      <div class="col-12 col-lg-8 col-xl-6 d-flex flex-column h-100 overflow-hidden">
+
+        <!-- Il Form distribuisce lo spazio: la tabella in alto e i bottoni isolati in fondo -->
+        <form action="" method="post" class="d-flex flex-column flex-grow-1 h-100 overflow-hidden justify-content-between">
+          
+          <!-- CONTENITORE TABELLA: Rimossa la classe 'flex-grow-1' così il box bianco si stringe sull'ultima riga -->
+          <!-- d-flex e flex-column con overflow-auto permettono lo scroll interno mantenendo i bordi corretti -->
+          <div class="table-responsive rounded border mb-3 overflow-auto bg-white d-flex flex-column">
+            <table class="table table-striped table-sm table-hover m-0">
+            <thead class="table-dark sticky-top">
+              <tr>
+                <th class="text-center" style="width: 160px">Quantit&agrave;</th>
+                <th class="text-center" style="width: 100px">Prezzo</th>
+                <th class="text-left" style="max-width: 500px">Articolo</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for line in lines %}
+              <tr>
+                {% if not line[6] %}
+                <td>
+                   <input class="form-control-sm" type="number" min="0" max="99" step="1" name="{{ loop.index0 }}" id="{{ loop.index0 }}" value="{{ line[2] }}" required>
+                </td>
+                {% else %}
+                  <td class="text-center">
+                      <button type= "submit" class="btn btn-sm bg-warning" name="variants" value="{{ loop.index0 }}">Sel. varianti</button>
+                  </td>
+                {% endif %}
+                <td class="text-center">{{ line[4] }}</td>
+                <td>{{ line[1] }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+            </table>
+          </div>
+
+          <!-- Pulsanti di Navigazione: Rimossi sfondo bianco (bg-white), bordo (border-top) e padding extra -->
+          <!-- mt-auto assicura che rimangano calamitati sul fondo dello schermo anche se la tabella è corta -->
+          <div class="form-group text-center pt-2 pb-4 mt-auto flex-shrink-0">
+              <button type="submit" class="btn btn-primary px-4 py-2 fw-bold text-uppercase mx-1 shadow-sm" name="previous">Indietro</button>
+              <button type="submit" class="btn btn-primary px-4 py-2 fw-bold text-uppercase mx-1 shadow-sm" name="next">Avanti</button>
+          </div>
+          
+        </form>
+
+      </div>
+    </div>
+  </div>
+
 </div>
 
-<div class="container-fluid px-3 pb-0">
-<div class="row align-items-center justify-content-center">
-<div class="col-12 col-lg-8 col-xl-6 mx-auto">
-
-<!-- main form -->
-  <form action="" method="post">
-    
-    <!-- 1. AGGIUNTO: Div contenitore con bordi arrotondati, bordo esterno e margine inferiore -->
-    <div class="table-responsive rounded border mb-3">
-      
-      <!-- 2. MODIFICATO: Rimossi i bordi esterni con border-0 e i margini con m-0 -->
-      <table class="table table-striped table-sm table-hover m-0">
-      <thead class="table-dark">
-        <tr>
-          <th class="text-center" style="width: 160px">Quantit&agrave;</th>
-          <th class="text-center" style="width: 100px">Prezzo</th>
-          <th class="text-left" style="max-width: 500px">Articolo</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for line in lines %}
-        <tr>
-          {% if not line[6] %}
-          <td>
-             <input class="form-control-sm" type="number" min="0" max="99" step="1" name="{{ loop.index0 }}" id="{{ loop.index0 }}" value="{{ line[2] }}" required>
-          </td>
-          {% else %}
-            <td class="text-center">
-                <button type= "submit" class="btn btn-sm bg-warning" name="variants" value="{{ loop.index0 }}">Sel. varianti</button>
-            </td>
-          {% endif %}
-          <td class="text-center">{{ line[4] }}</td>
-          <td>{{ line[1] }}</td>
-        </tr>
-        {% endfor %}
-      </tbody>
-      </table>
-      
-    </div> <!-- / fine table-responsive -->
-
-    <div class="form-group text-center">
-		<button type="submit" class="btn btn-primary" name="previous">Indietro</button>
-		<button type="submit" class="btn btn-primary" name="next">Avanti</button>
-	</div>
-  </form>
-  <br>
-</div>
-</div>
-</div>
 <script type="module">
     import {InputSpinner} from "{{ url_for("static", filename="js/InputSpinner.js") }}"
 

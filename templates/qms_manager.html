@@ -1,11 +1,23 @@
 {% extends "base.html" %}
 {% block content %}
+
+<style>
+    /* Effetto click per tutti i pulsanti nel container */
+    .container .btn {
+        transition: transform 0.1s ease, filter 0.1s ease;
+    }
+    .container .btn:active {
+        transform: scale(0.96) translateY(2px); /* Si rimpicciolisce e scende */
+        filter: brightness(0.9); /* Si scurisce leggermente */
+    }
+</style>
+
 <div class="container d-flex flex-column justify-content-center align-items-center vh-100">
     <div class="text-center w-100" style="max-width: 500px;">
         <h2 class="mb-5 text-dark fw-bold text-uppercase tracking-wider">Gestione della coda</h2>
         <!-- PRIMARYBUTTON: ADVANCE-->
         <div class="mb-4">
-            <button hx-post="{{ url_for('qms.queue_advance') }}" 
+            <button hx-post="{{ url_for('qmsmanager.queue_advance') }}" 
                     class="btn btn-success btn-lg w-100 py-4 fs-1 shadow-lg border-2 fw-bold text-uppercase">
                 Prossimo Numero
             </button>
@@ -14,14 +26,14 @@
         <div class="row g-3">
             <div class="col-6">
                 <!-- REGRESS (-1) -->
-                <button hx-post="{{ url_for('qms.queue_regress') }}" 
+                <button hx-post="{{ url_for('qmsmanager.queue_regress') }}" 
                         class="btn btn-warning btn-lg w-100 py-2 fs-5 shadow-sm fw-bold">
                     Decrementa (-1)
                 </button>
             </div>
             <div class="col-6">
                 <!-- RESET -->
-                <button hx-post="{{ url_for('qms.reset_queue') }}" 
+                <button hx-post="{{ url_for('qmsmanager.reset_queue') }}" 
                         hx-vals="js:{new_value: prompt('Inserisci il nuovo numero (es. A00, B15):', 'A00')}"
                         class="btn btn-danger btn-lg w-100 py-2 fs-5 shadow-sm fw-bold">
                     Reimposta...

@@ -1,62 +1,82 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="container-fluid text-sm-center p-3 bg-primary text-white mb-4 bg-gradient">
-  <h1>{{ event }}</h1>
-  <p>Compila il modulo seguente per inserire un ordine web. Clicca su <strong>Menu</strong> per selezionare gli articoli. Clicca su <strong>Cancella</strong> per eliminare tutti i dati inseriti.</p>
-  <p>{{ test }}</p>
+<!-- Il wrapper principale occupa l'altezza dello schermo (vh-100) per gestire i tasti in fondo -->
+<div class="d-flex flex-column vh-100 overflow-hidden">
+
+  <!-- Header Blu (Fisso in alto) -->
+  <div class="container-fluid text-sm-center p-3 bg-primary text-white mb-4 bg-gradient flex-shrink-0">
+    <h1>{{ event }}</h1>
+    <p class="mb-1">Compila il modulo seguente per inserire un ordine web. Clicca su <strong>Menu</strong> per selezionare gli articoli. Clicca su <strong>Cancella</strong> per eliminare tutti i dati inseriti.</p>
+    <p class="mb-0">{{ test }}</p>
+  </div>
+
+  <!-- Contenitore Principale -->
+  <div class="container-fluid px-3 flex-grow-1 overflow-hidden d-flex flex-column">
+    <div class="row align-items-start justify-content-center flex-grow-1 overflow-hidden">
+      <div class="col-12 col-sm-8 col-md-6 d-flex flex-column h-100 overflow-hidden">
+
+        <!-- Il Form occupa l'altezza disponibile e spinge i bottoni in fondo tramite mt-auto -->
+        <form action="" method="post" class="d-flex flex-column flex-grow-1 h-100 overflow-hidden justify-content-between">
+          
+          <!-- CONTENITORE DEI CAMPI DI INPUT (Resta compatto in alto) -->
+          <div class="overflow-auto pe-1">
+            <div class="row mb-3">
+              <label for="delivery" class="col-sm-2 col-form-label fw-bold">Consegna</label>
+              <div class="col-sm-10">
+              <select class="form-control" name="delivery" id="delivery" data-bs-toggle="tooltip" data-bs-placement="top" title="Selezionare il tipo di consegna degli articoli tra Tavolo e Asporto">
+                {% if delivery == 'Tavolo': %}
+                <option selected>Tavolo</option>
+                {% else %}
+                <option>Tavolo</option>
+                {% endif %}
+                {% if delivery == 'Asporto': %}
+                <option selected>Asporto</option>
+                {% else %}
+                <option>Asporto</option>
+                {% endif %}
+              </select>
+              </div>
+            </div>
+            
+            <div class="row mb-3">
+              <label for="table"  class="col-sm-2 col-form-label fw-bold">Tavolo</label>
+              <div class="col-sm-10">
+              <input type="text" name="table" id="table" class="form-control" size="40" value="{{ table }}" placeholder="Inserire il numero del tavolo" maxlength="40" 
+              data-bs-toggle="tooltip" data-bs-placement="top" title="Il numero del tavolo &egrave; obbligatorio se la consegna è al Tavolo">
+              </div>
+            </div>
+            
+            <div class="row mb-3">
+              <label for="customer" class="col-sm-2 col-form-label fw-bold">Nome</label>
+              <div class="col-sm-10">
+              <input type="text" name="customer" id="customer" class="form-control" size="40" value="{{ customer }}" placeholder="Inserire il nome del cliente" maxlength="40"
+              data-bs-toggle="tooltip" data-bs-placement="top" title="Il nome del cliente &egrave; obbligatorio se l'ordine &egrave; per Asporto">
+              </div>
+            </div>
+            
+            <div class="row mb-3">
+              <label for="covers" class="col-sm-2 col-form-label fw-bold">Coperti</label>
+              <div class="col-sm-10">
+              <input type="number" name="covers" id="covers" class="form-control" min="0" max = "99" value="{{ covers }}" placeholder="Inserire il numero di coperti"
+              data-bs-toggle="tooltip" data-bs-placement="top" title="Il numero di coperti &egrave; obbligatorio solo per la consegna al Tavolo">
+              </div>
+            </div>
+          </div>
+
+          <!-- Pulsanti di Navigazione: Isolati sullo sfondo, senza contenitori bianchi e bloccati in fondo -->
+          <div class="form-group text-center pt-2 pb-4 mt-auto flex-shrink-0">
+              <button type="submit" class="btn btn-danger px-4 py-2 fw-bold text-uppercase mx-1 shadow-sm" name="reset" title="Elimina tutti i dati e le selezioni effettuate">Cancella</button>
+              <button type="submit" class="btn btn-success px-4 py-2 fw-bold text-uppercase mx-1 shadow-sm" name="menu" title="Passa alla selezione degli articoli">Menu</button>
+          </div>
+          
+        </form>
+
+      </div>
+    </div>
+  </div>
+
 </div>
 
-<div class="container pb-5">
-<div class="row align-items-center justify-content-center">
-<div class="col-sm-6">
-<!-- main form -->
-  <form action="" method="post">
-    <div class="row mb-3">
-      <label for="delivery" class="col-sm-2 col-form-label fw-bold">Consegna</label>
-      <div class="col-sm-10">
-      <select class="form-control" name="delivery" id="delivery" data-bs-toggle="tooltip" data-bs-placement="top" title="Selezionare il tipo di consegna degli articoli tra Tavolo e Asporto">
-        {% if delivery == 'Tavolo': %}
-        <option selected>Tavolo</option>
-        {% else %}
-        <option>Tavolo</option>
-        {% endif %}
-        {% if delivery == 'Asporto': %}
-        <option selected>Asporto</option>
-        {% else %}
-        <option>Asporto</option>
-        {% endif %}
-      </select>
-      </div>
-    </div>
-    <div class="row mb-3">
-      <label for="table"  class="col-sm-2 col-form-label fw-bold">Tavolo</label>
-      <div class="col-sm-10">
-      <input type="text" name="table" id="table" class="form-control" size="40" value="{{ table }}" placeholder="Inserire il numero del tavolo" maxlength="40" 
-      data-bs-toggle="tooltip" data-bs-placement="top" title="Il numero del tavolo &egrave; obbligatorio se la consegna è al Tavolo">
-      </div>
-    </div>
-    <div class="row mb-3">
-      <label for="customer" class="col-sm-2 col-form-label fw-bold">Nome</label>
-      <div class="col-sm-10">
-      <input type="text" name="customer" id="customer" class="form-control" size="40" value="{{ customer }}" placeholder="Inserire il nome del cliente" maxlength="40"
-      data-bs-toggle="tooltip" data-bs-placement="top" title="Il nome del cliente &egrave; obbligatorio se l'ordine &egrave; per Asporto">
-      </div>
-    </div>
-    <div class="row mb-3">
-      <label for="covers" class="col-sm-2 col-form-label fw-bold">Coperti</label>
-      <div class="col-sm-10">
-      <input type="number" name="covers" id="covers" class="form-control" min="0" max = "99" value="{{ covers }}" placeholder="Inserire il numero di coperti"
-      data-bs-toggle="tooltip" data-bs-placement="top" title="Il numero di coperti &egrave; obbligatorio solo per la consegna al Tavolo">
-      </div>
-    </div>
-    <div class="form-group text-center">
-		<button type="submit" class="btn btn-danger" name="reset" title="Elimina tutti i dati e le selezioni effettuate">Cancella</button>
-		<button type="submit" class="btn btn-success" name="menu" title="Passa alla selezione degli articoli">Menu</button>
-	</div>
-  </form>
-</div>
-</div>
-</div>
 <script type="module">
     import {InputSpinner} from "{{ url_for("static", filename="js/InputSpinner.js") }}"
 

@@ -31,8 +31,10 @@ from flask import Blueprint, render_template, request, session, redirect, url_fo
 
 qms_bp = Blueprint('qms', __name__)
 
+qmsmanager_bp = Blueprint('qmsmanager', __name__)
 
-@qms_bp.before_request
+
+@qmsmanager_bp.before_request
 def check_authentication():
     if not session.get('authenticated'):
         return redirect(url_for('login.login', next=request.url))
@@ -106,13 +108,8 @@ queue_number = QueueNumber()
 
 @qms_bp.route('/')
 def index():
-    "Renders the main queue management page, displaying the current queue number."
+    "Renders the main queue page, displaying the current queue number."
     return render_template('qms_current.html', current_text='')
-
-@qms_bp.route('/manager')
-def manager():
-    "Renders the queue management interface for advancing, regressing, and resetting the queue number."
-    return render_template('qms_manager.html')
 
 @qms_bp.route('/get-current')
 def get_current():
@@ -122,19 +119,27 @@ def get_current():
         return f'<div class="pulse-number">{number}</div>' 
     return f'<div>{number}</div>'
 
-@qms_bp.route('/queue-advance', methods=['POST'])
+
+# manager
+
+@qmsmanager_bp.route('/')
+def manager():
+    "Renders the queue management interface for advancing, regressing, and resetting the queue number."
+    return render_template('qms_manager.html')
+
+@qmsmanager_bp.route('/queue-advance', methods=['POST'])
 def queue_advance():
     "Advances the queue number by one and returns a 204 No Content response, used for HTMX requests."
     queue_number.advance()
     return "", 204
 
-@qms_bp.route('/queue-regress', methods=['POST'])
+@qmsmanager_bp.route('/queue-regress', methods=['POST'])
 def queue_regress():
     "Regresses the queue number by one and returns a 204 No Content response, used for HTMX requests."
     queue_number.regress()
     return "", 204
 
-@qms_bp.route('/queue-reset', methods=['POST'])
+@qmsmanager_bp.route('/queue-reset', methods=['POST'])
 def reset_queue():
     "Resets the queue number to a new value provided by the user via a form submission."
     new_value = request.form.get('new_value')

@@ -1,38 +1,60 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="container-fluid text-sm-center p-3 bg-primary text-white mb-4 bg-gradient">
-  <h1>Selezionare la variante</h1>
-  <p>{{ test }}</p>
-</div>
+<!-- Il wrapper principale occupa l'altezza dello schermo (vh-100) per gestire i tasti in fondo -->
+<div class="d-flex flex-column vh-100 overflow-hidden">
 
-<div class="container pb-5">
-<div class="row align-items-center justify-content-center">
-<div class="col-sm-auto">
-  <p>{{ item }}:</p>
-  <form action="" method="post">
-  <div style="padding-left: 4em; margin-bottom: 1em;">
-  {% for var in variants %}
-  <div class="form-check form-lg">
-    <input class="form-check-input" type="checkbox" value="{{ loop.index0 }}" id="cb{{ loop.index0 }}" name="variantschecks">
-    <label class="form-check-label" for="cb{{ loop.index0 }}">{{ var[0] }}</label>
-    <label class="form-check-label" for="cb{{ loop.index0 }}">{{ var[2] }}</label>
+  <!-- Header Blu (Fisso in alto) -->
+  <div class="container-fluid text-sm-center p-3 bg-primary text-white mb-4 bg-gradient flex-shrink-0">
+    <h1>Selezionare la variante</h1>
+    <p class="mb-0">{{ test }}</p>
   </div>
-  {% endfor %}
-  </div>
-  <div class="row mb-3">
-    <label for="quantity" class="col-sm-auto col-form-label fw-bold">Quantit&agrave;</label>
-    <div class="col-sm-auto">
-      <input type="number" name="quantity" id="quantity" class="form-control" min="1" max = "99" value="{{ quantity }}">
+
+  <!-- Contenitore Principale -->
+  <div class="container-fluid px-3 flex-grow-1 overflow-hidden d-flex flex-column">
+    <!-- row con justify-content-center centra orizzontalmente il blocco -->
+    <div class="row justify-content-center flex-grow-1 overflow-hidden">
+      <!-- col-auto permette al blocco di stringersi intorno al contenuto e rimanere centrato -->
+      <div class="col-auto d-flex flex-column h-100 overflow-hidden">
+        
+        <p class="fw-bold mb-2">{{ item }}:</p>
+        
+        <!-- Il Form occupa l'altezza disponibile e distribuisce lo spazio internamente -->
+        <form action="" method="post" class="d-flex flex-column flex-grow-1 h-100 overflow-hidden justify-content-between">
+          
+          <!-- CONTENITORE DELLE OPZIONI (Resta compatto in alto e scorre se ci sono troppe varianti) -->
+          <div class="overflow-auto pe-1">
+            <div class="ps-4 mb-4">
+              {% for var in variants %}
+              <div class="form-check form-lg mb-2">
+                <input class="form-check-input" type="checkbox" value="{{ loop.index0 }}" id="cb{{ loop.index0 }}" name="variantschecks">
+                <label class="form-check-label me-2" for="cb{{ loop.index0 }}">{{ var[0] }}</label>
+                <label class="form-check-label text-muted" for="cb{{ loop.index0 }}">{{ var[2] }}</label>
+              </div>
+              {% endfor %}
+            </div>
+            
+            <div class="row align-items-center mb-3">
+              <label for="quantity" class="col-auto col-form-label fw-bold">Quantit&agrave;</label>
+              <div class="col-auto">
+                <input type="number" name="quantity" id="quantity" class="form-control" min="1" max="99" value="{{ quantity }}">
+              </div>
+            </div>
+          </div>
+
+          <!-- Pulsanti di Navigazione: Isolati e bloccati in fondo allo schermo -->
+          <div class="form-group text-center pt-2 pb-4 mt-auto flex-shrink-0">
+            <button type="submit" class="btn btn-warning px-4 py-2 fw-bold text-uppercase mx-1 shadow-sm" name="cancel">Annulla</button>
+            <button type="submit" class="btn btn-success px-4 py-2 fw-bold text-uppercase mx-1 shadow-sm" name="confirm">Conferma</button>
+          </div>
+          
+        </form>
+
+      </div>
     </div>
   </div>
-  <div class="form-group text-center">
-    <button type="submit" class="btn btn-warning" name="cancel">Annulla</button>
-    <button type="submit" class="btn btn-success" name="confirm">Conferma</button>
-  </div>
-  </form>
+
 </div>
-</div>
-</div>
+
 <script type="module">
     import {InputSpinner} from "{{ url_for("static", filename="js/InputSpinner.js") }}"
 
@@ -42,4 +64,3 @@
     }
 </script>
 {% endblock %}
-

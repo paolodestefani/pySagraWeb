@@ -65,13 +65,15 @@ def login():
         return redirect(url_for('login.logout'))
     
     if request.method == 'POST':
+        user_inserted = request.form.get('user')
         password_inserted = request.form.get('password')
-        if password_inserted == appconfig['LOGIN']['password']:
+        if (user_inserted == appconfig['LOGIN']['user'] and
+            password_inserted == appconfig['LOGIN']['password']):
             session['authenticated'] = True
             #session.permanent = True # session expires at browser close
             return redirect(next_page)
         else:
-            error = "Password errata. Riprova."
+            error = "Autenticazione fallita. Riprova."
             
     return render_template('login.html', error=error)
 

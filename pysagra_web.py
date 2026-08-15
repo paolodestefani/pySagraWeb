@@ -59,6 +59,7 @@ from app.order_entry import order_bp
 from app.order_status import status_bp
 from app.monitor import monitor_bp 
 from app.queue_management import qms_bp
+from app.queue_management import qmsmanager_bp
 
 
 # start logging system with automatic size limit
@@ -120,6 +121,7 @@ def create_app() -> Flask:
     flask_app.register_blueprint(status_bp, url_prefix='/status')
     flask_app.register_blueprint(monitor_bp, url_prefix='/monitor')
     flask_app.register_blueprint(qms_bp, url_prefix='/qms')
+    flask_app.register_blueprint(qmsmanager_bp, url_prefix='/qmsmanager')
     flask_app.register_blueprint(login_bp, url_prefix='/auth')
     # default route
     @flask_app.route('/')
