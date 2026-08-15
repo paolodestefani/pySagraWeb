@@ -34,7 +34,7 @@ from flask import Blueprint, render_template, redirect, request, url_for, sessio
 
 # application modules
 from app import appconfig
-from app.login import login_required
+#from app.login import login_required
 from app.database.event import get_event_from_date
 from app.database.order_status import get_order_status
 from app.database.inventory import get_inventory
@@ -43,14 +43,18 @@ from app.database.inventory import get_inventory
 monitor_bp = Blueprint('monitor', __name__)
 
 
+@monitor_bp.before_request
+def check_authentication():
+    if not session.get('authenticated'):
+        return redirect(url_for('login.login', next=request.url))
+
+
 @monitor_bp.route('/')
-@login_required
 def monitor_index():
     return render_template('monitor.html')
 
 
 @monitor_bp.route('/inventory')
-@login_required
 def monitor_inventory():
     event_id, _ = get_event_from_date(datetime.date.today())
     lines = get_inventory(event_id)
@@ -59,7 +63,6 @@ def monitor_inventory():
 
 
 @monitor_bp.route('/update_inventory_rows')
-@login_required
 def monitor_inventory_update_rows():
     event_id, _ = get_event_from_date(datetime.date.today())
     lines = get_inventory(event_id)

@@ -6055,3 +6055,1786 @@ werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'login'
 2026-08-09 01:53:21 INFO pysagra_web: Connected client - IP: 192.168.1.179 - Request: GET /order/header
 2026-08-09 02:06:27 INFO pysagra_web: Stopping wsgi server
 2026-08-09 02:06:27 INFO pysagra_web: Database connection closed successfully
+2026-08-09 12:43:16 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-09 12:43:16 INFO connect: Starting database connection with parameters:
+2026-08-09 12:43:16 INFO connect: host = localhost
+2026-08-09 12:43:16 INFO connect: port = 5432
+2026-08-09 12:43:16 INFO connect: database = pysagra_demo
+2026-08-09 12:43:16 INFO connect: dbuser = pa_login_role
+2026-08-09 12:43:16 INFO connect: dbuser password = ********
+2026-08-09 12:43:16 INFO connect: application_name = pySagra
+2026-08-09 12:43:16 INFO connect: Database connection established
+2026-08-09 12:43:16 INFO connect: DB is verified as an application database
+2026-08-09 12:43:16 INFO connect: Calling application connection function with parameters:
+2026-08-09 12:43:16 INFO connect: pgminver = 10
+2026-08-09 12:43:16 INFO connect: appname = pySagra
+2026-08-09 12:43:16 INFO connect: appversion = 1.0
+2026-08-09 12:43:16 INFO connect: user = ********
+2026-08-09 12:43:16 INFO connect: password = ********
+2026-08-09 12:43:16 INFO connect: hostname = pysagra_web_server
+2026-08-09 12:43:16 INFO connect: DB Application connection established
+2026-08-09 12:43:16 INFO pysagra_web: Database connection established
+2026-08-09 12:43:16 INFO pysagra_web: Company set to 20
+2026-08-09 12:43:16 INFO wasyncore: Serving on http://0.0.0.0:8080
+2026-08-09 12:43:24 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms
+2026-08-09 12:51:00 INFO pysagra_web: Stopping wsgi server
+2026-08-09 12:51:00 INFO pysagra_web: Database connection closed successfully
+2026-08-09 12:53:04 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-09 12:53:04 INFO connect: Starting database connection with parameters:
+2026-08-09 12:53:04 INFO connect: host = localhost
+2026-08-09 12:53:04 INFO connect: port = 5432
+2026-08-09 12:53:04 INFO connect: database = pysagra_demo
+2026-08-09 12:53:04 INFO connect: dbuser = pa_login_role
+2026-08-09 12:53:04 INFO connect: dbuser password = ********
+2026-08-09 12:53:04 INFO connect: application_name = pySagra
+2026-08-09 12:53:04 INFO connect: Database connection established
+2026-08-09 12:53:04 INFO connect: DB is verified as an application database
+2026-08-09 12:53:04 INFO connect: Calling application connection function with parameters:
+2026-08-09 12:53:04 INFO connect: pgminver = 10
+2026-08-09 12:53:04 INFO connect: appname = pySagra
+2026-08-09 12:53:04 INFO connect: appversion = 1.0
+2026-08-09 12:53:04 INFO connect: user = ********
+2026-08-09 12:53:04 INFO connect: password = ********
+2026-08-09 12:53:04 INFO connect: hostname = pysagra_web_server
+2026-08-09 12:53:04 INFO connect: DB Application connection established
+2026-08-09 12:53:04 INFO pysagra_web: Database connection established
+2026-08-09 12:53:04 INFO pysagra_web: Company set to 20
+2026-08-09 12:53:04 INFO wasyncore: Serving on http://0.0.0.0:8080
+2026-08-09 12:53:06 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /login/
+2026-08-09 12:53:06 ERROR app: Exception on /login/ [GET]
+Traceback (most recent call last):
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/paolo/Development/pySagraWeb/app/login.py", line 56, in login
+    next_page = request.args.get('next') or url_for('order.monitor')  # default redirect after login
+                                            ~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/helpers.py", line 239, in url_for
+    return current_app.url_for(
+           ~~~~~~~~~~~~~~~~~~~^
+        endpoint,
+        ^^^^^^^^^
+    ...<4 lines>...
+        **values,
+        ^^^^^^^^^
+    )
+    ^
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 1121, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 1110, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+        endpoint,
+    ...<3 lines>...
+        force_external=_external,
+    )
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/werkzeug/routing/map.py", line 901, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'order.monitor'. Did you mean 'monitor.monitor_index' instead?
+2026-08-09 12:53:08 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /login/
+2026-08-09 12:53:08 ERROR app: Exception on /login/ [GET]
+Traceback (most recent call last):
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/paolo/Development/pySagraWeb/app/login.py", line 56, in login
+    next_page = request.args.get('next') or url_for('order.monitor')  # default redirect after login
+                                            ~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/helpers.py", line 239, in url_for
+    return current_app.url_for(
+           ~~~~~~~~~~~~~~~~~~~^
+        endpoint,
+        ^^^^^^^^^
+    ...<4 lines>...
+        **values,
+        ^^^^^^^^^
+    )
+    ^
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 1121, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 1110, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+        endpoint,
+    ...<3 lines>...
+        force_external=_external,
+    )
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/werkzeug/routing/map.py", line 901, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'order.monitor'. Did you mean 'monitor.monitor_index' instead?
+2026-08-09 12:53:08 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /favicon.ico
+2026-08-09 12:54:51 INFO pysagra_web: Stopping wsgi server
+2026-08-09 12:54:51 INFO pysagra_web: Database connection closed successfully
+2026-08-09 12:54:58 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-09 12:54:58 INFO connect: Starting database connection with parameters:
+2026-08-09 12:54:58 INFO connect: host = localhost
+2026-08-09 12:54:58 INFO connect: port = 5432
+2026-08-09 12:54:58 INFO connect: database = pysagra_demo
+2026-08-09 12:54:58 INFO connect: dbuser = pa_login_role
+2026-08-09 12:54:58 INFO connect: dbuser password = ********
+2026-08-09 12:54:58 INFO connect: application_name = pySagra
+2026-08-09 12:54:58 INFO connect: Database connection established
+2026-08-09 12:54:58 INFO connect: DB is verified as an application database
+2026-08-09 12:54:58 INFO connect: Calling application connection function with parameters:
+2026-08-09 12:54:58 INFO connect: pgminver = 10
+2026-08-09 12:54:58 INFO connect: appname = pySagra
+2026-08-09 12:54:58 INFO connect: appversion = 1.0
+2026-08-09 12:54:58 INFO connect: user = ********
+2026-08-09 12:54:58 INFO connect: password = ********
+2026-08-09 12:54:58 INFO connect: hostname = pysagra_web_server
+2026-08-09 12:54:58 INFO connect: DB Application connection established
+2026-08-09 12:54:58 INFO pysagra_web: Database connection established
+2026-08-09 12:54:58 INFO pysagra_web: Company set to 20
+2026-08-09 12:54:58 INFO wasyncore: Serving on http://0.0.0.0:8080
+2026-08-09 12:55:01 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /login/
+2026-08-09 12:55:01 ERROR app: Exception on /login/ [GET]
+Traceback (most recent call last):
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/paolo/Development/pySagraWeb/app/login.py", line 56, in login
+    next_page = request.args.get('next') or url_for('order.monitor_index')  # default redirect after login
+                                            ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/helpers.py", line 239, in url_for
+    return current_app.url_for(
+           ~~~~~~~~~~~~~~~~~~~^
+        endpoint,
+        ^^^^^^^^^
+    ...<4 lines>...
+        **values,
+        ^^^^^^^^^
+    )
+    ^
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 1121, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 1110, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+        endpoint,
+    ...<3 lines>...
+        force_external=_external,
+    )
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/werkzeug/routing/map.py", line 901, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'order.monitor_index'. Did you mean 'monitor.monitor_index' instead?
+2026-08-09 12:55:31 INFO pysagra_web: Stopping wsgi server
+2026-08-09 12:55:31 INFO pysagra_web: Database connection closed successfully
+2026-08-09 12:55:38 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-09 12:55:38 INFO connect: Starting database connection with parameters:
+2026-08-09 12:55:38 INFO connect: host = localhost
+2026-08-09 12:55:38 INFO connect: port = 5432
+2026-08-09 12:55:38 INFO connect: database = pysagra_demo
+2026-08-09 12:55:38 INFO connect: dbuser = pa_login_role
+2026-08-09 12:55:38 INFO connect: dbuser password = ********
+2026-08-09 12:55:38 INFO connect: application_name = pySagra
+2026-08-09 12:55:38 INFO connect: Database connection established
+2026-08-09 12:55:38 INFO connect: DB is verified as an application database
+2026-08-09 12:55:38 INFO connect: Calling application connection function with parameters:
+2026-08-09 12:55:38 INFO connect: pgminver = 10
+2026-08-09 12:55:38 INFO connect: appname = pySagra
+2026-08-09 12:55:38 INFO connect: appversion = 1.0
+2026-08-09 12:55:38 INFO connect: user = ********
+2026-08-09 12:55:38 INFO connect: password = ********
+2026-08-09 12:55:38 INFO connect: hostname = pysagra_web_server
+2026-08-09 12:55:38 INFO connect: DB Application connection established
+2026-08-09 12:55:38 INFO pysagra_web: Database connection established
+2026-08-09 12:55:38 INFO pysagra_web: Company set to 20
+2026-08-09 12:55:38 INFO wasyncore: Serving on http://0.0.0.0:8080
+2026-08-09 12:55:40 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /login/
+2026-08-09 12:56:29 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /login/logout
+2026-08-09 12:56:29 ERROR app: Exception on /login/logout [GET]
+Traceback (most recent call last):
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/paolo/Development/pySagraWeb/app/login.py", line 72, in logout
+    return redirect(url_for('login'))
+                    ~~~~~~~^^^^^^^^^
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/helpers.py", line 239, in url_for
+    return current_app.url_for(
+           ~~~~~~~~~~~~~~~~~~~^
+        endpoint,
+        ^^^^^^^^^
+    ...<4 lines>...
+        **values,
+        ^^^^^^^^^
+    )
+    ^
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 1121, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 1110, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+        endpoint,
+    ...<3 lines>...
+        force_external=_external,
+    )
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/werkzeug/routing/map.py", line 901, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'login'. Did you mean 'login.login' instead?
+2026-08-09 12:56:41 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /login/
+2026-08-09 12:56:43 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/
+2026-08-09 12:56:43 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /login/
+2026-08-09 12:57:01 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /login/
+2026-08-09 12:57:01 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/
+2026-08-09 15:08:17 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/
+2026-08-09 15:08:20 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/inventory
+2026-08-09 15:08:25 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:08:30 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:08:35 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:08:40 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:08:45 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:08:50 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:08:55 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:09:00 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:09:05 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:09:10 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:09:15 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:09:20 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:09:25 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:09:30 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:09:35 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:09:40 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:09:45 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:09:49 INFO pysagra_web: Connected client - IP: 192.168.1.155 - Request: GET /monitor/inventory
+2026-08-09 15:09:49 INFO pysagra_web: Connected client - IP: 192.168.1.155 - Request: GET /login/
+2026-08-09 15:09:50 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:09:55 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:10:00 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:10:05 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:10:09 INFO pysagra_web: Connected client - IP: 192.168.1.155 - Request: POST /login/
+2026-08-09 15:10:09 INFO pysagra_web: Connected client - IP: 192.168.1.155 - Request: GET /monitor/inventory
+2026-08-09 15:10:10 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:10:15 INFO pysagra_web: Connected client - IP: 192.168.1.155 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:10:15 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:10:20 INFO pysagra_web: Connected client - IP: 192.168.1.155 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:10:20 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:10:25 INFO pysagra_web: Connected client - IP: 192.168.1.155 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:10:25 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:10:30 INFO pysagra_web: Connected client - IP: 192.168.1.155 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:10:30 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:10:35 INFO pysagra_web: Connected client - IP: 192.168.1.155 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:10:35 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:10:40 INFO pysagra_web: Connected client - IP: 192.168.1.155 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:10:41 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:10:45 INFO pysagra_web: Connected client - IP: 192.168.1.155 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:10:47 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:10:50 INFO pysagra_web: Connected client - IP: 192.168.1.155 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:10:53 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:10:55 INFO pysagra_web: Connected client - IP: 192.168.1.155 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:10:59 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:11:00 INFO pysagra_web: Connected client - IP: 192.168.1.155 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:11:05 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:11:05 INFO pysagra_web: Connected client - IP: 192.168.1.155 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:11:11 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:11:11 INFO pysagra_web: Connected client - IP: 192.168.1.155 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:11:17 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:11:17 INFO pysagra_web: Connected client - IP: 192.168.1.155 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:11:23 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:11:24 INFO pysagra_web: Connected client - IP: 192.168.1.155 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:11:29 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:11:29 INFO pysagra_web: Connected client - IP: 192.168.1.155 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:11:35 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:11:35 INFO pysagra_web: Connected client - IP: 192.168.1.155 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:11:41 INFO pysagra_web: Connected client - IP: 192.168.1.155 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:11:47 INFO pysagra_web: Connected client - IP: 192.168.1.155 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:11:53 INFO pysagra_web: Connected client - IP: 192.168.1.155 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:11:59 INFO pysagra_web: Connected client - IP: 192.168.1.155 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:12:05 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:13:05 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:14:05 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:14:19 INFO pysagra_web: Connected client - IP: 192.168.1.155 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:14:22 INFO pysagra_web: Connected client - IP: 192.168.1.155 - Request: GET /monitor/inventory
+2026-08-09 15:15:05 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:16:05 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:17:05 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:18:05 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:19:05 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:20:05 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:21:05 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:22:05 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:23:05 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:24:05 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:25:05 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:26:05 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:27:05 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:28:05 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:29:05 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:30:05 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:31:05 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:32:05 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:33:05 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:34:05 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:35:05 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:36:05 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:36:27 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:36:32 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:36:38 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:36:44 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:36:45 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms
+2026-08-09 15:36:50 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:36:56 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:37:02 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:37:08 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:37:13 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:37:18 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:37:23 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:37:28 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:37:34 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 15:43:35 INFO pysagra_web: Stopping wsgi server
+2026-08-09 15:43:35 INFO pysagra_web: Database connection closed successfully
+2026-08-09 23:29:50 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-09 23:29:50 INFO connect: Starting database connection with parameters:
+2026-08-09 23:29:50 INFO connect: host = localhost
+2026-08-09 23:29:50 INFO connect: port = 5432
+2026-08-09 23:29:50 INFO connect: database = pysagra_demo
+2026-08-09 23:29:50 INFO connect: dbuser = pa_login_role
+2026-08-09 23:29:50 INFO connect: dbuser password = ********
+2026-08-09 23:29:50 INFO connect: application_name = pySagra
+2026-08-09 23:29:50 INFO connect: Database connection established
+2026-08-09 23:29:50 INFO connect: DB is verified as an application database
+2026-08-09 23:29:50 INFO connect: Calling application connection function with parameters:
+2026-08-09 23:29:50 INFO connect: pgminver = 10
+2026-08-09 23:29:50 INFO connect: appname = pySagra
+2026-08-09 23:29:50 INFO connect: appversion = 1.0
+2026-08-09 23:29:50 INFO connect: user = ********
+2026-08-09 23:29:50 INFO connect: password = ********
+2026-08-09 23:29:50 INFO connect: hostname = pysagra_web_server
+2026-08-09 23:29:51 INFO connect: DB Application connection established
+2026-08-09 23:29:51 INFO pysagra_web: Database connection established
+2026-08-09 23:29:51 INFO pysagra_web: Company set to 20
+2026-08-09 23:29:51 INFO wasyncore: Serving on http://0.0.0.0:8080
+2026-08-09 23:29:58 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /
+2026-08-09 23:29:58 ERROR app: Exception on / [GET]
+Traceback (most recent call last):
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/paolo/Development/pySagraWeb/pysagra_web.py", line 127, in index
+    return redirect(url_for('order.monitor'))
+                    ~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/helpers.py", line 239, in url_for
+    return current_app.url_for(
+           ~~~~~~~~~~~~~~~~~~~^
+        endpoint,
+        ^^^^^^^^^
+    ...<4 lines>...
+        **values,
+        ^^^^^^^^^
+    )
+    ^
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 1121, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 1110, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+        endpoint,
+    ...<3 lines>...
+        force_external=_external,
+    )
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/werkzeug/routing/map.py", line 901, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'order.monitor'. Did you mean 'monitor.monitor_index' instead?
+2026-08-09 23:30:01 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /
+2026-08-09 23:30:01 ERROR app: Exception on / [GET]
+Traceback (most recent call last):
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/paolo/Development/pySagraWeb/pysagra_web.py", line 127, in index
+    return redirect(url_for('order.monitor'))
+                    ~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/helpers.py", line 239, in url_for
+    return current_app.url_for(
+           ~~~~~~~~~~~~~~~~~~~^
+        endpoint,
+        ^^^^^^^^^
+    ...<4 lines>...
+        **values,
+        ^^^^^^^^^
+    )
+    ^
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 1121, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 1110, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+        endpoint,
+    ...<3 lines>...
+        force_external=_external,
+    )
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/werkzeug/routing/map.py", line 901, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'order.monitor'. Did you mean 'monitor.monitor_index' instead?
+2026-08-09 23:30:01 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /favicon.ico
+2026-08-09 23:32:30 INFO pysagra_web: Stopping wsgi server
+2026-08-09 23:32:30 INFO pysagra_web: Database connection closed successfully
+2026-08-09 23:32:36 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-09 23:32:36 INFO connect: Starting database connection with parameters:
+2026-08-09 23:32:36 INFO connect: host = localhost
+2026-08-09 23:32:36 INFO connect: port = 5432
+2026-08-09 23:32:36 INFO connect: database = pysagra_demo
+2026-08-09 23:32:36 INFO connect: dbuser = pa_login_role
+2026-08-09 23:32:36 INFO connect: dbuser password = ********
+2026-08-09 23:32:36 INFO connect: application_name = pySagra
+2026-08-09 23:32:36 INFO connect: Database connection established
+2026-08-09 23:32:36 INFO connect: DB is verified as an application database
+2026-08-09 23:32:36 INFO connect: Calling application connection function with parameters:
+2026-08-09 23:32:36 INFO connect: pgminver = 10
+2026-08-09 23:32:36 INFO connect: appname = pySagra
+2026-08-09 23:32:36 INFO connect: appversion = 1.0
+2026-08-09 23:32:36 INFO connect: user = ********
+2026-08-09 23:32:36 INFO connect: password = ********
+2026-08-09 23:32:36 INFO connect: hostname = pysagra_web_server
+2026-08-09 23:32:36 INFO connect: DB Application connection established
+2026-08-09 23:32:36 INFO pysagra_web: Database connection established
+2026-08-09 23:32:36 INFO pysagra_web: Company set to 20
+2026-08-09 23:32:36 INFO wasyncore: Serving on http://0.0.0.0:8080
+2026-08-09 23:32:40 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /
+2026-08-09 23:32:40 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /order/header
+2026-08-09 23:32:52 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /login/
+2026-08-09 23:32:54 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /login/
+2026-08-09 23:33:51 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /login/login
+2026-08-09 23:33:51 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /login/login
+2026-08-09 23:33:54 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /login/login
+2026-08-09 23:33:59 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /login/
+2026-08-09 23:34:01 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /logout
+2026-08-09 23:34:35 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /logout
+2026-08-09 23:35:06 INFO pysagra_web: Stopping wsgi server
+2026-08-09 23:35:06 INFO pysagra_web: Database connection closed successfully
+2026-08-09 23:35:13 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-09 23:35:13 INFO connect: Starting database connection with parameters:
+2026-08-09 23:35:13 INFO connect: host = localhost
+2026-08-09 23:35:13 INFO connect: port = 5432
+2026-08-09 23:35:13 INFO connect: database = pysagra_demo
+2026-08-09 23:35:13 INFO connect: dbuser = pa_login_role
+2026-08-09 23:35:13 INFO connect: dbuser password = ********
+2026-08-09 23:35:13 INFO connect: application_name = pySagra
+2026-08-09 23:35:13 INFO connect: Database connection established
+2026-08-09 23:35:13 INFO connect: DB is verified as an application database
+2026-08-09 23:35:13 INFO connect: Calling application connection function with parameters:
+2026-08-09 23:35:13 INFO connect: pgminver = 10
+2026-08-09 23:35:13 INFO connect: appname = pySagra
+2026-08-09 23:35:13 INFO connect: appversion = 1.0
+2026-08-09 23:35:13 INFO connect: user = ********
+2026-08-09 23:35:13 INFO connect: password = ********
+2026-08-09 23:35:13 INFO connect: hostname = pysagra_web_server
+2026-08-09 23:35:13 INFO connect: DB Application connection established
+2026-08-09 23:35:13 INFO pysagra_web: Database connection established
+2026-08-09 23:35:13 INFO pysagra_web: Company set to 20
+2026-08-09 23:35:13 INFO wasyncore: Serving on http://0.0.0.0:8080
+2026-08-09 23:35:21 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /login/
+2026-08-09 23:35:22 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /login/
+2026-08-09 23:35:26 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /login/login
+2026-08-09 23:35:27 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /login/login
+2026-08-09 23:35:30 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /login/
+2026-08-09 23:35:32 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /logout
+2026-08-09 23:35:34 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /logout
+2026-08-09 23:35:58 INFO pysagra_web: Stopping wsgi server
+2026-08-09 23:35:58 INFO pysagra_web: Database connection closed successfully
+2026-08-09 23:36:23 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-09 23:36:23 INFO connect: Starting database connection with parameters:
+2026-08-09 23:36:23 INFO connect: host = localhost
+2026-08-09 23:36:23 INFO connect: port = 5432
+2026-08-09 23:36:23 INFO connect: database = pysagra_demo
+2026-08-09 23:36:23 INFO connect: dbuser = pa_login_role
+2026-08-09 23:36:23 INFO connect: dbuser password = ********
+2026-08-09 23:36:23 INFO connect: application_name = pySagra
+2026-08-09 23:36:23 INFO connect: Database connection established
+2026-08-09 23:36:23 INFO connect: DB is verified as an application database
+2026-08-09 23:36:23 INFO connect: Calling application connection function with parameters:
+2026-08-09 23:36:23 INFO connect: pgminver = 10
+2026-08-09 23:36:23 INFO connect: appname = pySagra
+2026-08-09 23:36:23 INFO connect: appversion = 1.0
+2026-08-09 23:36:23 INFO connect: user = ********
+2026-08-09 23:36:23 INFO connect: password = ********
+2026-08-09 23:36:23 INFO connect: hostname = pysagra_web_server
+2026-08-09 23:36:23 INFO connect: DB Application connection established
+2026-08-09 23:36:23 INFO pysagra_web: Database connection established
+2026-08-09 23:36:23 INFO pysagra_web: Company set to 20
+2026-08-09 23:36:23 INFO wasyncore: Serving on http://0.0.0.0:8080
+2026-08-09 23:36:31 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /login/
+2026-08-09 23:36:33 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /login/login
+2026-08-09 23:36:33 ERROR app: Exception on /login/login [GET]
+Traceback (most recent call last):
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/paolo/Development/pySagraWeb/app/login.py", line 59, in login
+    return redirect(url_for('logout'))
+                    ~~~~~~~^^^^^^^^^^
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/helpers.py", line 239, in url_for
+    return current_app.url_for(
+           ~~~~~~~~~~~~~~~~~~~^
+        endpoint,
+        ^^^^^^^^^
+    ...<4 lines>...
+        **values,
+        ^^^^^^^^^
+    )
+    ^
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 1121, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 1110, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+        endpoint,
+    ...<3 lines>...
+        force_external=_external,
+    )
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/werkzeug/routing/map.py", line 901, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'logout'. Did you mean 'login.logout' instead?
+2026-08-09 23:36:34 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /login/login
+2026-08-09 23:36:34 ERROR app: Exception on /login/login [GET]
+Traceback (most recent call last):
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/paolo/Development/pySagraWeb/app/login.py", line 59, in login
+    return redirect(url_for('logout'))
+                    ~~~~~~~^^^^^^^^^^
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/helpers.py", line 239, in url_for
+    return current_app.url_for(
+           ~~~~~~~~~~~~~~~~~~~^
+        endpoint,
+        ^^^^^^^^^
+    ...<4 lines>...
+        **values,
+        ^^^^^^^^^
+    )
+    ^
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 1121, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 1110, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+        endpoint,
+    ...<3 lines>...
+        force_external=_external,
+    )
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/werkzeug/routing/map.py", line 901, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'logout'. Did you mean 'login.logout' instead?
+2026-08-09 23:37:17 INFO pysagra_web: Stopping wsgi server
+2026-08-09 23:37:17 INFO pysagra_web: Database connection closed successfully
+2026-08-09 23:37:26 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-09 23:37:26 INFO connect: Starting database connection with parameters:
+2026-08-09 23:37:26 INFO connect: host = localhost
+2026-08-09 23:37:26 INFO connect: port = 5432
+2026-08-09 23:37:26 INFO connect: database = pysagra_demo
+2026-08-09 23:37:26 INFO connect: dbuser = pa_login_role
+2026-08-09 23:37:26 INFO connect: dbuser password = ********
+2026-08-09 23:37:26 INFO connect: application_name = pySagra
+2026-08-09 23:37:26 INFO connect: Database connection established
+2026-08-09 23:37:26 INFO connect: DB is verified as an application database
+2026-08-09 23:37:26 INFO connect: Calling application connection function with parameters:
+2026-08-09 23:37:26 INFO connect: pgminver = 10
+2026-08-09 23:37:26 INFO connect: appname = pySagra
+2026-08-09 23:37:26 INFO connect: appversion = 1.0
+2026-08-09 23:37:26 INFO connect: user = ********
+2026-08-09 23:37:26 INFO connect: password = ********
+2026-08-09 23:37:26 INFO connect: hostname = pysagra_web_server
+2026-08-09 23:37:26 INFO connect: DB Application connection established
+2026-08-09 23:37:26 INFO pysagra_web: Database connection established
+2026-08-09 23:37:26 INFO pysagra_web: Company set to 20
+2026-08-09 23:37:26 INFO wasyncore: Serving on http://0.0.0.0:8080
+2026-08-09 23:37:31 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /login/login
+2026-08-09 23:37:31 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /login/logout
+2026-08-09 23:37:38 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /login/logout
+2026-08-09 23:37:45 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /login/login
+2026-08-09 23:37:45 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /login/logout
+2026-08-09 23:37:50 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /login/login
+2026-08-09 23:37:50 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /login/logout
+2026-08-09 23:40:00 INFO pysagra_web: Stopping wsgi server
+2026-08-09 23:40:00 INFO pysagra_web: Database connection closed successfully
+2026-08-09 23:40:06 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-09 23:40:06 INFO connect: Starting database connection with parameters:
+2026-08-09 23:40:06 INFO connect: host = localhost
+2026-08-09 23:40:06 INFO connect: port = 5432
+2026-08-09 23:40:06 INFO connect: database = pysagra_demo
+2026-08-09 23:40:06 INFO connect: dbuser = pa_login_role
+2026-08-09 23:40:06 INFO connect: dbuser password = ********
+2026-08-09 23:40:06 INFO connect: application_name = pySagra
+2026-08-09 23:40:06 INFO connect: Database connection established
+2026-08-09 23:40:06 INFO connect: DB is verified as an application database
+2026-08-09 23:40:06 INFO connect: Calling application connection function with parameters:
+2026-08-09 23:40:06 INFO connect: pgminver = 10
+2026-08-09 23:40:06 INFO connect: appname = pySagra
+2026-08-09 23:40:06 INFO connect: appversion = 1.0
+2026-08-09 23:40:06 INFO connect: user = ********
+2026-08-09 23:40:06 INFO connect: password = ********
+2026-08-09 23:40:06 INFO connect: hostname = pysagra_web_server
+2026-08-09 23:40:06 INFO connect: DB Application connection established
+2026-08-09 23:40:06 INFO pysagra_web: Database connection established
+2026-08-09 23:40:06 INFO pysagra_web: Company set to 20
+2026-08-09 23:40:06 INFO wasyncore: Serving on http://0.0.0.0:8080
+2026-08-09 23:40:12 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /login/
+2026-08-09 23:40:13 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /login/
+2026-08-09 23:40:17 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /login/login
+2026-08-09 23:40:17 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /login/logout
+2026-08-09 23:40:26 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /login/logout
+2026-08-09 23:41:34 INFO pysagra_web: Stopping wsgi server
+2026-08-09 23:41:34 INFO pysagra_web: Database connection closed successfully
+2026-08-09 23:41:43 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-09 23:41:43 INFO connect: Starting database connection with parameters:
+2026-08-09 23:41:43 INFO connect: host = localhost
+2026-08-09 23:41:43 INFO connect: port = 5432
+2026-08-09 23:41:43 INFO connect: database = pysagra_demo
+2026-08-09 23:41:43 INFO connect: dbuser = pa_login_role
+2026-08-09 23:41:43 INFO connect: dbuser password = ********
+2026-08-09 23:41:43 INFO connect: application_name = pySagra
+2026-08-09 23:41:43 INFO connect: Database connection established
+2026-08-09 23:41:43 INFO connect: DB is verified as an application database
+2026-08-09 23:41:43 INFO connect: Calling application connection function with parameters:
+2026-08-09 23:41:43 INFO connect: pgminver = 10
+2026-08-09 23:41:43 INFO connect: appname = pySagra
+2026-08-09 23:41:43 INFO connect: appversion = 1.0
+2026-08-09 23:41:43 INFO connect: user = ********
+2026-08-09 23:41:43 INFO connect: password = ********
+2026-08-09 23:41:43 INFO connect: hostname = pysagra_web_server
+2026-08-09 23:41:44 INFO connect: DB Application connection established
+2026-08-09 23:41:44 INFO pysagra_web: Database connection established
+2026-08-09 23:41:44 INFO pysagra_web: Company set to 20
+2026-08-09 23:41:44 INFO wasyncore: Serving on http://0.0.0.0:8080
+2026-08-09 23:41:50 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /login/
+2026-08-09 23:41:50 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /login/
+2026-08-09 23:42:01 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /login/
+2026-08-09 23:42:02 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /login/
+2026-08-09 23:42:05 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /login/
+2026-08-09 23:42:08 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /logout
+2026-08-09 23:45:50 INFO pysagra_web: Stopping wsgi server
+2026-08-09 23:45:50 INFO pysagra_web: Database connection closed successfully
+2026-08-09 23:45:54 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-09 23:45:54 INFO connect: Starting database connection with parameters:
+2026-08-09 23:45:54 INFO connect: host = localhost
+2026-08-09 23:45:54 INFO connect: port = 5432
+2026-08-09 23:45:54 INFO connect: database = pysagra_demo
+2026-08-09 23:45:54 INFO connect: dbuser = pa_login_role
+2026-08-09 23:45:54 INFO connect: dbuser password = ********
+2026-08-09 23:45:54 INFO connect: application_name = pySagra
+2026-08-09 23:45:54 INFO connect: Database connection established
+2026-08-09 23:45:54 INFO connect: DB is verified as an application database
+2026-08-09 23:45:54 INFO connect: Calling application connection function with parameters:
+2026-08-09 23:45:54 INFO connect: pgminver = 10
+2026-08-09 23:45:54 INFO connect: appname = pySagra
+2026-08-09 23:45:54 INFO connect: appversion = 1.0
+2026-08-09 23:45:54 INFO connect: user = ********
+2026-08-09 23:45:54 INFO connect: password = ********
+2026-08-09 23:45:54 INFO connect: hostname = pysagra_web_server
+2026-08-09 23:45:54 INFO connect: DB Application connection established
+2026-08-09 23:45:54 INFO pysagra_web: Database connection established
+2026-08-09 23:45:54 INFO pysagra_web: Company set to 20
+2026-08-09 23:45:54 INFO wasyncore: Serving on http://0.0.0.0:8080
+2026-08-09 23:46:03 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /logout
+2026-08-09 23:46:05 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /logout
+2026-08-09 23:51:45 INFO pysagra_web: Stopping wsgi server
+2026-08-09 23:51:45 INFO pysagra_web: Database connection closed successfully
+2026-08-09 23:51:53 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-09 23:51:53 INFO connect: Starting database connection with parameters:
+2026-08-09 23:51:53 INFO connect: host = localhost
+2026-08-09 23:51:53 INFO connect: port = 5432
+2026-08-09 23:51:53 INFO connect: database = pysagra_demo
+2026-08-09 23:51:53 INFO connect: dbuser = pa_login_role
+2026-08-09 23:51:53 INFO connect: dbuser password = ********
+2026-08-09 23:51:53 INFO connect: application_name = pySagra
+2026-08-09 23:51:53 INFO connect: Database connection established
+2026-08-09 23:51:53 INFO connect: DB is verified as an application database
+2026-08-09 23:51:53 INFO connect: Calling application connection function with parameters:
+2026-08-09 23:51:53 INFO connect: pgminver = 10
+2026-08-09 23:51:53 INFO connect: appname = pySagra
+2026-08-09 23:51:53 INFO connect: appversion = 1.0
+2026-08-09 23:51:53 INFO connect: user = ********
+2026-08-09 23:51:53 INFO connect: password = ********
+2026-08-09 23:51:53 INFO connect: hostname = pysagra_web_server
+2026-08-09 23:51:53 INFO connect: DB Application connection established
+2026-08-09 23:51:53 INFO pysagra_web: Database connection established
+2026-08-09 23:51:53 INFO pysagra_web: Company set to 20
+2026-08-09 23:51:53 INFO wasyncore: Serving on http://0.0.0.0:8080
+2026-08-09 23:52:01 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /logout
+2026-08-09 23:52:03 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /logout
+2026-08-09 23:52:03 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/
+2026-08-09 23:52:03 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /login
+2026-08-09 23:52:17 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /login
+2026-08-09 23:52:17 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/
+2026-08-09 23:52:19 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/inventory
+2026-08-09 23:52:24 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/
+2026-08-09 23:52:24 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 23:52:29 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-09 23:52:30 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /login/
+2026-08-09 23:52:32 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /login/
+2026-08-09 23:52:37 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /login/login
+2026-08-09 23:52:38 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /login/login
+2026-08-09 23:52:51 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /login/
+2026-08-09 23:52:54 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /logout
+2026-08-09 23:52:59 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /login/
+2026-08-09 23:53:01 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /login/
+2026-08-10 00:08:33 INFO pysagra_web: Stopping wsgi server
+2026-08-10 00:08:33 INFO pysagra_web: Database connection closed successfully
+2026-08-10 00:11:16 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-10 00:11:16 INFO connect: Starting database connection with parameters:
+2026-08-10 00:11:16 INFO connect: host = localhost
+2026-08-10 00:11:16 INFO connect: port = 5432
+2026-08-10 00:11:16 INFO connect: database = pysagra_demo
+2026-08-10 00:11:16 INFO connect: dbuser = pa_login_role
+2026-08-10 00:11:16 INFO connect: dbuser password = ********
+2026-08-10 00:11:16 INFO connect: application_name = pySagra
+2026-08-10 00:11:17 INFO connect: Database connection established
+2026-08-10 00:11:17 INFO connect: DB is verified as an application database
+2026-08-10 00:11:17 INFO connect: Calling application connection function with parameters:
+2026-08-10 00:11:17 INFO connect: pgminver = 10
+2026-08-10 00:11:17 INFO connect: appname = pySagra
+2026-08-10 00:11:17 INFO connect: appversion = 1.0
+2026-08-10 00:11:17 INFO connect: user = ********
+2026-08-10 00:11:17 INFO connect: password = ********
+2026-08-10 00:11:17 INFO connect: hostname = pysagra_web_server
+2026-08-10 00:11:17 INFO connect: DB Application connection established
+2026-08-10 00:11:17 INFO pysagra_web: Database connection established
+2026-08-10 00:11:17 INFO pysagra_web: Company set to 20
+2026-08-10 00:11:17 INFO wasyncore: Serving on http://0.0.0.0:8080
+2026-08-10 00:11:23 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /login/
+2026-08-10 00:11:25 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /
+2026-08-10 00:11:25 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /order/header
+2026-08-10 00:11:38 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /auth/login
+2026-08-10 00:11:38 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /auth/logout
+2026-08-10 00:11:43 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /auth/logout
+2026-08-10 00:11:43 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/
+2026-08-10 00:11:43 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /auth/login
+2026-08-10 00:11:54 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /auth/login
+2026-08-10 00:11:54 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/
+2026-08-10 00:12:01 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/inventory
+2026-08-10 00:12:06 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-10 00:12:11 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/
+2026-08-10 00:12:11 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-10 00:12:16 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-10 00:12:18 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /auth/login
+2026-08-10 00:12:18 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /auth/logout
+2026-08-10 00:14:17 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /auth/logout
+2026-08-10 00:14:17 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/
+2026-08-10 00:14:17 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /auth/login
+2026-08-10 00:14:25 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /
+2026-08-10 00:14:25 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /order/header
+2026-08-10 00:23:33 INFO pysagra_web: Stopping wsgi server
+2026-08-10 00:23:33 INFO pysagra_web: Database connection closed successfully
+2026-08-10 00:23:41 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-10 00:23:41 INFO connect: Starting database connection with parameters:
+2026-08-10 00:23:41 INFO connect: host = localhost
+2026-08-10 00:23:41 INFO connect: port = 5432
+2026-08-10 00:23:41 INFO connect: database = pysagra_demo
+2026-08-10 00:23:41 INFO connect: dbuser = pa_login_role
+2026-08-10 00:23:41 INFO connect: dbuser password = ********
+2026-08-10 00:23:41 INFO connect: application_name = pySagra
+2026-08-10 00:23:41 INFO connect: Database connection established
+2026-08-10 00:23:41 INFO connect: DB is verified as an application database
+2026-08-10 00:23:41 INFO connect: Calling application connection function with parameters:
+2026-08-10 00:23:41 INFO connect: pgminver = 10
+2026-08-10 00:23:41 INFO connect: appname = pySagra
+2026-08-10 00:23:41 INFO connect: appversion = 1.0
+2026-08-10 00:23:41 INFO connect: user = ********
+2026-08-10 00:23:41 INFO connect: password = ********
+2026-08-10 00:23:41 INFO connect: hostname = pysagra_web_server
+2026-08-10 00:23:41 INFO connect: DB Application connection established
+2026-08-10 00:23:41 INFO pysagra_web: Database connection established
+2026-08-10 00:23:41 INFO pysagra_web: Company set to 20
+2026-08-10 00:23:41 INFO wasyncore: Serving on http://0.0.0.0:8080
+2026-08-10 00:23:53 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/
+2026-08-10 00:23:53 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /auth/login
+2026-08-10 00:24:06 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /auth/login
+2026-08-10 00:24:06 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/
+2026-08-10 00:24:10 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/inventory
+2026-08-10 00:24:15 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-10 00:24:17 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/
+2026-08-10 00:24:20 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-10 00:24:21 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /auth/login
+2026-08-10 00:24:21 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /auth/logout
+2026-08-10 00:24:24 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /auth/logout
+2026-08-10 00:24:24 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/
+2026-08-10 00:24:24 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /auth/login
+2026-08-10 00:24:35 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/
+2026-08-10 00:24:35 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /auth/login
+2026-08-10 00:24:43 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/inventory
+2026-08-10 00:24:43 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /auth/login
+2026-08-10 00:25:40 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /
+2026-08-10 00:25:40 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /order/header
+2026-08-10 00:25:54 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /order/header
+2026-08-10 00:25:54 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /order/menu
+2026-08-10 00:26:00 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /order/menu
+2026-08-10 00:26:03 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /order/menu
+2026-08-10 00:26:05 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /order/menu
+2026-08-10 00:26:05 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /order/variants/4
+2026-08-10 00:26:11 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /order/variants/4
+2026-08-10 00:26:11 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /order/menu
+2026-08-10 00:26:16 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /order/menu
+2026-08-10 00:26:22 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /order/menu
+2026-08-10 00:26:22 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /order/checkout
+2026-08-10 00:26:22 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /order/static/Mail.72.png
+2026-08-10 00:26:42 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /order/checkout
+2026-08-10 00:26:42 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /order/barcode
+2026-08-10 00:26:46 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /order/barcode
+2026-08-10 00:26:46 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /order/header
+2026-08-10 00:27:22 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /status
+2026-08-10 00:27:22 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /status/
+2026-08-10 00:27:22 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /status/order_status
+2026-08-10 00:27:32 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /status/update_order_status_rows
+2026-08-10 00:27:42 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /status/update_order_status_rows
+2026-08-10 00:27:52 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /status/update_order_status_rows
+2026-08-10 00:27:54 INFO pysagra_web: Stopping wsgi server
+2026-08-10 00:27:54 INFO pysagra_web: Database connection closed successfully
+2026-08-10 00:31:27 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-10 00:31:27 INFO connect: Starting database connection with parameters:
+2026-08-10 00:31:27 INFO connect: host = localhost
+2026-08-10 00:31:27 INFO connect: port = 5432
+2026-08-10 00:31:27 INFO connect: database = pysagra_demo
+2026-08-10 00:31:27 INFO connect: dbuser = pa_login_role
+2026-08-10 00:31:27 INFO connect: dbuser password = ********
+2026-08-10 00:31:27 INFO connect: application_name = pySagra
+2026-08-10 00:31:27 INFO connect: Database connection established
+2026-08-10 00:31:27 INFO connect: DB is verified as an application database
+2026-08-10 00:31:27 INFO connect: Calling application connection function with parameters:
+2026-08-10 00:31:27 INFO connect: pgminver = 10
+2026-08-10 00:31:27 INFO connect: appname = pySagra
+2026-08-10 00:31:27 INFO connect: appversion = 1.0
+2026-08-10 00:31:27 INFO connect: user = ********
+2026-08-10 00:31:27 INFO connect: password = ********
+2026-08-10 00:31:27 INFO connect: hostname = pysagra_web_server
+2026-08-10 00:31:28 INFO connect: DB Application connection established
+2026-08-10 00:31:28 INFO pysagra_web: Database connection established
+2026-08-10 00:31:28 INFO pysagra_web: Company set to 20
+2026-08-10 00:31:28 INFO wasyncore: Serving on http://0.0.0.0:8080
+2026-08-10 00:31:32 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /status/update_order_status_rows
+2026-08-10 00:31:35 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /status/
+2026-08-10 00:31:35 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /status/order_status
+2026-08-10 00:31:36 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /
+2026-08-10 00:31:36 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /order/header
+2026-08-10 00:31:45 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /auth
+2026-08-10 00:34:10 INFO pysagra_web: Stopping wsgi server
+2026-08-10 00:34:10 INFO pysagra_web: Database connection closed successfully
+2026-08-10 00:34:19 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-10 00:34:19 INFO connect: Starting database connection with parameters:
+2026-08-10 00:34:19 INFO connect: host = localhost
+2026-08-10 00:34:19 INFO connect: port = 5432
+2026-08-10 00:34:19 INFO connect: database = pysagra_demo
+2026-08-10 00:34:19 INFO connect: dbuser = pa_login_role
+2026-08-10 00:34:19 INFO connect: dbuser password = ********
+2026-08-10 00:34:19 INFO connect: application_name = pySagra
+2026-08-10 00:34:19 INFO connect: Database connection established
+2026-08-10 00:34:19 INFO connect: DB is verified as an application database
+2026-08-10 00:34:19 INFO connect: Calling application connection function with parameters:
+2026-08-10 00:34:19 INFO connect: pgminver = 10
+2026-08-10 00:34:19 INFO connect: appname = pySagra
+2026-08-10 00:34:19 INFO connect: appversion = 1.0
+2026-08-10 00:34:19 INFO connect: user = ********
+2026-08-10 00:34:19 INFO connect: password = ********
+2026-08-10 00:34:19 INFO connect: hostname = pysagra_web_server
+2026-08-10 00:34:19 INFO connect: DB Application connection established
+2026-08-10 00:34:19 INFO pysagra_web: Database connection established
+2026-08-10 00:34:19 INFO pysagra_web: Company set to 20
+2026-08-10 00:34:19 INFO wasyncore: Serving on http://0.0.0.0:8080
+2026-08-10 00:34:23 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /auth
+2026-08-10 00:34:23 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /auth/
+2026-08-10 00:34:23 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /auth/login
+2026-08-10 00:34:38 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /auth/login
+2026-08-10 00:34:38 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/
+2026-08-10 00:34:50 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/inventory
+2026-08-10 00:34:55 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-10 00:35:00 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-10 00:35:05 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-10 00:35:10 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-10 00:35:15 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-10 00:35:20 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-10 00:35:25 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-10 00:35:25 INFO pysagra_web: Stopping wsgi server
+2026-08-10 00:35:25 INFO pysagra_web: Database connection closed successfully
+2026-08-10 00:36:08 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-10 00:36:08 INFO connect: Starting database connection with parameters:
+2026-08-10 00:36:08 INFO connect: host = localhost
+2026-08-10 00:36:08 INFO connect: port = 5432
+2026-08-10 00:36:08 INFO connect: database = pysagra_demo
+2026-08-10 00:36:08 INFO connect: dbuser = pa_login_role
+2026-08-10 00:36:08 INFO connect: dbuser password = ********
+2026-08-10 00:36:08 INFO connect: application_name = pySagra
+2026-08-10 00:36:08 INFO connect: Database connection established
+2026-08-10 00:36:08 INFO connect: DB is verified as an application database
+2026-08-10 00:36:08 INFO connect: Calling application connection function with parameters:
+2026-08-10 00:36:08 INFO connect: pgminver = 10
+2026-08-10 00:36:08 INFO connect: appname = pySagra
+2026-08-10 00:36:08 INFO connect: appversion = 1.0
+2026-08-10 00:36:08 INFO connect: user = ********
+2026-08-10 00:36:08 INFO connect: password = ********
+2026-08-10 00:36:08 INFO connect: hostname = pysagra_web_server
+2026-08-10 00:36:08 INFO connect: DB Application connection established
+2026-08-10 00:36:08 INFO pysagra_web: Database connection established
+2026-08-10 00:36:08 INFO pysagra_web: Company set to 20
+2026-08-10 00:36:08 INFO wasyncore: Serving on http://0.0.0.0:8080
+2026-08-10 00:36:10 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-10 00:36:15 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-10 00:36:15 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/
+2026-08-10 00:36:18 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/inventory
+2026-08-10 00:36:23 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-10 00:36:28 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-10 00:36:33 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-10 00:36:43 INFO pysagra_web: Stopping wsgi server
+2026-08-10 00:36:43 INFO pysagra_web: Database connection closed successfully
+2026-08-10 18:03:07 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-10 18:03:07 INFO connect: Starting database connection with parameters:
+2026-08-10 18:03:07 INFO connect: host = localhost
+2026-08-10 18:03:07 INFO connect: port = 5432
+2026-08-10 18:03:07 INFO connect: database = pysagra_demo
+2026-08-10 18:03:07 INFO connect: dbuser = pa_login_role
+2026-08-10 18:03:07 INFO connect: dbuser password = ********
+2026-08-10 18:03:07 INFO connect: application_name = pySagra
+2026-08-10 18:03:07 INFO connect: Database connection established
+2026-08-10 18:03:07 INFO connect: DB is verified as an application database
+2026-08-10 18:03:07 INFO connect: Calling application connection function with parameters:
+2026-08-10 18:03:07 INFO connect: pgminver = 10
+2026-08-10 18:03:07 INFO connect: appname = pySagra
+2026-08-10 18:03:07 INFO connect: appversion = 1.0
+2026-08-10 18:03:07 INFO connect: user = ********
+2026-08-10 18:03:07 INFO connect: password = ********
+2026-08-10 18:03:07 INFO connect: hostname = pysagra_web_server
+2026-08-10 18:03:07 INFO connect: DB Application connection established
+2026-08-10 18:03:07 INFO pysagra_web: Database connection established
+2026-08-10 18:03:07 INFO pysagra_web: Company set to 20
+2026-08-10 18:03:07 INFO wasyncore: Serving on http://0.0.0.0:8080
+2026-08-10 18:03:21 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qms
+2026-08-10 18:08:52 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/
+2026-08-10 18:08:52 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /auth/login
+2026-08-10 18:09:09 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /auth/login
+2026-08-10 18:09:09 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/
+2026-08-10 18:09:12 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/inventory
+2026-08-10 18:09:18 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-10 18:09:23 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-10 18:09:24 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/
+2026-08-10 18:09:28 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-10 18:09:29 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /auth/login
+2026-08-10 18:09:29 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /auth/logout
+2026-08-10 18:09:44 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /auth/logout
+2026-08-10 18:09:44 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/
+2026-08-10 18:09:44 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /auth/login
+2026-08-10 18:09:58 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/
+2026-08-10 18:09:58 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /auth/login
+2026-08-10 18:10:00 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/inventory
+2026-08-10 18:10:00 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /auth/login
+2026-08-10 18:10:45 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /auth/login
+2026-08-10 18:10:50 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /auth/login
+2026-08-10 18:10:53 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /auth/login
+2026-08-10 18:11:01 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /
+2026-08-10 18:11:01 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /order/header
+2026-08-10 18:12:25 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /status/
+2026-08-10 18:12:25 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /status/order_status
+2026-08-10 18:12:35 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /status/update_order_status_rows
+2026-08-10 18:12:45 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /status/update_order_status_rows
+2026-08-10 18:12:55 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /status/update_order_status_rows
+2026-08-10 18:13:05 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /status/update_order_status_rows
+2026-08-10 18:13:15 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /status/update_order_status_rows
+2026-08-10 18:13:25 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /status/update_order_status_rows
+2026-08-10 18:13:35 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /status/update_order_status_rows
+2026-08-10 18:13:45 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /status/update_order_status_rows
+2026-08-10 18:13:55 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /status/update_order_status_rows
+2026-08-10 18:14:05 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /status/update_order_status_rows
+2026-08-10 18:14:15 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /status/update_order_status_rows
+2026-08-10 18:14:25 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /status/update_order_status_rows
+2026-08-10 18:14:26 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /status/
+2026-08-10 18:14:26 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /status/order_status
+2026-08-10 18:14:27 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /
+2026-08-10 18:14:28 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /order/header
+2026-08-10 18:15:28 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /order/header
+2026-08-10 18:15:28 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /order/menu
+2026-08-10 18:15:39 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /order/menu
+2026-08-10 18:15:43 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /order/menu
+2026-08-10 18:15:45 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /order/menu
+2026-08-10 18:15:49 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /order/menu
+2026-08-10 18:15:49 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /order/checkout
+2026-08-10 18:15:49 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /order/static/Mail.72.png
+2026-08-10 18:18:01 INFO pysagra_web: Stopping wsgi server
+2026-08-10 18:18:01 INFO pysagra_web: Database connection closed successfully
+2026-08-10 18:18:09 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-10 18:18:09 INFO connect: Starting database connection with parameters:
+2026-08-10 18:18:09 INFO connect: host = localhost
+2026-08-10 18:18:09 INFO connect: port = 5432
+2026-08-10 18:18:09 INFO connect: database = pysagra_demo
+2026-08-10 18:18:09 INFO connect: dbuser = pa_login_role
+2026-08-10 18:18:09 INFO connect: dbuser password = ********
+2026-08-10 18:18:09 INFO connect: application_name = pySagra
+2026-08-10 18:18:09 INFO connect: Database connection established
+2026-08-10 18:18:09 INFO connect: DB is verified as an application database
+2026-08-10 18:18:09 INFO connect: Calling application connection function with parameters:
+2026-08-10 18:18:09 INFO connect: pgminver = 10
+2026-08-10 18:18:09 INFO connect: appname = pySagra
+2026-08-10 18:18:09 INFO connect: appversion = 1.0
+2026-08-10 18:18:09 INFO connect: user = ********
+2026-08-10 18:18:09 INFO connect: password = ********
+2026-08-10 18:18:09 INFO connect: hostname = pysagra_web_server
+2026-08-10 18:18:09 INFO connect: DB Application connection established
+2026-08-10 18:18:09 INFO pysagra_web: Database connection established
+2026-08-10 18:18:09 INFO pysagra_web: Company set to 20
+2026-08-10 18:18:09 INFO wasyncore: Serving on http://0.0.0.0:8080
+2026-08-10 18:18:17 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /
+2026-08-10 18:18:17 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /order/header
+2026-08-10 18:18:21 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /order/header
+2026-08-10 18:18:21 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /order/menu
+2026-08-10 18:18:24 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /order/menu
+2026-08-10 18:18:25 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /order/menu
+2026-08-10 18:18:27 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /order/menu
+2026-08-10 18:18:30 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /order/menu
+2026-08-10 18:18:30 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /order/checkout
+2026-08-10 18:18:30 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /order/email.png
+2026-08-10 18:20:35 INFO pysagra_web: Stopping wsgi server
+2026-08-10 18:20:35 INFO pysagra_web: Database connection closed successfully
+2026-08-10 18:20:45 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-10 18:20:45 INFO connect: Starting database connection with parameters:
+2026-08-10 18:20:45 INFO connect: host = localhost
+2026-08-10 18:20:45 INFO connect: port = 5432
+2026-08-10 18:20:45 INFO connect: database = pysagra_demo
+2026-08-10 18:20:45 INFO connect: dbuser = pa_login_role
+2026-08-10 18:20:45 INFO connect: dbuser password = ********
+2026-08-10 18:20:45 INFO connect: application_name = pySagra
+2026-08-10 18:20:45 INFO connect: Database connection established
+2026-08-10 18:20:45 INFO connect: DB is verified as an application database
+2026-08-10 18:20:45 INFO connect: Calling application connection function with parameters:
+2026-08-10 18:20:45 INFO connect: pgminver = 10
+2026-08-10 18:20:45 INFO connect: appname = pySagra
+2026-08-10 18:20:45 INFO connect: appversion = 1.0
+2026-08-10 18:20:45 INFO connect: user = ********
+2026-08-10 18:20:45 INFO connect: password = ********
+2026-08-10 18:20:45 INFO connect: hostname = pysagra_web_server
+2026-08-10 18:20:45 INFO connect: DB Application connection established
+2026-08-10 18:20:45 INFO pysagra_web: Database connection established
+2026-08-10 18:20:45 INFO pysagra_web: Company set to 20
+2026-08-10 18:20:45 INFO wasyncore: Serving on http://0.0.0.0:8080
+2026-08-10 18:20:52 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /order/checkout
+2026-08-10 18:20:52 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /order/header
+2026-08-10 18:20:53 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /order/header
+2026-08-10 18:20:53 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /order/menu
+2026-08-10 18:20:55 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /order/menu
+2026-08-10 18:20:56 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /order/menu
+2026-08-10 18:20:57 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /order/menu
+2026-08-10 18:21:00 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /order/menu
+2026-08-10 18:21:00 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /order/checkout
+2026-08-10 18:21:16 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /order/checkout
+2026-08-10 18:21:16 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /order/menu
+2026-08-10 18:21:38 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /order/menu
+2026-08-10 18:21:41 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /order/menu
+2026-08-10 18:21:47 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /order/menu
+2026-08-10 18:21:48 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /order/menu
+2026-08-10 18:21:48 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /order/header
+2026-08-10 18:21:51 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /order/header
+2026-08-10 18:31:31 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /order/header
+2026-08-10 18:31:31 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /order/header
+2026-08-10 18:31:37 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /order/header
+2026-08-10 18:31:37 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /order/header
+2026-08-10 18:34:34 INFO pysagra_web: Stopping wsgi server
+2026-08-10 18:34:34 INFO pysagra_web: Database connection closed successfully
+2026-08-11 06:21:28 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-11 06:21:28 INFO connect: Starting database connection with parameters:
+2026-08-11 06:21:28 INFO connect: host = localhost
+2026-08-11 06:21:28 INFO connect: port = 5432
+2026-08-11 06:21:28 INFO connect: database = pysagra_demo
+2026-08-11 06:21:28 INFO connect: dbuser = pa_login_role
+2026-08-11 06:21:28 INFO connect: dbuser password = ********
+2026-08-11 06:21:28 INFO connect: application_name = pySagra
+2026-08-11 06:21:28 INFO connect: Database connection established
+2026-08-11 06:21:28 INFO connect: DB is verified as an application database
+2026-08-11 06:21:28 INFO connect: Calling application connection function with parameters:
+2026-08-11 06:21:28 INFO connect: pgminver = 10
+2026-08-11 06:21:28 INFO connect: appname = pySagra
+2026-08-11 06:21:28 INFO connect: appversion = 1.0
+2026-08-11 06:21:28 INFO connect: user = ********
+2026-08-11 06:21:28 INFO connect: password = ********
+2026-08-11 06:21:28 INFO connect: hostname = pysagra_web_server
+2026-08-11 06:21:28 INFO connect: DB Application connection established
+2026-08-11 06:21:28 INFO pysagra_web: Database connection established
+2026-08-11 06:21:28 INFO pysagra_web: Company set to 20
+2026-08-11 06:21:28 INFO wasyncore: Serving on http://0.0.0.0:8080
+2026-08-11 06:21:42 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /auth/login
+2026-08-11 06:21:56 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /auth/login
+2026-08-11 06:21:56 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/
+2026-08-11 06:22:22 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/inventory
+2026-08-11 06:22:27 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:22:31 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/
+2026-08-11 06:22:32 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:22:35 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /auth/login
+2026-08-11 06:22:35 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /auth/logout
+2026-08-11 06:22:47 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /auth/logout
+2026-08-11 06:22:47 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/
+2026-08-11 06:22:47 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /auth/login
+2026-08-11 06:23:07 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /auth/login
+2026-08-11 06:23:22 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /auth/login
+2026-08-11 06:23:22 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/
+2026-08-11 06:24:23 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /auth/login
+2026-08-11 06:24:23 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /auth/logout
+2026-08-11 06:24:26 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /auth/logout
+2026-08-11 06:24:26 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/
+2026-08-11 06:24:26 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /auth/login
+2026-08-11 06:24:47 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /auth/login
+2026-08-11 06:24:47 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /auth/login
+2026-08-11 06:25:02 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /auth/login
+2026-08-11 06:25:02 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/
+2026-08-11 06:25:12 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/inventory
+2026-08-11 06:25:17 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:25:22 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:25:27 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:25:32 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:25:37 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:25:42 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:25:47 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:25:52 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:25:57 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:26:02 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:26:07 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:26:12 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:26:17 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:26:22 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:26:27 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:26:32 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:26:37 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:26:42 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:26:47 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:26:52 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:26:57 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:27:02 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:27:07 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:27:12 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:27:17 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:27:22 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:27:27 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:27:32 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:27:37 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:27:42 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:27:47 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:27:52 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:27:57 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:28:02 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:28:07 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:28:12 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:28:17 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:28:22 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:28:27 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:28:32 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:28:37 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:28:42 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:28:47 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:28:52 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:28:57 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:29:02 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:29:07 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:29:12 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:29:17 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:29:22 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:29:27 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:29:32 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:29:37 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:29:42 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:29:47 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:29:52 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:29:57 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:30:02 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:30:07 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:30:12 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:30:17 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:30:22 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:30:27 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:30:32 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:30:37 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:30:43 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:30:49 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:30:55 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:31:01 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:31:07 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:31:13 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:31:19 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:31:25 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:31:31 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:31:37 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:31:45 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:32:45 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:33:45 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/update_inventory_rows
+2026-08-11 06:34:03 INFO pysagra_web: Stopping wsgi server
+2026-08-11 06:34:03 INFO pysagra_web: Database connection closed successfully
+2026-08-11 06:34:14 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-11 06:34:14 INFO connect: Starting database connection with parameters:
+2026-08-11 06:34:14 INFO connect: host = localhost
+2026-08-11 06:34:14 INFO connect: port = 5432
+2026-08-11 06:34:14 INFO connect: database = pysagra_demo
+2026-08-11 06:34:14 INFO connect: dbuser = pa_login_role
+2026-08-11 06:34:14 INFO connect: dbuser password = ********
+2026-08-11 06:34:14 INFO connect: application_name = pySagra
+2026-08-11 06:34:14 INFO connect: Database connection established
+2026-08-11 06:34:14 INFO connect: DB is verified as an application database
+2026-08-11 06:34:14 INFO connect: Calling application connection function with parameters:
+2026-08-11 06:34:14 INFO connect: pgminver = 10
+2026-08-11 06:34:14 INFO connect: appname = pySagra
+2026-08-11 06:34:14 INFO connect: appversion = 1.0
+2026-08-11 06:34:14 INFO connect: user = ********
+2026-08-11 06:34:14 INFO connect: password = ********
+2026-08-11 06:34:14 INFO connect: hostname = pysagra_web_server
+2026-08-11 06:34:14 INFO connect: DB Application connection established
+2026-08-11 06:34:14 INFO pysagra_web: Database connection established
+2026-08-11 06:34:14 INFO pysagra_web: Company set to 20
+2026-08-11 06:34:14 INFO wasyncore: Serving on http://0.0.0.0:8080
+2026-08-11 06:34:19 ERROR app: Exception on /monitor/update_inventory_rows [GET]
+Traceback (most recent call last):
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 915, in full_dispatch_request
+    rv = self.preprocess_request()
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 1291, in preprocess_request
+    rv = self.ensure_sync(before_func)()
+  File "/Users/paolo/Development/pySagraWeb/pysagra_web.py", line 160, in log_client_connection
+    if request.path.startswith(('/static/', '/qms/')) or request.path.endsswith('_rows'):
+                                                         ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'endsswith'. Did you mean: 'endswith'?
+2026-08-11 06:34:21 ERROR app: Exception on /monitor/inventory [GET]
+Traceback (most recent call last):
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 915, in full_dispatch_request
+    rv = self.preprocess_request()
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 1291, in preprocess_request
+    rv = self.ensure_sync(before_func)()
+  File "/Users/paolo/Development/pySagraWeb/pysagra_web.py", line 160, in log_client_connection
+    if request.path.startswith(('/static/', '/qms/')) or request.path.endsswith('_rows'):
+                                                         ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'endsswith'. Did you mean: 'endswith'?
+2026-08-11 06:34:21 ERROR app: Exception on /favicon.ico [GET]
+Traceback (most recent call last):
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 915, in full_dispatch_request
+    rv = self.preprocess_request()
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 1291, in preprocess_request
+    rv = self.ensure_sync(before_func)()
+  File "/Users/paolo/Development/pySagraWeb/pysagra_web.py", line 160, in log_client_connection
+    if request.path.startswith(('/static/', '/qms/')) or request.path.endsswith('_rows'):
+                                                         ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'endsswith'. Did you mean: 'endswith'?
+2026-08-11 06:34:48 INFO pysagra_web: Stopping wsgi server
+2026-08-11 06:34:48 INFO pysagra_web: Database connection closed successfully
+2026-08-11 06:34:56 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-11 06:34:56 INFO connect: Starting database connection with parameters:
+2026-08-11 06:34:56 INFO connect: host = localhost
+2026-08-11 06:34:56 INFO connect: port = 5432
+2026-08-11 06:34:56 INFO connect: database = pysagra_demo
+2026-08-11 06:34:56 INFO connect: dbuser = pa_login_role
+2026-08-11 06:34:56 INFO connect: dbuser password = ********
+2026-08-11 06:34:56 INFO connect: application_name = pySagra
+2026-08-11 06:34:56 INFO connect: Database connection established
+2026-08-11 06:34:56 INFO connect: DB is verified as an application database
+2026-08-11 06:34:56 INFO connect: Calling application connection function with parameters:
+2026-08-11 06:34:56 INFO connect: pgminver = 10
+2026-08-11 06:34:56 INFO connect: appname = pySagra
+2026-08-11 06:34:56 INFO connect: appversion = 1.0
+2026-08-11 06:34:56 INFO connect: user = ********
+2026-08-11 06:34:56 INFO connect: password = ********
+2026-08-11 06:34:56 INFO connect: hostname = pysagra_web_server
+2026-08-11 06:34:56 INFO connect: DB Application connection established
+2026-08-11 06:34:56 INFO pysagra_web: Database connection established
+2026-08-11 06:34:56 INFO pysagra_web: Company set to 20
+2026-08-11 06:34:56 INFO wasyncore: Serving on http://0.0.0.0:8080
+2026-08-11 06:35:00 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/inventory
+2026-08-11 06:35:10 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/inventory
+2026-08-11 06:35:31 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/
+2026-08-11 06:35:50 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/inventory
+2026-08-11 06:35:58 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /auth/
+2026-08-11 06:35:58 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /auth/login
+2026-08-11 06:35:58 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /auth/logout
+2026-08-11 06:36:06 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /auth/logout
+2026-08-11 06:36:06 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/
+2026-08-11 06:36:06 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /auth/login
+2026-08-11 06:37:08 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /status/
+2026-08-11 06:37:08 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /status/order_status
+2026-08-11 06:42:20 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /status/
+2026-08-11 06:42:20 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /status/order_status
+2026-08-11 06:42:22 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /login/
+2026-08-11 06:42:25 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /login/
+2026-08-11 06:42:25 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /favicon.ico
+2026-08-11 06:42:32 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /auth/login/
+2026-08-11 06:42:39 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /auth/login/
+2026-08-11 06:43:11 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /auth/login
+2026-08-11 06:44:18 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /auth/login
+2026-08-11 06:44:18 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/
+2026-08-11 06:44:21 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/inventory
+2026-08-11 06:47:23 INFO pysagra_web: Connected client - IP: 192.168.1.151 - Request: GET /monitor
+2026-08-11 06:47:23 INFO pysagra_web: Connected client - IP: 192.168.1.151 - Request: GET /monitor/
+2026-08-11 06:47:26 INFO pysagra_web: Connected client - IP: 192.168.1.151 - Request: GET /monitor/inventory
+2026-08-11 06:48:02 INFO pysagra_web: Connected client - IP: 192.168.1.151 - Request: GET /status
+2026-08-11 06:48:02 INFO pysagra_web: Connected client - IP: 192.168.1.151 - Request: GET /status/
+2026-08-11 06:48:02 INFO pysagra_web: Connected client - IP: 192.168.1.151 - Request: GET /status/order_status
+2026-08-11 06:49:00 INFO pysagra_web: Connected client - IP: 192.168.1.151 - Request: GET /auth/logout
+2026-08-11 06:49:02 INFO pysagra_web: Connected client - IP: 192.168.1.151 - Request: POST /auth/logout
+2026-08-11 06:49:02 INFO pysagra_web: Connected client - IP: 192.168.1.151 - Request: GET /monitor/
+2026-08-11 06:49:02 INFO pysagra_web: Connected client - IP: 192.168.1.151 - Request: GET /auth/login
+2026-08-11 06:50:48 INFO pysagra_web: Stopping wsgi server
+2026-08-11 06:50:48 INFO pysagra_web: Database connection closed successfully
+2026-08-12 01:26:18 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-12 01:26:18 INFO connect: Starting database connection with parameters:
+2026-08-12 01:26:18 INFO connect: host = localhost
+2026-08-12 01:26:18 INFO connect: port = 5432
+2026-08-12 01:26:18 INFO connect: database = pysagra_demo
+2026-08-12 01:26:18 INFO connect: dbuser = pa_login_role
+2026-08-12 01:26:18 INFO connect: dbuser password = ********
+2026-08-12 01:26:18 INFO connect: application_name = pySagra
+2026-08-12 01:26:19 INFO connect: Database connection established
+2026-08-12 01:26:19 INFO connect: DB is verified as an application database
+2026-08-12 01:26:19 INFO connect: Calling application connection function with parameters:
+2026-08-12 01:26:19 INFO connect: pgminver = 10
+2026-08-12 01:26:19 INFO connect: appname = pySagra
+2026-08-12 01:26:19 INFO connect: appversion = 1.0
+2026-08-12 01:26:19 INFO connect: user = ********
+2026-08-12 01:26:19 INFO connect: password = ********
+2026-08-12 01:26:19 INFO connect: hostname = pysagra_web_server
+2026-08-12 01:26:19 INFO connect: DB Application connection established
+2026-08-12 01:26:19 INFO pysagra_web: Database connection established
+2026-08-12 01:26:19 INFO pysagra_web: Company set to 20
+2026-08-12 01:26:19 INFO wasyncore: Serving on http://0.0.0.0:8080
+2026-08-12 01:26:38 INFO pysagra_web: Connected client - IP: 10.219.12.121 - Request: GET /
+2026-08-12 01:26:38 INFO pysagra_web: Connected client - IP: 10.219.12.121 - Request: GET /order/header
+2026-08-12 01:26:51 INFO pysagra_web: Connected client - IP: 10.219.12.121 - Request: POST /order/header
+2026-08-12 01:26:51 INFO pysagra_web: Connected client - IP: 10.219.12.121 - Request: GET /order/menu
+2026-08-12 01:26:54 INFO pysagra_web: Connected client - IP: 10.219.12.121 - Request: POST /order/menu
+2026-08-12 01:26:57 INFO pysagra_web: Connected client - IP: 10.219.12.121 - Request: POST /order/menu
+2026-08-12 01:26:59 INFO pysagra_web: Connected client - IP: 10.219.12.121 - Request: POST /order/menu
+2026-08-12 01:26:59 INFO pysagra_web: Connected client - IP: 10.219.12.121 - Request: GET /order/variants/4
+2026-08-12 01:27:04 INFO pysagra_web: Connected client - IP: 10.219.12.121 - Request: POST /order/variants/4
+2026-08-12 01:27:04 INFO pysagra_web: Connected client - IP: 10.219.12.121 - Request: GET /order/menu
+2026-08-12 01:27:06 INFO pysagra_web: Connected client - IP: 10.219.12.121 - Request: POST /order/menu
+2026-08-12 01:27:09 INFO pysagra_web: Connected client - IP: 10.219.12.121 - Request: POST /order/menu
+2026-08-12 01:27:09 INFO pysagra_web: Connected client - IP: 10.219.12.121 - Request: GET /order/checkout
+2026-08-12 01:27:29 INFO pysagra_web: Connected client - IP: 10.219.12.121 - Request: POST /order/checkout
+2026-08-12 01:27:29 INFO pysagra_web: Connected client - IP: 10.219.12.121 - Request: GET /order/barcode
+2026-08-12 01:27:42 INFO pysagra_web: Connected client - IP: 10.219.12.121 - Request: POST /order/barcode
+2026-08-12 01:27:42 INFO pysagra_web: Connected client - IP: 10.219.12.121 - Request: GET /order/header
+2026-08-12 01:40:17 INFO pysagra_web: Stopping wsgi server
+2026-08-12 01:40:17 INFO pysagra_web: Database connection closed successfully
+2026-08-15 06:07:38 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-15 06:07:38 INFO connect: Starting database connection with parameters:
+2026-08-15 06:07:38 INFO connect: host = localhost
+2026-08-15 06:07:38 INFO connect: port = 5432
+2026-08-15 06:07:38 INFO connect: database = pysagra_demo
+2026-08-15 06:07:38 INFO connect: dbuser = pa_login_role
+2026-08-15 06:07:38 INFO connect: dbuser password = ********
+2026-08-15 06:07:38 INFO connect: application_name = pySagra
+2026-08-15 06:07:38 INFO connect: Database connection established
+2026-08-15 06:07:38 INFO connect: DB is verified as an application database
+2026-08-15 06:07:38 INFO connect: Calling application connection function with parameters:
+2026-08-15 06:07:38 INFO connect: pgminver = 10
+2026-08-15 06:07:38 INFO connect: appname = pySagra
+2026-08-15 06:07:38 INFO connect: appversion = 1.0
+2026-08-15 06:07:38 INFO connect: user = ********
+2026-08-15 06:07:38 INFO connect: password = ********
+2026-08-15 06:07:38 INFO connect: hostname = pysagra_web_server
+2026-08-15 06:07:38 INFO connect: DB Application connection established
+2026-08-15 06:07:38 INFO pysagra_web: Database connection established
+2026-08-15 06:07:38 INFO pysagra_web: Company set to 20
+2026-08-15 06:07:38 INFO wasyncore: Serving on http://0.0.0.0:8080
+2026-08-15 06:07:49 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /auth/login
+2026-08-15 06:08:19 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /auth/login
+2026-08-15 06:08:19 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/
+2026-08-15 06:08:26 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /
+2026-08-15 06:08:26 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /order/header
+2026-08-15 06:08:26 ERROR app: Exception on /order/header [GET]
+Traceback (most recent call last):
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/paolo/Development/pySagraWeb/app/order_entry.py", line 109, in order_header
+    event    = session['event_description'],
+               ~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'event_description'
+2026-08-15 06:13:54 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /auth/login
+2026-08-15 06:13:56 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /
+2026-08-15 06:13:56 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /order/header
+2026-08-15 06:14:29 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /order/header
+2026-08-15 06:14:29 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /order/menu
+2026-08-15 06:14:34 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /order/menu
+2026-08-15 06:14:37 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /order/menu
+2026-08-15 06:14:39 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /order/menu
+2026-08-15 06:14:39 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /order/variants/0
+2026-08-15 06:14:43 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /order/variants/0
+2026-08-15 06:14:43 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /order/menu
+2026-08-15 06:14:46 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /order/menu
+2026-08-15 06:14:56 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /order/menu
+2026-08-15 06:14:56 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /order/checkout
+2026-08-15 06:15:17 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /order/checkout
+2026-08-15 06:15:17 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /order/barcode
+2026-08-15 06:15:32 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /order/barcode
+2026-08-15 06:15:32 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /order/header
+2026-08-15 06:15:42 INFO pysagra_web: Stopping wsgi server
+2026-08-15 06:15:42 INFO pysagra_web: Database connection closed successfully
+2026-08-15 06:32:58 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-15 06:32:58 INFO connect: Starting database connection with parameters:
+2026-08-15 06:32:58 INFO connect: host = localhost
+2026-08-15 06:32:58 INFO connect: port = 5432
+2026-08-15 06:32:58 INFO connect: database = pysagra_demo
+2026-08-15 06:32:58 INFO connect: dbuser = pa_login_role
+2026-08-15 06:32:58 INFO connect: dbuser password = ********
+2026-08-15 06:32:58 INFO connect: application_name = pySagra
+2026-08-15 06:32:58 INFO connect: Database connection established
+2026-08-15 06:32:58 INFO connect: DB is verified as an application database
+2026-08-15 06:32:58 INFO connect: Calling application connection function with parameters:
+2026-08-15 06:32:58 INFO connect: pgminver = 10
+2026-08-15 06:32:58 INFO connect: appname = pySagra
+2026-08-15 06:32:58 INFO connect: appversion = 1.0
+2026-08-15 06:32:58 INFO connect: user = ********
+2026-08-15 06:32:58 INFO connect: password = ********
+2026-08-15 06:32:58 INFO connect: hostname = pysagra_web_server
+2026-08-15 06:32:58 INFO connect: DB Application connection established
+2026-08-15 06:32:58 INFO pysagra_web: Database connection established
+2026-08-15 06:32:58 INFO pysagra_web: Company set to 20
+2026-08-15 06:32:58 INFO wasyncore: Serving on http://0.0.0.0:8080
+2026-08-15 06:33:05 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /auth/login
+2026-08-15 06:33:18 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /auth/login
+2026-08-15 06:33:18 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/
+2026-08-15 06:35:46 INFO pysagra_web: Stopping wsgi server
+2026-08-15 06:35:46 INFO pysagra_web: Database connection closed successfully
+2026-08-15 06:35:56 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-15 06:35:56 INFO connect: Starting database connection with parameters:
+2026-08-15 06:35:56 INFO connect: host = localhost
+2026-08-15 06:35:56 INFO connect: port = 5432
+2026-08-15 06:35:56 INFO connect: database = pysagra_demo
+2026-08-15 06:35:56 INFO connect: dbuser = pa_login_role
+2026-08-15 06:35:56 INFO connect: dbuser password = ********
+2026-08-15 06:35:56 INFO connect: application_name = pySagra
+2026-08-15 06:35:56 INFO connect: Database connection established
+2026-08-15 06:35:56 INFO connect: DB is verified as an application database
+2026-08-15 06:35:56 INFO connect: Calling application connection function with parameters:
+2026-08-15 06:35:56 INFO connect: pgminver = 10
+2026-08-15 06:35:56 INFO connect: appname = pySagra
+2026-08-15 06:35:56 INFO connect: appversion = 1.0
+2026-08-15 06:35:56 INFO connect: user = ********
+2026-08-15 06:35:56 INFO connect: password = ********
+2026-08-15 06:35:56 INFO connect: hostname = pysagra_web_server
+2026-08-15 06:35:56 INFO connect: DB Application connection established
+2026-08-15 06:35:56 INFO pysagra_web: Database connection established
+2026-08-15 06:35:56 INFO pysagra_web: Company set to 20
+2026-08-15 06:35:56 INFO wasyncore: Serving on http://0.0.0.0:8080
+2026-08-15 06:39:14 INFO pysagra_web: Stopping wsgi server
+2026-08-15 06:39:14 INFO pysagra_web: Database connection closed successfully
+2026-08-15 06:39:23 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-15 06:39:23 INFO connect: Starting database connection with parameters:
+2026-08-15 06:39:23 INFO connect: host = localhost
+2026-08-15 06:39:23 INFO connect: port = 5432
+2026-08-15 06:39:23 INFO connect: database = pysagra_demo
+2026-08-15 06:39:23 INFO connect: dbuser = pa_login_role
+2026-08-15 06:39:23 INFO connect: dbuser password = ********
+2026-08-15 06:39:23 INFO connect: application_name = pySagra
+2026-08-15 06:39:23 INFO connect: Database connection established
+2026-08-15 06:39:23 INFO connect: DB is verified as an application database
+2026-08-15 06:39:23 INFO connect: Calling application connection function with parameters:
+2026-08-15 06:39:23 INFO connect: pgminver = 10
+2026-08-15 06:39:23 INFO connect: appname = pySagra
+2026-08-15 06:39:23 INFO connect: appversion = 1.0
+2026-08-15 06:39:23 INFO connect: user = ********
+2026-08-15 06:39:23 INFO connect: password = ********
+2026-08-15 06:39:23 INFO connect: hostname = pysagra_web_server
+2026-08-15 06:39:23 INFO connect: DB Application connection established
+2026-08-15 06:39:23 INFO pysagra_web: Database connection established
+2026-08-15 06:39:23 INFO pysagra_web: Company set to 20
+2026-08-15 06:39:23 INFO wasyncore: Serving on http://0.0.0.0:8080
+2026-08-15 06:40:57 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-15 06:40:57 INFO connect: Starting database connection with parameters:
+2026-08-15 06:40:57 INFO connect: host = localhost
+2026-08-15 06:40:57 INFO connect: port = 5432
+2026-08-15 06:40:57 INFO connect: database = pysagra_demo
+2026-08-15 06:40:57 INFO connect: dbuser = pa_login_role
+2026-08-15 06:40:57 INFO connect: dbuser password = ********
+2026-08-15 06:40:57 INFO connect: application_name = pySagra
+2026-08-15 06:40:57 INFO connect: Database connection established
+2026-08-15 06:40:57 INFO connect: DB is verified as an application database
+2026-08-15 06:40:57 INFO connect: Calling application connection function with parameters:
+2026-08-15 06:40:57 INFO connect: pgminver = 10
+2026-08-15 06:40:57 INFO connect: appname = pySagra
+2026-08-15 06:40:57 INFO connect: appversion = 1.0
+2026-08-15 06:40:57 INFO connect: user = ********
+2026-08-15 06:40:57 INFO connect: password = ********
+2026-08-15 06:40:57 INFO connect: hostname = pysagra_web_server
+2026-08-15 06:40:57 INFO connect: DB Application connection established
+2026-08-15 06:40:57 INFO pysagra_web: Database connection established
+2026-08-15 06:40:57 INFO pysagra_web: Company set to 20
+2026-08-15 06:40:57 INFO wasyncore: Serving on http://0.0.0.0:8080
+2026-08-15 06:46:17 INFO pysagra_web: Stopping wsgi server
+2026-08-15 06:46:17 INFO pysagra_web: Database connection closed successfully
+2026-08-15 06:46:26 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-15 06:46:26 INFO connect: Starting database connection with parameters:
+2026-08-15 06:46:26 INFO connect: host = localhost
+2026-08-15 06:46:26 INFO connect: port = 5432
+2026-08-15 06:46:26 INFO connect: database = pysagra_demo
+2026-08-15 06:46:26 INFO connect: dbuser = pa_login_role
+2026-08-15 06:46:26 INFO connect: dbuser password = ********
+2026-08-15 06:46:26 INFO connect: application_name = pySagra
+2026-08-15 06:46:26 INFO connect: Database connection established
+2026-08-15 06:46:26 INFO connect: DB is verified as an application database
+2026-08-15 06:46:26 INFO connect: Calling application connection function with parameters:
+2026-08-15 06:46:26 INFO connect: pgminver = 10
+2026-08-15 06:46:26 INFO connect: appname = pySagra
+2026-08-15 06:46:26 INFO connect: appversion = 1.0
+2026-08-15 06:46:26 INFO connect: user = ********
+2026-08-15 06:46:26 INFO connect: password = ********
+2026-08-15 06:46:26 INFO connect: hostname = pysagra_web_server
+2026-08-15 06:46:27 INFO connect: DB Application connection established
+2026-08-15 06:46:27 INFO pysagra_web: Database connection established
+2026-08-15 06:46:27 INFO pysagra_web: Company set to 20
+2026-08-15 06:46:27 INFO wasyncore: Serving on http://0.0.0.0:8080
+2026-08-15 06:58:32 INFO pysagra_web: Stopping wsgi server
+2026-08-15 06:58:32 INFO pysagra_web: Database connection closed successfully
+2026-08-15 06:58:38 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-15 06:58:38 INFO connect: Starting database connection with parameters:
+2026-08-15 06:58:38 INFO connect: host = localhost
+2026-08-15 06:58:38 INFO connect: port = 5432
+2026-08-15 06:58:38 INFO connect: database = pysagra_demo
+2026-08-15 06:58:38 INFO connect: dbuser = pa_login_role
+2026-08-15 06:58:38 INFO connect: dbuser password = ********
+2026-08-15 06:58:38 INFO connect: application_name = pySagra
+2026-08-15 06:58:38 INFO connect: Database connection established
+2026-08-15 06:58:38 INFO connect: DB is verified as an application database
+2026-08-15 06:58:38 INFO connect: Calling application connection function with parameters:
+2026-08-15 06:58:38 INFO connect: pgminver = 10
+2026-08-15 06:58:38 INFO connect: appname = pySagra
+2026-08-15 06:58:38 INFO connect: appversion = 1.0
+2026-08-15 06:58:38 INFO connect: user = ********
+2026-08-15 06:58:38 INFO connect: password = ********
+2026-08-15 06:58:38 INFO connect: hostname = pysagra_web_server
+2026-08-15 06:58:38 INFO connect: DB Application connection established
+2026-08-15 06:58:38 INFO pysagra_web: Database connection established
+2026-08-15 06:58:38 INFO pysagra_web: Company set to 20
+2026-08-15 06:58:38 INFO wasyncore: Serving on http://0.0.0.0:8080
+2026-08-15 06:58:40 ERROR app: Exception on /qms/get-current [GET]
+Traceback (most recent call last):
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/paolo/Development/pySagraWeb/app/queue_management.py", line 120, in get_current
+    number, is_new = queue_number.current()
+                     ~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/paolo/Development/pySagraWeb/app/queue_management.py", line 98, in current
+    output = f"{chr(self._letter)}{self._number:02d}", self._is_new
+                                                       ^^^^^^^^^^^^
+AttributeError: 'QueueNumber' object has no attribute '_is_new'
+2026-08-15 06:58:42 ERROR app: Exception on /qms/ [GET]
+Traceback (most recent call last):
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/paolo/Development/pySagraWeb/app/queue_management.py", line 110, in index
+    return render_template('qms_current.html', current_number=queue_number.current())
+                                                              ~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/paolo/Development/pySagraWeb/app/queue_management.py", line 98, in current
+    output = f"{chr(self._letter)}{self._number:02d}", self._is_new
+                                                       ^^^^^^^^^^^^
+AttributeError: 'QueueNumber' object has no attribute '_is_new'
+2026-08-15 06:58:42 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /favicon.ico
+2026-08-15 07:00:58 INFO pysagra_web: Stopping wsgi server
+2026-08-15 07:00:58 INFO pysagra_web: Database connection closed successfully
+2026-08-15 07:01:07 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-15 07:01:07 INFO connect: Starting database connection with parameters:
+2026-08-15 07:01:07 INFO connect: host = localhost
+2026-08-15 07:01:07 INFO connect: port = 5432
+2026-08-15 07:01:07 INFO connect: database = pysagra_demo
+2026-08-15 07:01:07 INFO connect: dbuser = pa_login_role
+2026-08-15 07:01:07 INFO connect: dbuser password = ********
+2026-08-15 07:01:07 INFO connect: application_name = pySagra
+2026-08-15 07:01:07 INFO connect: Database connection established
+2026-08-15 07:01:07 INFO connect: DB is verified as an application database
+2026-08-15 07:01:07 INFO connect: Calling application connection function with parameters:
+2026-08-15 07:01:07 INFO connect: pgminver = 10
+2026-08-15 07:01:07 INFO connect: appname = pySagra
+2026-08-15 07:01:07 INFO connect: appversion = 1.0
+2026-08-15 07:01:07 INFO connect: user = ********
+2026-08-15 07:01:07 INFO connect: password = ********
+2026-08-15 07:01:07 INFO connect: hostname = pysagra_web_server
+2026-08-15 07:01:07 INFO connect: DB Application connection established
+2026-08-15 07:01:07 INFO pysagra_web: Database connection established
+2026-08-15 07:01:07 INFO pysagra_web: Company set to 20
+2026-08-15 07:01:07 INFO wasyncore: Serving on http://0.0.0.0:8080
+2026-08-15 07:03:06 INFO pysagra_web: Stopping wsgi server
+2026-08-15 07:03:06 INFO pysagra_web: Database connection closed successfully
+2026-08-15 07:04:25 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-15 07:04:25 INFO connect: Starting database connection with parameters:
+2026-08-15 07:04:25 INFO connect: host = localhost
+2026-08-15 07:04:25 INFO connect: port = 5432
+2026-08-15 07:04:25 INFO connect: database = pysagra_demo
+2026-08-15 07:04:25 INFO connect: dbuser = pa_login_role
+2026-08-15 07:04:25 INFO connect: dbuser password = ********
+2026-08-15 07:04:25 INFO connect: application_name = pySagra
+2026-08-15 07:04:25 INFO connect: Database connection established
+2026-08-15 07:04:25 INFO connect: DB is verified as an application database
+2026-08-15 07:04:25 INFO connect: Calling application connection function with parameters:
+2026-08-15 07:04:25 INFO connect: pgminver = 10
+2026-08-15 07:04:25 INFO connect: appname = pySagra
+2026-08-15 07:04:25 INFO connect: appversion = 1.0
+2026-08-15 07:04:25 INFO connect: user = ********
+2026-08-15 07:04:25 INFO connect: password = ********
+2026-08-15 07:04:25 INFO connect: hostname = pysagra_web_server
+2026-08-15 07:04:25 INFO connect: DB Application connection established
+2026-08-15 07:04:25 INFO pysagra_web: Database connection established
+2026-08-15 07:04:25 INFO pysagra_web: Company set to 20
+2026-08-15 07:04:25 INFO wasyncore: Serving on http://0.0.0.0:8080
+2026-08-15 07:04:33 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /auth/login
+2026-08-15 07:04:41 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /auth/login
+2026-08-15 07:04:41 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/
+2026-08-15 07:05:33 INFO pysagra_web: Stopping wsgi server
+2026-08-15 07:05:33 INFO pysagra_web: Database connection closed successfully
+2026-08-15 07:05:48 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-15 07:05:48 INFO connect: Starting database connection with parameters:
+2026-08-15 07:05:48 INFO connect: host = localhost
+2026-08-15 07:05:48 INFO connect: port = 5432
+2026-08-15 07:05:48 INFO connect: database = pysagra_demo
+2026-08-15 07:05:48 INFO connect: dbuser = pa_login_role
+2026-08-15 07:05:48 INFO connect: dbuser password = ********
+2026-08-15 07:05:48 INFO connect: application_name = pySagra
+2026-08-15 07:05:48 INFO connect: Database connection established
+2026-08-15 07:05:48 INFO connect: DB is verified as an application database
+2026-08-15 07:05:48 INFO connect: Calling application connection function with parameters:
+2026-08-15 07:05:48 INFO connect: pgminver = 10
+2026-08-15 07:05:48 INFO connect: appname = pySagra
+2026-08-15 07:05:48 INFO connect: appversion = 1.0
+2026-08-15 07:05:48 INFO connect: user = ********
+2026-08-15 07:05:48 INFO connect: password = ********
+2026-08-15 07:05:48 INFO connect: hostname = pysagra_web_server
+2026-08-15 07:05:48 INFO connect: DB Application connection established
+2026-08-15 07:05:48 INFO pysagra_web: Database connection established
+2026-08-15 07:05:48 INFO pysagra_web: Company set to 20
+2026-08-15 07:05:48 INFO wasyncore: Serving on http://0.0.0.0:8080
+2026-08-15 07:10:06 INFO pysagra_web: Stopping wsgi server
+2026-08-15 07:10:06 INFO pysagra_web: Database connection closed successfully
+2026-08-15 07:10:13 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-15 07:10:13 INFO connect: Starting database connection with parameters:
+2026-08-15 07:10:13 INFO connect: host = localhost
+2026-08-15 07:10:13 INFO connect: port = 5432
+2026-08-15 07:10:13 INFO connect: database = pysagra_demo
+2026-08-15 07:10:13 INFO connect: dbuser = pa_login_role
+2026-08-15 07:10:13 INFO connect: dbuser password = ********
+2026-08-15 07:10:13 INFO connect: application_name = pySagra
+2026-08-15 07:10:13 INFO connect: Database connection established
+2026-08-15 07:10:13 INFO connect: DB is verified as an application database
+2026-08-15 07:10:13 INFO connect: Calling application connection function with parameters:
+2026-08-15 07:10:13 INFO connect: pgminver = 10
+2026-08-15 07:10:13 INFO connect: appname = pySagra
+2026-08-15 07:10:13 INFO connect: appversion = 1.0
+2026-08-15 07:10:13 INFO connect: user = ********
+2026-08-15 07:10:13 INFO connect: password = ********
+2026-08-15 07:10:13 INFO connect: hostname = pysagra_web_server
+2026-08-15 07:10:13 INFO connect: DB Application connection established
+2026-08-15 07:10:13 INFO pysagra_web: Database connection established
+2026-08-15 07:10:13 INFO pysagra_web: Company set to 20
+2026-08-15 07:10:13 INFO wasyncore: Serving on http://0.0.0.0:8080
+2026-08-15 07:12:18 INFO pysagra_web: Stopping wsgi server
+2026-08-15 07:12:18 INFO pysagra_web: Database connection closed successfully
+2026-08-15 07:13:51 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-15 07:13:51 INFO connect: Starting database connection with parameters:
+2026-08-15 07:13:51 INFO connect: host = localhost
+2026-08-15 07:13:51 INFO connect: port = 5432
+2026-08-15 07:13:51 INFO connect: database = pysagra_demo
+2026-08-15 07:13:51 INFO connect: dbuser = pa_login_role
+2026-08-15 07:13:51 INFO connect: dbuser password = ********
+2026-08-15 07:13:51 INFO connect: application_name = pySagra
+2026-08-15 07:13:51 INFO connect: Database connection established
+2026-08-15 07:13:51 INFO connect: DB is verified as an application database
+2026-08-15 07:13:51 INFO connect: Calling application connection function with parameters:
+2026-08-15 07:13:51 INFO connect: pgminver = 10
+2026-08-15 07:13:51 INFO connect: appname = pySagra
+2026-08-15 07:13:51 INFO connect: appversion = 1.0
+2026-08-15 07:13:51 INFO connect: user = ********
+2026-08-15 07:13:51 INFO connect: password = ********
+2026-08-15 07:13:51 INFO connect: hostname = pysagra_web_server
+2026-08-15 07:13:51 INFO connect: DB Application connection established
+2026-08-15 07:13:51 INFO pysagra_web: Database connection established
+2026-08-15 07:13:51 INFO pysagra_web: Company set to 20
+2026-08-15 07:13:51 INFO wasyncore: Serving on http://0.0.0.0:8080
+2026-08-15 07:15:10 INFO pysagra_web: Stopping wsgi server
+2026-08-15 07:15:10 INFO pysagra_web: Database connection closed successfully
+2026-08-15 07:15:16 INFO pysagra_web: Starting pySagraWeb initialization
+2026-08-15 07:15:16 INFO connect: Starting database connection with parameters:
+2026-08-15 07:15:16 INFO connect: host = localhost
+2026-08-15 07:15:16 INFO connect: port = 5432
+2026-08-15 07:15:16 INFO connect: database = pysagra_demo
+2026-08-15 07:15:16 INFO connect: dbuser = pa_login_role
+2026-08-15 07:15:16 INFO connect: dbuser password = ********
+2026-08-15 07:15:16 INFO connect: application_name = pySagra
+2026-08-15 07:15:16 INFO connect: Database connection established
+2026-08-15 07:15:16 INFO connect: DB is verified as an application database
+2026-08-15 07:15:16 INFO connect: Calling application connection function with parameters:
+2026-08-15 07:15:16 INFO connect: pgminver = 10
+2026-08-15 07:15:16 INFO connect: appname = pySagra
+2026-08-15 07:15:16 INFO connect: appversion = 1.0
+2026-08-15 07:15:16 INFO connect: user = ********
+2026-08-15 07:15:16 INFO connect: password = ********
+2026-08-15 07:15:16 INFO connect: hostname = pysagra_web_server
+2026-08-15 07:15:16 INFO connect: DB Application connection established
+2026-08-15 07:15:16 INFO pysagra_web: Database connection established
+2026-08-15 07:15:16 INFO pysagra_web: Company set to 20
+2026-08-15 07:15:16 INFO wasyncore: Serving on http://0.0.0.0:8080
+2026-08-15 07:17:01 INFO pysagra_web: Stopping wsgi server
+2026-08-15 07:17:01 INFO pysagra_web: Database connection closed successfully

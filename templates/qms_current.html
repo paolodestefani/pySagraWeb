@@ -25,6 +25,29 @@
     }
 }
 
+.blink-number {
+  animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+.pulse-number {
+  animation: pulse-size 1s ease-in-out infinite;
+}
+
+@keyframes pulse-size {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2); /* Regola 1.2 per ingrandire di più o di meno */
+  }
+}
+
 </style>
 
 <div class="bg-dark bg-gradient text-white d-flex justify-content-center align-items-center vh-100 p-2">
@@ -40,7 +63,7 @@
              hx-trigger="every 2s" 
              hx-swap="innerHTML"
              class="fw-bold text-white d-flex align-items-center justify-content-center flex-grow-1 m-0 p-0 font-qms-number">
-             {{ current_number }}
+             {{ current_text }}
         </div>
         <!-- a small bottom space -->
         <div class="pb-1"></div>

@@ -1,7 +1,7 @@
 {% for line in lines %}
     {% if line.type == 9: %} <!-- item type header -->
         <tr class="table-active">
-            <td colspan="6" class="fw-bold ps-3 text-dark text-center">{{ line.item }}</td>
+            <td colspan="6" class="fw-bold ps-3 text-dark text-start">{{ line.item }}</td>
         </tr>
     {% else %}
         <tr class="{% if line.available <= 0 %}table-secondary text-dark{% elif line.available > 0 and line.available < 5 %}table-danger text-dark{% elif line.available >= 5 and line.available < 10 %}table-warning text-dark{% else %}table-default text-dark{% endif %}">

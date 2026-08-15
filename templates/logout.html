@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<div class="d-flex align-items-center justify-content-center min-vh-100 py-5">
+    <div class="card shadow p-4 text-center" style="width: 330px;">
+        <h2 class="h4 mb-3 fw-normal">Sessione già autenticata</h2>
+        <h2 class="h4 mb-3 fw-normal">Uscita richiesta</h2>
+        <form action="{{ url_for('login.logout') }}" method="POST">
+            <button type="submit" name="close" class="w-100 btn btn-primary">Chiudi la sessione</button>
+        </form>
+    </div>
+
+</div>
+
+{% endblock %}

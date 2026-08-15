@@ -120,7 +120,7 @@ def create_app() -> Flask:
     flask_app.register_blueprint(status_bp, url_prefix='/status')
     flask_app.register_blueprint(monitor_bp, url_prefix='/monitor')
     flask_app.register_blueprint(qms_bp, url_prefix='/qms')
-    flask_app.register_blueprint(login_bp, url_prefix='/login')
+    flask_app.register_blueprint(login_bp, url_prefix='/auth')
     # default route
     @flask_app.route('/')
     def index():
@@ -156,8 +156,8 @@ if __name__ == '__main__':
     
     @app.before_request
     def log_client_connection():
-        # esclude some log messages for static files to avoid cluttering the log
-        if request.path.startswith('/static/') or request.path.startswith('/qms/'):
+        # esclude some log messages to avoid cluttering the log
+        if request.path.startswith(('/static/', '/qms/')) or request.path.endswith('_rows'):
             return
         logging.info(f"Connected client - IP: {request.remote_addr} - Request: {request.method} {request.path}")
     

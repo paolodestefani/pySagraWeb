@@ -26,10 +26,16 @@ Queue management system for pySagraWeb
 
 """
 
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, session, redirect, url_for
 
 
 qms_bp = Blueprint('qms', __name__)
+
+
+@qms_bp.before_request
+def check_authentication():
+    if not session.get('authenticated'):
+        return redirect(url_for('login.login', next=request.url))
 
 
 class QueueNumber:
@@ -45,6 +51,7 @@ class QueueNumber:
         self._letter: int
         self._number: int
         self._from_string(init_value)
+        self._is_new: bool = False
         
     def _from_string(self, value: str) -> None:
         "Converts a string representation of the queue number into its internal representation."
@@ -68,6 +75,7 @@ class QueueNumber:
             self._letter += 1
             if self._letter == 91:
                 self._letter = 65 
+        self._is_new = True
 
     def regress(self) -> None:
         "Regresses the queue number by one, never going below 'A00'."
@@ -78,14 +86,18 @@ class QueueNumber:
             if self._letter == 64:
                 self._letter = 65
                 self._number = 0
+        self._is_new = True
                 
     def reset(self, new_value: str) -> None:
         "Resets the queue number to a new valid value."
         self._from_string(new_value)
+        self._is_new = True
         
-    def current(self) -> str:
+    def current(self) -> tuple[str, bool]:
         "Returns the current queue number as a string in the format 'A00'."
-        return f"{chr(self._letter)}{self._number:02d}"
+        output = f"{chr(self._letter)}{self._number:02d}", self._is_new
+        self._is_new = False
+        return output
     
     
 # set the initial queue number to 'A00' when the application starts
@@ -95,7 +107,7 @@ queue_number = QueueNumber()
 @qms_bp.route('/')
 def index():
     "Renders the main queue management page, displaying the current queue number."
-    return render_template('qms_current.html', current_number=queue_number.current())
+    return render_template('qms_current.html', current_text='')
 
 @qms_bp.route('/manager')
 def manager():
@@ -105,7 +117,10 @@ def manager():
 @qms_bp.route('/get-current')
 def get_current():
     "Returns the current queue number as a string, used for HTMX requests to update the display."
-    return queue_number.current()
+    number, is_new = queue_number.current()
+    if is_new:
+        return f'<div class="pulse-number">{number}</div>' 
+    return f'<div>{number}</div>'
 
 @qms_bp.route('/queue-advance', methods=['POST'])
 def queue_advance():

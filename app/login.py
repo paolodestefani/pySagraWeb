@@ -37,6 +37,8 @@ from app import appconfig
 
 
 # decorator for checking if the user is logged in before accessing certain routes
+# obsolete since  all the routes of a blueprint can be checked globally
+# by flask before_request blueprint method
 def login_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
@@ -49,26 +51,35 @@ def login_required(f):
 
 login_bp = Blueprint('login', __name__)
 
+@login_bp.route('/')
+def root():
+    return redirect(url_for('login.login'))
+    
 
-@login_bp.route('/', methods=['GET', 'POST'])
+@login_bp.route('/login', methods=['GET', 'POST'])
 def login():
     error = None
-    next_page = request.args.get('next') or url_for('order.order_header')  # default redirect after login
+    next_page = request.args.get('next') or url_for('monitor.monitor_index')  # default redirect after login
+    
+    if session.get('authenticated'):
+        return redirect(url_for('login.logout'))
     
     if request.method == 'POST':
         password_inserted = request.form.get('password')
         if password_inserted == appconfig['LOGIN']['password']:
             session['authenticated'] = True
-            session.permanent = True # session expires at browser close
+            #session.permanent = True # session expires at browser close
             return redirect(next_page)
         else:
             error = "Password errata. Riprova."
             
     return render_template('login.html', error=error)
 
-@login_bp.route('/logout')
+@login_bp.route('/logout', methods=['GET', 'POST'])
 def logout():
-    session.pop('authenticated', None)
-    return redirect(url_for('login'))
-
+    if request.method == 'POST' and 'close' in request.form:
+        session.pop('authenticated', None)
+        return redirect(url_for('monitor.monitor_index'))
+    return render_template('logout.html')
+    
 

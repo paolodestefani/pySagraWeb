@@ -61,7 +61,7 @@
     </table>
     <div class="row mb-3">
       <div class="input-group-text col-sm-auto">
-      <img src="static/Mail.72.png" type="image/png" alt="email icon" class="p-1"
+      <img src="{{ url_for("static", filename="email.png") }}" type="image/png" alt="email icon" class="p-1"
     width="40" height="40"/>
       <input type="text" name="email" id="email" class="form-control form-control-sm" size="60" value="{{ email }}" placeholder="Inserisci la tua email per rimanere aggiornato sui nostri eventi" maxlength="60">
       </div>
