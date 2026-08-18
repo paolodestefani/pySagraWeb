@@ -69,3 +69,570 @@
 2026-08-18 18:11:00 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qmsmanager/queue-advance
 2026-08-18 18:11:25 INFO pysagra_web: Stopping wsgi server
 2026-08-18 18:11:25 INFO pysagra_web: Database connection closed successfully
+2026-08-18 22:51:21 INFO pysagra_web: Starting pySagraWeb version 1.0.0
+2026-08-18 22:51:21 INFO connect: Starting database connection with parameters:
+2026-08-18 22:51:21 INFO connect: host = localhost
+2026-08-18 22:51:21 INFO connect: port = 5432
+2026-08-18 22:51:21 INFO connect: database = pysagra_demo
+2026-08-18 22:51:21 INFO connect: dbuser = pa_login_role
+2026-08-18 22:51:21 INFO connect: dbuser password = ********
+2026-08-18 22:51:21 INFO connect: application_name = pySagra
+2026-08-18 22:51:21 INFO connect: Database connection established
+2026-08-18 22:51:21 INFO connect: DB is verified as an application database
+2026-08-18 22:51:21 INFO connect: Calling application connection function with parameters:
+2026-08-18 22:51:21 INFO connect: pgminver = 18
+2026-08-18 22:51:21 INFO connect: appname = pySagra
+2026-08-18 22:51:21 INFO connect: appversion = 1.0
+2026-08-18 22:51:21 INFO connect: user = ********
+2026-08-18 22:51:21 INFO connect: password = ********
+2026-08-18 22:51:21 INFO connect: hostname = pysagra_web_server
+2026-08-18 22:51:21 INFO connect: DB Application connection established
+2026-08-18 22:51:21 INFO pysagra_web: Database connection established
+2026-08-18 22:51:21 INFO pysagra_web: Company set to 20
+2026-08-18 22:51:21 INFO wasyncore: Serving on http://0.0.0.0:8080
+2026-08-18 22:51:31 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/
+2026-08-18 22:52:14 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qmsmanager/queue-advance
+2026-08-18 22:52:38 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qmsmanager/queue-regress
+2026-08-18 23:08:41 INFO pysagra_web: Stopping wsgi server
+2026-08-18 23:08:41 INFO pysagra_web: Database connection closed successfully
+2026-08-18 23:08:47 INFO pysagra_web: Starting pySagraWeb version 1.0.0
+2026-08-18 23:08:47 INFO connect: Starting database connection with parameters:
+2026-08-18 23:08:47 INFO connect: host = localhost
+2026-08-18 23:08:47 INFO connect: port = 5432
+2026-08-18 23:08:47 INFO connect: database = pysagra_demo
+2026-08-18 23:08:47 INFO connect: dbuser = pa_login_role
+2026-08-18 23:08:47 INFO connect: dbuser password = ********
+2026-08-18 23:08:47 INFO connect: application_name = pySagra
+2026-08-18 23:08:47 INFO connect: Database connection established
+2026-08-18 23:08:47 INFO connect: DB is verified as an application database
+2026-08-18 23:08:47 INFO connect: Calling application connection function with parameters:
+2026-08-18 23:08:47 INFO connect: pgminver = 18
+2026-08-18 23:08:47 INFO connect: appname = pySagra
+2026-08-18 23:08:47 INFO connect: appversion = 1.0
+2026-08-18 23:08:47 INFO connect: user = ********
+2026-08-18 23:08:47 INFO connect: password = ********
+2026-08-18 23:08:47 INFO connect: hostname = pysagra_web_server
+2026-08-18 23:08:47 INFO connect: DB Application connection established
+2026-08-18 23:08:47 INFO pysagra_web: Database connection established
+2026-08-18 23:08:47 INFO pysagra_web: Company set to 20
+2026-08-18 23:08:47 INFO wasyncore: Serving on http://0.0.0.0:8080
+2026-08-18 23:09:06 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/
+2026-08-18 23:09:06 ERROR app: Exception on /qmsmanager/ [GET]
+Traceback (most recent call last):
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/paolo/Development/pySagraWeb/app/queue_management.py", line 128, in manager
+    return render_template('qms_manager.html', current_text=queue_number.current())
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/templating.py", line 151, in render_template
+    return _render(app, template, context)
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/templating.py", line 132, in _render
+    rv = template.render(context)
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/paolo/Development/pySagraWeb/templates/qms_manager.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/paolo/Development/pySagraWeb/templates/base.html", line 44, in top-level template code
+    {% block content %}
+  File "/Users/paolo/Development/pySagraWeb/templates/qms_manager.html", line 17, in block 'content'
+    <span   hx-get="{{ url_for('qmsmanager.get_current') }}"
+    ^^^^^^^^^^^^^
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 1121, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 1110, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+        endpoint,
+    ...<3 lines>...
+        force_external=_external,
+    )
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/werkzeug/routing/map.py", line 901, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'qmsmanager.get_current'. Did you mean 'qms.get_current' instead?
+2026-08-18 23:09:57 INFO pysagra_web: Stopping wsgi server
+2026-08-18 23:09:57 INFO pysagra_web: Database connection closed successfully
+2026-08-18 23:10:05 INFO pysagra_web: Starting pySagraWeb version 1.0.0
+2026-08-18 23:10:05 INFO connect: Starting database connection with parameters:
+2026-08-18 23:10:05 INFO connect: host = localhost
+2026-08-18 23:10:05 INFO connect: port = 5432
+2026-08-18 23:10:05 INFO connect: database = pysagra_demo
+2026-08-18 23:10:05 INFO connect: dbuser = pa_login_role
+2026-08-18 23:10:05 INFO connect: dbuser password = ********
+2026-08-18 23:10:05 INFO connect: application_name = pySagra
+2026-08-18 23:10:05 INFO connect: Database connection established
+2026-08-18 23:10:05 INFO connect: DB is verified as an application database
+2026-08-18 23:10:05 INFO connect: Calling application connection function with parameters:
+2026-08-18 23:10:05 INFO connect: pgminver = 18
+2026-08-18 23:10:05 INFO connect: appname = pySagra
+2026-08-18 23:10:05 INFO connect: appversion = 1.0
+2026-08-18 23:10:05 INFO connect: user = ********
+2026-08-18 23:10:05 INFO connect: password = ********
+2026-08-18 23:10:05 INFO connect: hostname = pysagra_web_server
+2026-08-18 23:10:05 INFO connect: DB Application connection established
+2026-08-18 23:10:05 INFO pysagra_web: Database connection established
+2026-08-18 23:10:05 INFO pysagra_web: Company set to 20
+2026-08-18 23:10:05 INFO wasyncore: Serving on http://0.0.0.0:8080
+2026-08-18 23:10:10 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/
+2026-08-18 23:10:18 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qmsmanager/queue-advance
+2026-08-18 23:10:22 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qmsmanager/queue-advance
+2026-08-18 23:10:33 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qmsmanager/queue-regress
+2026-08-18 23:15:15 INFO pysagra_web: Stopping wsgi server
+2026-08-18 23:15:15 INFO pysagra_web: Database connection closed successfully
+2026-08-18 23:15:26 INFO pysagra_web: Starting pySagraWeb version 1.0.0
+2026-08-18 23:15:26 INFO connect: Starting database connection with parameters:
+2026-08-18 23:15:26 INFO connect: host = localhost
+2026-08-18 23:15:26 INFO connect: port = 5432
+2026-08-18 23:15:26 INFO connect: database = pysagra_demo
+2026-08-18 23:15:26 INFO connect: dbuser = pa_login_role
+2026-08-18 23:15:26 INFO connect: dbuser password = ********
+2026-08-18 23:15:26 INFO connect: application_name = pySagra
+2026-08-18 23:15:26 INFO connect: Database connection established
+2026-08-18 23:15:26 INFO connect: DB is verified as an application database
+2026-08-18 23:15:26 INFO connect: Calling application connection function with parameters:
+2026-08-18 23:15:26 INFO connect: pgminver = 18
+2026-08-18 23:15:26 INFO connect: appname = pySagra
+2026-08-18 23:15:26 INFO connect: appversion = 1.0
+2026-08-18 23:15:26 INFO connect: user = ********
+2026-08-18 23:15:26 INFO connect: password = ********
+2026-08-18 23:15:26 INFO connect: hostname = pysagra_web_server
+2026-08-18 23:15:26 INFO connect: DB Application connection established
+2026-08-18 23:15:26 INFO pysagra_web: Database connection established
+2026-08-18 23:15:26 INFO pysagra_web: Company set to 20
+2026-08-18 23:15:26 INFO wasyncore: Serving on http://0.0.0.0:8080
+2026-08-18 23:15:37 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/
+2026-08-18 23:15:37 ERROR app: Exception on /qmsmanager/ [GET]
+Traceback (most recent call last):
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/paolo/Development/pySagraWeb/app/queue_management.py", line 128, in manager
+    return render_template('qms_manager.html', current_text=queue_number.current())
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/templating.py", line 151, in render_template
+    return _render(app, template, context)
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/templating.py", line 132, in _render
+    rv = template.render(context)
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/paolo/Development/pySagraWeb/templates/qms_manager.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/paolo/Development/pySagraWeb/templates/base.html", line 44, in top-level template code
+    {% block content %}
+  File "/Users/paolo/Development/pySagraWeb/templates/qms_manager.html", line 17, in block 'content'
+    <span   hx-get="{{ url_for('qmsmanager.get_current') }}"
+    ^^^^^^^^^^^^^
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 1121, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/flask/app.py", line 1110, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+        endpoint,
+    ...<3 lines>...
+        force_external=_external,
+    )
+  File "/Users/paolo/Development/.venv/pysagraweb/lib/python3.14/site-packages/werkzeug/routing/map.py", line 901, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'qmsmanager.get_current'. Did you mean 'qmsmanager.get_current_value' instead?
+2026-08-18 23:16:02 INFO pysagra_web: Stopping wsgi server
+2026-08-18 23:16:02 INFO pysagra_web: Database connection closed successfully
+2026-08-18 23:16:08 INFO pysagra_web: Starting pySagraWeb version 1.0.0
+2026-08-18 23:16:08 INFO connect: Starting database connection with parameters:
+2026-08-18 23:16:08 INFO connect: host = localhost
+2026-08-18 23:16:08 INFO connect: port = 5432
+2026-08-18 23:16:08 INFO connect: database = pysagra_demo
+2026-08-18 23:16:08 INFO connect: dbuser = pa_login_role
+2026-08-18 23:16:08 INFO connect: dbuser password = ********
+2026-08-18 23:16:08 INFO connect: application_name = pySagra
+2026-08-18 23:16:09 INFO connect: Database connection established
+2026-08-18 23:16:09 INFO connect: DB is verified as an application database
+2026-08-18 23:16:09 INFO connect: Calling application connection function with parameters:
+2026-08-18 23:16:09 INFO connect: pgminver = 18
+2026-08-18 23:16:09 INFO connect: appname = pySagra
+2026-08-18 23:16:09 INFO connect: appversion = 1.0
+2026-08-18 23:16:09 INFO connect: user = ********
+2026-08-18 23:16:09 INFO connect: password = ********
+2026-08-18 23:16:09 INFO connect: hostname = pysagra_web_server
+2026-08-18 23:16:09 INFO connect: DB Application connection established
+2026-08-18 23:16:09 INFO pysagra_web: Database connection established
+2026-08-18 23:16:09 INFO pysagra_web: Company set to 20
+2026-08-18 23:16:09 INFO wasyncore: Serving on http://0.0.0.0:8080
+2026-08-18 23:16:11 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/
+2026-08-18 23:16:13 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:16:15 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:16:17 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:16:19 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:16:21 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:16:23 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:16:25 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qmsmanager/queue-advance
+2026-08-18 23:16:25 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:16:28 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:16:29 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qmsmanager/queue-advance
+2026-08-18 23:16:30 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qmsmanager/queue-advance
+2026-08-18 23:16:30 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qmsmanager/queue-advance
+2026-08-18 23:16:30 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:16:30 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qmsmanager/queue-advance
+2026-08-18 23:16:32 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:16:34 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:16:37 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:16:38 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qmsmanager/queue-advance
+2026-08-18 23:16:38 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qmsmanager/queue-advance
+2026-08-18 23:16:38 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qmsmanager/queue-advance
+2026-08-18 23:16:39 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:16:42 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:16:44 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qmsmanager/queue-advance
+2026-08-18 23:16:44 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:16:44 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qmsmanager/queue-advance
+2026-08-18 23:16:44 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qmsmanager/queue-advance
+2026-08-18 23:16:44 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qmsmanager/queue-advance
+2026-08-18 23:16:45 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qmsmanager/queue-advance
+2026-08-18 23:16:45 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qmsmanager/queue-advance
+2026-08-18 23:16:46 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:16:49 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:16:51 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:16:53 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:16:55 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:16:57 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:16:59 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:17:01 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:17:03 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:17:05 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:17:07 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:17:09 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:17:11 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:17:13 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:17:15 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:17:17 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:17:19 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:17:21 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:17:23 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:17:25 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:17:27 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:17:29 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:17:31 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:17:33 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:17:35 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:17:37 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:17:39 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:17:41 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:17:43 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:17:45 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:17:47 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:17:49 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:17:51 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:17:53 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:17:55 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:17:57 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:17:59 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:18:01 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:18:03 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:18:05 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:18:07 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:18:09 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:18:11 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:18:13 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:18:15 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:18:17 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:18:19 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:18:21 INFO pysagra_web: Stopping wsgi server
+2026-08-18 23:18:21 INFO pysagra_web: Database connection closed successfully
+2026-08-18 23:19:37 INFO pysagra_web: Starting pySagraWeb version 1.0.0
+2026-08-18 23:19:37 INFO connect: Starting database connection with parameters:
+2026-08-18 23:19:37 INFO connect: host = localhost
+2026-08-18 23:19:37 INFO connect: port = 5432
+2026-08-18 23:19:37 INFO connect: database = pysagra_demo
+2026-08-18 23:19:37 INFO connect: dbuser = pa_login_role
+2026-08-18 23:19:37 INFO connect: dbuser password = ********
+2026-08-18 23:19:37 INFO connect: application_name = pySagra
+2026-08-18 23:19:37 INFO connect: Database connection established
+2026-08-18 23:19:37 INFO connect: DB is verified as an application database
+2026-08-18 23:19:37 INFO connect: Calling application connection function with parameters:
+2026-08-18 23:19:37 INFO connect: pgminver = 18
+2026-08-18 23:19:37 INFO connect: appname = pySagra
+2026-08-18 23:19:37 INFO connect: appversion = 1.0
+2026-08-18 23:19:37 INFO connect: user = ********
+2026-08-18 23:19:37 INFO connect: password = ********
+2026-08-18 23:19:37 INFO connect: hostname = pysagra_web_server
+2026-08-18 23:19:37 INFO connect: DB Application connection established
+2026-08-18 23:19:37 INFO pysagra_web: Database connection established
+2026-08-18 23:19:37 INFO pysagra_web: Company set to 20
+2026-08-18 23:19:37 INFO wasyncore: Serving on http://0.0.0.0:8080
+2026-08-18 23:19:39 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:19:41 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:19:43 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:19:45 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:19:47 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:19:49 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:19:51 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:19:53 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:19:55 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:19:57 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:19:59 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:20:01 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:20:03 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:20:05 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:20:07 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:20:09 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:20:11 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:20:13 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:20:15 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:20:17 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:20:19 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:20:21 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:20:23 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:20:25 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:20:27 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:20:29 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:20:31 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:20:33 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:20:35 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:20:37 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:20:39 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:20:41 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:20:43 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:20:45 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:20:47 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:20:49 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:20:51 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:20:53 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:20:55 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:20:57 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:20:59 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:21:01 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:21:03 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:21:05 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:21:07 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:21:08 INFO pysagra_web: Stopping wsgi server
+2026-08-18 23:21:08 INFO pysagra_web: Database connection closed successfully
+2026-08-18 23:21:24 INFO pysagra_web: Starting pySagraWeb version 1.0.0
+2026-08-18 23:21:24 INFO connect: Starting database connection with parameters:
+2026-08-18 23:21:24 INFO connect: host = localhost
+2026-08-18 23:21:24 INFO connect: port = 5432
+2026-08-18 23:21:24 INFO connect: database = pysagra_demo
+2026-08-18 23:21:24 INFO connect: dbuser = pa_login_role
+2026-08-18 23:21:24 INFO connect: dbuser password = ********
+2026-08-18 23:21:24 INFO connect: application_name = pySagra
+2026-08-18 23:21:24 INFO connect: Database connection established
+2026-08-18 23:21:24 INFO connect: DB is verified as an application database
+2026-08-18 23:21:24 INFO connect: Calling application connection function with parameters:
+2026-08-18 23:21:24 INFO connect: pgminver = 18
+2026-08-18 23:21:24 INFO connect: appname = pySagra
+2026-08-18 23:21:24 INFO connect: appversion = 1.0
+2026-08-18 23:21:24 INFO connect: user = ********
+2026-08-18 23:21:24 INFO connect: password = ********
+2026-08-18 23:21:24 INFO connect: hostname = pysagra_web_server
+2026-08-18 23:21:24 INFO connect: DB Application connection established
+2026-08-18 23:21:24 INFO pysagra_web: Database connection established
+2026-08-18 23:21:24 INFO pysagra_web: Company set to 20
+2026-08-18 23:21:24 INFO wasyncore: Serving on http://0.0.0.0:8080
+2026-08-18 23:21:25 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:21:27 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:21:29 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:21:31 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:21:33 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:21:35 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:21:37 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:21:39 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:21:42 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:21:44 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:21:46 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:21:48 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:21:50 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:21:52 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:21:54 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:21:56 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:21:58 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:22:00 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:22:02 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:22:04 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:22:06 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:22:08 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:22:10 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:22:12 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:22:14 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:22:16 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:22:18 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:22:20 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:22:22 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:22:24 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:22:26 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:22:28 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:22:30 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:22:32 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:22:34 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:22:36 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:22:38 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:22:40 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:22:42 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:22:44 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:22:46 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:22:48 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:22:50 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:22:52 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:22:54 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:22:56 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:22:58 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:23:00 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:23:02 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:23:04 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:23:06 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:23:08 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:23:10 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:23:12 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:23:14 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:23:16 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:23:18 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:23:20 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:23:22 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:23:24 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:23:26 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:23:28 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:23:30 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:23:32 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:23:34 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:23:36 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:23:38 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:23:40 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:23:42 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:23:44 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:23:46 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:23:48 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:23:50 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:23:52 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:23:53 INFO pysagra_web: Stopping wsgi server
+2026-08-18 23:23:53 INFO pysagra_web: Database connection closed successfully
+2026-08-18 23:24:03 INFO pysagra_web: Starting pySagraWeb version 1.0.0
+2026-08-18 23:24:03 INFO connect: Starting database connection with parameters:
+2026-08-18 23:24:03 INFO connect: host = localhost
+2026-08-18 23:24:03 INFO connect: port = 5432
+2026-08-18 23:24:03 INFO connect: database = pysagra_demo
+2026-08-18 23:24:03 INFO connect: dbuser = pa_login_role
+2026-08-18 23:24:03 INFO connect: dbuser password = ********
+2026-08-18 23:24:03 INFO connect: application_name = pySagra
+2026-08-18 23:24:03 INFO connect: Database connection established
+2026-08-18 23:24:03 INFO connect: DB is verified as an application database
+2026-08-18 23:24:03 INFO connect: Calling application connection function with parameters:
+2026-08-18 23:24:03 INFO connect: pgminver = 18
+2026-08-18 23:24:03 INFO connect: appname = pySagra
+2026-08-18 23:24:03 INFO connect: appversion = 1.0
+2026-08-18 23:24:03 INFO connect: user = ********
+2026-08-18 23:24:03 INFO connect: password = ********
+2026-08-18 23:24:03 INFO connect: hostname = pysagra_web_server
+2026-08-18 23:24:03 INFO connect: DB Application connection established
+2026-08-18 23:24:03 INFO pysagra_web: Database connection established
+2026-08-18 23:24:03 INFO pysagra_web: Company set to 20
+2026-08-18 23:24:03 INFO wasyncore: Serving on http://0.0.0.0:8080
+2026-08-18 23:24:04 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:24:06 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:24:08 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:24:10 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:24:12 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:24:14 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/get-current
+2026-08-18 23:24:14 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/
+2026-08-18 23:24:30 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qmsmanager/queue_advance
+2026-08-18 23:24:33 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qmsmanager/queue_advance
+2026-08-18 23:24:33 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qmsmanager/queue_advance
+2026-08-18 23:24:34 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qmsmanager/queue_advance
+2026-08-18 23:25:32 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qmsmanager/queue_advance
+2026-08-18 23:25:32 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qmsmanager/queue_advance
+2026-08-18 23:25:49 INFO pysagra_web: Stopping wsgi server
+2026-08-18 23:25:49 INFO pysagra_web: Database connection closed successfully
+2026-08-18 23:28:39 INFO pysagra_web: Starting pySagraWeb version 1.0.0
+2026-08-18 23:28:39 INFO connect: Starting database connection with parameters:
+2026-08-18 23:28:39 INFO connect: host = localhost
+2026-08-18 23:28:39 INFO connect: port = 5432
+2026-08-18 23:28:39 INFO connect: database = pysagra_demo
+2026-08-18 23:28:39 INFO connect: dbuser = pa_login_role
+2026-08-18 23:28:39 INFO connect: dbuser password = ********
+2026-08-18 23:28:39 INFO connect: application_name = pySagra
+2026-08-18 23:28:39 INFO connect: Database connection established
+2026-08-18 23:28:39 INFO connect: DB is verified as an application database
+2026-08-18 23:28:39 INFO connect: Calling application connection function with parameters:
+2026-08-18 23:28:39 INFO connect: pgminver = 18
+2026-08-18 23:28:39 INFO connect: appname = pySagra
+2026-08-18 23:28:39 INFO connect: appversion = 1.0
+2026-08-18 23:28:39 INFO connect: user = ********
+2026-08-18 23:28:39 INFO connect: password = ********
+2026-08-18 23:28:39 INFO connect: hostname = pysagra_web_server
+2026-08-18 23:28:39 INFO connect: DB Application connection established
+2026-08-18 23:28:39 INFO pysagra_web: Database connection established
+2026-08-18 23:28:39 INFO pysagra_web: Company set to 20
+2026-08-18 23:28:39 INFO wasyncore: Serving on http://0.0.0.0:8080
+2026-08-18 23:28:47 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/
+2026-08-18 23:29:14 INFO pysagra_web: Stopping wsgi server
+2026-08-18 23:29:14 INFO pysagra_web: Database connection closed successfully
+2026-08-18 23:29:20 INFO pysagra_web: Starting pySagraWeb version 1.0.0
+2026-08-18 23:29:20 INFO connect: Starting database connection with parameters:
+2026-08-18 23:29:20 INFO connect: host = localhost
+2026-08-18 23:29:20 INFO connect: port = 5432
+2026-08-18 23:29:20 INFO connect: database = pysagra_demo
+2026-08-18 23:29:20 INFO connect: dbuser = pa_login_role
+2026-08-18 23:29:20 INFO connect: dbuser password = ********
+2026-08-18 23:29:20 INFO connect: application_name = pySagra
+2026-08-18 23:29:20 INFO connect: Database connection established
+2026-08-18 23:29:20 INFO connect: DB is verified as an application database
+2026-08-18 23:29:20 INFO connect: Calling application connection function with parameters:
+2026-08-18 23:29:20 INFO connect: pgminver = 18
+2026-08-18 23:29:20 INFO connect: appname = pySagra
+2026-08-18 23:29:20 INFO connect: appversion = 1.0
+2026-08-18 23:29:20 INFO connect: user = ********
+2026-08-18 23:29:20 INFO connect: password = ********
+2026-08-18 23:29:20 INFO connect: hostname = pysagra_web_server
+2026-08-18 23:29:20 INFO connect: DB Application connection established
+2026-08-18 23:29:20 INFO pysagra_web: Database connection established
+2026-08-18 23:29:20 INFO pysagra_web: Company set to 20
+2026-08-18 23:29:20 INFO wasyncore: Serving on http://0.0.0.0:8080
+2026-08-18 23:29:25 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/
+2026-08-18 23:31:45 INFO pysagra_web: Stopping wsgi server
+2026-08-18 23:31:45 INFO pysagra_web: Database connection closed successfully
+2026-08-18 23:31:53 INFO pysagra_web: Starting pySagraWeb version 1.0.0
+2026-08-18 23:31:53 INFO connect: Starting database connection with parameters:
+2026-08-18 23:31:53 INFO connect: host = localhost
+2026-08-18 23:31:53 INFO connect: port = 5432
+2026-08-18 23:31:53 INFO connect: database = pysagra_demo
+2026-08-18 23:31:53 INFO connect: dbuser = pa_login_role
+2026-08-18 23:31:53 INFO connect: dbuser password = ********
+2026-08-18 23:31:53 INFO connect: application_name = pySagra
+2026-08-18 23:31:53 INFO connect: Database connection established
+2026-08-18 23:31:53 INFO connect: DB is verified as an application database
+2026-08-18 23:31:53 INFO connect: Calling application connection function with parameters:
+2026-08-18 23:31:53 INFO connect: pgminver = 18
+2026-08-18 23:31:53 INFO connect: appname = pySagra
+2026-08-18 23:31:53 INFO connect: appversion = 1.0
+2026-08-18 23:31:53 INFO connect: user = ********
+2026-08-18 23:31:53 INFO connect: password = ********
+2026-08-18 23:31:53 INFO connect: hostname = pysagra_web_server
+2026-08-18 23:31:53 INFO connect: DB Application connection established
+2026-08-18 23:31:53 INFO pysagra_web: Database connection established
+2026-08-18 23:31:53 INFO pysagra_web: Company set to 20
+2026-08-18 23:31:53 INFO wasyncore: Serving on http://0.0.0.0:8080
+2026-08-18 23:31:56 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/
+2026-08-18 23:32:04 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qmsmanager/queue_advance
+2026-08-18 23:32:07 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qmsmanager/queue_regress
+2026-08-18 23:32:09 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qmsmanager/queue_advance
+2026-08-18 23:32:12 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qmsmanager/queue_advance
+2026-08-18 23:33:21 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/
+2026-08-18 23:33:29 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qmsmanager/queue_advance
+2026-08-18 23:33:34 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qmsmanager/queue_advance
+2026-08-18 23:33:49 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qmsmanager/queue_reset
+2026-08-18 23:33:56 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qmsmanager/queue_advance
+2026-08-18 23:34:02 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qmsmanager/queue_advance
+2026-08-18 23:34:06 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qmsmanager/queue_advance
+2026-08-18 23:43:42 INFO pysagra_web: Stopping wsgi server
+2026-08-18 23:43:42 INFO pysagra_web: Database connection closed successfully

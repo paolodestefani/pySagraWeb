@@ -111,7 +111,7 @@ def index():
     "Renders the main queue page, displaying the current queue number."
     return render_template('qms_current.html', current_text='')
 
-@qms_bp.route('/get-current')
+@qms_bp.route('/get_current')
 def get_current():
     "Returns the current queue number as a string, used for HTMX requests to update the display."
     number, is_new = queue_number.current()
@@ -125,21 +125,22 @@ def get_current():
 @qmsmanager_bp.route('/')
 def manager():
     "Renders the queue management interface for advancing, regressing, and resetting the queue number."
-    return render_template('qms_manager.html', current_text=queue_number.current())
+    number, is_new = queue_number.current()
+    return render_template('qms_manager.html', current_text=number)
 
-@qmsmanager_bp.route('/queue-advance', methods=['POST'])
+@qmsmanager_bp.route('/queue_advance', methods=['POST'])
 def queue_advance():
     "Advances the queue number by one and returns a 204 No Content response, used for HTMX requests."
     queue_number.advance()
     return "", 204
 
-@qmsmanager_bp.route('/queue-regress', methods=['POST'])
+@qmsmanager_bp.route('/queue_regress', methods=['POST'])
 def queue_regress():
     "Regresses the queue number by one and returns a 204 No Content response, used for HTMX requests."
     queue_number.regress()
     return "", 204
 
-@qmsmanager_bp.route('/queue-reset', methods=['POST'])
+@qmsmanager_bp.route('/queue_reset', methods=['POST'])
 def reset_queue():
     "Resets the queue number to a new value provided by the user via a form submission."
     new_value = request.form.get('new_value')
@@ -149,3 +150,9 @@ def reset_queue():
     # set the queue number to the new value entered by the user
     queue_number.reset(new_value)
     return "", 204
+
+@qmsmanager_bp.route('/get_current')
+def get_current_value():
+    "Returns the current queue number as a string, used for HTMX requests to update the display."
+    number, is_new = queue_number.current()
+    return number

@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% block content %}
-
 <style>
     /* Click effect for all buttons in the container */
     .container .btn {
@@ -11,11 +10,17 @@
         filter: brightness(0.9); /* It darkens slightly */
     }
 </style>
-
 <div class="container d-flex flex-column justify-content-center align-items-center vh-100">
     <div class="text-center w-100" style="max-width: 500px;">
         <h2 class="mb-5 text-dark fw-bold text-uppercase tracking-wider">Gestione della coda</h2>
-        <p>Valore corrente: {{ current_text }}</p>
+        <p>Valore corrente: 
+            <div    hx-get="{{ url_for('qmsmanager.get_current_value') }}" 
+                    hx-trigger="every 2s" 
+                    hx-swap="innerHTML"
+                    class="fw-bold fs-1">
+                {{ current_text }}
+        </div>
+        </p>
         <!-- PRIMARYBUTTON: ADVANCE-->
         <div class="mb-4">
             <button hx-post="{{ url_for('qmsmanager.queue_advance') }}" 

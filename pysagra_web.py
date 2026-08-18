@@ -166,7 +166,7 @@ if __name__ == '__main__':
     @app.before_request
     def log_client_connection():
         # esclude some log messages to avoid cluttering the log
-        if request.path.startswith(('/static/', '/qms/')) or request.path.endswith('_rows'):
+        if request.path.startswith(('/static/', '/qms/')) or request.path.endswith(('_rows', 'get_current')):
             return
         logging.info(f"Connected client - IP: {request.remote_addr} - Request: {request.method} {request.path}")
     
