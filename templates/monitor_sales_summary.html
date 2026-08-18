@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+    /* apply a border to any cell of the table */
+    table.table-sm tr td {
+        border: 1px solid #6c757d !important; /* uniform dark line */
+    }
+</style>
+<div class="container-fluid text-sm-center p-3 bg-primary text-white mb-4 bg-gradient">
+  <h2>Riepilogo delle vendite</h2>
+</div>
+
+<!-- items availability table-->
+<div class="container-fluid px-3 pb-4">
+  <div class="table-responsive rounded border">
+    <table class="table table-sm table-bordered w-100 align-middle border-secondary m-0">
+      <thead class="table-dark">
+        <tr>
+          <th class="text-left" style="width: 10%">Data</th>
+          <th class="text-center" style="width: 10%">N. ordini</th>
+          <th class="text-center" style="width: 10%">Coperti</th>
+          <th class="text-center" style="width: 10%">Asporto</th>
+          <th class="text-center" style="width: 10%">Tavolo</th>
+          <th class="text-center" style="width: 10%">Importo</th>
+          <th class="text-center" style="width: 10%">Sconto</th>
+          <th class="text-center" style="width: 10%">Elettronico</th>
+          <th class="text-center" style="width: 10%">Contante</th>
+          <th class="text-center" style="width: 10%">Totale</th>
+        </tr>
+      </thead>
+
+      <tbody 
+            id="table-body"
+            hx-ext="morph"
+            hx-get="{{ url_for('monitor.monitor_sales_summary_update_rows') }}" 
+            hx-trigger="every 10s" 
+            hx-target="#table-body" 
+            hx-swap="morph">
+
+        {% include "monitor_sales_summary_rows.html" %}
+
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

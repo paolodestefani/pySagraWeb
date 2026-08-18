@@ -15,6 +15,7 @@
 <div class="container d-flex flex-column justify-content-center align-items-center vh-100">
     <div class="text-center w-100" style="max-width: 500px;">
         <h2 class="mb-5 text-dark fw-bold text-uppercase tracking-wider">Gestione della coda</h2>
+        <p>Valore corrente: {{ current_text }}</p>
         <!-- PRIMARYBUTTON: ADVANCE-->
         <div class="mb-4">
             <button hx-post="{{ url_for('qmsmanager.queue_advance') }}" 

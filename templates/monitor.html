@@ -1,26 +1,22 @@
 {% extends "base.html" %}
 {% block content %}
-
-<!-- Intestazione della pagina -->
+<!-- page header -->
 <div class="container-fluid text-center p-4 bg-primary text-white mb-5 bg-gradient rounded-3 shadow-sm">
   <h2 class="fw-bold">Pannello di Monitoraggio Generale</h2>
-  <p class="lead mb-0">Visualizzazione in tempo reale dello stato degli ordini e dell'inventario</p>
+  <p class="lead mb-0">Visualizzazione in tempo reale dello stato dell'ordinato, inventario, vendite</p>
 </div>
 
-<!-- Contenitore principale delle sezioni -->
-<div class="container my-4">
-    <p class="text-muted mb-4 fs-5">Seleziona una sezione per iniziare:</p>
-    
-    <!-- Griglia responsive: 1 colonna sui telefoni, 2 colonne sui monitor più grandi -->
+<!-- main container -->
+<div class="container my-4">    
+    <!-- responsive grid: 1 column on smartphones, 2 columns on monitor -->
     <div class="row g-4">
-        
-        <!-- Scheda Inventario -->
+        <!-- inventory card -->
         <div class="col-md-6">
             <div class="card h-100 shadow-sm border-0 bg-white">
                 <div class="card-body p-4 d-flex flex-column justify-content-between">
                     <div>
                         <h3 class="card-title h5 text-primary mb-3">
-                            Monitor Inventario
+                            Inventario
                         </h3>
                         <p class="card-text text-secondary">
                             Controlla le scorte di magazzino, monitora i prodotti in esaurimento e gestisci i carichi di merce in tempo reale.
@@ -28,12 +24,53 @@
                     </div>
                     <!-- Bottone di azione -->
                     <a href="{{ url_for('monitor.monitor_inventory') }}" class="btn btn-outline-primary w-100 stretched-link mt-4">
-                        Apri Inventario
+                        Vai a Inventario
                     </a>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
+        </div> <!-- inventory card -->
+
+        <!-- ordered delivered card -->
+        <div class="col-md-6">
+            <div class="card h-100 shadow-sm border-0 bg-white">
+                <div class="card-body p-4 d-flex flex-column justify-content-between">
+                    <div>
+                        <h3 class="card-title h5 text-primary mb-3">
+                            Ordinato Consegnato
+                        </h3>
+                        <p class="card-text text-secondary">
+                            Visualizza gli articoli da consegnare e consegnati.
+                        </p>
+                    </div>
+                    <!-- Bottone di azione -->
+                    <a href="{{ url_for('monitor.monitor_ordered_delivered') }}" class="btn btn-outline-primary w-100 stretched-link mt-4">
+                        Vai a Ordinato Consegnato
+                    </a>
+                </div>
+            </div>
+        </div> <!-- ordered delivered card -->
+
+        <!-- sales summary card -->
+        <div class="col-md-6">
+            <div class="card h-100 shadow-sm border-0 bg-white">
+                <div class="card-body p-4 d-flex flex-column justify-content-between">
+                    <div>
+                        <h3 class="card-title h5 text-primary mb-3">
+                            Riepilogo delle vendite
+                        </h3>
+                        <p class="card-text text-secondary">
+                            Visualizza il numero di ordini, coperti ed il valore dell'incasso per tipologia di consegna e pagamento
+                        </p>
+                    </div>
+                    <!-- Bottone di azione -->
+                    <a href="{{ url_for('monitor.monitor_sales_summary') }}" class="btn btn-outline-primary w-100 stretched-link mt-4">
+                        Vai a Riepilogo vendite
+                    </a>
+                </div>
+            </div>
+        </div> <!-- sales summary card -->
+
+    </div> <!-- responsive grid -->
+</div> <!-- main container -->
 
 {% endblock %}

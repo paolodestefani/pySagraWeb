@@ -125,7 +125,7 @@ def get_current():
 @qmsmanager_bp.route('/')
 def manager():
     "Renders the queue management interface for advancing, regressing, and resetting the queue number."
-    return render_template('qms_manager.html')
+    return render_template('qms_manager.html', current_text=queue_number.current())
 
 @qmsmanager_bp.route('/queue-advance', methods=['POST'])
 def queue_advance():

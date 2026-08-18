@@ -1,0 +1,14 @@
+{% for line in lines %}
+    <tr class="text-dark">
+        <td class="text-start">{{ line.order_date }}</td>
+        <td class="text-end fw-bold">{{ line.num_orders | fmt}}</td>
+        <td class="text-end fw-bold">{{ line.num_covers | fmt}}</td>
+        <td class="text-end fw-bold">{{ line.take_away | fmt}}</td>
+        <td class="text-end fw-bold">{{ line.table | fmt}}</td>
+        <td class="text-end fw-bold">{{ line.amount | fmt}}</td>
+        <td class="text-end fw-bold">{{ line.discount | fmt}}</td>
+        <td class="text-end fw-bold">{{ line.electronic | fmt}}</td>
+        <td class="text-end fw-bold">{{ line.cash | fmt}}</td>
+        <td class="text-end fw-bold">{{ line.total | fmt}}</td>
+    </tr>
+{% endfor %}

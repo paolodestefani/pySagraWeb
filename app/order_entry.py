@@ -106,7 +106,7 @@ def order_header():
 
     return render_template('order_header.html',
                            delivery = session.get('delivery', 'T'),
-                           event    = session['event_description'],
+                           event    = session.get('event_description', '--)'),
                            customer = session.get('customer', ''),
                            table    = session.get('table', ''),
                            covers   = session.get('covers', ''))

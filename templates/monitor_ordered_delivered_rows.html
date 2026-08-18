@@ -1,0 +1,7 @@
+{% for line in lines %}
+    <tr class="text-dark {% if line.ordered == 0 %} table-success {% endif %}">
+        <td class="text-start">{{ line.item }}</td>
+        <td class="text-end fw-bold">{{ line.ordered | fmt}}</td>
+        <td class="text-end fw-bold">{{ line.delivered | fmt}}</td>
+    </tr>
+{% endfor %}

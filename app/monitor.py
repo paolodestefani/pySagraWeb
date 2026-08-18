@@ -33,12 +33,10 @@ from functools import wraps
 from flask import Blueprint, render_template, redirect, request, url_for, session
 
 # application modules
-from app import appconfig
-#from app.login import login_required
 from app.database.event import get_event_from_date
-from app.database.order_status import get_order_status
-from app.database.inventory import get_inventory
-
+from app.database.monitor import get_inventory
+from app.database.monitor import get_ordered_delivered
+from app.database.monitor import get_sales_summary
 
 monitor_bp = Blueprint('monitor', __name__)
 
@@ -67,4 +65,36 @@ def monitor_inventory_update_rows():
     event_id = get_event_from_date(datetime.date.today())['event_id']
     lines = get_inventory(event_id)
     return render_template('monitor_inventory_rows.html',
+                           lines=lines) 
+    
+    
+@monitor_bp.route('/ordered_delivered')
+def monitor_ordered_delivered():
+    event_id = get_event_from_date(datetime.date.today())['event_id']
+    lines = get_ordered_delivered(event_id)
+    return render_template('monitor_ordered_delivered.html',
+                           lines=lines)
+
+
+@monitor_bp.route('/update_ordered_delivered_rows')
+def monitor_ordered_delivered_update_rows():
+    event_id = get_event_from_date(datetime.date.today())['event_id']
+    lines = get_ordered_delivered(event_id)
+    return render_template('monitor_ordered_delivered_rows.html',
+                           lines=lines) 
+
+
+@monitor_bp.route('/sales_summary')
+def monitor_sales_summary():
+    event_id = get_event_from_date(datetime.date.today())['event_id']
+    lines = get_sales_summary(event_id)
+    return render_template('monitor_sales_summary.html',
+                           lines=lines)
+
+
+@monitor_bp.route('/update_sales_summary_rows')
+def monitor_sales_summary_update_rows():
+    event_id = get_event_from_date(datetime.date.today())['event_id']
+    lines = get_sales_summary(event_id)
+    return render_template('monitor_sales_summary_rows.html',
                            lines=lines) 
