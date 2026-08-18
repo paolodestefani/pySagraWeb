@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
-<!-- Il wrapper principale occupa l'altezza dello schermo (vh-100) per gestire i tasti in fondo -->
+<!-- the main wrapper takes up the height of the screen (vh-100) to handle the buttons at the bottom -->
 <div class="d-flex flex-column vh-100 overflow-hidden">
 
-  <!-- Header Blu (Fisso in alto) -->
+  <!-- blue header (fixed at top) -->
   <div class="container-fluid text-sm-center p-3 bg-primary text-white mb-4 bg-gradient flex-shrink-0">
     <h2>Ordine generato</h2>
     <p class="mb-1">Procedi alla cassa per il pagamento esibendo il seguente QR Code</p>
@@ -11,21 +11,21 @@
     <p class="mb-0">{{ test }}</p>
   </div>
 
-  <!-- Contenitore Principale -->
+  <!-- main container -->
   <div class="container-fluid px-3 flex-grow-1 overflow-hidden d-flex flex-column">
     <div class="row justify-content-center flex-grow-1 overflow-hidden">
-      <!-- col-auto permette al blocco di rimanere centrato in finestra adattandosi al contenuto -->
+      <!-- col-auto allows the block to remain centered in the window, adapting to the content -->
       <div class="col-auto d-flex flex-column h-100 overflow-hidden">
         
-        <!-- Il Form occupa l'altezza disponibile e distribuisce lo spazio internamente -->
+        <!-- the form occupies the available height and distributes the space internally -->
         <form action="" method="post" class="d-flex flex-column flex-grow-1 h-100 overflow-hidden justify-content-between">
           
-          <!-- CONTENITORE CENTRALE: Mantiene il QR Code in alto e centrato -->
+          <!-- CENTER CONTAINER: keeps the QR Code up and centered -->
           <div class="overflow-auto text-center py-2">
             <div id="qrcode" class="d-inline-block p-3 bg-white rounded border shadow-sm"></div>
           </div>
 
-          <!-- Pulsanti di Navigazione: Isolati e bloccati fissi in fondo allo schermo -->
+          <!-- navigation buttons: isolated and fixed at the bottom of the screen -->
           <div class="form-group text-center pt-2 pb-4 mt-auto flex-shrink-0">
             <button type="submit" class="btn btn-primary px-4 py-2 fw-bold text-uppercase mx-1 shadow-sm" name="previous">Precedente</button>
             <button type="button" class="btn btn-success px-4 py-2 fw-bold text-uppercase mx-1 shadow-sm" data-bs-toggle="modal" data-bs-target="#modal_new">
@@ -33,7 +33,7 @@
             </button>
           </div>
 
-          <!-- Modal new order (Codice racchiuso all'interno del form, non influisce sul layout dei tasti) -->
+          <!-- modal new order -->
           <div class="modal fade" id="modal_new" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
               <div class="modal-content">

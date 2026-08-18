@@ -55,30 +55,29 @@ WHERE event_id = {event};"""
     # Unified context managers in the recommended evaluation order
     with db_exception_context(logger), appconn.transaction(), appconn.cursor() as cur:
         cur.execute(script)
-        return next(cur, None)
+        return cur.fetchone()
 
-
-def is_used(event: int) -> bool:
-    "Returns True if have orders for the given event"
-    script = t"""
-SELECT EXISTS(
-    SELECT event_id 
-    FROM order_header 
-    WHERE event_id = {event} 
-    LIMIT 1);"""
-    # Unified context managers ensuring proper evaluation order
-    with db_exception_context(logger), appconn.transaction(), appconn.cursor() as cur:
-        cur.execute(script)
-        result = cur.fetchone()
-        return result[0] if result else False
+# def is_used(event: int) -> bool:
+#     "Returns True if have orders for the given event"
+#     script = t"""
+# SELECT EXISTS(
+#     SELECT event_id 
+#     FROM order_header 
+#     WHERE event_id = {event} 
+#     LIMIT 1);"""
+#     # Unified context managers ensuring proper evaluation order
+#     with db_exception_context(logger), appconn.transaction(), appconn.cursor() as cur:
+#         cur.execute(script)
+#         result = cur.fetchone()
+#         return result[0] if result else False
     
     
-def get_event_from_date(date: Any) -> tuple[int | None, str | None]:
+def get_event_from_date(date: Any) -> Any|None:
     "Get event id from date time"
     script = t"""
 SELECT 
-    event_id,
-    description
+    event_id        AS event_id,
+    description     AS event_description
 FROM event
 WHERE
         company_id = system.pa_current_company()
@@ -86,5 +85,5 @@ WHERE
     # Unified context managers ensuring proper evaluation order
     with db_exception_context(logger), appconn.transaction(), appconn.cursor() as cur:
         cur.execute(script)
-        return next(cur, (None, None))
+        return cur.fetchone()
    

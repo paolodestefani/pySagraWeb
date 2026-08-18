@@ -73,7 +73,7 @@ ORDER BY sorting;"""
 
 def department_web_list() -> list[tuple]:
     "Get a list of active departments with has items web available"
-    script = ("""
+    script = """
 SELECT
 	d.department_id,
 	d.description
@@ -89,7 +89,7 @@ JOIN (
 WHERE
         company_id = system.pa_current_company()
     AND d.is_obsolete IS false
-ORDER BY d.sorting;""")
+ORDER BY d.sorting;"""
     # Unified context managers in the recommended evaluation order
     with db_exception_context(logger), appconn.transaction(), appconn.cursor() as cur:
         cur.execute(script)

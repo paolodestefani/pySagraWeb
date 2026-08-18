@@ -46,16 +46,16 @@ def status_index():
 
 @status_bp.route('/order_status')
 def order_status():
-    event_id, _ = get_event_from_date(datetime.date.today())
+    event_id = get_event_from_date(datetime.date.today())['event_id']
     rows = int(appconfig['STATUS']['rows'])
     lines = get_order_status(event_id, rows)
-    return render_template('order_status.html',
+    return render_template('current_order_status.html',
                            lines=lines)
 
 
 @status_bp.route('/update_order_status_rows')
 def order_status_update_rows():
-    event_id, _ = get_event_from_date(datetime.date.today())
+    event_id = get_event_from_date(datetime.date.today())['event_id']
     rows = int(appconfig['STATUS']['rows'])
     lines = get_order_status(event_id, rows)
-    return render_template("order_status_rows.html", lines=lines)
+    return render_template("current_order_status_rows.html", lines=lines)

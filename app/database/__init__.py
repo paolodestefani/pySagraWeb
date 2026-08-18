@@ -96,7 +96,6 @@ class PyAppDBConcurrencyError(PyAppDBError):
                  code: str = 'CCER', 
                  message: str = 'Row modified before update/delete', 
                  detail: Optional[str] = None) -> None:
-        # Manteniamo la firma compatibile con la classe base usando i parametri di default
         super().__init__(code=code, message=message, detail=detail)
         
         

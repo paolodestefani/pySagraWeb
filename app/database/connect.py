@@ -35,13 +35,6 @@ import psycopg
 
 # application modules
 
-from app import APP_NAME
-from app import APP_VERSION_MAJOR
-from app import APP_VERSION_MINOR
-from app import APP_VERSION_PATCH
-from app import PG_MIN_VER
-from app import FLASK_SECRET_KEY
-
 # exceptions
 from app.database import PyAppDBConnectionError
 from app.database import PyAppDBError
@@ -61,8 +54,8 @@ class AppConnection():
     "Database and application connection class"
 
     def __init__(self) -> None:
-        self._conn: psycopg.Connection # psycopg connection instance
-        self._par: dict = dict() # store connection parameter
+        self._conn: psycopg.Connection  # psycopg connection instance
+        self._par: dict = dict()        # store connection parameter
 
     def connect(self, par: dict) -> None:
         "Open a db connection and then an application connection trought an sql function"
@@ -116,9 +109,9 @@ SELECT EXISTS(SELECT 1
             raise PyAppDBError(er.diag.sqlstate, er.diag.message_primary, str(er))
         # connect to the applicationdb
         logging.info("Calling application connection function with parameters:")
-        logging.info("pgminver = %s", PG_MIN_VER)
+        logging.info("pgminver = %s", par['pg_min_ver'])
         logging.info("appname = %s", par['app_name'])
-        logging.info("appversion = %s.%s", APP_VERSION_MAJOR, APP_VERSION_MINOR)
+        logging.info("appversion = %s.%s", par['app_version_major'], par['app_version_minor'])
         logging.info("user = ********")
         logging.info("password = ********")
         logging.info("hostname = %(hostname)s", par)
@@ -126,10 +119,10 @@ SELECT EXISTS(SELECT 1
             with self._conn.cursor(row_factory=psycopg.rows.dict_row) as cur:
                 script = t"""
                 SELECT * FROM system.pa_connect(
-                    {PG_MIN_VER},
+                    {par['pg_min_ver']},
                     {par['app_name']},
-                    {APP_VERSION_MAJOR},
-                    {APP_VERSION_MINOR},
+                    {par['app_version_major']},
+                    {par['app_version_minor']},
                     {par['user']},
                     {par['password']},
                     {par['hostname']});"""
@@ -150,10 +143,11 @@ SELECT EXISTS(SELECT 1
             logger.error("*** DATABASE ERROR ***\nSQL State: %s\n%s", er.diag.sqlstate, str(er))
             raise PyAppDBError(er.diag.sqlstate, er.diag.message_primary, str(er))
 
-    def cursor(self, row_factory: Optional[psycopg.rows.RowFactory[Any]] = None,
-                binary: bool = False
+    def cursor(self, 
+               row_factory: psycopg.rows.RowFactory[Any] = psycopg.rows.dict_row,
+               binary: bool = False
                ) -> psycopg.Cursor[Any]|psycopg.ServerCursor[Any]:
-        "Returns a new cursor"
+        "Returns a new cursor dict_row by default"
         if row_factory is None:
             return self._conn.cursor(binary=binary)
         else:

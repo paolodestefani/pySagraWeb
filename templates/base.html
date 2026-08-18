@@ -10,16 +10,11 @@
     <script src={{ url_for("static", filename="js/bootstrap.min.js") }}></script>
 	<script src={{ url_for("static", filename="js/bootstrap.bundle.min.js") }}></script>
 	<script src={{ url_for('static', filename='js/htmx.min.js') }}></script>
-	<style>
-    .form-check-input:not(:checked) {
-    border: 1pt solid black; /* checkbox more readable */
-}
-	</style>
   </head>
   <body class="bg-light bg-gradient">
   {% with messages = get_flashed_messages() %}
   {% if messages %}
-  <!-- Modal flash message warning -->
+  <!-- modal flash message warning -->
   <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
@@ -39,7 +34,7 @@
   </div>
   <script>
   var modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('modal')) // Returns a Bootstrap modal instance
-  // Show or hide:
+  // show or hide:
   modal.show();
   //modal.hide();
   </script>

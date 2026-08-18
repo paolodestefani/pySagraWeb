@@ -1,27 +1,31 @@
 {% extends "base.html" %}
 {% block content %}
-<!-- Il wrapper principale occupa l'altezza dello schermo (vh-100) per gestire i tasti in fondo -->
+<style>
+    .form-check-input:not(:checked) {
+    border: 1pt solid black; /* checkbox more readable */
+}</style>
+<!-- the main wrapper takes up the height of the screen (vh-100) to handle the buttons at the bottom -->
 <div class="d-flex flex-column vh-100 overflow-hidden">
 
-  <!-- Header Blu (Fisso in alto) -->
+  <!-- blue header (fixed on top) -->
   <div class="container-fluid text-sm-center p-3 bg-primary text-white mb-4 bg-gradient flex-shrink-0">
     <h1>Selezionare la variante</h1>
     <p class="mb-0">{{ test }}</p>
   </div>
 
-  <!-- Contenitore Principale -->
+  <!-- main container -->
   <div class="container-fluid px-3 flex-grow-1 overflow-hidden d-flex flex-column">
-    <!-- row con justify-content-center centra orizzontalmente il blocco -->
+    <!-- row with justify-content-center center horizzontaly  -->
     <div class="row justify-content-center flex-grow-1 overflow-hidden">
-      <!-- col-auto permette al blocco di stringersi intorno al contenuto e rimanere centrato -->
+      <!-- col-auto allows the block to tighten around the content and remain centered -->
       <div class="col-auto d-flex flex-column h-100 overflow-hidden">
         
         <p class="fw-bold mb-2">{{ item }}:</p>
         
-        <!-- Il Form occupa l'altezza disponibile e distribuisce lo spazio internamente -->
+        <!-- the form occupies the available height and distributes the space internally -->
         <form action="" method="post" class="d-flex flex-column flex-grow-1 h-100 overflow-hidden justify-content-between">
           
-          <!-- CONTENITORE DELLE OPZIONI (Resta compatto in alto e scorre se ci sono troppe varianti) -->
+          <!-- OPTIONS CONTAINER (stays compact at the top and scrolls if there are too many options) -->
           <div class="overflow-auto pe-1">
             <div class="ps-4 mb-4">
               {% for var in variants %}
@@ -41,7 +45,7 @@
             </div>
           </div>
 
-          <!-- Pulsanti di Navigazione: Isolati e bloccati in fondo allo schermo -->
+          <!-- navigation buttons: isolated and locked to the bottom of the screen -->
           <div class="form-group text-center pt-2 pb-4 mt-auto flex-shrink-0">
             <button type="submit" class="btn btn-warning px-4 py-2 fw-bold text-uppercase mx-1 shadow-sm" name="cancel">Annulla</button>
             <button type="submit" class="btn btn-success px-4 py-2 fw-bold text-uppercase mx-1 shadow-sm" name="confirm">Conferma</button>

@@ -39,16 +39,11 @@ from app.database import db_exception_context
 logger = logging.getLogger(__name__)
 
 
-def table_list() -> list[tuple[str, int, int, str, str, bool]]:
+def table_list() -> list[str]:
     "Returns a list of available table codes"
     script = t"""
 SELECT 
-    table_code,
-    pos_row,
-    pos_column,
-    text_color,
-    background_color,
-    is_unavailable
+    table_code
 FROM company.seat_map
 WHERE 
         company_id = system.pa_current_company() 
@@ -57,5 +52,5 @@ WHERE
     # Unified context managers in the recommended evaluation order
     with db_exception_context(logger), appconn.transaction(), appconn.cursor() as cur:
         cur.execute(script)
-        return cur.fetchall()
+        return [table['table_code'] for table in cur]
 

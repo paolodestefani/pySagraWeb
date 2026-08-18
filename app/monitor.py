@@ -56,7 +56,7 @@ def monitor_index():
 
 @monitor_bp.route('/inventory')
 def monitor_inventory():
-    event_id, _ = get_event_from_date(datetime.date.today())
+    event_id = get_event_from_date(datetime.date.today())['event_id']
     lines = get_inventory(event_id)
     return render_template('monitor_inventory.html',
                            lines=lines)
@@ -64,7 +64,7 @@ def monitor_inventory():
 
 @monitor_bp.route('/update_inventory_rows')
 def monitor_inventory_update_rows():
-    event_id, _ = get_event_from_date(datetime.date.today())
+    event_id = get_event_from_date(datetime.date.today())['event_id']
     lines = get_inventory(event_id)
     return render_template('monitor_inventory_rows.html',
                            lines=lines) 

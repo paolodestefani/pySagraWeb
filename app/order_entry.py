@@ -79,29 +79,29 @@ def order_header():
         return redirect(url_for('order.order_menu'))
        
     if not session:  # update item and item variants only on first form load or when session is cleared
-        session['event_id'], session['event_description'] = get_event_from_date(datetime.date.today())
-        session['table_list']           = [table_code for table_code, _, _, _, _, _ in table_list()] + ['***']
+        session.update(get_event_from_date(datetime.date.today()))
+        session['table_list']           = table_list() + ['***']
         session['departments']          = []
         session['dep_index']            = 0
         session['lines'] = {}
         session['variants'] = {}
-        for di, dd in department_web_list():
-            session['departments'].append(dd)
-            session['lines'][dd] = []
-            for i, d, p, a, v in item_web_list(session['event_id'], di):
+        for dep in department_web_list():
+            session['departments'].append(dep['description'])
+            session['lines'][dep['description']] = []
+            for i in item_web_list(session['event_id'], dep['department_id']):
                 #print(f"item_web_list: i={i}, d={d}, p={p}, a={a}, v={v}")
-                session['lines'][dd].append([str(i),                 # 0 item id as string (session dict are stored as string anyway)
-                                            d,                       # 1 item description
-                                            0,                       # 2 quantity 
-                                            float(p),                       # 3 price number (for totals)
-                                            locale.currency(p),      # 4 price as currency string
-                                            a,                       # 5 is active
-                                            v,                       # 6 has variants
-                                            '',                      # 7 variants description 
-                                            0.0])                    # 8 variant price delta
-                if v:
-                    session['variants'][i] = [[vd, float(vp), '(+' + locale.currency(vp) + ')' if vp != 0.0 else '']
-                                            for vd, vp in get_variants(i)]   
+                session['lines'][dep['description']].append([str(i['id']), # 0 item id as string (session dict are stored as string anyway)
+                                            i['description'],              # 1 item description
+                                            0,                             # 2 quantity 
+                                            float(i['price']),             # 3 price number (for totals)
+                                            locale.currency(i['price']),   # 4 price as currency string
+                                            i['available'],                # 5 is active
+                                            i['variants'],                 # 6 has variants
+                                            '',                            # 7 variants description 
+                                            0.0])                          # 8 variant price delta
+                if i['variants']:
+                    session['variants'][i['id']] = [[v['description'], float(v['delta']), '(+' + locale.currency(v['delta']) + ')' if v['delta'] != 0.0 else '']
+                                            for v in get_variants(i['id'])]   
                     #print(f"variants: i={i}, variants={session['variants'][i]}")
 
     return render_template('order_header.html',
@@ -148,9 +148,9 @@ def order_menu():
             
     return render_template(
         'order_menu.html',
-        #test       =request.form,
-        department  =session['departments'][session['dep_index']],
-        lines       =session['lines'][session['departments'][session['dep_index']]])
+        #test       = request.form,
+        department  = session['departments'][session['dep_index']],
+        lines       = session['lines'][session['departments'][session['dep_index']]])
         
     
 @order_bp.route("/variants/<int:index>", methods=['GET', 'POST'])

@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
-<!-- Il wrapper principale occupa l'altezza dello schermo (vh-100) per gestire i tasti in fondo -->
+<!-- the main wrapper takes up the height of the screen (vh-100) to handle the buttons at the bottom -->
 <div class="d-flex flex-column vh-100 overflow-hidden">
 
-  <!-- Header Blu (Fisso in alto) -->
+  <!-- blue header (fixed at Top) -->
   <div class="container-fluid text-sm-center p-3 bg-primary text-white mb-4 bg-gradient flex-shrink-0">
     <h2>Riepilogo dei dati inseriti</h2>
     <p class="mb-1">Controlla i dati, confermali cliccando su <strong>Crea ordine</strong> oppure modificali cliccando sul tasto <strong>Precedente</strong>.
@@ -11,19 +11,19 @@
     <p class="mb-0">{{ test }}</p>
   </div>
 
-  <!-- Contenitore Principale -->
+  <!-- main container -->
   <div class="container-fluid px-3 flex-grow-1 overflow-hidden d-flex flex-column">
     <div class="row justify-content-center flex-grow-1 overflow-hidden">
-      <!-- col-auto permette al blocco di rimanere centrato in finestra adattandosi al contenuto -->
+      <!-- col-auto allows the block to remain centered in the window, adapting to the content -->
       <div class="col-auto d-flex flex-column h-100 overflow-hidden" style="max-width: 100%;">
         
-        <!-- Il Form occupa l'altezza disponibile e distribuisce lo spazio internamente -->
+        <!-- the form occupies the available height and distributes the space internally -->
         <form action="" method="post" class="d-flex flex-column flex-grow-1 h-100 overflow-hidden justify-content-between">
           
-          <!-- CONTENITORE SCORREVOLE: Contiene i dati del cliente e la tabella degli articoli -->
+          <!-- SLIDING CONTAINER: contains customer data and item table -->
           <div class="overflow-auto pe-1 flex-grow-1 mb-3">
             
-            <!-- Lista dati cliente (Resta in alto) -->
+            <!-- Customer Data List (Stay at the top) -->
             <ul class="list-group mb-3">
               <li class="list-group-item d-flex justify-content-between align-items-center">
                   <b>Consegna</b>
@@ -47,7 +47,7 @@
               </li>
             </ul>
 
-            <!-- Tabella articoli riepilogo (Si adatta al numero di righe e scorre all'interno se serve) -->
+            <!-- summary item table (adjusts to the number of rows and scrolls if needed) -->
             <div class="table-responsive rounded border mb-3 bg-white">
               <table class="table table-striped table-sm table-hover m-0">
               <thead class="table-dark sticky-top">
@@ -75,7 +75,7 @@
               </table>
             </div>
 
-            <!-- Campo Input Email (Inserito dentro il blocco scorrevole per non rubare spazio ai tasti) -->
+            <!-- email input field (inserted inside the sliding block to avoid taking up space from the keys) -->
             <div class="mb-2">
               <div class="input-group-text d-flex align-items-center">
                 <img src="{{ url_for('static', filename='email.png') }}" type="image/png" alt="email icon" class="p-1 flex-shrink-0" width="40" height="40"/>
@@ -85,7 +85,7 @@
 
           </div>
 
-          <!-- Pulsanti di Navigazione: Isolati e bloccati fissi in fondo allo schermo -->
+          <!-- navigation buttons: isolated and fixed at the bottom of the screen -->
           <div class="form-group text-center pt-2 pb-4 mt-auto flex-shrink-0">
             <button type="submit" class="btn btn-primary px-4 py-2 fw-bold text-uppercase mx-1 shadow-sm" name="previous">Precedente</button>
             <button type="submit" class="btn btn-warning px-4 py-2 fw-bold text-uppercase mx-1 shadow-sm" name="fromstart">Inizio</button>

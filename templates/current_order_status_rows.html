@@ -1,0 +1,21 @@
+<!-- table_rows.html -->
+{% for line in lines %}
+<tr class="
+    {% if line.status == 'I' %} 
+        table-light 
+    {% elif line.status == 'L' %} 
+        table-warning text-dark
+    {% elif line.status == 'C' %} 
+        table-success text-dark
+    {% endif %}">
+    <td class="text-end">{{ line.order_number }}</td>
+    <td class="text-center">{{ line.order_date | fmt}}</td>
+    <td class="text-center">{{ line.order_time | fmt}}</td>
+    <td class="text-center">{{ line.delivery | fmt}}</td>
+    <td class="text-end">{{ line.table_number | fmt}}</td>
+    <td class="text-start">{{ line.customer_name | fmt}}</td>
+    <td class="text-center">{{ line.status | fmt}}</td>
+    <td class="text-end">{{ line.fulfillment | fmt}}</td>
+    <td class="text-end">{{ line.minutes | fmt}}</td>
+</tr>
+{% endfor %}

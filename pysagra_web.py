@@ -49,7 +49,6 @@ from app import APP_NAME
 from app import APP_VERSION_MAJOR
 from app import APP_VERSION_MINOR
 from app import APP_VERSION_PATCH
-from app import PG_MIN_VER
 from app import FLASK_SECRET_KEY
 
 from app import appconfig
@@ -99,6 +98,9 @@ def create_app() -> Flask:
     # DB connection parameters
     par = {
         'app_name': appconfig['SERVERDB']['app_name'],
+        'app_version_major': appconfig['SERVERDB']['app_version_major'],
+        'app_version_minor': appconfig['SERVERDB']['app_version_minor'],
+        'pg_min_ver': appconfig['SERVERDB']['pg_min_ver'],
         'user': appconfig['SERVERDB']['user'],
         'password': appconfig['SERVERDB']['password'],
         'server': appconfig['SERVERDB']['server'],
@@ -133,7 +135,9 @@ def create_app() -> Flask:
 
 def close_server(signum: int, frame: Any) -> None:
     "Handler for graceful shutdown of the server on Ctrl+C (SIGINT)."
+    print()
     print("\n**** Stopping wsgi server ****")
+    print()
     logging.info("Stopping wsgi server")
     try:
         appconn.close()
@@ -141,17 +145,20 @@ def close_server(signum: int, frame: Any) -> None:
     except Exception as e:
         logging.error(f"Error closing database connection: {e}")
     # the 3-second delay before exiting so any log messages can be read from console before the program terminates
-    time.sleep(3)
+    time.sleep(2)
     sys.exit(0)
 
 
 if __name__ == '__main__':
+    "Start Flask app and WSGI server"
     # Bind Ctrl+C (SIGINT) to the graceful shutdown handler
     signal.signal(signal.SIGINT, close_server)
-    
-    print("**** Starting wsgi server ****")
+    print()
+    print("**** Starting WSGI server ****")
     print("Press Ctrl+C to stop the server")
-    logging.info('Starting pySagraWeb initialization')
+    print()
+    
+    logging.info(f'Starting {APP_NAME} version {APP_VERSION_MAJOR}.{APP_VERSION_MINOR}.{APP_VERSION_PATCH}')
     
     # create flask app from factory function
     app = create_app()

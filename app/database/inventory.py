@@ -120,7 +120,7 @@ SELECT
 FROM company.vw_item_availability
 WHERE item_type = 'M' AND event_id = {event_id};"""
     # Unified context managers ensuring proper evaluation order
-    with db_exception_context(logger), appconn.transaction(), appconn.cursor(row_factory = psycopg.rows.dict_row) as cur:
+    with db_exception_context(logger), appconn.transaction(), appconn.cursor() as cur:
         cur.execute(script)
         return cur.fetchall()
 

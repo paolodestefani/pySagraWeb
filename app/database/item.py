@@ -40,8 +40,8 @@ def get_variants(item_id: int | None) -> list[tuple]:
     # actually we don't need to filter company_id as item_id is unique across companies
     script = t"""
 SELECT 
-    variant_description,
-    price_delta
+    variant_description AS description,
+    price_delta         AS delta
 FROM item_variant
 WHERE   company_id  = system.pa_current_company() 
     AND item_id     = {item_id}
@@ -86,11 +86,11 @@ def item_web_list(event_id: int, department_id: int) -> list[tuple]:
     # actually we don't need to filter company_id as event_id and department_id are unique across companies
     script = t"""
 SELECT 
-    item_id,
-    item_customer_description,
-    price,
-    is_available,
-    has_variants
+    item_id                     AS id,
+    item_customer_description   AS description,
+    price                       AS price,
+    is_available                AS available,
+    has_variants                AS variants
 FROM vw_item_availability
 WHERE 
         company_id      = system.pa_current_company() 

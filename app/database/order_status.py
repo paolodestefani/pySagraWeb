@@ -27,6 +27,8 @@
 # standard library
 import logging
 
+import psycopg
+
 # application modules
 from app.database.connect import appconn
 from app.database import db_exception_context
@@ -37,6 +39,7 @@ logger = logging.getLogger(__name__)
 
 def get_order_status(event_id: int, rows: int = 15) -> list[tuple]:
     "Return top 100 order status for monitoring"
+    #print('Event: ', event_id)
     # actually we don't need to filter company_id as event_id and department_id are unique across companies
     script = t"""
 SELECT 

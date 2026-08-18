@@ -1,25 +1,24 @@
 {% extends "base.html" %}
 {% block content %}
-<!-- Il wrapper principale occupa l'altezza dello schermo (vh-100) per gestire i tasti in fondo -->
+<!-- the main wrapper takes up the height of the screen (vh-100) to handle the buttons at the bottom -->
 <div class="d-flex flex-column vh-100 overflow-hidden">
 
-  <!-- Header Blu -->
+  <!-- blue header-->
   <div class="container-fluid text-sm-center p-3 bg-primary text-white mb-3 bg-gradient flex-shrink-0">
     <h2>{{ department }}</h2>
     <p class="mb-1">Sono selezionati gli articoli/varianti che hanno quantit&agrave; maggiore di zero</p>
     <p class="mb-0">{{ test }}</p>
   </div>
 
-  <!-- Contenitore Principale -->
+  <!-- main container -->
   <div class="container-fluid px-3 flex-grow-1 overflow-hidden d-flex flex-column">
     <div class="row justify-content-center flex-grow-1 overflow-hidden">
       <div class="col-12 col-lg-8 col-xl-6 d-flex flex-column h-100 overflow-hidden">
 
-        <!-- Il Form distribuisce lo spazio: la tabella in alto e i bottoni isolati in fondo -->
+        <!-- the form distributes the space: the table at the top and the isolated buttons at the bottom -->
         <form action="" method="post" class="d-flex flex-column flex-grow-1 h-100 overflow-hidden justify-content-between">
           
-          <!-- CONTENITORE TABELLA: Rimossa la classe 'flex-grow-1' così il box bianco si stringe sull'ultima riga -->
-          <!-- d-flex e flex-column con overflow-auto permettono lo scroll interno mantenendo i bordi corretti -->
+          <!-- TABLE CONTAINER d-flex e flex-column with overflow-auto allow internal scrolling while maintaining the correct edges -->
           <div class="table-responsive rounded border mb-3 overflow-auto bg-white d-flex flex-column">
             <table class="table table-striped table-sm table-hover m-0">
             <thead class="table-dark sticky-top">
@@ -49,8 +48,7 @@
             </table>
           </div>
 
-          <!-- Pulsanti di Navigazione: Rimossi sfondo bianco (bg-white), bordo (border-top) e padding extra -->
-          <!-- mt-auto assicura che rimangano calamitati sul fondo dello schermo anche se la tabella è corta -->
+          <!-- navigation buttons: mt-auto ensures that they stay snapped to the bottom of the screen even if the table is short -->
           <div class="form-group text-center pt-2 pb-4 mt-auto flex-shrink-0">
               <button type="submit" class="btn btn-primary px-4 py-2 fw-bold text-uppercase mx-1 shadow-sm" name="previous">Indietro</button>
               <button type="submit" class="btn btn-primary px-4 py-2 fw-bold text-uppercase mx-1 shadow-sm" name="next">Avanti</button>
