@@ -35,6 +35,8 @@ import os
 import logging
 from logging.handlers import RotatingFileHandler
 import datetime
+import decimal
+import locale
 import time
 import signal
 import sys
@@ -61,6 +63,8 @@ from app.queue_management import qms_bp
 from app.queue_management import qmsmanager_bp
 
 
+locale.setlocale(locale.LC_ALL, 'it_IT.UTF-8')
+
 # start logging system with automatic size limit
 # 1 MB = 1 * 1024 * 1024 bytes max 5 files of 1 MB each
 max_file_size = 1 * 1024 * 1024  
@@ -83,6 +87,8 @@ def format_values(value: Any) -> str:
         return value.strftime('%H:%M')
     if isinstance(value, int):
         return f"{value:,.0f}".replace(',', '.')  # format integer with thousands separator
+    if isinstance(value, decimal.Decimal):
+        return locale.format_string("%.2f", value, grouping=True)
     # for an empty cell (None), return an empty string instead of the text "None"
     if value is None:
         return ""
