@@ -696,3 +696,58 @@ werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'qmsman
 2026-08-19 17:25:25 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/sales_summary
 2026-08-19 17:25:55 INFO pysagra_web: Stopping wsgi server
 2026-08-19 17:25:55 INFO pysagra_web: Database connection closed successfully
+2026-08-20 15:39:24 INFO pysagra_web: Starting pySagraWeb version 1.0.0
+2026-08-20 15:39:24 INFO connect: Starting database connection with parameters:
+2026-08-20 15:39:24 INFO connect: host = localhost
+2026-08-20 15:39:24 INFO connect: port = 5432
+2026-08-20 15:39:24 INFO connect: database = pysagra_demo
+2026-08-20 15:39:24 INFO connect: dbuser = pa_login_role
+2026-08-20 15:39:24 INFO connect: dbuser password = ********
+2026-08-20 15:39:24 INFO connect: application_name = pySagra
+2026-08-20 15:39:24 INFO connect: Database connection established
+2026-08-20 15:39:24 INFO connect: DB is verified as an application database
+2026-08-20 15:39:24 INFO connect: Calling application connection function with parameters:
+2026-08-20 15:39:24 INFO connect: pgminver = 18
+2026-08-20 15:39:24 INFO connect: appname = pySagra
+2026-08-20 15:39:24 INFO connect: appversion = 1.0
+2026-08-20 15:39:24 INFO connect: user = ********
+2026-08-20 15:39:24 INFO connect: password = ********
+2026-08-20 15:39:24 INFO connect: hostname = pysagra_web_server
+2026-08-20 15:39:24 INFO connect: DB Application connection established
+2026-08-20 15:39:24 INFO pysagra_web: Database connection established
+2026-08-20 15:39:24 INFO pysagra_web: Company set to 20
+2026-08-20 15:39:24 INFO wasyncore: Serving on http://0.0.0.0:8080
+2026-08-20 15:39:34 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /
+2026-08-20 15:39:34 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /order/header
+2026-08-20 15:39:57 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /order/header
+2026-08-20 15:39:57 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /order/menu
+2026-08-20 15:40:03 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /order/menu
+2026-08-20 15:40:10 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /order/menu
+2026-08-20 15:40:12 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /order/menu
+2026-08-20 15:40:14 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /order/menu
+2026-08-20 15:40:14 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /order/checkout
+2026-08-20 15:40:35 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /order/checkout
+2026-08-20 15:40:40 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /order/checkout
+2026-08-20 15:40:40 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /order/barcode
+2026-08-20 15:40:56 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /order/barcode
+2026-08-20 15:40:56 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /order/header
+2026-08-20 15:40:59 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /order/header
+2026-08-20 15:41:22 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/
+2026-08-20 15:41:22 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /auth/login
+2026-08-20 15:41:35 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /auth/login
+2026-08-20 15:41:35 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /qmsmanager/
+2026-08-20 15:41:40 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qmsmanager/queue_advance
+2026-08-20 15:41:45 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qmsmanager/queue_advance
+2026-08-20 15:41:51 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qmsmanager/queue_advance
+2026-08-20 15:42:01 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qmsmanager/queue_reset
+2026-08-20 15:42:07 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qmsmanager/queue_advance
+2026-08-20 15:42:12 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qmsmanager/queue_advance
+2026-08-20 15:42:24 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qmsmanager/queue_advance
+2026-08-20 15:42:32 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qmsmanager/queue_advance
+2026-08-20 15:42:41 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: POST /qmsmanager/queue_regress
+2026-08-20 15:43:16 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/
+2026-08-20 15:43:21 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/inventory
+2026-08-20 15:43:37 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/ordered_delivered
+2026-08-20 15:44:29 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/sales_summary
+2026-08-20 22:22:51 INFO pysagra_web: Stopping wsgi server
+2026-08-20 22:22:51 INFO pysagra_web: Database connection closed successfully
