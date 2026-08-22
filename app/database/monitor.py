@@ -103,16 +103,15 @@ WHERE item_type = 'M' AND event_id = {event_id};"""
 def get_ordered_delivered(event_id) -> list[tuple]:
     script = t"""
 SELECT 
-    s.event_id                  AS event,
-    s.event_date                AS date,
-    s.day_part                  AS day_part,
-    s.item_id                   AS item_id,
-    i.description               AS item,
-    cast(s.ordered      as int) AS ordered,
-    cast(s.delivered    as int) AS delivered
-FROM ordered_delivered s
-JOIN item i ON s.item_id = i.item_id
-WHERE s.event_id = {event_id};"""
+    s.event_id                          AS event,
+    s.item_id                           AS item_id,
+    i.description                       AS item,
+    sum(cast(s.ordered      as int))    AS ordered,
+    sum(cast(s.delivered    as int))    AS delivered
+FROM company.ordered_delivered s
+JOIN company.item i ON s.item_id = i.item_id
+WHERE s.event_id = {event_id}
+GROUP BY s.event_id, s.item_id, i.description;"""
     # Unified context managers ensuring proper evaluation order
     with db_exception_context(logger), appconn.transaction(), appconn.cursor() as cur:
         cur.execute(script)

@@ -63,8 +63,6 @@ from app.queue_management import qms_bp
 from app.queue_management import qmsmanager_bp
 
 
-locale.setlocale(locale.LC_ALL, 'it_IT.UTF-8')
-
 # start logging system with automatic size limit
 # 1 MB = 1 * 1024 * 1024 bytes max 5 files of 1 MB each
 max_file_size = 1 * 1024 * 1024  
@@ -76,17 +74,16 @@ logging.basicConfig(level=logging.INFO,
                               logging.StreamHandler()])
 
     
-    
 def format_values(value: Any) -> str:
     "Flask format filter to format values for display in templates"
-    # for a Date or Datetime object, format it in Italian style
+    # for a Date or Datetime object
     if isinstance(value, (datetime.date, datetime.datetime)):
-        return value.strftime('%d/%m/%Y')
+        return value.strftime('%x')
     # for a Time object (for the Ora column), it takes only hours and minutes
     if isinstance(value, datetime.time):
         return value.strftime('%H:%M')
     if isinstance(value, int):
-        return f"{value:,.0f}".replace(',', '.')  # format integer with thousands separator
+        return f"{value:n}" # format integer with thousands separator
     if isinstance(value, decimal.Decimal):
         return locale.format_string("%.2f", value, grouping=True)
     # for an empty cell (None), return an empty string instead of the text "None"
@@ -97,6 +94,10 @@ def format_values(value: Any) -> str:
 
 def create_app() -> Flask:
     """Initialize the Flask application, load configurations, and save Blueprints."""
+    # setting locale
+    logging.info(f"Setting app locale to {appconfig['FLASKAPP']['locale']}")
+    locale.setlocale(locale.LC_ALL, appconfig['FLASKAPP']['locale'])
+    # create Flask app
     flask_app = Flask(APP_NAME)
     flask_app.config['SECRET_KEY'] = FLASK_SECRET_KEY
     # register the filter in Flask's Jinja environment with the name 'fmt'
