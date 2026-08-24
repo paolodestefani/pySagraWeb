@@ -54,6 +54,7 @@ class QueueNumber:
         self._number: int
         self._from_string(init_value)
         self._is_new: bool = False
+        self._current_desk: str = "NOT SET"
         
     def _from_string(self, value: str) -> None:
         "Converts a string representation of the queue number into its internal representation."
@@ -69,7 +70,7 @@ class QueueNumber:
             n = '0'
         self._number = int(n)
 
-    def advance(self) -> None:
+    def advance(self, desk_name: str = "N/D") -> None:
         "Advances the queue number by one, rolling over to the next letter after 'Z99' back to 'A00'."
         self._number += 1
         if self._number == 100:
@@ -78,8 +79,9 @@ class QueueNumber:
             if self._letter == 91:
                 self._letter = 65 
         self._is_new = True
+        self._current_desk = desk_name
 
-    def regress(self) -> None:
+    def regress(self, desk_name: str = "N/D") -> None:
         "Regresses the queue number by one, never going below 'A00'."
         self._number -= 1
         if self._number < 0:
@@ -89,17 +91,20 @@ class QueueNumber:
                 self._letter = 65
                 self._number = 0
         self._is_new = True
+        self._current_desk = desk_name
                 
-    def reset(self, new_value: str) -> None:
+    def reset(self, new_value: str, desk_name: str = "N/D") -> None:
         "Resets the queue number to a new valid value."
         self._from_string(new_value)
         self._is_new = True
+        self._current_desk = desk_name 
         
-    def current(self) -> tuple[str, bool]:
-        "Returns the current queue number as a string in the format 'A00'."
-        output = f"{chr(self._letter)}{self._number:02d}", self._is_new
+    def current(self) -> tuple[str, bool, str]:
+        "Returns the current queue number, if it's new, and the active desk."
+        output = f"{chr(self._letter)}{self._number:02d}"
+        res = (output, self._is_new, self._current_desk)
         self._is_new = False
-        return output
+        return res
     
     
 # set the initial queue number to 'A00' when the application starts
@@ -110,14 +115,55 @@ queue_number = QueueNumber()
 def index():
     "Renders the main queue page, displaying the current queue number."
     return render_template('qms_current.html', current_text='')
-
 @qms_bp.route('/get_current')
 def get_current():
-    "Returns the current queue number as a string, used for HTMX requests to update the display."
-    number, is_new = queue_number.current()
-    if is_new:
-        return f'<div class="pulse-number">{number}</div>' 
-    return f'<div>{number}</div>'
+    "Returns the current queue number, triggers animation and plays a bell sound on change."
+    number, _, desk_name = queue_number.current()
+    
+    effect = "pulse" # pulse or blink 
+    # Generiamo l'URL corretto per il file audio usando url_for di Flask
+    audio_url = url_for('static', filename='audio/bell.mp3')
+    
+    return f"""
+    {number}
+    <script>
+        (function() {{
+            let container = document.getElementById('queue_number');
+            if (container && !container.dataset.listenerRow) {{
+                container.dataset.listenerRow = "true";
+                
+                document.body.addEventListener('htmx:beforeSwap', function(evt) {{
+                    if (evt.detail.target.id === 'queue_number') {{
+                        let old_num = evt.detail.target.innerText.trim();
+                        let new_num = evt.detail.xhr.responseText.split('<script>')[0].trim();
+                        let effect = '{effect}';
+
+                        if (old_num !== new_num && old_num !== '...' && old_num !== '') {{
+                            // 1. play sound
+                            let audio = new Audio('{audio_url}');
+                            audio.play().catch(e => console.log("Audio blocked by browser policy:", e));
+
+                            // 2. graphic effect
+                            evt.detail.target.classList.remove('blink-number', 'pulse-number');
+                            void evt.detail.target.offsetWidth;
+                            
+                            if (effect === 'blink') evt.detail.target.classList.add('blink-number');
+                            if (effect === 'pulse') evt.detail.target.classList.add('pulse-number');
+                            
+                            setTimeout(() => {{
+                                evt.detail.target.classList.remove('blink-number', 'pulse-number');
+                            }}, 2000);
+                        }}
+                    }}
+                }});
+            }}
+        }})();
+    </script>
+
+    <div id="queue_desk" hx-swap-oob="true" class="text-warning text-uppercase fw-bold font-qms-desk pb-2">
+        in {desk_name}
+    </div>
+    """
 
 
 # manager
@@ -125,20 +171,38 @@ def get_current():
 @qmsmanager_bp.route('/')
 def manager():
     "Renders the queue management interface for advancing, regressing, and resetting the queue number."
-    number, is_new = queue_number.current()
-    return render_template('qms_manager.html', current_text=number)
+    number, is_new, desk_name = queue_number.current()
+    return render_template('qms_manager.html', current_text=number, cash_desk_name=desk_name)
 
 @qmsmanager_bp.route('/queue_advance', methods=['POST'])
 def queue_advance():
     "Advances the queue number by one and returns a 204 No Content response, used for HTMX requests."
-    queue_number.advance()
+    desk_name = session.get('cash_desk_name', 'Cassa NON impostata')
+    queue_number.advance(desk_name)
     return "", 204
 
 @qmsmanager_bp.route('/queue_regress', methods=['POST'])
 def queue_regress():
     "Regresses the queue number by one and returns a 204 No Content response, used for HTMX requests."
-    queue_number.regress()
+    desk_name = session.get('cash_desk_name', 'Cassa NON impostata')
+    queue_number.regress(desk_name)
     return "", 204
+
+@qmsmanager_bp.route('/set_cash_desk_name', methods=['POST'])
+def set_cash_desk_name():
+    """Saves the desk name in the user's session and returns it to update the local badge."""
+    # Recuperiamo il valore inviato dal prompt JS tramite hx-vals
+    new_name = request.form.get('new_name', 'Cassa 1').strip()
+    
+    if not new_name:
+        return "Cassa NON impostata"
+        
+    # Salviamo nella sessione privata di QUESTO browser
+    session['cash_desk_name'] = new_name
+    
+    # Restituiamo solo il testo puro. HTMX lo metterà dentro #local-desk-badge
+    return new_name
+
 
 @qmsmanager_bp.route('/queue_reset', methods=['POST'])
 def reset_queue():
@@ -148,11 +212,12 @@ def reset_queue():
     if new_value is None:
         return "", 204
     # set the queue number to the new value entered by the user
-    queue_number.reset(new_value)
+    desk_name = session.get('cash_desk_name', 'Cassa NON impostata')
+    queue_number.reset(new_value, desk_name=desk_name)
     return "", 204
 
 @qmsmanager_bp.route('/get_current')
 def get_current_value():
     "Returns the current queue number as a string, used for HTMX requests to update the display."
-    number, is_new = queue_number.current()
-    return number
+    number, is_new, desk_name = queue_number.current()
+    return f"{number} - {desk_name}"

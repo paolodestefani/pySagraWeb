@@ -10,31 +10,52 @@
         filter: brightness(0.9); /* It darkens slightly */
     }
 </style>
-<div class="container d-flex flex-column justify-content-center align-items-center vh-100">
-    <div class="text-center w-100" style="max-width: 500px;">
-        <h2 class="mb-5 text-dark fw-bold text-uppercase tracking-wider">Gestione della coda</h2>
-        <p>Valore corrente: 
-            <div    hx-get="{{ url_for('qmsmanager.get_current_value') }}" 
-                    hx-trigger="every 2s" 
-                    hx-swap="innerHTML"
-                    class="fw-bold fs-1">
-                {{ current_text }}
+
+<div class="container d-flex flex-column justify-content-center align-items-center vh-100 position-relative">
+    <h2 class="mb-5 text-dark fw-bold text-uppercase tracking-wider">Gestione della coda</h2>
+    
+    <!-- NUOVO: Badge Cassa Locale (In alto del contenitore o centrato sotto il titolo) -->
+    <div class="top-0 mt-3 me-3 text-center d-md-block">
+        <div id="local_desk_badge" class="badge bg-secondary fs-3 fw-bold px-3 py-2 mt-1">
+            {{ session.get('cash_desk_name', 'Cassa NON impostata') }}
         </div>
-        </p>
-        <!-- PRIMARYBUTTON: ADVANCE-->
+    </div>
+
+    <div class="text-center w-100" style="max-width: 650px;">
+        
+        <!-- SEZIONE MONITORAGGIO STATO GLOBALE -->
+        <div class="card bg-light border-0 shadow-sm p-3 mb-4">
+            <div class="d-flex align-items-center justify-content-center gap-4 fs-5 text-secondary">
+                <!-- Blocco Valore Corrente Globale -->
+                <div>
+                    <span id="queue_number" 
+                          hx-get="{{ url_for('qmsmanager.get_current_value') }}" 
+                          hx-trigger="every 2s" 
+                          hx-swap="innerHTML"
+                          class="fw-bold text-dark fs-2 ms-1">
+                    </span>
+                </div>
+
+                <!-- Divisore verticale -->
+                <div class="border-start border-2 align-self-stretch my-1" style="opacity: 0.3;"></div>
+            </div>
+        </div>
+
+        <!-- PRIMARY BUTTON: ADVANCE-->
         <div class="mb-4">
             <button hx-post="{{ url_for('qmsmanager.queue_advance') }}" 
                     class="btn btn-success btn-lg w-100 py-4 fs-1 shadow-lg border-2 fw-bold text-uppercase">
                 Prossimo Numero
             </button>
         </div>
+
         <!-- SECONDARY BUTTONS -->
         <div class="row g-3">
             <div class="col-6">
                 <!-- REGRESS (-1) -->
                 <button hx-post="{{ url_for('qmsmanager.queue_regress') }}" 
                         class="btn btn-warning btn-lg w-100 py-2 fs-5 shadow-sm fw-bold">
-                    Decrementa (-1)
+                    Decrementa
                 </button>
             </div>
             <div class="col-6">
@@ -43,6 +64,17 @@
                         hx-vals="js:{new_value: prompt('Inserisci il nuovo numero (es. A00, B15):', 'A00')}"
                         class="btn btn-danger btn-lg w-100 py-2 fs-5 shadow-sm fw-bold">
                     Reimposta...
+                </button>
+            </div>
+            <div class="col-12">
+                <!-- SET CASHDESK NAME -->
+                <!-- MODIFICATO: targettizza il badge locale per aggiornarlo all'istante dopo il prompt -->
+                <button hx-post="{{ url_for('qmsmanager.set_cash_desk_name') }}"
+                        hx-vals="js:{new_name: prompt('Inserisci il nome della cassa:', 'Cassa 1')}"
+                        hx-target="#local_desk_badge"
+                        hx-swap="innerHTML"
+                        class="btn btn-secondary btn-lg w-100 py-2 fs-5 shadow-sm fw-bold">
+                    Imposta nome cassa
                 </button>
             </div>
         </div>
