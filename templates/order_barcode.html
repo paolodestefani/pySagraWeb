@@ -1,78 +1,80 @@
-{% extends "base.html" %}
-{% block content %}
-<!-- Il wrapper principale occupa l'altezza della viewport dinamica e blocca l'overflow esterno -->
-<div class="d-flex flex-column" style="height: 100dvh; overflow: hidden;">
+{% extends "base.html" %} 
+{% block content %} 
 
-  <!-- blue header (fixed at top) -->
-  <div class="container-fluid text-sm-center p-3 bg-primary text-white mb-4 bg-gradient flex-shrink-0">
-    <h2>Ordine generato</h2>
-    <p class="mb-1">Procedi alla cassa per il pagamento esibendo il seguente QR Code</p>
-    <p class="mb-0">La disponibilit&agrave; degli articoli non &egrave; garantita fino alla conferma dell'ordine in cassa</p>
-    <p class="mb-0">{{ test }}</p>
-  </div>
+<style>
+    /* 1 RIGA DI CSS: Impedisce al QR Code di strabordare a destra/sinistra se lo schermo è piccolo o ruotato */
+    #qrcode img, #qrcode canvas {
+        max-width: 100%;
+        height: auto !important;
+    }
+</style>
 
-  <!-- main container -->
-  <div class="container-fluid px-3 flex-grow-1 overflow-hidden d-flex flex-column">
-    <div class="row justify-content-center flex-grow-1 overflow-hidden">
-      <div class="col-12 col-sm-8 col-md-6 d-flex flex-column h-100 overflow-hidden">
-        
-        <!-- the form occupies the available height and distributes the space internally -->
-        <form action="" method="post" class="d-flex flex-column flex-grow-1 h-100 overflow-hidden">
-          
-          <!-- CENTER CONTAINER: Cambiato in overflow-hidden per eliminare tassativamente le barre di scorrimento -->
-          <div class="overflow-hidden text-center py-2 flex-grow-1 d-flex align-items-center justify-content-center">
-            <div id="qrcode" class="d-inline-block p-3 bg-white rounded border shadow-sm"></div>
-          </div>
+<div class="d-flex flex-column" style="min-height: 100dvh;"> 
+    
+    <!-- blue header (fixed at top) --> 
+    <div class="container-fluid text-sm-center p-3 bg-primary text-white mb-3 bg-gradient flex-shrink-0"> 
+        <h2>Ordine generato</h2> 
+        <p class="mb-1">Procedi alla cassa per il pagamento esibendo il seguente QR Code</p> 
+        <p class="mb-0 text-wrap">La disponibilit&agrave; degli articoli non &egrave; garantita fino alla conferma dell'ordine in cassa</p> 
+        <p class="mb-0">{{ test }}</p> 
+    </div> 
 
-          <!-- navigation buttons: flex-shrink-0 e pb-3 fissano i tasti sul fondo dello schermo dello smartphone -->
-          <div class="form-group text-center pt-2 pb-3 flex-shrink-0">
-            <button type="submit" class="btn btn-primary px-3 py-1 fw-bold mx-0 shadow-sm" name="previous">Precedente</button>
-            <button type="button" class="btn btn-success px-3 py-1 fw-bold mx-0 shadow-sm" data-bs-toggle="modal" data-bs-target="#modal_new">
-              Nuovo ordine
-            </button>
-          </div>
+    <!-- main container --> 
+    <div class="container-fluid px-0 flex-grow-1 d-flex flex-column"> 
+        <div class="row justify-content-center flex-grow-1 m-0"> 
+            <!-- Cambiato in col-12 per darti ancora più margine orizzontale utile sullo smartphone -->
+            <div class="col-12 col-sm-8 col-md-6 d-flex flex-column"> 
+                
+                <form action="" method="post" class="d-flex flex-column flex-grow-1"> 
+                    
+                    <!-- CENTER CONTAINER --> 
+                    <div class="py-2 flex-grow-1 d-flex align-items-center justify-content-center"> 
+                        <div id="qrcode" class="d-inline-block p-2 bg-white rounded border shadow-sm"></div> 
+                    </div> 
 
-          <!-- modal new order -->
-          <div class="modal fade" id="modal_new" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title mx-auto" id="exampleModalLabel">Attenzione</h5>
-                </div>
-                <div class="modal-body text-center text-dark fw-normal">
-                  Eliminare il QR Code corrente ed inserire un nuovo ordine?
-                </div>
-                <div class="modal-footer">
-                  <div class="mx-auto">
-                    <button type="button" class="btn btn-warning fw-bold" data-bs-dismiss="modal">Annulla</button>
-                    <button type="submit" class="btn btn-success fw-bold" name="new">Nuovo ordine</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-        </form>
+                    <!-- navigation buttons --> 
+                    <div class="form-group text-center pt-2 pb-3 flex-shrink-0"> 
+                        <button type="submit" class="btn btn-primary px-3 py-1 fw-bold mx-1 shadow-sm" name="previous">Precedente</button> 
+                        <button type="button" class="btn btn-success px-3 py-1 fw-bold mx-1 shadow-sm" data-bs-toggle="modal" data-bs-target="#modal_new"> Nuovo ordine </button> 
+                    </div> 
 
-      </div>
-    </div>
-  </div>
+                    <!-- modal new order --> 
+                    <div class="modal fade" id="modal_new" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true"> 
+                        <div class="modal-dialog modal-dialog-centered"> 
+                            <div class="modal-content"> 
+                                <div class="modal-header"> 
+                                    <h5 class="modal-title mx-auto" id="exampleModalLabel">Attenzione</h5> 
+                                </div> 
+                                <div class="modal-body text-center text-dark fw-normal"> 
+                                    Eliminar il QR Code corrente ed inserire un nuovo ordine? 
+                                </div> 
+                                <div class="modal-footer"> 
+                                    <div class="mx-auto"> 
+                                        <button type="button" class="btn btn-warning fw-bold" data-bs-dismiss="modal">Annulla</button> 
+                                        <button type="submit" class="btn btn-success fw-bold" name="new">Nuovo ordine</button> 
+                                    </div> 
+                                </div> 
+                             </div> 
+                        </div> 
+                    </div> 
+                </form> 
+            </div> 
+        </div> 
+    </div> 
+</div> 
 
-</div>
-
-<script src={{ url_for("static", filename="js/easy.qrcode.min.js") }}></script>
-<script type="text/javascript">
-  // Options: Ridotte le dimensioni a 260px per evitare collisioni con i margini degli smartphone più stretti
-	var options = {
-		text: "{{ order_str }}",
-		width: 280,
-        height: 280,
-        colorDark : "#000000",
-        colorLight : "#ffffff",
-        correctLevel : QRCode.CorrectLevel.L // L, M, Q, H
-	};
-	
-	// Create QRCode Object
-	new QRCode(document.getElementById("qrcode"), options);
-</script>
+<script src="{{ url_for('static', filename='js/easy.qrcode.min.js') }}"></script> 
+<script type="text/javascript"> 
+    var options = { 
+        text: "{{ order_str }}", 
+        // Aumentato a 360px per occupare quasi tutto lo spazio orizzontale dei 412px del Galaxy
+        width: 360, 
+        height: 360, 
+        colorDark : "#000000", 
+        colorLight : "#ffffff", 
+        correctLevel : QRCode.CorrectLevel.L 
+    }; 
+    
+    new QRCode(document.getElementById("qrcode"), options); 
+</script> 
 {% endblock %}
