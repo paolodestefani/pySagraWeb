@@ -213,7 +213,7 @@ def reset_queue():
         return "", 204
     # set the queue number to the new value entered by the user
     desk_name = session.get('cash_desk_name', 'Cassa NON impostata')
-    queue_number.reset(new_value, desk_name=desk_name)
+    queue_number.reset(new_value.upper(), desk_name=desk_name)
     return "", 204
 
 @qmsmanager_bp.route('/get_current')
