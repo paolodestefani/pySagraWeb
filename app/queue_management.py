@@ -114,7 +114,8 @@ queue_number = QueueNumber()
 @qms_bp.route('/')
 def index():
     "Renders the main queue page, displaying the current queue number."
-    return render_template('qms_current.html', current_text='')
+    return render_template('qms_current.html', current_text=queue_number.current())
+
 @qms_bp.route('/get_current')
 def get_current():
     "Returns the current queue number, triggers animation and plays a bell sound on change."
