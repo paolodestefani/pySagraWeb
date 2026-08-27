@@ -90,19 +90,24 @@ def order_header():
             session['lines'][dep['description']] = []
             for i in item_web_list(session['event_id'], dep['department_id']):
                 #print(f"item_web_list: i={i}, d={d}, p={p}, a={a}, v={v}")
-                session['lines'][dep['description']].append([str(i['id']), # 0 item id as string (session dict are stored as string anyway)
-                                            i['description'],              # 1 item description
-                                            0,                             # 2 quantity 
-                                            float(i['price']),             # 3 price number (for totals)
-                                            locale.currency(i['price']),   # 4 price as currency string
-                                            i['available'],                # 5 is active
-                                            i['variants'],                 # 6 has variants
-                                            '',                            # 7 variants description 
-                                            0.0])                          # 8 variant price delta
+                session['lines'][dep['description']].append({
+                    'item': str(i['id']),                       # 0 item id as string (session dict are stored as string anyway)
+                    'description': i['description'],            # 1 item description
+                    'quantity': 0,                              # 2 quantity 
+                    'price': float(i['price']),                 # 3 price number (for totals)
+                    'price_string': locale.currency(i['price']),# 4 price as currency string
+                    'is_active': i['available'],                # 5 is active
+                    'has_variants': i['variants'],              # 6 has variants
+                    'variants': '',                             # 7 variants description 
+                    'price_delta': 0.0})                        # 8 variant price delta
                 if i['variants']:
-                    session['variants'][i['id']] = [[v['description'], float(v['delta']), '(+' + locale.currency(v['delta']) + ')' if v['delta'] != 0.0 else '']
+                    session['variants'][i['id']] = [{
+                        'description': v['description'], 
+                        'price': float(v['delta']), 
+                        'price_string': '(+' + locale.currency(v['delta']) + ')' if v['delta'] != 0.0 else ''}
                                             for v in get_variants(i['id'])]   
                     #print(f"variants: i={i}, variants={session['variants'][i]}")
+                    #print(get_variants(i['id']))
 
     return render_template('order_header.html',
                            delivery = session.get('delivery', 'T'),
@@ -121,7 +126,7 @@ def order_menu():
     for i, l in enumerate(session['lines'][session['departments'][session['dep_index']]]):
         #print(f"i={i}, l={l}")
         if str(i) in request.form:
-            l[2] = int(request.form[str(i)]) 
+            l['quantity'] = int(request.form[str(i)]) 
             session.modified = True
     
     # move next on department list
@@ -157,8 +162,8 @@ def order_menu():
 def order_variants(index):
     "Show available variants. Index is the position on the list"
     
-    itemid = session['lines'][session['departments'][session['dep_index']]][index][0]
-    item   = session['lines'][session['departments'][session['dep_index']]][index][1]
+    item_id = session['lines'][session['departments'][session['dep_index']]][index]['item']
+    item_ds = session['lines'][session['departments'][session['dep_index']]][index]['description']
     
     # cancel variants selections and go back to menu
     if request.method == 'POST':
@@ -169,21 +174,21 @@ def order_variants(index):
     if request.method == 'POST':
         if 'confirm' in request.form:
             # determine variants selected and price delta
-            var = ' '.join([session['variants'][itemid][int(i)][0] for i in request.form.getlist('variantschecks')])
-            prd = sum([float(session['variants'][itemid][int(i)][1]) for i in request.form.getlist('variantschecks')])
+            var = ' '.join([session['variants'][item_id][int(i)]['description'] for i in request.form.getlist('variantschecks')])
+            prd = sum([float(session['variants'][item_id][int(i)]['price']) for i in request.form.getlist('variantschecks')])
             qty = int(request.form['quantity'])
             #if not var.strip():
             #    flash('Selezionare almeno una variante')
             #    return redirect(url_for('order_variants', index=index))
             l = session['lines'][session['departments'][session['dep_index']]][index].copy()
             #print(f"line: l={l}, var={var}, prd={prd}, qty={qty}")
-            l[6] = False            # has variants
-            l[2] = qty              # quantity
-            l[3] = l[3] + prd       # price as number
-            l[4] = locale.currency(l[3]) # price as currency string
-            l[1] = l[1] + ' ' + var # description
-            l[7] = var              # variants
-            l[8] = prd              # price delta
+            l['has_variants'] = False                       # has variants
+            l['quantity'] = qty                             # quantity
+            l['price'] = l['price'] + prd                   # price as number
+            l['price_string'] = locale.currency(l['price']) # price as currency string
+            l['description'] = l['description'] + ' ' + var # description
+            l['variants'] = var                             # variants
+            l['price_delta'] = prd                          # price delta
             session['lines'][session['departments'][session['dep_index']]].insert(index + 1, l)
             session.modified = True
             return redirect(url_for('order.order_menu'))
@@ -191,8 +196,8 @@ def order_variants(index):
     return render_template(
         'order_variants.html',
         #test       = request.form,
-        item        = item,
-        variants    = session['variants'].get(itemid) or [],
+        item        = item_ds,
+        variants    = session['variants'].get(item_id) or [],
         quantity    = 1)
         
 
@@ -220,14 +225,19 @@ def order_checkout():
             else:
                 return redirect(url_for('order.order_barcode'))
 
-    # filters selected lines and calc total
+        # filters selected lines and calc total
     total = 0.0
     lines = []
     for d in session['departments']:
-        if ln := [l for l in session['lines'][d] if int(l[2]) != 0]:
-            lines += [[0, d, 0, 0, '', True, False, '', 0]] # department
-            lines += ln # department lines
-            total += sum([float(i[2]) * i[3] for i in ln]) # total for department lines
+        # Estrae le linee che hanno quantità diversa da zero
+        ln = [l for l in session['lines'][d] if int(l['quantity']) != 0]
+        
+        # CRITICO: Entra nel blocco e aggiunge il reparto SOLO se 'ln' contiene elementi!
+        if ln:
+            lines.append({'item': 0, 'description': d}) # Aggiunge il reparto solo se popolato
+            lines += ln                                 # Aggiunge le righe degli articoli
+            total += sum([float(i['quantity']) * float(i['price']) for i in ln])
+
     if lines:
         session['is_checked'] = True
     else:
@@ -262,7 +272,7 @@ def order_barcode():
             
     lines = []
     for d in session['departments']:
-        lines += [l for l in session['lines'][d] if int(l[2]) != 0]
+        lines += [l for l in session['lines'][d] if int(l['quantity']) != 0]
 
     # create QR order
     order  = qrcprefix
@@ -279,14 +289,15 @@ def order_barcode():
     # item lines
     for l in lines:
         order += (
-              ";" + str(l[0])   # item id
-            + ";" + str(l[7])   # variants
-            + ";" + str(l[8])   # price delta
-            + ";" + str(l[2])   # quantity
+              ";" + str(l['item'])          # item id
+            + ";" + str(l['variants'])      # variants
+            + ";" + str(l['price_delta'])   # price delta
+            + ";" + str(l['quantity'])      # quantity
             )
             
     # sanity checks
     order = order.replace("\n", " ")
+    print('Len', len(order))
     if len(order) >= 1240:
         flash("""Il QR Code da generare supera il numero di caratteri possibili per questo formato.
         Ridurre l'elenco dei prodotti e varianti scelti.

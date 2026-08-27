@@ -24,7 +24,7 @@
             <table class="table table-striped table-sm table-hover m-0">
             <thead class="table-dark sticky-top">
               <tr>
-                <th class="text-center" style="width: 120px">Quantit&agrave;</th>
+                <th class="text-center" style="width: 125px">Quantit&agrave;</th>
                 <th class="text-center" style="width: 80px">Prezzo</th>
                 <th class="text-left" style="max-width: 500px">Articolo</th>
               </tr>
@@ -32,17 +32,17 @@
             <tbody>
               {% for line in lines %}
               <tr>
-                {% if not line[6] %}
+                {% if not line.has_variants %}
                 <td>
-                   <input class="form-control-sm" type="number" min="0" max="99" step="1" name="{{ loop.index0 }}" id="{{ loop.index0 }}" value="{{ line[2] }}" required>
+                   <input class="form-control-sm bg-change-zero" type="number" min="0" max="99" step="1" name="{{ loop.index0 }}" id="{{ loop.index0 }}" value="{{ line.quantity }}" required>
                 </td>
                 {% else %}
                   <td class="text-center">
                       <button type="submit" class="btn btn-sm bg-warning" name="variants" value="{{ loop.index0 }}">Sel. varianti</button>
                   </td>
                 {% endif %}
-                <td class="text-center">{{ line[4] }}</td>
-                <td>{{ line[1] }}</td>
+                <td class="text-center">{{ line.price_string }}</td>
+                <td>{{ line.description }}</td>
               </tr>
               {% endfor %}
             </tbody>
@@ -70,5 +70,25 @@
     for (const inputSpinnerElement of inputSpinnerElements) {
         new InputSpinner(inputSpinnerElement)
     }
+</script>
+<script>
+  // Gestisce TUTTI gli input attuali e futuri con una sola funzione
+  document.addEventListener('input', function (e) {
+    if (e.target.classList.contains('bg-change-zero')) {
+      const valore = parseFloat(e.target.value);
+      
+      if (valore !== 0 && !isNaN(valore)) {
+        e.target.classList.add('bg-success-subtle', 'border-success', 'border-2');
+      } else {
+        e.target.classList.remove('bg-success-subtle', 'border-success', 'border-2');
+      }
+    }
+  });
+
+  // Esegue il controllo iniziale su tutti gli input al caricamento della pagina
+  document.querySelectorAll('.bg-change-zero').forEach(input => {
+    const valore = parseFloat(input.value);
+    if (valore !== 0 && !isNaN(valore)) input.classList.add('bg-success-subtle', 'border-success', 'border-2');
+  });
 </script>
 {% endblock %}

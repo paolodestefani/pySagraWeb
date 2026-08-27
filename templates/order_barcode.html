@@ -28,7 +28,7 @@
                 <form action="" method="post" class="d-flex flex-column flex-grow-1"> 
                     
                     <!-- CENTER CONTAINER --> 
-                    <div class="py-2 flex-grow-1 d-flex align-items-center justify-content-center"> 
+                    <div class="py-2 flex-grow-1 d-flex align-items-start justify-content-center"> 
                         <div id="qrcode" class="d-inline-block p-2 bg-white rounded border shadow-sm"></div> 
                     </div> 
 
@@ -67,9 +67,9 @@
 <script type="text/javascript"> 
     var options = { 
         text: "{{ order_str }}", 
-        // Aumentato a 360px per occupare quasi tutto lo spazio orizzontale dei 412px del Galaxy
-        width: 360, 
-        height: 360, 
+        // Aumentato a 320px per occupare quasi tutto lo spazio orizzontale dei 412px del Galaxy
+        width: 320, 
+        height: 320, 
         colorDark : "#000000", 
         colorLight : "#ffffff", 
         correctLevel : QRCode.CorrectLevel.L 

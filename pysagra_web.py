@@ -151,7 +151,7 @@ def close_server(signum: int, frame: Any) -> None:
         logging.info("Database connection closed successfully")
     except Exception as e:
         logging.error(f"Error closing database connection: {e}")
-    # the 3-second delay before exiting so any log messages can be read from console before the program terminates
+    # the 2-second delay before exiting so any log messages can be read from console before the program terminates
     time.sleep(2)
     sys.exit(0)
 
