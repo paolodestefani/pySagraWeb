@@ -78,9 +78,9 @@
       const valore = parseFloat(e.target.value);
       
       if (valore !== 0 && !isNaN(valore)) {
-        e.target.classList.add('bg-success-subtle', 'border-success', 'border-2');
+        e.target.classList.add('bg-warning-subtle', 'border-warning', 'border-3');
       } else {
-        e.target.classList.remove('bg-success-subtle', 'border-success', 'border-2');
+        e.target.classList.remove('bg-warning-subtle', 'border-warning', 'border-3');
       }
     }
   });
@@ -88,7 +88,7 @@
   // Esegue il controllo iniziale su tutti gli input al caricamento della pagina
   document.querySelectorAll('.bg-change-zero').forEach(input => {
     const valore = parseFloat(input.value);
-    if (valore !== 0 && !isNaN(valore)) input.classList.add('bg-success-subtle', 'border-success', 'border-2');
+    if (valore !== 0 && !isNaN(valore)) input.classList.add('bg-warning-subtle', 'border-warning', 'border-3');
   });
 </script>
 {% endblock %}
