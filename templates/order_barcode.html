@@ -6,6 +6,13 @@
     #qrcode img, #qrcode canvas {
         max-width: 100%;
         height: auto !important;
+        cursor: pointer; /* Cambia il cursore in una manina per far capire che è cliccabile */
+        transition: transform 0.2s, filter 0.2s;
+    }
+    /* Effetto visivo quando l'utente passa sopra con il mouse */
+    #qrcode img:hover, #qrcode canvas:hover {
+        transform: scale(1.02);
+        filter: brightness(0.95);
     }
 </style>
 
@@ -16,7 +23,7 @@
         <h2>Ordine generato</h2> 
         <p class="mb-1">Procedi alla cassa per il pagamento esibendo il seguente QR Code</p> 
         <p class="mb-0 text-wrap">La disponibilit&agrave; degli articoli non &egrave; garantita fino alla conferma dell'ordine in cassa</p> 
-        <p class="mb-0">{{ test }}</p> 
+        <p class="mb-0 text-primary font-monospace fs-10 d-inline-block user-select-all">{{ test }}</p> 
     </div> 
 
     <!-- main container --> 
@@ -33,9 +40,9 @@
                     </div> 
 
                     <!-- navigation buttons --> 
-                    <div class="form-group text-center pt-2 pb-3 flex-shrink-0 d-flex justify-content-center gap-1 px-2"> 
-                        <button type="submit" class="btn btn-primary fw-bold mx-1 shadow-sm" name="previous">Precedente</button> 
-                        <button type="button" class="btn btn-success fw-bold mx-1 shadow-sm" data-bs-toggle="modal" data-bs-target="#modal_new"> Nuovo ordine </button> 
+                    <div class="form-group pb-3 flex-shrink-0 text-center"> 
+                        <button type="submit" class="btn btn-primary fw-bold shadow-sm" name="previous">Precedente</button> 
+                        <button type="button" class="btn btn-success fw-bold shadow-sm" data-bs-toggle="modal" data-bs-target="#modal_new"> Nuovo ordine </button> 
                     </div> 
 
                     <!-- modal new order --> 
@@ -46,12 +53,12 @@
                                     <h5 class="modal-title mx-auto" id="exampleModalLabel">Attenzione</h5> 
                                 </div> 
                                 <div class="modal-body text-center text-dark fw-normal"> 
-                                    Eliminar il QR Code corrente ed inserire un nuovo ordine? 
+                                    Eliminare il QR Code corrente ed inserire un nuovo ordine? 
                                 </div> 
-                                <div class="modal-footer"> 
-                                    <div class="form-group text-center pt-2 pb-3 flex-shrink-0 d-flex justify-content-center gap-1 px-2"> 
-                                        <button type="button" class="btn btn-warning fw-bold mx-1 shadow-sm" data-bs-dismiss="modal">Annulla</button> 
-                                        <button type="submit" class="btn btn-success fw-bold mx-1 shadow-sm" name="new">Nuovo ordine</button> 
+                                <div class="modal-footer justify-content-center"> 
+                                    <div class="form-group text-center"> 
+                                        <button type="button" class="btn btn-warning fw-bold shadow-sm" data-bs-dismiss="modal">Annulla</button> 
+                                        <button type="submit" class="btn btn-success fw-bold shadow-sm" name="new">Nuovo ordine</button> 
                                     </div> 
                                 </div> 
                              </div> 
@@ -70,11 +77,10 @@
         // Aumentato a 320px per occupare quasi tutto lo spazio orizzontale dei 412px del Galaxy
         width: 320, 
         height: 320, 
-        colorDark : "#000000", 
-        colorLight : "#ffffff", 
-        correctLevel : QRCode.CorrectLevel.L 
+        colorDark: "#000000", 
+        colorLight: "#ffffff", 
+        correctLevel: QRCode.CorrectLevel.L
     }; 
-    
     new QRCode(document.getElementById("qrcode"), options); 
 </script> 
 {% endblock %}

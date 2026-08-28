@@ -47,9 +47,9 @@
           </div>
 
           <!-- navigation buttons: flex-shrink-0 e pb-3 ancorano i tasti al fondo reale dello schermo mobile -->
-          <div class="form-group text-center pt-2 pb-3 flex-shrink-0">
-            <button type="submit" class="btn btn-warning px-3 py-1 fw-bold mx-0 shadow-sm" name="cancel">Annulla</button>
-            <button type="submit" class="btn btn-success px-3 py-1 fw-bold mx-0 shadow-sm" name="confirm">Conferma</button>
+          <div class="form-group pb-3 flex-shrink-0 text-center">
+            <button type="submit" class="btn btn-warning fw-bold shadow-sm" name="cancel">Annulla</button>
+            <button type="submit" class="btn btn-success fw-bold shadow-sm" name="confirm">Conferma</button>
           </div>
           
         </form>
@@ -67,5 +67,25 @@
     for (const inputSpinnerElement of inputSpinnerElements) {
         new InputSpinner(inputSpinnerElement)
     }
+</script>
+<script>
+  // Gestisce TUTTI gli input attuali e futuri con una sola funzione
+  document.addEventListener('input', function (e) {
+    if (e.target.classList.contains('bg-change-zero')) {
+      const valore = parseFloat(e.target.value);
+      
+      if (valore !== 0 && !isNaN(valore)) {
+        e.target.classList.add('bg-info-subtle', 'border-primary', 'border-3');
+      } else {
+        e.target.classList.remove('bg-info-subtle', 'border-primary', 'border-3');
+      }
+    }
+  });
+
+  // Esegue il controllo iniziale su tutti gli input al caricamento della pagina
+  document.querySelectorAll('.bg-change-zero').forEach(input => {
+    const valore = parseFloat(input.value);
+    if (valore !== 0 && !isNaN(valore)) input.classList.add('bg-info-subtle', 'border-primary', 'border-3');
+  });
 </script>
 {% endblock %}

@@ -297,7 +297,7 @@ def order_barcode():
             
     # sanity checks
     order = order.replace("\n", " ")
-    print('Len', len(order))
+    #print('Len', len(order))
     if len(order) >= 1240:
         flash("""Il QR Code da generare supera il numero di caratteri possibili per questo formato.
         Ridurre l'elenco dei prodotti e varianti scelti.
