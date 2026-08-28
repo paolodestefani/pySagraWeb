@@ -98,7 +98,14 @@ def create_app() -> Flask:
     logging.info(f"Setting app locale to {appconfig['FLASKAPP']['locale']}")
     locale.setlocale(locale.LC_ALL, appconfig['FLASKAPP']['locale'])
     # create Flask app
-    flask_app = Flask(APP_NAME)
+    if getattr(sys, 'frozen', False):
+        # path to the temporary folder created by PyInstaller
+        template_folder = os.path.join(sys._MEIPASS, 'templates')
+        static_folder = os.path.join(sys._MEIPASS, 'static')
+        flask_app = Flask(APP_NAME, template_folder=template_folder, static_folder=static_folder)
+    else:
+        # standard behavior during development
+        flask_app = Flask(APP_NAME)
     flask_app.config['SECRET_KEY'] = FLASK_SECRET_KEY
     # register the filter in Flask's Jinja environment with the name 'fmt'
     flask_app.jinja_env.filters['fmt'] = format_values

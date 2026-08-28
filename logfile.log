@@ -8658,3 +8658,49 @@ KeyError: 2
 2026-08-28 01:09:43 INFO pysagra_web: Connected client - IP: 127.0.0.1 - Request: GET /monitor/ordered_delivered
 2026-08-28 01:10:00 INFO pysagra_web: Stopping wsgi server
 2026-08-28 01:10:00 INFO pysagra_web: Database connection closed successfully
+2026-08-28 09:36:03 INFO pysagra_web: Starting pySagraWeb version 1.0.0
+2026-08-28 09:36:03 INFO pysagra_web: Setting app locale to it_IT.UTF-8
+2026-08-28 09:36:03 INFO connect: Starting database connection with parameters:
+2026-08-28 09:36:03 INFO connect: host = localhost
+2026-08-28 09:36:03 INFO connect: port = 5432
+2026-08-28 09:36:03 INFO connect: database = pysagra_demo
+2026-08-28 09:36:03 INFO connect: dbuser = pa_login_role
+2026-08-28 09:36:03 INFO connect: dbuser password = ********
+2026-08-28 09:36:03 INFO connect: application_name = pySagra
+2026-08-28 09:36:03 CRITICAL connect: Psycopg operational error: connection failed: connection to server at "::1", port 5432 failed: FATALE:  il database "pysagra_demo" non esiste
+Multiple connection attempts failed. All failures were:
+- host: 'localhost', port: '5432', hostaddr: '127.0.0.1': connection failed: connection to server at "127.0.0.1", port 5432 failed: FATALE:  il database "pysagra_demo" non esiste
+- host: 'localhost', port: '5432', hostaddr: '::1': connection failed: connection to server at "::1", port 5432 failed: FATALE:  il database "pysagra_demo" non esiste
+2026-08-28 09:36:03 ERROR pysagra_web: Error connecting to database: [UNKNOWN] Psycopg operational error on connection - connection failed: connection to server at "::1", port 5432 failed: FATALE:  il database "pysagra_demo" non esiste
+Multiple connection attempts failed. All failures were:
+- host: 'localhost', port: '5432', hostaddr: '127.0.0.1': connection failed: connection to server at "127.0.0.1", port 5432 failed: FATALE:  il database "pysagra_demo" non esiste
+- host: 'localhost', port: '5432', hostaddr: '::1': connection failed: connection to server at "::1", port 5432 failed: FATALE:  il database "pysagra_demo" non esiste
+2026-08-28 09:36:03 INFO wasyncore: Serving on http://0.0.0.0:8080
+2026-08-28 09:36:15 INFO pysagra_web: Stopping wsgi server
+2026-08-28 09:36:15 ERROR pysagra_web: Error closing database connection: 'AppConnection' object has no attribute '_conn'
+2026-08-28 14:44:57 INFO pysagra_web: Starting pySagraWeb version 1.0.0
+2026-08-28 14:44:57 INFO pysagra_web: Setting app locale to it_IT.UTF-8
+2026-08-28 14:46:13 INFO pysagra_web: Starting pySagraWeb version 1.0.0
+2026-08-28 14:46:13 INFO pysagra_web: Setting app locale to it_IT.UTF-8
+2026-08-28 14:46:13 INFO connect: Starting database connection with parameters:
+2026-08-28 14:46:13 INFO connect: host = localhost
+2026-08-28 14:46:13 INFO connect: port = 5434
+2026-08-28 14:46:13 INFO connect: database = pysagra_demo
+2026-08-28 14:46:13 INFO connect: dbuser = pa_login_role
+2026-08-28 14:46:13 INFO connect: dbuser password = ********
+2026-08-28 14:46:13 INFO connect: application_name = pySagra
+2026-08-28 14:46:13 INFO connect: Database connection established
+2026-08-28 14:46:13 INFO connect: DB is verified as an application database
+2026-08-28 14:46:13 INFO connect: Calling application connection function with parameters:
+2026-08-28 14:46:13 INFO connect: pgminver = 18
+2026-08-28 14:46:13 INFO connect: appname = pySagra
+2026-08-28 14:46:13 INFO connect: appversion = 1.0
+2026-08-28 14:46:13 INFO connect: user = ********
+2026-08-28 14:46:13 INFO connect: password = ********
+2026-08-28 14:46:13 INFO connect: hostname = pysagra_web_server
+2026-08-28 14:46:13 INFO connect: DB Application connection established
+2026-08-28 14:46:13 INFO pysagra_web: Database connection established
+2026-08-28 14:46:13 INFO pysagra_web: Company set to 20
+2026-08-28 14:46:13 INFO wasyncore: Serving on http://0.0.0.0:8080
+2026-08-28 14:46:19 INFO pysagra_web: Stopping wsgi server
+2026-08-28 14:46:19 INFO pysagra_web: Database connection closed successfully
