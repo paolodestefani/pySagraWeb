@@ -106,6 +106,7 @@ def create_app() -> Flask:
     else:
         # standard behavior during development
         flask_app = Flask(APP_NAME)
+    # # #    
     flask_app.config['SECRET_KEY'] = FLASK_SECRET_KEY
     # register the filter in Flask's Jinja environment with the name 'fmt'
     flask_app.jinja_env.filters['fmt'] = format_values
