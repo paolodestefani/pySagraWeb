@@ -100,8 +100,8 @@ def create_app() -> Flask:
     # create Flask app
     if getattr(sys, 'frozen', False):
         # path to the temporary folder created by PyInstaller
-        template_folder = os.path.join(sys._MEIPASS, 'templates')
-        static_folder = os.path.join(sys._MEIPASS, 'static')
+        template_folder = os.path.join(sys._MEIPASS, 'templates') # type: ignore
+        static_folder = os.path.join(sys._MEIPASS, 'static')    # type: ignore
         flask_app = Flask(APP_NAME, template_folder=template_folder, static_folder=static_folder)
     else:
         # standard behavior during development
