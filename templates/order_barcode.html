@@ -1,23 +1,13 @@
 {% extends "base.html" %} 
 {% block content %} 
-
 <style>
-    /* 1 RIGA DI CSS: Impedisce al QR Code di strabordare a destra/sinistra se lo schermo è piccolo o ruotato */
+    /* prevents the QR Code from overflowing to the right/left if the screen is small or rotated*/
     #qrcode img, #qrcode canvas {
         max-width: 100%;
         height: auto !important;
-        cursor: pointer; /* Cambia il cursore in una manina per far capire che è cliccabile */
-        transition: transform 0.2s, filter 0.2s;
-    }
-    /* Effetto visivo quando l'utente passa sopra con il mouse */
-    #qrcode img:hover, #qrcode canvas:hover {
-        transform: scale(1.02);
-        filter: brightness(0.95);
     }
 </style>
-
 <div class="d-flex flex-column" style="min-height: 100dvh;"> 
-    
     <!-- blue header (fixed at top) --> 
     <div class="container-fluid text-sm-center p-3 bg-primary text-white mb-3 bg-gradient flex-shrink-0"> 
         <h2>Ordine generato</h2> 
@@ -25,26 +15,20 @@
         <p class="mb-0 text-wrap">La disponibilit&agrave; degli articoli non &egrave; garantita fino alla conferma dell'ordine in cassa</p> 
         <p class="mb-0 text-white font-monospace fs-7 d-inline-block user-select-all">{{ test }}</p> 
     </div> 
-
     <!-- main container --> 
     <div class="container-fluid px-0 flex-grow-1 d-flex flex-column"> 
         <div class="row justify-content-center flex-grow-1 m-0"> 
-            <!-- Cambiato in col-12 per darti ancora più margine orizzontale utile sullo smartphone -->
             <div class="col-12 col-sm-8 col-md-6 d-flex flex-column"> 
-                
                 <form action="" method="post" class="d-flex flex-column flex-grow-1"> 
-                    
                     <!-- CENTER CONTAINER --> 
                     <div class="py-2 flex-grow-1 d-flex align-items-start justify-content-center"> 
                         <div id="qrcode" class="d-inline-block p-2 bg-white rounded border shadow-sm"></div> 
                     </div> 
-
                     <!-- navigation buttons --> 
                     <div class="form-group pb-3 flex-shrink-0 text-center"> 
                         <button type="submit" class="btn btn-primary fw-bold shadow-sm" name="previous">Precedente</button> 
                         <button type="button" class="btn btn-success fw-bold shadow-sm" data-bs-toggle="modal" data-bs-target="#modal_new"> Nuovo ordine </button> 
                     </div> 
-
                     <!-- modal new order --> 
                     <div class="modal fade" id="modal_new" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true"> 
                         <div class="modal-dialog modal-dialog-centered"> 
@@ -69,12 +53,10 @@
         </div> 
     </div> 
 </div> 
-
 <script src="{{ url_for('static', filename='js/easy.qrcode.min.js') }}"></script> 
 <script type="text/javascript"> 
     var options = { 
         text: "{{ order_str }}", 
-        // Aumentato a 320px per occupare quasi tutto lo spazio orizzontale dei 412px del Galaxy
         width: 320, 
         height: 320, 
         colorDark: "#000000", 

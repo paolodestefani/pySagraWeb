@@ -1,22 +1,24 @@
 {% extends "base.html" %}
 {% block content %}
-
 <style>
     html, body {
         cursor: none !important; /* hide the cursor on the entire page */
     }
+
     .font-qms-title {
         font-family: Arial, sans-serif;
         font-size: 8vmin; /* Leggermente ridotto per dare spazio alla cassa sotto */
         line-height: 0.9;
         max-width: 100%;
     }
+
     .font-qms-number {
         font-family: Arial, sans-serif;
         font-size: 75vmin; /* Ridotto da 95 a 75 per evitare che il nome della cassa finisca fuori schermo */
         line-height: 0.9;
         max-width: 100%;
     }
+
     /* Stile personalizzato per il nome della cassa nel footer */
     .font-qms-desk {
         font-family: Arial, sans-serif;
@@ -24,7 +26,7 @@
         line-height: 1;
         max-width: 100%;
     }
-    
+
     /* special rule for Smartphone (inverted width-heigh) */
     @media (orientation: portrait) {
         .font-qms-number {
@@ -54,17 +56,14 @@
         50% { transform: scale(1.08); }
     }
 </style>
-
 <div class="bg-dark bg-gradient text-white d-flex justify-content-center align-items-center vh-100 p-2">
     <!-- main container, full screen -->
     <div class="border border-warning border-4 rounded-4 p-2 text-center w-100 h-100 d-flex flex-column justify-content-between align-items-center overflow-hidden position-relative">
-        
         <!-- title -->
         <div class="text-warning text-uppercase fw-bold font-qms-title">
             STIAMO SERVENDO IL NUMERO
         </div>
-        
-        <!-- number container (effettua il polling ogni 2 secondi) -->
+        <!-- number container (polling every 2 seconds) -->
         <div id="queue_number" 
              hx-get="{{ url_for('qms.get_current') }}" 
              hx-trigger="every 2s" 
@@ -72,8 +71,7 @@
              class="fw-bold text-white d-flex align-items-center justify-content-center flex-grow-1 m-0 p-0 font-qms-number">
              {{ current_text }}
         </div>
-        
-        <!-- NUOVO: footer con il nome della cassa (aggiornato in background via OOB) -->
+        <!-- footer with cash desk name -->
         <div id="queue_desk" class="text-warning text-uppercase fw-bold font-qms-desk pb-2">
              in {{ current_desk if current_desk else "N/D" }}
         </div>

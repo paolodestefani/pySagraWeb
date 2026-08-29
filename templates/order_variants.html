@@ -5,28 +5,19 @@
     border: 1pt solid black; /* checkbox more readable */
 }
 </style>
-<!-- Il wrapper principale occupa l'altezza della viewport dinamica e blocca l'overflow esterno -->
 <div class="d-flex flex-column" style="height: 100dvh; overflow: hidden;">
-
   <!-- blue header (fixed on top) -->
   <div class="container-fluid text-sm-center p-3 bg-primary text-white mb-4 bg-gradient flex-shrink-0">
     <h1>Selezionare la variante</h1>
     <p class="mb-0">{{ test }}</p>
   </div>
-
   <!-- main container -->
   <div class="container-fluid px-1 flex-grow-1 overflow-hidden d-flex flex-column">
-    <!-- row con justify-content-center centra orizzontalmente -->
     <div class="row justify-content-center flex-grow-1 overflow-hidden">
-      <!-- Cambiato col-auto in classi col standard per garantire stabilità su mobile ed evitare che i tasti si stringano troppo -->
       <div class="col-12 col-sm-8 col-md-6 d-flex flex-column h-100 overflow-hidden">
-        
         <p class="fw-bold mb-2">{{ item }}:</p>
-        
-        <!-- Il form distribuisce lo spazio in modo fluido e compatto -->
         <form action="" method="post" class="d-flex flex-column flex-grow-1 h-100 overflow-hidden">
-          
-          <!-- OPTIONS CONTAINER: flex-grow-1 e overflow-auto gestiscono lo scroll se ci sono molte varianti -->
+          <!-- OPTIONS CONTAINER: -->
           <div class="overflow-auto pe-1 flex-grow-1">
             <div class="ps-4 mb-4">
               {% for var in variants %}
@@ -37,7 +28,6 @@
               </div>
               {% endfor %}
             </div>
-            
             <div class="row align-items-center mb-3 mx-0">
               <label for="quantity" class="col-auto col-form-label fw-bold">Quantit&agrave;</label>
               <div class="col-auto">
@@ -45,21 +35,16 @@
               </div>
             </div>
           </div>
-
-          <!-- navigation buttons: flex-shrink-0 e pb-3 ancorano i tasti al fondo reale dello schermo mobile -->
+          <!-- navigation buttons: flex-shrink-0 and pb-3 anchor the keys to the actual bottom of the mobile screen -->
           <div class="form-group pb-3 flex-shrink-0 text-center">
             <button type="submit" class="btn btn-warning fw-bold shadow-sm" name="cancel">Annulla</button>
             <button type="submit" class="btn btn-success fw-bold shadow-sm" name="confirm">Conferma</button>
           </div>
-          
         </form>
-
       </div>
     </div>
   </div>
-
 </div>
-
 <script type="module">
     import {InputSpinner} from "{{ url_for("static", filename="js/InputSpinner.js") }}"
 
@@ -69,7 +54,7 @@
     }
 </script>
 <script>
-  // Gestisce TUTTI gli input attuali e futuri con una sola funzione
+  // set bg color and border if value is != 0
   document.addEventListener('input', function (e) {
     if (e.target.classList.contains('bg-change-zero')) {
       const valore = parseFloat(e.target.value);
@@ -81,8 +66,7 @@
       }
     }
   });
-
-  // Esegue il controllo iniziale su tutti gli input al caricamento della pagina
+  // initial setting
   document.querySelectorAll('.bg-change-zero').forEach(input => {
     const valore = parseFloat(input.value);
     if (valore !== 0 && !isNaN(valore)) input.classList.add('bg-info-subtle', 'border-primary', 'border-3');

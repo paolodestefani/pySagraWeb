@@ -1,10 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
-
 <div class="container-fluid text-sm-center p-3 bg-primary text-white mb-4 bg-gradient">
   <h2>Riepilogo delle vendite</h2>
 </div>
-
 <!-- items availability table-->
 <div class="container-fluid px-3 pb-4">
   <div class="table-responsive rounded border">
@@ -23,7 +21,6 @@
           <th class="text-center" style="width: 10%">Totale</th>
         </tr>
       </thead>
-
       <tbody 
             id="table-body"
             hx-ext="morph"
@@ -31,9 +28,7 @@
             hx-trigger="every 10s" 
             hx-target="#table-body" 
             hx-swap="morph">
-
         {% include "monitor_sales_summary_rows.html" %}
-
       </tbody>
     </table>
   </div>

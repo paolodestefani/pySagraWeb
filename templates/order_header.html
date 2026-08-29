@@ -1,28 +1,19 @@
 {% extends "base.html" %}
 {% block content %}
-<!-- Il wrapper principale occupa l'altezza della viewport dinamica e blocca l'overflow esterno -->
 <div class="d-flex flex-column" style="height: 100dvh; overflow: hidden;">
-
   <!-- blue header (fixed at top) -->
   <div class="container-fluid text-sm-center p-3 bg-primary text-white mb-4 bg-gradient flex-shrink-0">
     <h1>{{ event }}</h1>
     <p class="mb-1">Compila il modulo seguente per inserire un ordine web. Clicca su <strong>Menu</strong> per selezionare gli articoli. Clicca su <strong>Cancella</strong> per eliminare tutti i dati inseriti.</p>
     <p class="mb-0">{{ test }}</p>
   </div>
-
   <!-- main container -->
   <div class="container-fluid px-1 flex-grow-1 overflow-hidden d-flex flex-column">
     <div class="row align-items-start justify-content-center flex-grow-1 overflow-hidden">
       <div class="col-12 col-sm-8 col-md-6 d-flex flex-column h-100 overflow-hidden">
-
-        <!-- Il form distribuisce lo spazio in modo rigido ed efficiente, forzando i tasti sul fondo -->
         <form action="" method="post" class="d-flex flex-column flex-grow-1 h-100 overflow-hidden">
-          
-          <!-- INPUT FIELD CONTAINER: Sostituito overflow-auto con overflow-y-auto e overflow-x-hidden 
-               per impedire tassativamente la comparsa della barra di scorrimento in basso. -->
+          <!-- INPUT FIELD CONTAINER: -->
           <div class="pe-1 flex-grow-1 overflow-y-auto overflow-x-hidden">
-            
-            <!-- Aggiunta la classe mx-0 a tutte le .row per azzerare i margini negativi di Bootstrap -->
             <div class="row mb-3 mx-0">
               <label for="delivery" class="col-sm-2 col-form-label fw-bold">Consegna</label>
               <div class="col-sm-10">
@@ -40,7 +31,6 @@
               </select>
               </div>
             </div>
-            
             <div class="row mb-3 mx-0">
               <label for="table"  class="col-sm-2 col-form-label fw-bold">Tavolo</label>
               <div class="col-sm-10">
@@ -48,7 +38,6 @@
               data-bs-toggle="tooltip" data-bs-placement="top" title="Il numero del tavolo &egrave; obbligatorio se la consegna è al Tavolo">
               </div>
             </div>
-            
             <div class="row mb-3 mx-0">
               <label for="customer" class="col-sm-2 col-form-label fw-bold">Nome</label>
               <div class="col-sm-10">
@@ -56,7 +45,6 @@
               data-bs-toggle="tooltip" data-bs-placement="top" title="Il nome del cliente &egrave; obbligatorio se l'ordine &egrave; per Asporto">
               </div>
             </div>
-            
             <div class="row mb-3 mx-0">
               <label for="covers" class="col-sm-2 col-form-label fw-bold">Coperti</label>
               <div class="col-sm-10">
@@ -65,21 +53,16 @@
               </div>
             </div>
           </div>
-
-         <!-- navigation buttons: flex-shrink-0 e pb-3 li mantengono ancorati al fondo reale dello schermo in modo fisso -->
+         <!-- navigation buttons: flex-shrink-0 and pb-3 keep them anchored to the real bottom of the screen in a fixed way -->
         <div class="form-group pb-3 flex-shrink-0 text-center">
             <button type="submit" class="btn btn-danger fw-bold shadow-sm" name="reset" title="Elimina tutti i dati e le selezioni effettuate">Cancella</button>
             <button type="submit" class="btn btn-success fw-bold shadow-sm" name="menu" title="Passa alla selezione degli articoli">Menu</button>
         </div>
-          
         </form>
-
       </div>
     </div>
   </div>
-
 </div>
-
 <script type="module">
     import {InputSpinner} from "{{ url_for("static", filename="js/InputSpinner.js") }}"
 

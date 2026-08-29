@@ -1,11 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
-<!-- page header -->
-<div class="container-fluid text-center p-4 bg-primary text-white mb-5 bg-gradient rounded-3 shadow-sm">
+<div class="container-fluid text-center p-4 bg-primary text-white mb-5 bg-gradient">
   <h2 class="fw-bold">Pannello di Monitoraggio Generale</h2>
   <p class="lead mb-0">Visualizzazione in tempo reale dello stato dell'ordinato, inventario, vendite</p>
 </div>
-
 <!-- main container -->
 <div class="container my-4">    
     <!-- responsive grid: 1 column on smartphones, 2 columns on monitor -->
@@ -22,14 +20,13 @@
                             Controlla le scorte di magazzino, monitora i prodotti in esaurimento e gestisci i carichi di merce in tempo reale.
                         </p>
                     </div>
-                    <!-- Bottone di azione -->
+                    <!-- action button -->
                     <a href="{{ url_for('monitor.monitor_inventory') }}" class="btn btn-outline-primary w-100 stretched-link mt-4">
                         Vai a Inventario
                     </a>
                 </div>
             </div>
         </div> <!-- inventory card -->
-
         <!-- ordered delivered card -->
         <div class="col-md-6">
             <div class="card h-100 shadow-sm border-0 bg-white">
@@ -42,14 +39,13 @@
                             Visualizza gli articoli da consegnare e consegnati.
                         </p>
                     </div>
-                    <!-- Bottone di azione -->
+                    <!-- action button -->
                     <a href="{{ url_for('monitor.monitor_ordered_delivered') }}" class="btn btn-outline-primary w-100 stretched-link mt-4">
                         Vai a Ordinato Consegnato
                     </a>
                 </div>
             </div>
         </div> <!-- ordered delivered card -->
-
         <!-- sales summary card -->
         <div class="col-md-6">
             <div class="card h-100 shadow-sm border-0 bg-white">
@@ -62,15 +58,13 @@
                             Visualizza il numero di ordini, coperti ed il valore dell'incasso per tipologia di consegna e pagamento
                         </p>
                     </div>
-                    <!-- Bottone di azione -->
+                    <!-- action button -->
                     <a href="{{ url_for('monitor.monitor_sales_summary') }}" class="btn btn-outline-primary w-100 stretched-link mt-4">
                         Vai a Riepilogo vendite
                     </a>
                 </div>
             </div>
         </div> <!-- sales summary card -->
-
     </div> <!-- responsive grid -->
 </div> <!-- main container -->
-
 {% endblock %}

@@ -89,7 +89,6 @@ def order_header():
             session['departments'].append(dep['description'])
             session['lines'][dep['description']] = []
             for i in item_web_list(session['event_id'], dep['department_id']):
-                #print(f"item_web_list: i={i}, d={d}, p={p}, a={a}, v={v}")
                 session['lines'][dep['description']].append({
                     'item': str(i['id']),                       # 0 item id as string (session dict are stored as string anyway)
                     'description': i['description'],            # 1 item description
@@ -106,8 +105,6 @@ def order_header():
                         'price': float(v['delta']), 
                         'price_string': '(+' + locale.currency(v['delta']) + ')' if v['delta'] != 0.0 else ''}
                                             for v in get_variants(i['id'])]   
-                    #print(f"variants: i={i}, variants={session['variants'][i]}")
-                    #print(get_variants(i['id']))
 
     return render_template('order_header.html',
                            delivery = session.get('delivery', 'T'),
@@ -124,7 +121,6 @@ def order_menu():
     # update session['lines'] with inserted quantity
     # index of the table row coincide with list index
     for i, l in enumerate(session['lines'][session['departments'][session['dep_index']]]):
-        #print(f"i={i}, l={l}")
         if str(i) in request.form:
             l['quantity'] = int(request.form[str(i)]) 
             session.modified = True
@@ -153,7 +149,6 @@ def order_menu():
             
     return render_template(
         'order_menu.html',
-        #test       = request.form,
         department  = session['departments'][session['dep_index']],
         lines       = session['lines'][session['departments'][session['dep_index']]])
         
@@ -177,17 +172,14 @@ def order_variants(index):
             var = ' '.join([session['variants'][item_id][int(i)]['description'] for i in request.form.getlist('variantschecks')])
             prd = sum([float(session['variants'][item_id][int(i)]['price']) for i in request.form.getlist('variantschecks')])
             qty = int(request.form['quantity'])
-            #if not var.strip():
-            #    flash('Selezionare almeno una variante')
-            #    return redirect(url_for('order_variants', index=index))
+           
             l = session['lines'][session['departments'][session['dep_index']]][index].copy()
-            #print(f"line: l={l}, var={var}, prd={prd}, qty={qty}")
             l['has_variants'] = False                       # has variants
             l['quantity'] = qty                             # quantity
-            l['price'] = l['price'] + prd                   # price as number
+            l['price'] += prd                               # price as number
             l['price_string'] = locale.currency(l['price']) # price as currency string
-            l['description'] = l['description'] + ' ' + var # description
-            l['variants'] = var #.replace(';', ' ')           # variants
+            l['description'] += ' ' + var                   # description
+            l['variants'] = var                             # variants
             l['price_delta'] = prd                          # price delta
             session['lines'][session['departments'][session['dep_index']]].insert(index + 1, l)
             session.modified = True
@@ -195,7 +187,6 @@ def order_variants(index):
                 
     return render_template(
         'order_variants.html',
-        #test       = request.form,
         item        = item_ds,
         variants    = session['variants'].get(item_id) or [],
         quantity    = 1)
@@ -205,16 +196,12 @@ def order_variants(index):
 def order_checkout():
     "Summary and ask to proceed/go back"
 
-    #if not 'customer' in session:  # this can happen when do a back on order_header after order_confirmed
-    #    return redirect(url_for('order_header'))
-
     if request.method == 'POST':
         if 'previous' in request.form:
             # email
             session['email'] = request.form.get('email', '')
             return redirect(url_for('order.order_menu'))
         if 'fromstart' in request.form:
-            #session['dep_index'] = 0
             return redirect(url_for('order.order_header'))
         if 'confirm' in request.form:
             # email
@@ -225,17 +212,17 @@ def order_checkout():
             else:
                 return redirect(url_for('order.order_barcode'))
 
-        # filters selected lines and calc total
+    # filters selected lines and calc total
     total = 0.0
     lines = []
     for d in session['departments']:
-        # Estrae le linee che hanno quantità diversa da zero
+        # extracts lines that have non-zero quantity
         ln = [l for l in session['lines'][d] if int(l['quantity']) != 0]
         
-        # CRITICO: Entra nel blocco e aggiunge il reparto SOLO se 'ln' contiene elementi!
+        # enters the block and adds the department ONLY if 'ln' contains items!
         if ln:
-            lines.append({'item': 0, 'description': d}) # Aggiunge il reparto solo se popolato
-            lines += ln                                 # Aggiunge le righe degli articoli
+            lines.append({'item': 0, 'description': d})
+            lines += ln
             total += sum([float(i['quantity']) * float(i['price']) for i in ln])
 
     if lines:
@@ -249,7 +236,6 @@ def order_checkout():
         session['covers'] = ''
 
     return render_template('order_checkout.html',
-                           #test    = lines, #session['lines']['Bar'],
                            delivery = session['delivery'],
                            customer = session['customer'],
                            table    = session['table'],
@@ -297,7 +283,7 @@ def order_barcode():
             
     # sanity checks
     order = order.replace("\n", " ")
-    #print('Len', len(order))
+
     if len(order) >= 1240:
         flash("""Il QR Code da generare supera il numero di caratteri possibili per questo formato.
         Ridurre l'elenco dei prodotti e varianti scelti.

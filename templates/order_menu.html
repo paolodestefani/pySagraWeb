@@ -1,25 +1,19 @@
 {% extends "base.html" %}
 {% block content %}
-<!-- Il wrapper principale occupa l'altezza esatta della viewport dinamica e blocca l'overflow esterno -->
 <div class="d-flex flex-column" style="height: 100dvh; overflow: hidden;">
-
-  <!-- blue header (fisso in alto) -->
+  <!-- blue header (fixed on top) -->
   <div class="container-fluid text-sm-center p-3 bg-primary text-white bg-gradient flex-shrink-0">
     <h2>{{ department }}</h2>
     <p class="mb-1 text-wrap">Sono selezionati gli articoli/varianti che hanno quantit&agrave; maggiore di zero</p>
     <p class="mb-0">{{ test }}</p>
   </div>
-
-  <!-- main container (prende lo spazio centrale) -->
+  <!-- main container -->
   <div class="container-fluid px-1 flex-grow-1 d-flex flex-column overflow-hidden">
     <div class="row justify-content-center flex-grow-1 overflow-hidden">
       <div class="col-12 col-lg-8 col-xl-6 d-flex flex-column h-100 overflow-hidden">
-
-        <!-- Il form distribuisce lo spazio verticalmente in modo rigido ed efficiente -->
         <form action="" method="post" class="d-flex flex-column flex-grow-1 h-100 overflow-hidden">
-          
-          <!-- CONTAINER TABELLA: Con flex-grow-1 e overflow-auto, occupa tutto lo spazio centrale 
-               disponibile e mostra la barra di scorrimento solo qui dentro se la lista è lunga -->
+          <!--  TABLE CONTAINER: With flex-grow-1 and overflow-auto, it occupies all the available
+                central space and only displays the scrollbar inside if the list is long. -->
           <div class="table-responsive rounded border mb-1 overflow-auto bg-white flex-grow-1">
             <table class="table table-striped table-sm table-hover m-0">
             <thead class="table-dark sticky-top">
@@ -48,21 +42,16 @@
             </tbody>
             </table>
           </div>
-
-          <!-- navigation buttons: flex-shrink-0 e pb-3 li tengono ancorati al fondo reale dello schermo -->
+          <!-- navigation buttons: flex-shrink-0 and pb-3 keep them anchored to the actual bottom of the screen -->
           <div class="form-group pb-3 flex-shrink-0 text-center">
               <button type="submit" class="btn btn-primary fw-bold shadow-sm" name="previous">Indietro</button>
               <button type="submit" class="btn btn-primary fw-bold shadow-sm" name="next">Avanti</button>
           </div>
-          
         </form>
-
       </div>
     </div>
   </div>
-
 </div>
-
 <script type="module">
     import {InputSpinner} from "{{ url_for("static", filename="js/InputSpinner.js") }}"
 
@@ -72,7 +61,7 @@
     }
 </script>
 <script>
-  // Gestisce TUTTI gli input attuali e futuri con una sola funzione
+  // set bg color and border if value is != 0
   document.addEventListener('input', function (e) {
     if (e.target.classList.contains('bg-change-zero')) {
       const valore = parseFloat(e.target.value);
@@ -84,8 +73,7 @@
       }
     }
   });
-
-  // Esegue il controllo iniziale su tutti gli input al caricamento della pagina
+  // initial setting
   document.querySelectorAll('.bg-change-zero').forEach(input => {
     const valore = parseFloat(input.value);
     if (valore !== 0 && !isNaN(valore)) input.classList.add('bg-info-subtle', 'border-primary');
