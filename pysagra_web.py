@@ -190,4 +190,4 @@ if __name__ == '__main__':
           host=appconfig['SERVERWSGI']['host'], 
           port=int(appconfig['SERVERWSGI']['port']),
           threads=int(appconfig['SERVERWSGI']['threads']),
-          connection_limit=int(appconfig['SERVERWSGI']['connections']))
+          connection_limit=int(appconfig['SERVERWSGI']['connection_limit']))

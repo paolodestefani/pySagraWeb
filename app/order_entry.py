@@ -187,7 +187,7 @@ def order_variants(index):
             l['price'] = l['price'] + prd                   # price as number
             l['price_string'] = locale.currency(l['price']) # price as currency string
             l['description'] = l['description'] + ' ' + var # description
-            l['variants'] = var                             # variants
+            l['variants'] = var #.replace(';', ' ')           # variants
             l['price_delta'] = prd                          # price delta
             session['lines'][session['departments'][session['dep_index']]].insert(index + 1, l)
             session.modified = True
@@ -281,7 +281,7 @@ def order_barcode():
     # table
     order += ";" + session['table'] or ""
     # customer name
-    order += ";" + session['customer']
+    order += ";" + session['customer'] #.replace(';', ' ')
     # covers
     order += ";" + session['covers'] or ""
     # email
