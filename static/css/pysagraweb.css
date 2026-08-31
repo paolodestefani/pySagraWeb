@@ -1,15 +1,45 @@
 
-/* Click effect for all buttons */
+/* click effect for all buttons */
 .btn {
     transition: transform 0.1s ease, filter 0.1s ease;
 }
+
 .btn:active {
     transform: scale(0.96) translateY(2px); /* It shrinks and goes down */
     filter: brightness(0.9); /* It darkens slightly */
 }
 
-/* apply a border to any cell of the table */
-/* table.table-sm tr td {
-   border: 1px solid #6c757d !important; /* uniform dark line
-} 
-*/
+/* universal button sizing (both Desktop and Mobile)*/
+  .custom-spinner .btn {
+    width: 40px;                /* fixed width and comfortable for clicking and tapping */
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    font-size: 1.1rem;          /* text + and - clearly visible */
+    font-weight: bold;
+  }
+  
+/* removes native numeric input arrows in browsers */
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+
+/* checkbox more readable */
+.form-check-input:not(:checked) {
+    border: 1pt solid black; 
+}
+
+/* highly specific selector to correct input within the group */
+.input-group > input.form-control.bg-change-zero.border-primary {
+    border: 1px solid var(--bs-primary) !important;
+    height: auto !important;
+    align-self: stretch !important;
+    margin-bottom: 0 !important;
+}
+
+
+

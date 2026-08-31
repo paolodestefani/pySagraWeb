@@ -1,10 +1,5 @@
 {% extends "base.html" %}
 {% block content %}
-<style>
-    .form-check-input:not(:checked) {
-    border: 1pt solid black; /* checkbox more readable */
-}
-</style>
 <div class="d-flex flex-column" style="height: 100dvh; overflow: hidden;">
   <!-- blue header (fixed on top) -->
   <div class="container-fluid text-sm-center p-3 bg-primary text-white mb-4 bg-gradient flex-shrink-0">
@@ -30,9 +25,33 @@
             </div>
             <div class="row align-items-center mb-3 mx-0">
               <label for="quantity" class="col-auto col-form-label fw-bold">Quantit&agrave;</label>
-              <div class="col-auto">
-                <input type="number" name="quantity" id="quantity" class="form-control" min="1" max="99" value="{{ quantity }}">
-              </div>
+              <div class="col-sm-10">
+                   <div class="input-group w-100">
+                     <!-- minus button -->
+                     <button type="button" 
+                            class="btn btn-outline-secondary" 
+                            onclick="let inp = this.parentNode.querySelector('input[type=number]'); inp.stepDown(); inp.dispatchEvent(new Event('input', {bubbles: true}));">
+                         -
+                     </button>
+                     <!-- input number -->
+                     <input class="form-control text-center bg-white" 
+                            type="number" 
+                            min="0" 
+                            max="99" 
+                            step="1" 
+                            name="quantity" 
+                            id="quantity" 
+                            value="{{ quantity }}" 
+                            placeholder=""
+                            title="">
+                     <!-- plus button -->
+                     <button  type="button"
+                            class="btn btn-outline-secondary" 
+                            onclick="let inp = this.parentNode.querySelector('input[type=number]'); inp.stepUp(); inp.dispatchEvent(new Event('input', {bubbles: true}));">
+                         +
+                     </button>
+                   </div>
+                </div>
             </div>
           </div>
           <!-- navigation buttons: flex-shrink-0 and pb-3 anchor the keys to the actual bottom of the mobile screen -->
@@ -45,31 +64,4 @@
     </div>
   </div>
 </div>
-<script type="module">
-    import {InputSpinner} from "{{ url_for("static", filename="js/InputSpinner.js") }}"
-
-    const inputSpinnerElements = document.querySelectorAll("input[type='number']")
-    for (const inputSpinnerElement of inputSpinnerElements) {
-        new InputSpinner(inputSpinnerElement)
-    }
-</script>
-<script>
-  // set bg color and border if value is != 0
-  document.addEventListener('input', function (e) {
-    if (e.target.classList.contains('bg-change-zero')) {
-      const valore = parseFloat(e.target.value);
-      
-      if (valore !== 0 && !isNaN(valore)) {
-        e.target.classList.add('bg-info-subtle', 'border-primary', 'border-3');
-      } else {
-        e.target.classList.remove('bg-info-subtle', 'border-primary', 'border-3');
-      }
-    }
-  });
-  // initial setting
-  document.querySelectorAll('.bg-change-zero').forEach(input => {
-    const valore = parseFloat(input.value);
-    if (valore !== 0 && !isNaN(valore)) input.classList.add('bg-info-subtle', 'border-primary', 'border-3');
-  });
-</script>
 {% endblock %}

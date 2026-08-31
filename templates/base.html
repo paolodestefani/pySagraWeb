@@ -7,10 +7,7 @@
 	<link rel="icon" type="image/png" href={{ url_for('static', filename="pySagra.png") }}>
     <link rel="stylesheet" media="screen" href={{ url_for('static', filename="css/bootstrap.min.css") }}>
     <link rel="stylesheet" href={{ url_for('static', filename="css/pysagraweb.css") }}>
-    <script src={{ url_for("static", filename="js/jquery-3.7.1.min.js") }}></script>
-    <script src={{ url_for("static", filename="js/bootstrap.min.js") }}></script>
 	<script src={{ url_for("static", filename="js/bootstrap.bundle.min.js") }}></script>
-	<script src={{ url_for('static', filename='js/htmx.min.js') }}></script>
   </head>
   <body class="bg-light bg-gradient">
   {% with messages = get_flashed_messages() %}
@@ -34,7 +31,7 @@
     </div>
   </div>
   <script>
-  var modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('modal')) // Returns a Bootstrap modal instance
+  var modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('modal')) // returns a bootstrap modal instance
   // show or hide:
   modal.show();
   //modal.hide();

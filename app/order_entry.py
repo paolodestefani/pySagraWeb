@@ -292,7 +292,6 @@ def order_barcode():
     
     # show order QR code
     return render_template('order_barcode.html',
-                            order_str   = order,
-                            #test        = order
+                            order_str   = order
                             )
                             

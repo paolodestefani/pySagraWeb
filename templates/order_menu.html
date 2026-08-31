@@ -12,8 +12,7 @@
     <div class="row justify-content-center flex-grow-1 overflow-hidden">
       <div class="col-12 col-lg-8 col-xl-6 d-flex flex-column h-100 overflow-hidden">
         <form action="" method="post" class="d-flex flex-column flex-grow-1 h-100 overflow-hidden">
-          <!--  TABLE CONTAINER: With flex-grow-1 and overflow-auto, it occupies all the available
-                central space and only displays the scrollbar inside if the list is long. -->
+          <!--  TABLE CONTAINER -->
           <div class="table-responsive rounded border mb-1 overflow-auto bg-white flex-grow-1">
             <table class="table table-striped table-sm table-hover m-0">
             <thead class="table-dark sticky-top">
@@ -28,7 +27,27 @@
               <tr>
                 {% if not line.has_variants %}
                 <td>
-                   <input class="form-control-sm bg-change-zero" type="number" min="0" max="99" step="1" name="{{ loop.index0 }}" id="{{ loop.index0 }}" value="{{ line.quantity }}" required>
+                   <div class="input-group input-group-sm mx-auto custom-spinner">
+                     <!-- minus button -->
+                     <button class="btn btn-outline-secondary py-0" type="button" 
+                             onclick="let inp = this.parentNode.querySelector('input[type=number]'); inp.stepDown(); inp.dispatchEvent(new Event('input', {bubbles: true}));">-</button>
+                     
+                     <!-- input number -->
+                     <input class="form-control text-center bg-change-zero p-0" 
+                            type="number" 
+                            min="0" 
+                            max="99" 
+                            step="1" 
+                            name="{{ loop.index0 }}" 
+                            id="{{ loop.index0 }}" 
+                            value="{{ line.quantity }}" 
+                            style="height: 28px;" 
+                            required>
+                     
+                     <!-- plus button -->
+                     <button class="btn btn-outline-secondary py-0" type="button" 
+                             onclick="let inp = this.parentNode.querySelector('input[type=number]'); inp.stepUp(); inp.dispatchEvent(new Event('input', {bubbles: true}));">+</button>
+                   </div>
                 </td>
                 {% else %}
                   <td class="text-center">
@@ -42,7 +61,7 @@
             </tbody>
             </table>
           </div>
-          <!-- navigation buttons: flex-shrink-0 and pb-3 keep them anchored to the actual bottom of the screen -->
+          <!-- navigation buttons -->
           <div class="form-group pb-3 flex-shrink-0 text-center">
               <button type="submit" class="btn btn-primary fw-bold shadow-sm" name="previous">Indietro</button>
               <button type="submit" class="btn btn-primary fw-bold shadow-sm" name="next">Avanti</button>
@@ -52,31 +71,27 @@
     </div>
   </div>
 </div>
-<script type="module">
-    import {InputSpinner} from "{{ url_for("static", filename="js/InputSpinner.js") }}"
-
-    const inputSpinnerElements = document.querySelectorAll("input[type='number']")
-    for (const inputSpinnerElement of inputSpinnerElements) {
-        new InputSpinner(inputSpinnerElement)
-    }
-</script>
 <script>
-  // set bg color and border if value is != 0
-  document.addEventListener('input', function (e) {
-    if (e.target.classList.contains('bg-change-zero')) {
-      const valore = parseFloat(e.target.value);
-      
+  // unified function to manage != 0 background color style
+  function checkZeroColor(target) {
+    if (target.classList.contains('bg-change-zero')) {
+      const valore = parseFloat(target.value);
       if (valore !== 0 && !isNaN(valore)) {
-        e.target.classList.add('bg-info-subtle', 'border-primary');
+        target.classList.add('bg-info-subtle', 'border-primary');
       } else {
-        e.target.classList.remove('bg-info-subtle', 'border-primary');
+        target.classList.remove('bg-info-subtle', 'border-primary');
       }
     }
+  }
+
+  // monitor value changes both from the keyboard and via the + and - buttons
+  document.addEventListener('input', function (e) {
+    checkZeroColor(e.target);
   });
-  // initial setting
-  document.querySelectorAll('.bg-change-zero').forEach(input => {
-    const valore = parseFloat(input.value);
-    if (valore !== 0 && !isNaN(valore)) input.classList.add('bg-info-subtle', 'border-primary');
+
+  // performs initial color checking as soon as the DOM is ready
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.bg-change-zero').forEach(checkZeroColor);
   });
 </script>
 {% endblock %}
