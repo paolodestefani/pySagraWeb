@@ -55,6 +55,7 @@ class QueueNumber:
         self._from_string(init_value)
         self._is_new: bool = False
         self._current_desk: str = "NOT SET"
+        self._history: list[tuple] = [] # list of tuple
         
     def _from_string(self, value: str) -> None:
         "Converts a string representation of the queue number into its internal representation."
@@ -72,6 +73,10 @@ class QueueNumber:
 
     def advance(self, desk_name: str = "N/D") -> None:
         "Advances the queue number by one, rolling over to the next letter after 'Z99' back to 'A00'."
+        # historicizes current value
+        self._history.append((f"{chr(self._letter)}{self._number:02d}", self._current_desk))
+        print('History', self._history)
+        # increase number
         self._number += 1
         if self._number == 100:
             self._number = 0
@@ -83,6 +88,10 @@ class QueueNumber:
 
     def regress(self, desk_name: str = "N/D") -> None:
         "Regresses the queue number by one, never going below 'A00'."
+        # historicizes current value
+        self._history.append((f"{chr(self._letter)}{self._number:02d}", self._current_desk))
+        print('History', self._history)
+        # decrease number
         self._number -= 1
         if self._number < 0:
             self._number = 99
@@ -95,6 +104,10 @@ class QueueNumber:
                 
     def reset(self, new_value: str, desk_name: str = "N/D") -> None:
         "Resets the queue number to a new valid value."
+        # historicizes current value
+        self._history.append((f"{chr(self._letter)}{self._number:02d}", self._current_desk))
+        print('History', self._history)
+        # reset number
         self._from_string(new_value)
         self._is_new = True
         self._current_desk = desk_name 
