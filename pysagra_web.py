@@ -43,7 +43,9 @@ import sys
 from typing import Any
 
 from flask import Flask, request, redirect, url_for
-from waitress import serve
+#from waitress import serve
+from cheroot.wsgi import Server as WSGIServer
+from cheroot.ssl.pyopenssl import pyOpenSSLAdapter
 
 # application modules
 from app import appconfig
@@ -167,7 +169,7 @@ def close_server(signum: int, frame: Any) -> None:
 if __name__ == '__main__':
     "Start Flask app and WSGI server"
     # Bind Ctrl+C (SIGINT) to the graceful shutdown handler
-    signal.signal(signal.SIGINT, close_server)
+    #signal.signal(signal.SIGINT, close_server)
     print()
     print("**** Starting WSGI server ****")
     print("Press Ctrl+C to stop the server")
@@ -185,9 +187,25 @@ if __name__ == '__main__':
             return
         logging.info(f"Connected client - IP: {request.remote_addr} - Request: {request.method} {request.path}")
     
-    # start WSGI server using Waitress
-    serve(app, 
-          host=appconfig['SERVERWSGI']['host'], 
-          port=int(appconfig['SERVERWSGI']['port']),
-          threads=int(appconfig['SERVERWSGI']['threads']),
-          connection_limit=int(appconfig['SERVERWSGI']['connection_limit']))
+    # start WSGI server
+    bind_address = ('0.0.0.0', 5443)
+    server = WSGIServer(bind_address, app)
+    server.numthreads = 10 
+     # Associa i certificati SSL per attivare l'HTTPS nativo
+    server.ssl_adapter = pyOpenSSLAdapter(
+        certificate='fullchain.pem',   # Percorso del tuo certificato
+        private_key='privkey.pem'     # Percorso della tua chiave privata
+    )
+
+    print(f"Server Cheroot HTTPS avviato su https://localhost:{bind_address[1]} e IP di rete locale.")
+    
+    try:
+        server.start()
+    except KeyboardInterrupt:
+        server.stop()
+
+    # serve(app, 
+    #       host=appconfig['SERVERWSGI']['host'], 
+    #       port=int(appconfig['SERVERWSGI']['port']),
+    #       threads=int(appconfig['SERVERWSGI']['threads']),
+    #       connection_limit=int(appconfig['SERVERWSGI']['connection_limit']))
