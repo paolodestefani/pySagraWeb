@@ -38,12 +38,10 @@ import datetime
 import decimal
 import locale
 import time
-import signal
 import sys
 from typing import Any
 
 from flask import Flask, request, redirect, url_for
-#from waitress import serve
 from cheroot.wsgi import Server as WSGIServer
 from cheroot.ssl.pyopenssl import pyOpenSSLAdapter
 
@@ -150,28 +148,13 @@ def create_app() -> Flask:
     return flask_app
 
 
-def close_server(signum: int, frame: Any) -> None:
-    "Handler for graceful shutdown of the server on Ctrl+C (SIGINT)."
-    print()
-    print("\n**** Stopping wsgi server ****")
-    print()
-    logging.info("Stopping wsgi server")
-    try:
-        appconn.close()
-        logging.info("Database connection closed successfully")
-    except Exception as e:
-        logging.error(f"Error closing database connection: {e}")
-    # the 2-second delay before exiting so any log messages can be read from console before the program terminates
-    time.sleep(2)
-    sys.exit(0)
-
-
 if __name__ == '__main__':
     "Start Flask app and WSGI server"
-    # Bind Ctrl+C (SIGINT) to the graceful shutdown handler
-    #signal.signal(signal.SIGINT, close_server)
+    # listen on all interfaces
+    bind_address = ('0.0.0.0', 5443)
+    ###
     print()
-    print("**** Starting WSGI server ****")
+    print(f"Starting WSGI server on https://{bind_address[0]}:{bind_address[1]}")
     print("Press Ctrl+C to stop the server")
     print()
     
@@ -188,24 +171,28 @@ if __name__ == '__main__':
         logging.info(f"Connected client - IP: {request.remote_addr} - Request: {request.method} {request.path}")
     
     # start WSGI server
-    bind_address = ('0.0.0.0', 5443)
     server = WSGIServer(bind_address, app)
     server.numthreads = 10 
-     # Associa i certificati SSL per attivare l'HTTPS nativo
+    # Bind SSL certificates to enable native HTTPS
     server.ssl_adapter = pyOpenSSLAdapter(
-        certificate='fullchain.pem',   # Percorso del tuo certificato
-        private_key='privkey.pem'     # Percorso della tua chiave privata
+        certificate='fullchain.pem',   # Path to certificate
+        private_key='privkey.pem'      # Path to private key
     )
 
-    print(f"Server Cheroot HTTPS avviato su https://localhost:{bind_address[1]} e IP di rete locale.")
-    
     try:
+        logging.info(f"Starting cheroot wsgi server with SSL on https://{bind_address[0]}:{bind_address[1]}")
         server.start()
     except KeyboardInterrupt:
+        print()
+        print("\n**** Stopping wsgi server ****")
+        print()
+        logging.info("Stopping wsgi server")
         server.stop()
-
-    # serve(app, 
-    #       host=appconfig['SERVERWSGI']['host'], 
-    #       port=int(appconfig['SERVERWSGI']['port']),
-    #       threads=int(appconfig['SERVERWSGI']['threads']),
-    #       connection_limit=int(appconfig['SERVERWSGI']['connection_limit']))
+        try:
+            appconn.close()
+            logging.info("Database connection closed successfully")
+        except Exception as e:
+            logging.error(f"Error closing database connection: {e}")
+        # the 2-second delay before exiting so any log messages can be read from console before the program terminates
+        time.sleep(2)
+        sys.exit(0)
