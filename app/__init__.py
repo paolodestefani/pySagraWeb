@@ -36,5 +36,5 @@ FLASK_SECRET_KEY = 'SjdnUends821Jsdlkvxh391ksdODnejdDw'
 
 # load configuration file
 import configparser
-appconfig = configparser.ConfigParser()
+appconfig = configparser.ConfigParser(inline_comment_prefixes=(';',))
 appconfig.read('config.cfg')

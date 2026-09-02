@@ -150,11 +150,8 @@ def create_app() -> Flask:
 
 if __name__ == '__main__':
     "Start Flask app and WSGI server"
-    # listen on all interfaces
-    bind_address = ('0.0.0.0', 5443)
-    ###
     print()
-    print(f"Starting WSGI server on https://{bind_address[0]}:{bind_address[1]}")
+    print(f"Starting WSGI server on https://{appconfig['CHEROOT']['hostname']}:{appconfig['CHEROOT']['port']}")
     print("Press Ctrl+C to stop the server")
     print()
     
@@ -169,10 +166,21 @@ if __name__ == '__main__':
         if request.path.startswith(('/static/', '/qms/')) or request.path.endswith(('_rows', 'get_current')):
             return
         logging.info(f"Connected client - IP: {request.remote_addr} - Request: {request.method} {request.path}")
-    
+   
     # start WSGI server
-    server = WSGIServer(bind_address, app)
-    server.numthreads = 10 
+    server = WSGIServer(
+        bind_addr               = (appconfig['CHEROOT']['hostname'], int(appconfig['CHEROOT']['port'])),
+        wsgi_app                = app,
+        numthreads              = int(appconfig['CHEROOT']['numthreads']),
+        server_name             = appconfig['CHEROOT']['server_name'],
+        max                     = int(appconfig['CHEROOT']['max']),
+        request_queue_size      = int(appconfig['CHEROOT']['request_queue_size']),
+        timeout                 = int(appconfig['CHEROOT']['timeout']),
+        shutdown_timeout        = int(appconfig['CHEROOT']['shutdown_timeout']),
+        accepted_queue_size     = int(appconfig['CHEROOT']['accepted_queue_size']),
+        accepted_queue_timeout  = int(appconfig['CHEROOT']['accepted_queue_timeout'])
+    )
+
     # Bind SSL certificates to enable native HTTPS
     server.ssl_adapter = pyOpenSSLAdapter(
         certificate='fullchain.pem',   # Path to certificate
@@ -180,7 +188,7 @@ if __name__ == '__main__':
     )
 
     try:
-        logging.info(f"Starting cheroot wsgi server with SSL on https://{bind_address[0]}:{bind_address[1]}")
+        logging.info(f"Starting cheroot wsgi server with SSL on https://{appconfig['CHEROOT']['hostname']}:{appconfig['CHEROOT']['port']}")
         server.start()
     except KeyboardInterrupt:
         print()
