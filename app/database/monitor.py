@@ -159,7 +159,16 @@ ORDER BY order_date)
 
 SELECT * FROM cte
 UNION
-SELECT 'TOTALE', sum(num_orders), sum(num_covers), sum(take_away), sum("table"), sum(amount), sum(discount), sum(electronic), sum(cash), sum(total)
+SELECT 'TOTALE', 
+    sum(num_orders)::integer,
+    sum(num_covers)::integer, 
+    sum(take_away),
+    sum("table"),
+    sum(amount),
+    sum(discount),
+    sum(electronic),
+    sum(cash),
+    sum(total)
 FROM cte;"""
     # Unified context managers ensuring proper evaluation order
     with db_exception_context(logger), appconn.transaction(), appconn.cursor() as cur:
