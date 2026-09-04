@@ -119,10 +119,13 @@ GROUP BY s.event_id, s.item_id, i.description;"""
     
 def get_sales_summary(event_id) -> list[tuple]:
     script = t"""
+
+WITH cte AS (
+
 SELECT 
     -- event_id                             AS event,
     -- event_description                    AS event_Description,
-    order_date                              AS order_date,
+    to_char(order_date, 'DD/MM/YYYY')             AS order_date,
     -- num_orders_lunch                        AS num_orders_lunch,
     -- num_orders_dinner                       AS num_orders_dinner,
     num_orders_lunch + num_orders_dinner    AS num_orders,
@@ -151,7 +154,13 @@ SELECT
     -- total_dinner                            AS total_dinner,
     total_lunch + total_dinner              AS total
 FROM vw_sales_summary
-WHERE event_id = {event_id};"""
+WHERE event_id = {event_id}
+ORDER BY order_date)
+
+SELECT * FROM cte
+UNION
+SELECT 'TOTALE', sum(num_orders), sum(num_covers), sum(take_away), sum("table"), sum(amount), sum(discount), sum(electronic), sum(cash), sum(total)
+FROM cte;"""
     # Unified context managers ensuring proper evaluation order
     with db_exception_context(logger), appconn.transaction(), appconn.cursor() as cur:
         cur.execute(script)

@@ -1,14 +1,14 @@
 {% for line in lines %}
     <tr class="text-dark">
-        <td class="text-start">{{ line.order_date }}</td>
-        <td class="text-end">{{ line.num_orders | fmt}}</td>
-        <td class="text-end">{{ line.num_covers | fmt}}</td>
-        <td class="text-end">{{ line.take_away | fmt}}</td>
-        <td class="text-end">{{ line.table | fmt}}</td>
-        <td class="text-end">{{ line.amount | fmt}}</td>
-        <td class="text-end">{{ line.discount | fmt}}</td>
-        <td class="text-end">{{ line.electronic | fmt}}</td>
-        <td class="text-end">{{ line.cash | fmt}}</td>
-        <td class="text-end">{{ line.total | fmt}}</td>
+        <td class="text-start {% if line.order_date == 'TOTALE' %}fw-bold table-success{% endif %}">{{ line.order_date }}</td>
+        <td class="text-end {% if line.order_date == 'TOTALE' %}fw-bold table-success{% endif %}">{{ line.num_orders | fmt}}</td>
+        <td class="text-end {% if line.order_date == 'TOTALE' %}fw-bold table-success{% endif %}">{{ line.num_covers | fmt}}</td>
+        <td class="text-end {% if line.order_date == 'TOTALE' %}fw-bold table-success{% endif %}">{{ line.take_away | fmt}}</td>
+        <td class="text-end {% if line.order_date == 'TOTALE' %}fw-bold table-success{% endif %}">{{ line.table | fmt}}</td>
+        <td class="text-end {% if line.order_date == 'TOTALE' %}fw-bold table-success{% endif %}">{{ line.amount | fmt}}</td>
+        <td class="text-end {% if line.order_date == 'TOTALE' %}fw-bold table-success{% endif %}">{{ line.discount | fmt}}</td>
+        <td class="text-end {% if line.order_date == 'TOTALE' %}fw-bold table-success{% endif %}">{{ line.electronic | fmt}}</td>
+        <td class="text-end {% if line.order_date == 'TOTALE' %}fw-bold table-success{% endif %}">{{ line.cash | fmt}}</td>
+        <td class="text-end {% if line.order_date == 'TOTALE' %}fw-bold table-success{% endif %}">{{ line.total | fmt}}</td>
     </tr>
 {% endfor %}
